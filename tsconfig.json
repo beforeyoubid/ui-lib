@@ -17,7 +17,6 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-    "baseUrl": "src",
     "lib": ["es2017"]
   }
 }

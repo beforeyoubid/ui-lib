@@ -22,3 +22,5 @@ export const createOrder = () => {
 };
 
 export const isEvenNum = (num: number) => num % 2 === 0;
+
+export const MOCKDATA = { ORDERS: [createOrder(), createOrder()] };
