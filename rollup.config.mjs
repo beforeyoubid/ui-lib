@@ -12,18 +12,11 @@ const packageJson = JSON.parse(await readFile(new URL('./package.json', import.m
 export default [
   {
     input: 'src/index.ts',
-    output: [
-      {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
+    output: {
+      file: packageJson.module,
+      format: 'esm',
+      sourcemap: true,
+    },
     plugins: [peerDepsExternal(), json(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
   },
   {
