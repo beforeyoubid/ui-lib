@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { Typography } from '@mui/material/styles/createTypography';
 import moment from 'moment-timezone';
 import { PRODUCT_STATUSES, PRODUCT_TYPES } from './my-constants';
 
@@ -22,5 +23,3 @@ export const createOrder = () => {
 };
 
 export const isEvenNum = (num: number) => num % 2 === 0;
-
-export const MOCKDATA = { ORDERS: [createOrder(), createOrder()] };

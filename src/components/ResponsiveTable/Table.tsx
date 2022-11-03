@@ -3,7 +3,6 @@ import Paper from '@mui/material/Paper';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import { upperCase } from 'lodash';
 import { MyTableData, MyTableProps } from './types';
 
 export const MyTable = ({ data }: MyTableProps): JSX.Element => {
@@ -14,7 +13,7 @@ export const MyTable = ({ data }: MyTableProps): JSX.Element => {
         <TableRow>
           {headers.map(h => (
             <TableCell align="left" key={h}>
-              {upperCase(h)}
+              {h}
             </TableCell>
           ))}
         </TableRow>
