@@ -2,9 +2,11 @@
   "name": "@beforeyoubid/ui-lib",
   "version": "1.0.1",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "rollup -c",
     "build-and-publish": "npm run build && npm publish --access public",
+    "build-and-publish-dryrun": "npm run build && npm publish --dry-run",
+    "build-and-publish-dryrun-ci": "npm run build && npm publish --registry http://localhost:4873",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
