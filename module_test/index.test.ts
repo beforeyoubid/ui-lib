@@ -1,5 +1,7 @@
 import {} from '@beforeyoubid/ui-lib';
 
-expect('import', () => {
-  describe('some test');
+describe('import', () => {
+  describe('some test', () => {
+    it('', () => {});
+  });
 });

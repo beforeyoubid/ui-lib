@@ -16,6 +16,8 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "lib": ["es2017"]
-  }
+    "lib": ["es2017"],
+    
+  },
+  "exclude": ["module_test/**/*"]
 }
