@@ -12,7 +12,6 @@
     "build-storybook": "build-storybook",
     "lint": "eslint --max-warnings 0 src",
     "lint:ci": "eslint --max-warnings 0 src/",
-    "ts": "tsc --noEmit",
     "lint:fix": "eslint --fix --max-warnings 0 src/"
   },
   "author": "",
