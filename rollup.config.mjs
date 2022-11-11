@@ -24,7 +24,7 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        // exclude: ['src/__tests__/**/*', 'src/stories/**/*', 'module_test/**/*'],
+        exclude: ['src/__tests__/**/*', 'src/stories/**/*'],
       }),
       terser(),
     ],
