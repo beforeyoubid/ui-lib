@@ -19,5 +19,5 @@
     "lib": ["es2017"],
     
   },
-  "exclude": ["module_test/**/*"]
+  // "exclude": ["module_test/**/*"],
 }
