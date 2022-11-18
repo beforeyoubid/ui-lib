@@ -22,7 +22,11 @@ export default [
       json(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json', exclude: ['src/__tests/**/*', 'src/stories/**/*'] }),
+      typescript({
+        tsconfig: './tsconfig.json',
+        exclude: ['src/__tests/**/*', 'src/stories/**/*'],
+        emitDeclarationOnly: true,
+      }),
       terser(),
     ],
   },
