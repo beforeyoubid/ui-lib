@@ -22,15 +22,12 @@ export default [
       json(),
       resolve(),
       commonjs(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        exclude: ['src/__tests__/**/*', 'src/stories/**/*'],
-      }),
+      typescript({ tsconfig: './tsconfig.json', exclude: ['src/__tests/**/*', 'src/stories/**/*'] }),
       terser(),
     ],
   },
   {
-    input: 'dist/esm/index.d.ts',
+    input: 'dist/esm/types/src/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
   },
