@@ -1,4 +1,6 @@
 import { InputProps, TextField as TextFieldMui, TextFieldProps as TextFieldMuiProps } from '@mui/material';
+import { Keys } from '../../my-constants';
+import { automation } from '../../utils';
 
 export type TextFieldProps = {
   /**
@@ -85,6 +87,9 @@ export const TextField = ({
       }}
       inputProps={{
         maxLength,
+        ...automation([Keys.Component.TextField.Root, automationKey], {
+          name,
+        }),
         ...(autocompleteOff ? { autoComplete: 'nope' } : {}),
       }}
       {...props}
