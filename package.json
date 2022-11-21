@@ -2,7 +2,7 @@
   "name": "@beforeyoubid/ui-lib",
   "version": "1.0.2",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "ts": "tsc --noEmit",
     "build": "rollup -c",
     "build-and-publish": "npm run build && npm publish --access public",
