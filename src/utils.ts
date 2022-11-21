@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-import { Typography } from '@mui/material/styles/createTypography';
 import moment from 'moment-timezone';
 import { PRODUCT_STATUSES, PRODUCT_TYPES } from './my-constants';
 
