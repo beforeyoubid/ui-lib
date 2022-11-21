@@ -2,5 +2,5 @@ dist
 node_modules
 cc-test-reporter
 module_test/storage
-module_test/yarn.lock
 package-lock.json
+coverage

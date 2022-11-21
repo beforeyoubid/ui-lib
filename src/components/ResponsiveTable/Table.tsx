@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import { MyTableData, MyTableProps } from './types';
+import { MyTableProps } from './types';
 
 export const MyTable = ({ data }: MyTableProps): JSX.Element => {
   const renderHeaders = (): JSX.Element => {
@@ -27,11 +27,11 @@ export const MyTable = ({ data }: MyTableProps): JSX.Element => {
     return <TableBody>{renderOneRow(rows)}</TableBody>;
   };
 
-  const renderOneRow = (rowValue: (keyof MyTableData)[]): JSX.Element => {
+  const renderOneRow = (rowValue: (string | number | JSX.Element)[]): JSX.Element => {
     return (
       <TableRow>
-        {rowValue.map(r => (
-          <TableCell align="left" key={r}>
+        {rowValue.map((r, i) => (
+          <TableCell align="left" key={i}>
             {r}
           </TableCell>
         ))}

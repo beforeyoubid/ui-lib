@@ -17,10 +17,21 @@ export default [
       format: 'esm',
       sourcemap: true,
     },
-    plugins: [peerDepsExternal(), json(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
+    plugins: [
+      peerDepsExternal(),
+      json(),
+      resolve(),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        exclude: ['src/__tests/**/*', 'src/stories/**/*'],
+        emitDeclarationOnly: true,
+      }),
+      terser(),
+    ],
   },
   {
-    input: 'dist/esm/index.d.ts',
+    input: 'dist/esm/types/src/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
   },
