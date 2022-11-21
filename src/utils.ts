@@ -28,20 +28,23 @@ export const notEmpty = <TValue>(value: TValue | null | undefined): value is TVa
 
 export function automation(componentKeys: Maybe<string>[] | string, attributes = {}) {
   const dataAttributes: Record<string, unknown> = {};
+  const keyIncludesComponent = (key: string) => key.toLocaleLowerCase().includes('component.');
+  const keyIncludesPage = (key: string) => key.toLocaleLowerCase().includes('page');
+
   if (Array.isArray(componentKeys)) {
     componentKeys.filter(notEmpty).forEach(key => {
-      if (key.toLocaleLowerCase().includes('component.')) {
+      if (keyIncludesComponent(key)) {
         dataAttributes['data-component-key'] = key;
       }
-      if (key.toLocaleLowerCase().includes('page')) {
+      if (keyIncludesPage(key)) {
         dataAttributes['data-page-component-key'] = key;
       }
     });
   } else if (componentKeys) {
-    if (componentKeys.toLocaleLowerCase().includes('component.')) {
+    if (keyIncludesComponent(componentKeys)) {
       dataAttributes['data-component-key'] = componentKeys;
     }
-    if (componentKeys.toLocaleLowerCase().includes('page')) {
+    if (keyIncludesPage(componentKeys)) {
       dataAttributes['data-page-component-key'] = componentKeys;
     }
   }
