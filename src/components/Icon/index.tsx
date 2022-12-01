@@ -83,7 +83,6 @@ import {
   SystemUpdate as DownloadDocument,
 } from '@material-ui/icons';
 
-// import { CircularProgress } from '@material-ui/core';
 import { automation } from '../../utils';
 
 import { Edit } from './CustomIcon';

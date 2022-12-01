@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import { KebabMenu } from '../components/KebabMenu';
 import { KebabMenuProps } from '../components/KebabMenu/utils';
-import { ThemedApp } from '../components/styles';
+import { ThemedApp } from './styles';
 
 export default {
   title: 'KebabMenu',

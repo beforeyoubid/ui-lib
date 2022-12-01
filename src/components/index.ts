@@ -6,4 +6,3 @@ export * from './KebabMenu';
 export * from './ResponsiveTable/types';
 export { ResponsiveTable } from './ResponsiveTable';
 export * from './TextField';
-export * from './styles';
