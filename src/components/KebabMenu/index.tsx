@@ -78,7 +78,7 @@ export const KebabMenu = ({
         transformOrigin={transformOrigin}
         PaperProps={paperProps}
       >
-        {options.map((option: IMenuOption) => (
+        {options?.map((option: IMenuOption) => (
           <StyledMenuItem
             key={option.label}
             onClick={() => handleOptionClicked(option)}
