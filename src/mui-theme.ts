@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material';
 
-const variables = {
+export const variables = {
   toolbarHeight: 64,
   fontSize: {
     minimal: '10px',
