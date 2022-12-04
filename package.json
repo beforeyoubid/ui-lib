@@ -1,6 +1,6 @@
 {
   "name": "@beforeyoubid/ui-lib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scripts": {
     "test": "jest --coverage",
     "ts": "tsc --noEmit",
@@ -59,8 +59,8 @@
     "lodash": "^4.17.21",
     "moment-timezone": "^0.5.38",
     "prettier": "^2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "rollup": "^3.2.5",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -73,6 +73,8 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "color": "^3.1.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "styled-components": "^5.3.6"
   },
   "module": "dist/esm/index.js",
