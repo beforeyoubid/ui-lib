@@ -1,6 +1,6 @@
-import { createTheme } from '@mui/material';
+import { createTheme, ThemeOptions } from '@material-ui/core';
 
-const variables = {
+export const variables = {
   toolbarHeight: 64,
   fontSize: {
     minimal: '10px',
@@ -40,4 +40,4 @@ export const theme = createTheme({
   typography: {
     fontFamily: variables.fonts.regular,
   },
-});
+} as ThemeOptions);

@@ -1,4 +1,4 @@
-import { useMediaQuery, useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 
 export const useScreen = () => {
   const theme = useTheme();
