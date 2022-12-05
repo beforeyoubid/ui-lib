@@ -1,23 +1,22 @@
-import { Table, TableCell, TableRow } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
+import { Table, TableCell, TableRow, Paper, TableBody, TableContainer, TableHead } from '@material-ui/core';
+
 import { MyTableProps } from './types';
 
 export const MyTable = ({ data }: MyTableProps): JSX.Element => {
   const renderHeaders = (): JSX.Element => {
     const headers = Object.keys(data[0]);
     return (
-      <TableHead>
-        <TableRow>
-          {headers.map(h => (
-            <TableCell align="left" key={h}>
-              {h}
-            </TableCell>
-          ))}
-        </TableRow>
-      </TableHead>
+      <>
+        <TableHead>
+          <TableRow>
+            {headers.map(h => (
+              <TableCell align="left" key={h}>
+                {h}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+      </>
     );
   };
 
@@ -41,7 +40,7 @@ export const MyTable = ({ data }: MyTableProps): JSX.Element => {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table style={{ minWidth: 650 }} aria-label="simple table">
         {renderHeaders()}
         {renderAllRows()}
       </Table>
