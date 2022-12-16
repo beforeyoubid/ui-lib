@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import { KebabMenu } from '../components/KebabMenu';
-import { KebabMenuProps } from '../components/KebabMenu/utils';
+import { KebabMenuProps } from '../components/KebabMenu/types';
 import { ThemedApp } from './styles';
 
 export default {
