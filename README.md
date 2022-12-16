@@ -9,7 +9,8 @@ projects.
 
 1. Add a component
 2. Export the component and it's types
-3. Bump the package.json version via semantic versioning [reference](https://semver.org/)
+3. Bump the package.json version via semantic versioning [reference](https://semver.org/) by running `npm version x.x.x`
+   (this bumps the `package.json` version and does a commit)
 
    - MAJOR version: breaking changes (⬆.x.x)
    - MINOR version: feature (x.⬆.x)
