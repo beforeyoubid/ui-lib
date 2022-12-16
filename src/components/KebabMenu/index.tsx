@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';
 import { CopyContainer, Description, IconButton, KebabMenuIcon, MenuItemIcon, StyledMenuItem, Wrapper } from './styles';
-import { IMenuOption, KebabMenuProps } from './utils';
+import { IMenuOption, KebabMenuProps } from './types';
 
 export const KebabMenu = ({
   options,
