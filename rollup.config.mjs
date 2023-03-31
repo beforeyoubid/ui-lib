@@ -1,19 +1,34 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
 import { readFile } from 'fs/promises';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import json from '@rollup/plugin-json';
 
+import glob from 'glob';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 const packageJson = JSON.parse(await readFile(new URL('./package.json', import.meta.url)));
 
 export default [
   {
-    input: 'src/index.ts',
+    input: {
+      index: 'src/index.ts',
+      ...Object.fromEntries(
+        glob.sync('src/**/*.{ts,tsx}', { ignore: ['src/__tests__/**/*', 'src/stories/**/*'] }).map(file => [
+          // This remove `src/` as well as the file extension from each
+          // file, so e.g. src/nested/foo.js becomes nested/foo
+          path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+          // This expands the relative paths to absolute paths, so e.g.
+          // src/nested/foo becomes /project/src/nested/foo.js
+          fileURLToPath(new URL(file, import.meta.url)),
+        ])
+      ),
+    },
     output: {
-      file: packageJson.module,
+      dir: 'dist',
       format: 'esm',
       sourcemap: true,
     },
@@ -24,15 +39,11 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        exclude: ['src/__tests/**/*', 'src/stories/**/*'],
+        exclude: ['src/__tests__/**/*', 'src/stories/**/*', 'danger/**/*', 'Dangerfile.ts'],
         emitDeclarationOnly: true,
+        declarationDir: 'dist',
       }),
       terser(),
     ],
-  },
-  {
-    input: 'dist/esm/types/src/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
   },
 ];
