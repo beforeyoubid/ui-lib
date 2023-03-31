@@ -17,14 +17,12 @@ export default [
     input: {
       index: 'src/index.ts',
       ...Object.fromEntries(
-        glob.sync('src/**/*.{ts,tsx}', { ignore: ['src/__tests__/**/*', 'src/stories/**/*'] }).map(file => [
-          // This remove `src/` as well as the file extension from each
-          // file, so e.g. src/nested/foo.js becomes nested/foo
-          path.relative('src', file.slice(0, file.length - path.extname(file).length)),
-          // This expands the relative paths to absolute paths, so e.g.
-          // src/nested/foo becomes /project/src/nested/foo.js
-          fileURLToPath(new URL(file, import.meta.url)),
-        ])
+        glob
+          .sync('src/**/*.{ts,tsx}', { ignore: ['src/__tests__/**/*', 'src/stories/**/*'] })
+          .map(file => [
+            path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+            fileURLToPath(new URL(file, import.meta.url)),
+          ])
       ),
     },
     output: {
