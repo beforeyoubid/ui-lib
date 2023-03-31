@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import { readFile } from 'fs/promises';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import json from '@rollup/plugin-json';
@@ -9,8 +8,6 @@ import json from '@rollup/plugin-json';
 import glob from 'glob';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-const packageJson = JSON.parse(await readFile(new URL('./package.json', import.meta.url)));
 
 export default [
   {
