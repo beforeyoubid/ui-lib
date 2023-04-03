@@ -18,12 +18,15 @@ const configCjs: RollupOptions = {
     file: packageJson.main,
     format: 'cjs',
     sourcemap: true,
+    dynamicImportInCjs: false,
   },
   plugins: [
-    peerDepsExternal() as Plugin,
+    // peerDepsExternal() as Plugin,
     json(),
     resolve(),
-    commonjs(),
+    commonjs({
+      requireReturnsDefault: 'preferred',
+    }),
     typescript({
       tsconfig: './tsconfig.json',
       exclude: [
@@ -40,6 +43,9 @@ const configCjs: RollupOptions = {
     }),
     terser(),
   ],
+  external: [...Object.keys(packageJson.peerDependencies), 'react-is', 'react/jsx-runtime'].filter(
+    k => k !== 'styled-components'
+  ),
 };
 
 const config: RollupOptions = {
@@ -65,7 +71,6 @@ const config: RollupOptions = {
     peerDepsExternal() as Plugin,
     json(),
     resolve(),
-    commonjs(),
     typescript({
       tsconfig: './tsconfig.json',
       exclude: [
