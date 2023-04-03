@@ -18,6 +18,7 @@ module.exports = {
     '@typescript-eslint/defined-types-are-used': 0,
     'prefer-const': 0,
     '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   },
   overrides: [
     {
