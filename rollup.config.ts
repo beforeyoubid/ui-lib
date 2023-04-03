@@ -27,6 +27,7 @@ const configCjs: RollupOptions = {
     typescript({
       tsconfig: './tsconfig.json',
       exclude: [
+        'dist/**/*',
         'src/__tests__/**/*',
         'src/stories/**/*',
         'src/test-props.tsx',
@@ -34,9 +35,8 @@ const configCjs: RollupOptions = {
         'Dangerfile.ts',
         'rollup.config.ts',
       ],
-      emitDeclarationOnly: true,
-      outDir: 'dist',
-      declarationDir: 'dist',
+      declarationDir: '',
+      noEmit: true,
     }),
     terser(),
   ],
@@ -69,6 +69,7 @@ const config: RollupOptions = {
     typescript({
       tsconfig: './tsconfig.json',
       exclude: [
+        'dist/**/*',
         'src/__tests__/**/*',
         'src/stories/**/*',
         'src/test-props.tsx',
@@ -76,8 +77,8 @@ const config: RollupOptions = {
         'Dangerfile.ts',
         'rollup.config.ts',
       ],
-      emitDeclarationOnly: true,
       declarationDir: 'dist',
+      emitDeclarationOnly: true,
     }),
     terser(),
   ],

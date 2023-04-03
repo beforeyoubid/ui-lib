@@ -19,5 +19,5 @@
     "lib": ["DOM", "DOM.Iterable", "esnext"],
     "resolveJsonModule": true
   },
-  "exclude": ["module_test/**/*"]
+  "exclude": ["module_test/**/*", "dist/**/*"]
 }
