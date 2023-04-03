@@ -17,6 +17,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "lib": ["es2017"],
+    "resolveJsonModule": true
   },
   "exclude": ["module_test/**/*"]
 }
