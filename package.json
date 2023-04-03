@@ -4,7 +4,7 @@
   "scripts": {
     "test": "jest --coverage",
     "ts": "tsc --noEmit",
-    "build": "rollup -c",
+    "build": "rimraf dist && rollup -c --configPlugin typescript",
     "build-and-publish": "npm run build && npm publish --access public",
     "build-and-publish-dryrun": "npm run build && npm publish --dry-run",
     "build-and-publish-dryrun-ci": "npm run build && npm publish --registry http://localhost:4873",
@@ -38,6 +38,7 @@
     "@types/color": "^3.0.3",
     "@types/jest": "^29.2.1",
     "@types/react": "^18.0.24",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.1",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
@@ -55,6 +56,7 @@
     "prettier": "^2.7.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "rimraf": "^4.4.1",
     "rollup": "^3.2.5",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -72,6 +74,7 @@
     "styled-components": "^5.3.6"
   },
   "module": "dist/index.js",
+  "main": "dist/index.cjs",
   "files": [
     "dist"
   ],
