@@ -3,7 +3,18 @@ const config = {
   collectCoverage: true,
   testPathIgnorePatterns: ['module_test'],
   transform: {
-    '\\.(ts|tsx)$': '@swc/jest',
+    '\\.(ts|tsx)$': [
+      '@swc/jest',
+      {
+        jsc: {
+          transform: {
+            react: {
+              runtime: 'automatic',
+            },
+          },
+        },
+      },
+    ],
   },
 };
 
