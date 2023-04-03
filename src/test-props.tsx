@@ -3,7 +3,6 @@ import { IconButton } from '@material-ui/core';
 import { faker } from '@faker-js/faker';
 import moment from 'moment-timezone';
 
-
 const PRODUCT_TYPES = ['STRATA', 'BPI'];
 const PRODUCT_STATUSES = ['LIVE', 'CLOSED'];
 
