@@ -96,7 +96,16 @@ jobs:
           command: |
             cd module_test
             yarn install --registry http://localhost:4873
+      - run:
+          name: Test module usage - CJS
+          command: |
+            cd module_test
             yarn test
+      - run:
+          name: Test module usage - ESM
+          command: |
+            cd module_test
+            yarn vite build
       - save_cache:
           key: node_modules-{{ checksum "yarn.lock" }}
           paths:
