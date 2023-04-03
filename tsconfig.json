@@ -16,7 +16,7 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "lib": ["es2017"],
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
     "resolveJsonModule": true
   },
   "exclude": ["module_test/**/*"]
