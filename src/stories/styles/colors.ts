@@ -1,22 +1,7 @@
-import Color from 'color';
-
-// @see https://material-ui.com/style/color/
-//
-// >> DO NOT ADD MORE COLORS <<
-//
-// most of the colors (if not here) are variation of the existing ones, ie.:
-//
-// import { Color } from 'styles/colors'
-// Color(props.theme.colors.darkPurple).fade(0.9).string()
-//
-// I've used mycolor.space to get some new colors
-// https://mycolor.space/?hex=%2306315C&sub=1
 const colors = {
   /** Background */
   alabaster: '#F8F8F8',
-  get alphaWhite() {
-    return Color(this.white).alpha(0.9).rgb().toString();
-  },
+  alphaWhite: 'rgba(255, 255, 255, 0.9)',
   fogWhite: 'rgba(255, 255, 255, 0.2)',
   /** main color */
   persian: '#00AE95',
@@ -84,4 +69,3 @@ export const ChartColors = {
 };
 
 export default colors;
-export { Color };
