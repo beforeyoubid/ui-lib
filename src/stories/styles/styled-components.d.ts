@@ -10,18 +10,18 @@ declare module 'styled-components' {
     colors: typeof colors;
     breakpoints: typeof breakpoints;
     badge: {
-      primary: typeof colors['persian'];
-      secondary: typeof colors['regentGrey'];
-      warning: typeof colors['warning'];
-      danger: typeof colors['error'];
-      purple: typeof colors['lightPurple'];
-      info: typeof colors['turquoise'];
-      grey: typeof colors['betaGrey'];
-      dark: typeof colors['darkPurple'];
-      light: [typeof colors['alabaster'], typeof colors['regentGrey']];
-      blue: typeof colors['darkBlue'];
-      white: typeof colors['white'];
-      hold: typeof colors['brown'];
+      primary: (typeof colors)['persian'];
+      secondary: (typeof colors)['regentGrey'];
+      warning: (typeof colors)['warning'];
+      danger: (typeof colors)['error'];
+      purple: (typeof colors)['lightPurple'];
+      info: (typeof colors)['turquoise'];
+      grey: (typeof colors)['betaGrey'];
+      dark: (typeof colors)['darkPurple'];
+      light: [(typeof colors)['alabaster'], (typeof colors)['regentGrey']];
+      blue: (typeof colors)['darkBlue'];
+      white: (typeof colors)['white'];
+      hold: (typeof colors)['brown'];
     };
     button: {
       primary: string;
@@ -39,9 +39,9 @@ declare module 'styled-components' {
     media: Record<string, (args: TemplateStringsArray) => string>;
 
     palette: typeof palette;
-    toolbarHeight: typeof variables['toolbarHeight'];
-    sizes: typeof variables['sizes'];
-    fonts: typeof variables['fonts'];
-    fontSize: typeof variables['fontSize'];
+    toolbarHeight: (typeof variables)['toolbarHeight'];
+    sizes: (typeof variables)['sizes'];
+    fonts: (typeof variables)['fonts'];
+    fontSize: (typeof variables)['fontSize'];
   }
 }

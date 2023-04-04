@@ -4,7 +4,7 @@ import { KebabMenuProps } from '../components/KebabMenu/types';
 import { ThemedApp } from './styles';
 
 export default {
-  title: 'KebabMenu',
+  title: 'ui-lib/KebabMenu',
   component: KebabMenu,
   argTypes: {
     size: {
