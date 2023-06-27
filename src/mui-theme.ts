@@ -1,6 +1,62 @@
 import { createTheme, ThemeOptions } from '@material-ui/core';
 
-export const variables = {
+export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'base' | 'sm' | 'xs' | '2xs';
+export type TypographyFontClass = 'roman' | 'medium' | 'bold';
+
+export type Typography = {
+  size: Record<
+    TypographyFontSize,
+    {
+      fontSize: `${number}rem`;
+      lineHeight: `${number}%`;
+    }
+  >;
+  fontWeight: Record<TypographyFontClass, number>;
+};
+
+const typography: Typography = {
+  size: {
+    '4xl': {
+      fontSize: '2.438rem',
+      lineHeight: '130%',
+    },
+    '3xl': {
+      fontSize: '1.938rem',
+      lineHeight: '130%',
+    },
+    '2xl': {
+      fontSize: '1.562rem',
+      lineHeight: '130%',
+    },
+    xl: {
+      fontSize: '1.250rem',
+      lineHeight: '130%',
+    },
+    base: {
+      fontSize: '1.000rem',
+      lineHeight: '130%',
+    },
+    sm: {
+      fontSize: '0.812rem',
+      lineHeight: '120%',
+    },
+    xs: {
+      fontSize: '0.625rem',
+      lineHeight: '120%',
+    },
+    '2xs': {
+      fontSize: '0.500rem',
+      lineHeight: '120%',
+    },
+  },
+  fontWeight: {
+    roman: 400,
+    medium: 500,
+    bold: 700,
+  },
+};
+
+export const themeVariables = {
   toolbarHeight: 64,
   fontSize: {
     minimal: '10px',
@@ -17,6 +73,7 @@ export const variables = {
     huge: '56px',
     title: '',
   },
+  typography,
   fonts: {
     regular: `Avenir-Roman, system-ui, -apple-system, BlinkMacSystemFont,
       'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
