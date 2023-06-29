@@ -13,11 +13,10 @@ const preview: Preview = {
     },
   },
   decorators: [
-    Story => (
+    Story =>
       <ThemedApp>
         <Story />
-      </ThemedApp>
-    ),
+      </ThemedApp>,
   ],
 };
 
