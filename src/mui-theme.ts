@@ -1,7 +1,7 @@
 import { createTheme, Palette, ThemeOptions } from '@mui/material/styles';
-import { TypographyFontSize, TypographyFontClass } from '@mui/material/styles/createTypography';
+import type { TypographyFontSize, TypographyFontClass } from '@mui/material/styles/createTypography';
 
-export { TypographyFontSize, TypographyFontClass };
+export type { TypographyFontSize, TypographyFontClass };
 export type Color = keyof Palette['colors'];
 
 export type Typography = {
@@ -79,7 +79,10 @@ export const themeVariables = {
   },
 };
 
-export const theme = createTheme({
+export const muiTheme: ThemeOptions = {
+  status: {
+    danger: 'hi@',
+  },
   palette: {
     colors: {
       mint90: '#005246',
@@ -139,4 +142,7 @@ export const theme = createTheme({
     fontFamily: themeVariables.fonts.regular,
     ...typography,
   },
-} as ThemeOptions);
+};
+
+export const theme = createTheme(muiTheme);
+console.log({ theme });
