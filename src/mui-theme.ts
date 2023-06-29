@@ -1,7 +1,8 @@
-import { createTheme, ThemeOptions } from '@material-ui/core';
+import { createTheme, Palette, ThemeOptions } from '@mui/material/styles';
 
 export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'base' | 'sm' | 'xs' | '2xs';
 export type TypographyFontClass = 'roman' | 'medium' | 'bold';
+export type Color = keyof Palette['colors'];
 
 export type Typography = {
   size: Record<
@@ -94,7 +95,62 @@ export const themeVariables = {
 };
 
 export const theme = createTheme({
+  palette: {
+    colors: {
+      mint90: '#005246',
+      mint75: '#007A69',
+      mint60: '#009E87',
+      mint45: '#00AE95',
+      mint30: '#4FC3AE',
+      mint15: '#6BCCBB',
+      mintL1: '#ABE2D8',
+      mintL2: '#D2EFEA',
+      mintL3: '#E1F5F1',
+      mintL4: '#F4FBFA',
+
+      dark100: '#16181D',
+      dark90: '#444A5A',
+      dark75: '#656E85',
+      dark60: '#858EA3',
+      dark45: '#A5ABBB',
+      dark30: '#C2C6D1',
+      dark15: '#DFE1E7',
+
+      lightWhite: '#FFFFFE',
+      lightL1: '#F9FAFB',
+      lightL2: '#F2F4F7',
+      lightL3: '#EAECF0',
+
+      success90: '#0D492E',
+      success75: '#15754A',
+      success60: '#1C9B62',
+      success45: '#22B976',
+      success30: '#34DA90',
+      success15: '#9CEDC9',
+      successL1: '#E9FBF3',
+
+      error90: '#7C1A12',
+      error75: '#BF271C',
+      error60: '#E5584D',
+      error45: '#ED8A83',
+      error30: '#F3AFAB',
+      error15: '#F8D5D3',
+      errorL1: '#FDF2F2',
+
+      warning45: '#D49702',
+      warning30: '#FDB402',
+      warning15: '#FED776',
+      warningL1: '#FEEDC1',
+      warningL2: '#FEF5DC',
+      warningL3: '#FFF9EB',
+
+      transparentOverlay95: 'rgba(22, 24, 29, 0.95)',
+      transparentOverlay50: 'rgba(22, 24, 29, 0.5)',
+      transparentButtonA: '#C2C6D1',
+      transparentButtonB: '#F2F4F7',
+    },
+  },
   typography: {
-    fontFamily: variables.fonts.regular,
+    fontFamily: themeVariables.fonts.regular,
   },
 } as ThemeOptions);
