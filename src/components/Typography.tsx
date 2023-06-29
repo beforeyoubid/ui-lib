@@ -17,21 +17,13 @@ export function Typography(props: TypographyProps) {
 }
 
 const Div = styled('div')<{ fontClass: TypographyFontClass; size: TypographyFontSize; color: Color }>(
-  ({ theme, fontClass, size, color }) => {
-    console.log({
-      theme,
-      fontClass,
-      size,
-      color,
-    });
-    return {
-      ...theme.typography.button,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.size[size].fontSize,
-      lineHeight: theme.typography.size[size].lineHeight,
-      fontWeight: theme.typography.fontWeight[fontClass],
-      color: theme.palette.colors[color],
-      padding: theme.spacing(1),
-    };
-  }
+  ({ theme, fontClass, size, color }) => ({
+    ...theme.typography.button,
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.size[size].fontSize,
+    lineHeight: theme.typography.size[size].lineHeight,
+    fontWeight: theme.typography.fontWeight[fontClass],
+    color: theme.palette.colors[color],
+    padding: theme.spacing(1),
+  })
 );

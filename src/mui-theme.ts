@@ -144,5 +144,12 @@ export const muiTheme: ThemeOptions = {
   },
 };
 
-export const theme = createTheme(muiTheme);
-console.log({ theme });
+export const theme = createTheme(muiTheme, {
+  typography: {
+    ...typography,
+  },
+  palette: muiTheme.palette,
+  myField: {
+    typography,
+  },
+});
