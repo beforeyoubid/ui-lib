@@ -23,6 +23,8 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@mui/material": "^5.13.6",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "@mui/styled-engine-sc": "^5.12.0",
     "@rollup/plugin-commonjs": "25.0.2",
     "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.1.0",
@@ -90,6 +92,9 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {},
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beforeyoubid/ui-lib.git"

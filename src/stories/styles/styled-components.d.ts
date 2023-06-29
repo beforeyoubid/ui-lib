@@ -42,6 +42,6 @@ declare module 'styled-components' {
     toolbarHeight: (typeof variables)['toolbarHeight'];
     sizes: (typeof variables)['sizes'];
     fonts: (typeof variables)['fonts'];
-    fontSize: (typeof variables)['fontSize'];
+    // fontSize: (typeof variables)['fontSize'];
   }
 }
