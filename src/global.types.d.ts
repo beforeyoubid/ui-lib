@@ -5,7 +5,8 @@
 //   // SimplePaletteColorOptions,
 //   // ColorPartial,
 // } from '@mui/material/styles/createPalette';
-import { BaseTheme } from '@mui/material/styles/createTheme';
+// import { BaseTheme } from '@mui/material/styles/createTheme';
+import { TypographyUtils, FontStyle } from '@mui/material/styles/createTypography';
 
 declare module '@mui/material/styles/createPalette' {
   type Colors = {
@@ -70,8 +71,24 @@ declare module '@mui/material/styles/createPalette' {
   }
 }
 
+declare module '@mui/material/styles/createTypography' {
+  export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'base' | 'sm' | 'xs' | '2xs';
+  export type TypographyFontClass = 'roman' | 'medium' | 'bold';
+  export interface Typography extends FontStyle, TypographyUtils {
+    size: Record<
+      TypographyFontSize,
+      {
+        fontSize: `${number}rem`;
+        lineHeight: `${number}%`;
+      }
+    >;
+    fontWeight: Record<TypographyFontClass, number>;
+  }
+}
+
 declare module '@mui/material/styles/createTheme' {
   export interface BaseTheme {
     palette: Palette;
+    typography: Typography;
   }
 }
