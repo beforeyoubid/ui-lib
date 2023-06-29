@@ -88,7 +88,15 @@ declare module '@mui/material/styles/createTypography' {
 
 declare module '@mui/material/styles/createTheme' {
   export interface BaseTheme {
+    status: {
+      danger: string;
+    };
     palette: Palette;
     typography: Typography;
+  }
+  export interface ThemeOptions {
+    status: {
+      danger: string;
+    };
   }
 }

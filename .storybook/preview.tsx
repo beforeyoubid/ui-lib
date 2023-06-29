@@ -1,4 +1,6 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
+import { ThemedApp } from '../src/stories/styles';
 
 const preview: Preview = {
   parameters: {
@@ -10,6 +12,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    Story => (
+      <ThemedApp>
+        <Story />
+      </ThemedApp>
+    ),
+  ],
 };
 
 export default preview;

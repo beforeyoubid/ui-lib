@@ -1,6 +1,5 @@
-import muiTheme, { breakpoints, palette } from './mui-theme';
+import { muiTheme } from '../../mui-theme';
 import colors from './colors';
-import { variables } from '../../mui-theme';
 import { DefaultTheme } from 'styled-components';
 
 const generateBreakpoint = (width: number, ...cssMarkup: string[]) => `
@@ -9,11 +8,20 @@ const generateBreakpoint = (width: number, ...cssMarkup: string[]) => `
   }
 `;
 
+const breakpoints = {
+  tablet: 960,
+  phone: 768,
+  xxl: 2320,
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1280,
+  xl: 1920,
+};
+
 const styledComponentTheme: DefaultTheme = {
   ...muiTheme,
-  ...variables,
   breakpoints,
-  palette,
   colors,
   badge: {
     primary: colors.persian,
@@ -48,6 +56,7 @@ const styledComponentTheme: DefaultTheme = {
 
     return acc;
   }, {} as Record<string, (args: TemplateStringsArray) => string>),
+  spacing: (factor: number) => factor / 8,
 };
 
 export default styledComponentTheme;
