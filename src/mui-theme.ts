@@ -1,7 +1,7 @@
 import { createTheme, Palette, ThemeOptions } from '@mui/material/styles';
+import { TypographyFontSize, TypographyFontClass } from '@mui/material/styles/createTypography';
 
-export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'base' | 'sm' | 'xs' | '2xs';
-export type TypographyFontClass = 'roman' | 'medium' | 'bold';
+export { TypographyFontSize, TypographyFontClass };
 export type Color = keyof Palette['colors'];
 
 export type Typography = {
@@ -59,21 +59,6 @@ const typography: Typography = {
 
 export const themeVariables = {
   toolbarHeight: 64,
-  fontSize: {
-    minimal: '10px',
-    tiny: '14px',
-    small: '16px',
-    normal: '18px',
-    formTitle: '20px',
-    big: '24px',
-    componentTitle: '28px',
-    sectionTitle: '32px',
-    veryBig: '42px',
-    extremeBig: '46px',
-    almostHuge: '52px',
-    huge: '56px',
-    title: '',
-  },
   typography,
   fonts: {
     regular: `Avenir-Roman, system-ui, -apple-system, BlinkMacSystemFont,
@@ -152,5 +137,6 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: themeVariables.fonts.regular,
+    ...typography,
   },
 } as ThemeOptions);
