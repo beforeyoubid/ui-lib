@@ -19,7 +19,7 @@ const breakpoints = {
   xl: 1920,
 };
 
-const styledComponentTheme: DefaultTheme = {
+const styledComponentTheme = {
   ...muiTheme,
   breakpoints,
   colors,
@@ -57,6 +57,6 @@ const styledComponentTheme: DefaultTheme = {
     return acc;
   }, {} as Record<string, (args: TemplateStringsArray) => string>),
   spacing: (factor: number) => factor / 8,
-};
+} as unknown as DefaultTheme;
 
 export default styledComponentTheme;
