@@ -1,6 +1,7 @@
 import { InputProps, TextField as TextFieldMui, TextFieldProps as TextFieldMuiProps } from '@material-ui/core';
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';
+import React from 'react';
 
 export type TextFieldProps = {
   /**

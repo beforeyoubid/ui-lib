@@ -14,7 +14,7 @@ export const Primary: Story = {
   args: {
     color: 'dark100',
     class: 'roman',
-    size: 'base',
+    size: 'xl',
     children: 'Hi!',
   },
 };
