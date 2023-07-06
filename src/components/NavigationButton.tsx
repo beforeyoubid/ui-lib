@@ -72,6 +72,6 @@ const StyledIcon = styled(Icon)(({ theme }) => ({
   },
 }));
 
-const StyledText = styled('span')(({ theme }) => ({
+const StyledText = styled('span')({
   height: 21,
-}));
+});
