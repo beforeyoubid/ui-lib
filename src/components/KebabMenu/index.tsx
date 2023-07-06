@@ -1,4 +1,4 @@
-import { Menu, PaperProps, PopoverOrigin } from '@material-ui/core';
+import { Menu, PaperProps, PopoverOrigin } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';

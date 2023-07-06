@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Color from 'color';
-import { MenuItem, IconButton as UnstyledIconButton } from '@material-ui/core';
+import { MenuItem, IconButton as UnstyledIconButton } from '@mui/material';
 
 import { Icon } from '../Icon';
 
