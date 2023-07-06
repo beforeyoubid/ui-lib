@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { NavigationButton } from '../components/NavigationButton';
 import { Colors } from '../theme.types';
-import { colorPalette, muiTheme } from '../mui-theme';
+import { colorPalette } from '../mui-theme';
 import { Typography } from '../components';
 import { Tooltip } from '@mui/material';
-// import { ThemedApp } from './styles';
 
 const colorNames = Object.keys(colorPalette) as (keyof Colors)[];
 const colorGroups = colorNames.reduce(
@@ -18,6 +16,7 @@ const colorGroups = colorNames.reduce(
   },
   {} as Record<string, (keyof Colors)[]>
 );
+
 const ColorPalette = () =>
   Object.entries(colorGroups).map(([groupName, colors]) => (
     <>
