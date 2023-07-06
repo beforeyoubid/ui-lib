@@ -81,7 +81,7 @@ import {
   WarningRounded,
   WifiTetheringOutlined as Live,
   SystemUpdate as DownloadDocument,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 
 import { automation } from '../../utils';
 

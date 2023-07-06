@@ -1,4 +1,4 @@
-import { Table, TableCell, TableRow, Paper, TableBody, TableContainer, TableHead } from '@material-ui/core';
+import { Table, TableCell, TableRow, Paper, TableBody, TableContainer, TableHead } from '@mui/material';
 
 import { MyTableProps } from './types';
 

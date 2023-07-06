@@ -1,4 +1,4 @@
-import { Box, Divider, Table, TableCell, TableRow } from '@material-ui/core';
+import { Box, Divider, Table, TableCell, TableRow } from '@mui/material';
 import { COLORS } from '../../my-constants';
 import { isEvenNum } from '../../utils';
 import { MyTableData, MyTableProps } from './types';
