@@ -12,14 +12,14 @@ type Story = StoryObj<typeof NavigationButton>;
 
 export const Primary: Story = {
   args: {
-    text: 'My Account',
+    label: 'My Account',
     selected: false,
   },
 };
 
 export const Selected: Story = {
   args: {
-    text: 'My Account',
+    label: 'My Account',
     selected: true,
   },
 };
