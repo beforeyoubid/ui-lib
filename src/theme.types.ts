@@ -10,6 +10,8 @@ export type Colors = {
   mintL3: string;
   mintL4: string;
 
+  navy: string;
+
   dark100: string;
   dark90: string;
   dark75: string;
