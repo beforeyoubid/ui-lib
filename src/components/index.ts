@@ -6,5 +6,7 @@ export * from './KebabMenu';
 export * from './KebabMenu/types';
 export * from './ResponsiveTable/types';
 export { ResponsiveTable } from './ResponsiveTable';
+export * from './ProfilePicture';
 export * from './TextField';
-export * from './Typography';
+export * from './PasswordInput';
+export * from './Button';
