@@ -30,25 +30,23 @@ function NavigationButtonNoMemo(props: NavigationButtonProps) {
     [props.onExpand, props.value]
   );
   const selectedIcon = useMemo(
-    () => (props.icon ? <StyledIcon icon={props.icon} color="dark90" /> : <></>),
+    () => (props.icon ? <StyledIcon icon={props.icon} color="dark90" /> : <span />),
     [props.icon]
   );
   return (
     <Button variant={props.variant ?? 'regular'} selected={props.selected} onClick={onClickWrapper}>
       <FlexWrapper width="100%" align="center">
         <FlexWrapper gap={10} align="center" style={{ flexGrow: 1 }} width="100%">
-          {props.child && <div style={{ width: 16 }}></div>}
+          {props.child && <div style={{ width: 16 }} />}
           {selectedIcon}
           <Typography class="roman" size="base" color="dark90" padding={0}>
             {props.label}
           </Typography>
         </FlexWrapper>
         {props.expandable && (
-          <>
-            <div style={{ width: 18, height: 18 }} onClick={onExpandWrapper} className="expand-icon">
-              {props.expanded ? <ChevronDown size="18" /> : <ChevronRight size="18" />}
-            </div>
-          </>
+          <div style={{ width: 18, height: 18 }} onClick={onExpandWrapper} className="expand-icon">
+            {props.expanded ? <ChevronDown size="18" /> : <ChevronRight size="18" />}
+          </div>
         )}
       </FlexWrapper>
     </Button>
