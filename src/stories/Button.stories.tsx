@@ -19,7 +19,7 @@ export const Active: Story = {
     leadingIcon: 'email-outlined',
     trailingIcon: 'email-outlined ',
     children: (
-      <Typography class={'medium'} size={'base'} color={'lightWhite'}>
+      <Typography class="medium" size="base" color="lightWhite">
         Login
       </Typography>
     ),

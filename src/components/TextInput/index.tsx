@@ -42,7 +42,7 @@ const TextInputComponent = (props: TextInputComponentProps) => {
         InputProps={{
           startAdornment: leadingIconName ? (
             <InputAdornment position="start">
-              <Icon icon={leadingIconName} color={'dark75'} />
+              <Icon icon={leadingIconName} color="dark75" />
             </InputAdornment>
           ) : null,
         }}
