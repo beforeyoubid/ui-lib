@@ -1,14 +1,14 @@
 import { useScreen } from '../../hooks/useScreen';
-import { MyTable } from './Table';
+import { Table } from './Table';
 import { TwoColumnTable } from './TwoColumnTable';
-import { MyTableProps } from './types';
+import { TableProps } from './types';
 
-export const ResponsiveTable = ({ data }: MyTableProps): JSX.Element => {
+export const ResponsiveTable = ({ data }: TableProps): JSX.Element => {
   const { isMobile } = useScreen();
 
   const renderUI = () => {
     if (isMobile) return <TwoColumnTable data={data} />;
-    return <MyTable data={data} />;
+    return <Table data={data} />;
   };
 
   return <>{renderUI()}</>;
