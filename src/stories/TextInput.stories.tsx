@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TextInput from '../components/TextInput';
 
-// import { ThemedApp } from './styles';
-
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
 };
