@@ -1,5 +1,4 @@
 import { muiTheme } from '../../mui-theme';
-import colors from './colors';
 import { DefaultTheme } from 'styled-components';
 
 const generateBreakpoint = (width: number, ...cssMarkup: string[]) => `
@@ -22,33 +21,6 @@ const breakpoints = {
 const styledComponentTheme = {
   ...muiTheme,
   breakpoints,
-  colors,
-  badge: {
-    primary: colors.persian,
-    secondary: colors.regentGrey,
-    warning: colors.warning,
-    danger: colors.error,
-    purple: colors.lightPurple,
-    info: colors.turquoise,
-    grey: colors.betaGrey,
-    dark: colors.darkPurple,
-    light: [colors.alabaster, colors.regentGrey],
-    blue: colors.darkBlue,
-    white: colors.white,
-    hold: colors.brown,
-  },
-  button: {
-    primary: colors.persian,
-    secondary: colors.regentGrey,
-    danger: colors.error,
-    hold: colors.brown,
-    link: colors.persian,
-    white: colors.white,
-    warning: colors.warning,
-  },
-  checkbox: {
-    primary: colors.persian,
-  },
   generateBreakpoint,
   media: Object.keys(breakpoints).reduce((acc, label) => {
     acc[label] = (args: TemplateStringsArray) =>
