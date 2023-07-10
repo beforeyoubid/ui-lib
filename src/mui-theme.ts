@@ -93,6 +93,8 @@ export const colorPalette: Colors = {
   mintL3: '#E1F5F1',
   mintL4: '#F4FBFA',
 
+  navy: '#090034',
+
   dark100: '#16181D',
   dark90: '#444A5A',
   dark75: '#656E85',
