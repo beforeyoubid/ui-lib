@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 
 const BottomCharacterContainer = styled('div')({
   marginTop: '4px',

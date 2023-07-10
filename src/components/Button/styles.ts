@@ -1,5 +1,4 @@
-import { styled } from '@mui/material/styles';
-import { Button } from '@mui/material';
+import { styled, Button } from '@mui/material';
 
 type ButtonWrapperProps = {
   bgColor?: string;
