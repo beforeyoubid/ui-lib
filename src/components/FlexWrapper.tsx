@@ -11,6 +11,7 @@ const FlexWrapper = styled('div')<{
   textAlign?: CSSProperties['textAlign'];
   basis?: CSSProperties['flexBasis'];
   width?: CSSProperties['width'];
+  height?: CSSProperties['height'];
 }>`
   display: flex;
   flex-direction: ${props => props.direction ?? 'row'};
@@ -25,6 +26,11 @@ const FlexWrapper = styled('div')<{
     width &&
     css`
       width: ${formatSize(width)};
+    `}
+  ${({ height }) =>
+    height &&
+    css`
+      height: ${formatSize(height)};
     `}
 `;
 
