@@ -1,26 +1,69 @@
+import React, { useCallback, useMemo } from 'react';
 import { styled } from '@mui/material/styles';
+import { ChevronDown, ChevronRight } from 'tabler-icons-react';
+
+import { Typography } from './Typography';
+import { Icon, IconProps } from './IconV2';
+import FlexWrapper from './FlexWrapper';
 
 type NavigationButtonVariant = 'regular' | 'dark';
 export type NavigationButtonProps = {
   variant?: NavigationButtonVariant;
-  text: string;
+  label: string;
+  value: string;
+  icon?: IconProps['icon'];
   selected: boolean;
+  onClick: (value: string, e: React.MouseEvent) => void;
+  expandable?: boolean;
+  expanded?: boolean;
+  onExpand?: (value: string, e: React.MouseEvent) => void;
+  child?: boolean;
 };
 
-export function NavigationButton(props: NavigationButtonProps) {
+function NavigationButtonNoMemo(props: NavigationButtonProps) {
+  const onClickWrapper = useCallback(
+    (e: React.MouseEvent) => props.onClick(props.value, e),
+    [props.onClick, props.value]
+  );
+  const onExpandWrapper = useCallback(
+    (e: React.MouseEvent) => props.onExpand?.(props.value, e),
+    [props.onExpand, props.value]
+  );
+  const selectedIcon = useMemo(
+    () => (props.icon ? <StyledIcon icon={props.icon} color="dark90" /> : <></>),
+    [props.icon]
+  );
   return (
-    <Button variant={props.variant ?? 'regular'} selected={props.selected}>
-      <StyledIcon />
-      <StyledText>{props.text}</StyledText>
+    <Button variant={props.variant ?? 'regular'} selected={props.selected} onClick={onClickWrapper}>
+      <FlexWrapper width="100%" align="center">
+        <FlexWrapper gap={10} align="center" style={{ flexGrow: 1 }} width="100%">
+          {props.child && <div style={{ width: 16 }}></div>}
+          {selectedIcon}
+          <Typography class="roman" size="base" color="dark90" padding={0}>
+            {props.label}
+          </Typography>
+        </FlexWrapper>
+        {props.expandable && (
+          <>
+            <div style={{ width: 18, height: 18 }} onClick={onExpandWrapper} className="expand-icon">
+              {props.expanded ? <ChevronDown size="18" /> : <ChevronRight size="18" />}
+            </div>
+          </>
+        )}
+      </FlexWrapper>
     </Button>
   );
 }
+
+const NavigationButton = React.memo(NavigationButtonNoMemo);
+export { NavigationButton };
+
 const Button = styled('div')<{
   variant: NavigationButtonProps['variant'];
   selected: NavigationButtonProps['selected'];
 }>(({ theme, selected }) => ({
   width: 200,
-  height: 37,
+  minHeight: 24,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-start',
@@ -45,20 +88,6 @@ const Button = styled('div')<{
   },
 }));
 
-const Icon = ({ className }: { className?: string }) => (
-  <div className={className}>
-    <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M1.5 14.25V12.75C1.5 11.9544 1.81607 11.1913 2.37868 10.6287C2.94129 10.0661 3.70435 9.75 4.5 9.75H7.5C8.29565 9.75 9.05871 10.0661 9.62132 10.6287C10.1839 11.1913 10.5 11.9544 10.5 12.75V14.25M3 3.75C3 4.54565 3.31607 5.30871 3.87868 5.87132C4.44129 6.43393 5.20435 6.75 6 6.75C6.79565 6.75 7.55871 6.43393 8.12132 5.87132C8.68393 5.30871 9 4.54565 9 3.75C9 2.95435 8.68393 2.19129 8.12132 1.62868C7.55871 1.06607 6.79565 0.75 6 0.75C5.20435 0.75 4.44129 1.06607 3.87868 1.62868C3.31607 2.19129 3 2.95435 3 3.75Z"
-        stroke="#444A5A"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </div>
-);
-
 const StyledIcon = styled(Icon)(({ theme }) => ({
   width: 21,
   height: 21,
@@ -71,7 +100,3 @@ const StyledIcon = styled(Icon)(({ theme }) => ({
     width: 18,
   },
 }));
-
-const StyledText = styled('span')({
-  height: 21,
-});
