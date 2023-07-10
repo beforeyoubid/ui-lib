@@ -1,7 +1,8 @@
 import TextInputComponent, { TextInputComponentProps } from '../TextInput';
-import { BottomChacterContainer } from './styles';
+import { BottomCharacterContainer } from './styles';
 import { Typography } from '../Typography';
 import { TextFieldProps } from '@mui/material';
+import { useCallback } from 'react';
 
 export type TextAreaComponentProps = TextInputComponentProps &
   TextFieldProps & {
@@ -11,9 +12,12 @@ export type TextAreaComponentProps = TextInputComponentProps &
 
 const TextAreaComponent = (props: TextAreaComponentProps) => {
   const wordCount = props.value.trim().length;
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    props.onChange?.(event);
-  };
+  const handleTextChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      props.onChange?.(event);
+    },
+    [props.onChange]
+  );
 
   // Check if character count exceed than character limit
   const characterReached: boolean = wordCount > props.maxCharacter;
@@ -21,18 +25,18 @@ const TextAreaComponent = (props: TextAreaComponentProps) => {
   return (
     <>
       <TextInputComponent
-        hasError={characterReached}
+        errorText={characterReached ? 'text limit reached.' : ''}
         {...props}
         multiline
         value={props.value}
         onChange={handleTextChange}
         fullWidth
       />
-      <BottomChacterContainer>
+      <BottomCharacterContainer>
         <Typography class={'medium'} size={'base'} color={'dark90'}>
           {wordCount}/{props.maxCharacter} characters
         </Typography>
-      </BottomChacterContainer>
+      </BottomCharacterContainer>
     </>
   );
 };

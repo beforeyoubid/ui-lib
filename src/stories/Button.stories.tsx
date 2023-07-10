@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ButtonComponent, { ButtonComponentProps } from '../components/Button';
 import { Typography } from '../components/Typography';
 
-// import { ThemedApp } from './styles';
-
 const meta: Meta<ButtonComponentProps> = {
   component: ButtonComponent,
 };

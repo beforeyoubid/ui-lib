@@ -26,7 +26,7 @@ const TextFieldLabel = ({ labelText }: { labelText: string }) => (
 
 const TextFieldErrorLabel = ({ errorText }: { errorText: string }) => (
   <RowContainer>
-    <HelperTextErrorIcon type="exclamation-circle" />
+    <HelperTextErrorIcon icon="AlertCircle" color={'error75'} />
     <HelperErrorText>
       <Typography class={'roman'} size={'sm'} color={'error75'} padding={0}>
         {errorText}

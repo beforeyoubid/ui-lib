@@ -1,21 +1,26 @@
 import { styled } from '@mui/material/styles';
 import { TextField } from '@mui/material';
-import { Icon } from '../Icon';
+import { Icon } from '../IconV2';
 
-const HelperTextErrorIcon = styled(Icon)`
-  color: ${({ theme }) => theme.palette.colors.error75};
-  max-height: 9.6px;
-  max-width: 9.6px;
-  margin: 0px 4px 4px 0px;
-`;
+const HelperTextErrorIcon = styled(Icon)(({ theme }) => ({
+  maxHeight: '9.6px;',
+  maxWidth: '9.6px;',
+  marginRight: theme.spacing(0.5),
+  marginBottom: theme.spacing(0.5),
+}));
 
-const HelperErrorText = styled('div')({
-  margin: '0px 4px 4px 0px;',
-});
+const HelperErrorText = styled('div')(({ theme }) => ({
+  maxHeight: '9.6px;',
+  maxWidth: '9.6px;',
+  marginRight: theme.spacing(0.5),
+  marginBottom: theme.spacing(0.5),
+}));
 
-const HelperText = styled('div')({
-  margin: '2px 4px 4px 0px',
-});
+const HelperText = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(0.25),
+  marginRight: theme.spacing(0.5),
+  marginBottom: theme.spacing(0.5),
+}));
 
 const RowContainer = styled('div')({
   display: 'flex',
@@ -24,11 +29,11 @@ const RowContainer = styled('div')({
   alignItems: 'center',
 });
 
-const LabelIcon = styled('div')({
-  marginLeft: 4,
-});
+const LabelIcon = styled('div')(({ theme }) => ({
+  marginLeft: theme.spacing(0.5),
+}));
 
-const CustomtextField = styled(TextField)`
+const CustomTextField = styled(TextField)`
   & .MuiOutlinedInput-root {
     border-color: ${({ error, disabled, theme }) =>
       error ? theme.palette.colors.error60 : disabled ? theme.palette.colors.error15 : theme.palette.colors.dark45};
@@ -57,13 +62,6 @@ const CustomtextField = styled(TextField)`
     transform: translateY(-50%);
     pointer-events: none;
   }
-
-  & .MuiSvgIcon-root {
-    color: ${({ theme }) => theme.palette.colors.dark75};
-    height: 18px;
-    width: 18px;
-    margin-right: 4px;
-  }
 `;
 
-export { HelperTextErrorIcon, HelperText, RowContainer, CustomtextField, LabelIcon, HelperErrorText };
+export { HelperTextErrorIcon, HelperText, RowContainer, CustomTextField, LabelIcon, HelperErrorText };

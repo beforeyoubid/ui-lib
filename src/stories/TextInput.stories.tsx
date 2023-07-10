@@ -14,11 +14,7 @@ export const Active: Story = {
   args: {
     label: 'Enter Full Name',
     placeHolder: 'Placeholder',
-    isDisabled: false,
-    showLeadingIcon: true,
-    leadingIconName: 'email-outlined',
-    hasError: false,
-    hasHelperText: true,
+    leadingIconName: 'Mail',
     helperText: 'Please enter your full name',
     errorText: 'Full name is not valid.',
     value: 'Before You Bid',
