@@ -22,7 +22,7 @@ const ColorPalette = () =>
       </Typography>
       <div style={{ display: 'flex', flexDirection: 'row', gap: 8 }}>
         {colors.map(color => (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div key={color} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Tooltip title={colorPalette[color]}>
               <div
                 style={{
