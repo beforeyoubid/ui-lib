@@ -81,6 +81,9 @@ import {
   WarningRounded,
   WifiTetheringOutlined as Live,
   SystemUpdate as DownloadDocument,
+  EmailOutlined,
+  SearchOutlined,
+  ErrorOutline,
 } from '@mui/icons-material';
 
 import { automation } from '../../utils';
@@ -218,6 +221,9 @@ export const Icon = ({ type, ...rest }: Omit<IconProps, 'type'> & { type: Maybe<
     case 'email':
       return <Email {...rest} />;
 
+    case 'email-outlined':
+      return <EmailOutlined {...rest} />;
+
     case 'info':
       return <Info {...rest} />;
 
@@ -327,6 +333,8 @@ export const Icon = ({ type, ...rest }: Omit<IconProps, 'type'> & { type: Maybe<
 
     case 'successful-buyer':
       return <AssignmentInd {...rest} />;
+    case 'search':
+      return <SearchOutlined {...rest} />;
 
     case 'help':
     case 'question-mark':
@@ -334,6 +342,9 @@ export const Icon = ({ type, ...rest }: Omit<IconProps, 'type'> & { type: Maybe<
 
     case 'kebab-menu':
       return <MoreVert {...rest} />;
+
+    case 'exclamation-circle':
+      return <ErrorOutline {...rest} />;
 
     default:
       return null;
