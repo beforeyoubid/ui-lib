@@ -15,7 +15,7 @@ const getButtonStyles = (
   let hoverColor = '';
   let textColor: keyof Colors = 'lightWhite';
   let isDisabled = false;
-  let tertiaryVariant = 'contained';
+  let tertiaryVariant: 'contained' | 'outlined' = 'contained';
 
   switch (primaryVariant) {
     case 'primary':
