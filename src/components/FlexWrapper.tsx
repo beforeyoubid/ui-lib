@@ -1,5 +1,5 @@
 import { type CSSProperties } from 'react';
-import { styled, css } from '@mui/material/styles';
+import { styled, css } from '@mui/material';
 
 const FlexWrapper = styled('div')<{
   direction?: CSSProperties['flexDirection'];

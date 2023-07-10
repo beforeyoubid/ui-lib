@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 import { Color, TypographyFontSize, TypographyFontClass } from '../mui-theme';
 
 export type TypographyProps = {

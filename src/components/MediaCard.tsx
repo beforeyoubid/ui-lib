@@ -1,4 +1,4 @@
-import { css, styled, useTheme } from '@mui/material/styles';
+import { css, styled, useTheme } from '@mui/material';
 import React, { useCallback } from 'react';
 import { Colors } from '../theme.types';
 import FlexWrapper from './FlexWrapper';

@@ -1,21 +1,19 @@
-import { styled, css } from '@mui/material/styles';
+import { styled, css } from '@mui/material';
 import Color from 'color';
 import { MenuItem, IconButton as UnstyledIconButton } from '@mui/material';
 
 import { Icon } from '../Icon';
 
 const IconButton = styled(UnstyledIconButton)<{ highlight?: boolean }>`
-  ${p => {
-    if (p.highlight) {
-      return `
-      background: ${p.theme.palette.colors.dark30};
-    
+  ${({ highlight, theme }) =>
+    highlight &&
+    css`
+      background: ${theme.palette.colors.dark30};
+
       &:hover {
-        background: ${p.theme.palette.colors.dark45};
+        background: ${theme.palette.colors.dark45};
       }
-      `;
-    }
-  }}
+    `}
 `;
 
 const KebabMenuIcon = styled(Icon)`
