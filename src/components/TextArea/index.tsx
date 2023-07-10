@@ -33,7 +33,7 @@ const TextAreaComponent = (props: TextAreaComponentProps) => {
         fullWidth
       />
       <BottomCharacterContainer>
-        <Typography class={'medium'} size={'base'} color={'dark90'}>
+        <Typography class="medium" size="base" color="dark90">
           {wordCount}/{props.maxCharacter} characters
         </Typography>
       </BottomCharacterContainer>

@@ -3,15 +3,15 @@ import { TextField } from '@mui/material';
 import { Icon } from '../IconV2';
 
 const HelperTextErrorIcon = styled(Icon)(({ theme }) => ({
-  maxHeight: '9.6px;',
-  maxWidth: '9.6px;',
+  maxHeight: '9.6px',
+  maxWidth: '9.6px',
   marginRight: theme.spacing(0.5),
   marginBottom: theme.spacing(0.5),
 }));
 
 const HelperErrorText = styled('div')(({ theme }) => ({
-  maxHeight: '9.6px;',
-  maxWidth: '9.6px;',
+  maxHeight: '9.6px',
+  maxWidth: '9.6px',
   marginRight: theme.spacing(0.5),
   marginBottom: theme.spacing(0.5),
 }));

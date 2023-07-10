@@ -4,7 +4,7 @@ import { HelperErrorText, HelperText, HelperTextErrorIcon, LabelIcon, RowContain
 
 const TextFieldHint = ({ hintText }: { hintText: string }) => (
   <HelperText>
-    <Typography class={'roman'} size={'sm'} color={'dark75'} padding={0}>
+    <Typography class="roman" size="sm" color="dark75" padding={0}>
       {hintText}
     </Typography>
   </HelperText>
@@ -12,12 +12,12 @@ const TextFieldHint = ({ hintText }: { hintText: string }) => (
 
 const TextFieldLabel = ({ labelText }: { labelText: string }) => (
   <RowContainer>
-    <Typography class={'medium'} size={'base'} color={'dark90'} padding={0}>
+    <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
     </Typography>
 
     <LabelIcon>
-      <Typography class={'medium'} size={'sm'} color={'mint60'} padding={0}>
+      <Typography class="medium" size="sm" color="mint60" padding={0}>
         *
       </Typography>
     </LabelIcon>
@@ -26,9 +26,9 @@ const TextFieldLabel = ({ labelText }: { labelText: string }) => (
 
 const TextFieldErrorLabel = ({ errorText }: { errorText: string }) => (
   <RowContainer>
-    <HelperTextErrorIcon icon="AlertCircle" color={'error75'} />
+    <HelperTextErrorIcon icon="AlertCircle" color="error75" />
     <HelperErrorText>
-      <Typography class={'roman'} size={'sm'} color={'error75'} padding={0}>
+      <Typography class="roman" size="sm" color="error75" padding={0}>
         {errorText}
       </Typography>
     </HelperErrorText>
