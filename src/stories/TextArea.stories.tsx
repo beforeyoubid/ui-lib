@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TextAreaComponent from '../components/TextArea';
 
-// import { ThemedApp } from './styles';
-
 const meta: Meta<typeof TextAreaComponent> = {
   component: TextAreaComponent,
 };
@@ -14,10 +12,8 @@ export const Active: Story = {
   args: {
     label: 'Enter company detail',
     placeHolder: 'Placeholder',
-    isDisabled: false,
-    hasHelperText: true,
     helperText: 'Please enter your company details',
-    errorText: 'Company description is not valid',
+    errorText: 'g',
     minRows: 3,
     maxCharacter: 50,
     value:

@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 
-const BottomChacterContainer = styled('div')({
+const BottomCharacterContainer = styled('div')({
   marginTop: '4px;',
 });
 
-export { BottomChacterContainer };
+export { BottomCharacterContainer };

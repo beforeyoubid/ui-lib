@@ -1,19 +1,15 @@
-import { CustomtextField } from './styles';
-import { Icon } from '../Icon';
+import { CustomTextField } from './styles';
+import * as Icons from 'tabler-icons-react';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './hintComponent';
-import { TextFieldProps } from '@mui/material';
-import { theme } from '../../mui-theme';
+import { InputAdornment, TextFieldProps } from '@mui/material';
+import { Icon } from '../IconV2';
 
 export type TextInputComponentProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
   backgroundColor: string;
-  isDisabled?: boolean;
-  showLeadingIcon?: boolean;
-  leadingIconName?: string;
-  hasError?: boolean;
-  hasHelperText?: boolean;
+  leadingIconName?: keyof typeof Icons;
   helperText?: string;
   errorText?: string;
 };
@@ -24,11 +20,7 @@ const TextInputComponent = (props: TextInputComponentProps) => {
     placeHolder,
     value,
     backgroundColor,
-    isDisabled,
-    showLeadingIcon,
     leadingIconName,
-    hasError,
-    hasHelperText,
     helperText = '',
     errorText = '',
     ...rest
@@ -37,20 +29,21 @@ const TextInputComponent = (props: TextInputComponentProps) => {
   return (
     <>
       <TextFieldLabel labelText={label} />
-      {hasHelperText && <TextFieldHint hintText={helperText} />}
-      {hasError && <TextFieldErrorLabel errorText={errorText} />}
-      <CustomtextField
-        error={hasError || false}
+      {helperText && <TextFieldHint hintText={helperText} />}
+      {errorText && <TextFieldErrorLabel errorText={errorText} />}
+      <CustomTextField
+        error={!!errorText || false}
         style={{ backgroundColor }}
         id="outlined-basic"
         variant="outlined"
         placeholder={placeHolder}
         color="primary"
         value={value}
-        disabled={isDisabled}
         InputProps={{
-          startAdornment: showLeadingIcon ? (
-            <Icon type={leadingIconName} style={{ height: 18, width: 18, color: theme.palette.colors.dark75 }} />
+          startAdornment: leadingIconName ? (
+            <InputAdornment position="start">
+              <Icon icon={leadingIconName} color={'dark75'} />
+            </InputAdornment>
           ) : null,
         }}
         {...rest}
