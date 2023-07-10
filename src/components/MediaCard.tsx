@@ -33,6 +33,7 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
   const onUpload = useCallback((onSelect: (file: File) => void) => {
     let input = document.createElement('input');
     input.type = 'file';
+    input.accept = '.png, .jpeg, .jpg, image/png, image/jpeg';
     input.onchange = function () {
       if (input.files) {
         onSelect(input.files?.[0]);
