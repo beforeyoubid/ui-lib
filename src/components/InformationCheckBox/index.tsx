@@ -1,24 +1,24 @@
 import React from 'react';
-import { Typography } from '../Typography';
 import { Checkbox, styled } from '@mui/material';
+import { Typography } from '../Typography';
 import { getInfoCheckboxBackgroundColor } from './utils';
 
 type InformationCheckboxProps = {
   title: string;
   description: string;
-  type?: 'info' | 'warning' | 'error';
+  variant?: 'info' | 'warning' | 'error';
   checked: boolean;
   onChange: (event: React.ChangeEvent, checked: boolean) => void;
 };
 const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
   title,
   description,
-  type = 'info',
+  variant = 'info',
   checked,
   onChange,
 }) => {
   return (
-    <Wrapper type={type}>
+    <Wrapper variant={variant}>
       <Row>
         <CheckBox checked={checked} onChange={onChange} />
         <Typography class="bold" size="base" color="dark90" padding={0}>
@@ -33,8 +33,8 @@ const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
   );
 };
 
-const Wrapper = styled('div')(({ type }: { type: string }) => ({
-  backgroundColor: getInfoCheckboxBackgroundColor(type),
+const Wrapper = styled('div')(({ variant }: { variant: string }) => ({
+  backgroundColor: getInfoCheckboxBackgroundColor(variant),
   display: 'flex',
   padding: '16px 12px',
   flexDirection: 'column',

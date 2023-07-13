@@ -1,8 +1,8 @@
 import { useTheme } from '@mui/material';
 
-const getInfoCheckboxBackgroundColor = (type: string) => {
+const getInfoCheckboxBackgroundColor = (variant: string) => {
   const theme = useTheme();
-  switch (type) {
+  switch (variant) {
     case 'info':
       return theme.palette.colors.lightL2;
     case 'warning':
