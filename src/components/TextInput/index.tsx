@@ -1,6 +1,6 @@
 import { CustomTextField } from './styles';
 import * as Icons from 'tabler-icons-react';
-import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './hintComponent';
+import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { InputAdornment, TextFieldProps } from '@mui/material';
 import { Icon } from '../IconV2';
 
