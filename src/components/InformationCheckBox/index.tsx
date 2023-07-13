@@ -1,31 +1,40 @@
 import React from 'react';
 import { Typography } from '../Typography';
-import { styled } from '@mui/material/styles';
-import { Checkbox } from '@mui/material';
+import { Checkbox, styled } from '@mui/material';
+import { getInfoCheckboxBackgroundColor } from './utils';
 
 type InformationCheckboxProps = {
-  isSelected: boolean;
+  title: string;
+  description: string;
+  type?: 'info' | 'warning' | 'error';
+  checked: boolean;
+  onChange: (event: React.ChangeEvent, checked: boolean) => void;
 };
-const InformationCheckbox: React.FC<InformationCheckboxProps> = props => {
+const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
+  title,
+  description,
+  type = 'info',
+  checked,
+  onChange,
+}) => {
   return (
-    <Wrapper>
+    <Wrapper type={type}>
       <Row>
-        <CheckBox />
+        <CheckBox checked={checked} onChange={onChange} />
         <Typography class="bold" size="base" color="dark90" padding={0}>
-          Registered for GST
+          {title}
         </Typography>
       </Row>
 
       <Description class="roman" size="sm" color="dark90" padding={0}>
-        Businesses registered for GST have to collect this extra money (one-eleventh of the sale price) from their
-        customers. This is paid to the Australian Taxation Office (ATO) when it's due.
+        {description}
       </Description>
     </Wrapper>
   );
 };
 
-const Wrapper = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.colors.lightL2,
+const Wrapper = styled('div')(({ type }: { type: string }) => ({
+  backgroundColor: getInfoCheckboxBackgroundColor(type),
   display: 'flex',
   padding: '16px 12px',
   flexDirection: 'column',
