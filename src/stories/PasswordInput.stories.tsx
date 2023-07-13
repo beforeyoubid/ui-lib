@@ -12,7 +12,7 @@ export const Active: Story = {
     label: 'I am text input',
     placeHolder: 'Placeholder',
     leadingIconName: 'EyeCheck',
-    helperText: 'Please neter your password.',
+    helperText: 'Please enter your password.',
     value: 'Ben1234',
     errorText: 'Password didnt match',
   },

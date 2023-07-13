@@ -1,5 +1,4 @@
 import TextInputComponent, { TextInputComponentProps } from '../TextInput';
-import { BottomCharacterContainer } from './styles';
 import { Typography } from '../Typography';
 import { TextFieldProps } from '@mui/material';
 import { useCallback } from 'react';
@@ -32,11 +31,9 @@ const TextAreaComponent = (props: TextAreaComponentProps) => {
         onChange={handleTextChange}
         fullWidth
       />
-      <BottomCharacterContainer>
-        <Typography class="medium" size="base" color="dark90">
-          {wordCount}/{props.maxCharacter} characters
-        </Typography>
-      </BottomCharacterContainer>
+      <Typography class="medium" size="base" color="dark90">
+        {wordCount}/{props.maxCharacter} characters
+      </Typography>
     </>
   );
 };
