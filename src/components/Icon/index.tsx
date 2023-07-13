@@ -88,8 +88,6 @@ import {
 
 import { automation } from '../../utils';
 
-import { Edit } from './CustomIcon';
-
 import { IconProps } from './types';
 import { Keys } from '../../my-constants';
 
@@ -189,8 +187,6 @@ export const Icon = ({ type, ...rest }: Omit<IconProps, 'type'> & { type: Maybe<
       return <Cost {...rest} />;
 
     case 'edit':
-      return <Edit {...rest} />;
-
     case 'edit-mui':
       return <EditMui {...rest} />;
 
