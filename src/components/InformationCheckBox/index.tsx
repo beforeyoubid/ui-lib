@@ -1,7 +1,7 @@
 import React from 'react';
 import { Checkbox, styled } from '@mui/material';
 import { Typography } from '../Typography';
-import { getInfoCheckboxBackgroundColor } from './utils';
+import getInfoCheckboxBackgroundColor from './utils';
 
 type InformationCheckboxProps = {
   title: string;
@@ -64,4 +64,5 @@ const Row = styled('div')({
 const Description = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(3.5),
 }));
+
 export default InformationCheckbox;
