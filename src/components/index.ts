@@ -10,3 +10,4 @@ export * from './ProfilePicture';
 export * from './TextField';
 export * from './PasswordInput';
 export * from './Button';
+export * from './DropDown';
