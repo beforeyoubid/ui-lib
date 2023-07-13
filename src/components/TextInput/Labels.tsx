@@ -1,8 +1,9 @@
 import React from 'react';
 import { Typography } from '../Typography';
-import { HelperErrorText, HelperText, HelperTextErrorIcon, LabelIcon, RowContainer } from './styles';
+import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelIcon, RowContainer } from './styles';
+import { Icon } from '../IconV2';
 
-const TextFieldHint = ({ hintText }: { hintText: string }) => (
+const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   <HelperText>
     <Typography class="roman" size="sm" color="dark75" padding={0}>
       {hintText}
@@ -10,7 +11,7 @@ const TextFieldHint = ({ hintText }: { hintText: string }) => (
   </HelperText>
 );
 
-const TextFieldLabel = ({ labelText }: { labelText: string }) => (
+const TextFieldLabelNoMemo = ({ labelText }: { labelText: string }) => (
   <RowContainer>
     <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
@@ -24,9 +25,11 @@ const TextFieldLabel = ({ labelText }: { labelText: string }) => (
   </RowContainer>
 );
 
-const TextFieldErrorLabel = ({ errorText }: { errorText: string }) => (
+const TextFieldErrorLabelNoMemo = ({ errorText }: { errorText: string }) => (
   <RowContainer>
-    <HelperTextErrorIcon icon="AlertCircle" color="error75" />
+    <HelperTextErrorWrapper align="center" justify="center">
+      <Icon icon="AlertCircle" color="error75" />
+    </HelperTextErrorWrapper>
     <HelperErrorText>
       <Typography class="roman" size="sm" color="error75" padding={0}>
         {errorText}
@@ -34,5 +37,9 @@ const TextFieldErrorLabel = ({ errorText }: { errorText: string }) => (
     </HelperErrorText>
   </RowContainer>
 );
+
+const TextFieldHint = React.memo(TextFieldHintNoMemo);
+const TextFieldLabel = React.memo(TextFieldLabelNoMemo);
+const TextFieldErrorLabel = React.memo(TextFieldErrorLabelNoMemo);
 
 export { TextFieldHint, TextFieldLabel, TextFieldErrorLabel };

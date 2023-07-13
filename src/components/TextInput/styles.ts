@@ -1,16 +1,14 @@
 import { TextField, styled } from '@mui/material';
-import { Icon } from '../IconV2';
+import FlexWrapper from '../FlexWrapper';
 
-const HelperTextErrorIcon = styled(Icon)(({ theme }) => ({
-  maxHeight: '9.6px',
-  maxWidth: '9.6px',
-  marginRight: theme.spacing(0.5),
-  marginBottom: theme.spacing(0.5),
-}));
+const HelperTextErrorWrapper = styled(FlexWrapper)({
+  maxHeight: 9.6,
+  maxWidth: 9.6,
+  width: 9.6,
+});
 
 const HelperErrorText = styled('div')(({ theme }) => ({
   maxHeight: '9.6px',
-  maxWidth: '9.6px',
   marginRight: theme.spacing(0.5),
   marginBottom: theme.spacing(0.5),
 }));
@@ -21,12 +19,14 @@ const HelperText = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(0.5),
 }));
 
-const RowContainer = styled('div')({
+const RowContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'start',
   alignItems: 'center',
-});
+  gap: theme.spacing(0.5),
+  marginBottom: theme.spacing(0.5),
+}));
 
 const LabelIcon = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(0.5),
@@ -63,4 +63,4 @@ const CustomTextField = styled(TextField)`
   }
 `;
 
-export { HelperTextErrorIcon, HelperText, RowContainer, CustomTextField, LabelIcon, HelperErrorText };
+export { HelperTextErrorWrapper, HelperText, RowContainer, CustomTextField, LabelIcon, HelperErrorText };
