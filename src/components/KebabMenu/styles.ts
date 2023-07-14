@@ -24,7 +24,6 @@ const MenuItemIcon = styled(Icon)`
   font-size: 18px;
   margin: auto;
   margin-right: 15px;
-  color: ${props => props.theme.palette.colors.mint60};
 `;
 
 const StyledMenuItem = styled(MenuItem)<{
