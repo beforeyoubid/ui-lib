@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ButtonComponent, { ButtonComponentProps } from '../components/Button';
+import { Button, ButtonProps } from '../components/Button';
 import { Typography } from '../components/Typography';
 
-const meta: Meta<ButtonComponentProps> = {
-  component: ButtonComponent,
+const meta: Meta<ButtonProps> = {
+  component: Button,
 };
 
 export default meta;
-type Story = StoryObj<ButtonComponentProps>;
+type Story = StoryObj<ButtonProps>;
 
 export const Active: Story = {
   args: {
@@ -16,8 +16,8 @@ export const Active: Story = {
     size: 'large',
     title: 'Login',
     disabled: false,
-    leadingIcon: 'email-outlined',
-    trailingIcon: 'email-outlined ',
+    leadingIcon: 'Mail',
+    trailingIcon: 'Mail',
     children: (
       <Typography class="medium" size="base" color="lightWhite">
         Login
