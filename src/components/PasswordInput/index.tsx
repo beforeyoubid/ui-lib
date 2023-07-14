@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import TextInputComponent, { TextInputComponentProps } from '../TextInput';
 import { IconButton, InputAdornment, TextFieldProps } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Eye, EyeOff } from 'tabler-icons-react';
 
 export type PasswordInputComponentProps = TextInputComponentProps & TextFieldProps;
 
@@ -20,7 +20,7 @@ const PasswordInput = (props: PasswordInputComponentProps) => {
         endAdornment: (
           <InputAdornment position="end">
             <IconButton onClick={toggleShowPassword} edge="end">
-              {showPassword ? <Visibility /> : <VisibilityOff />}
+              {showPassword ? <Eye /> : <EyeOff />}
             </IconButton>
           </InputAdornment>
         ),
@@ -29,4 +29,4 @@ const PasswordInput = (props: PasswordInputComponentProps) => {
   );
 };
 
-export default PasswordInput;
+export { PasswordInput };

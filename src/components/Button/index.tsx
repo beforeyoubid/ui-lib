@@ -1,18 +1,18 @@
 import React from 'react';
 import { ButtonWrapper } from './styles';
-import { Icon } from '../Icon';
-import { ButtonProps } from '@mui/material';
+import { Icon, IconProps } from '../Icon';
+import { ButtonProps as MuiButtonProps } from '@mui/material';
 import getButtonStyles from './utils';
 import { Typography } from '../Typography';
 
-export type ButtonComponentProps = ButtonProps & {
+export type ButtonProps = MuiButtonProps & {
   primaryVariant: 'primary' | 'secondary' | 'tertiary';
   secondaryVariant: 'mint' | 'destructive' | 'disabled';
-  leadingIcon?: string;
-  trailingIcon?: string;
+  leadingIcon?: IconProps['icon'];
+  trailingIcon?: IconProps['icon'];
 };
 
-const ButtonComponent: React.FC<ButtonComponentProps> = ({
+const Button: React.FC<ButtonProps> = ({
   primaryVariant = 'primary',
   secondaryVariant = 'mint',
   leadingIcon,
@@ -29,8 +29,8 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
       hoverColor={buttonStyle.hoverColor}
       variant={buttonStyle.tertiaryVariant}
       disabled={disabled || buttonStyle.isDisabled}
-      startIcon={leadingIcon ? <Icon type={leadingIcon} /> : null}
-      endIcon={trailingIcon ? <Icon type={trailingIcon} /> : null}
+      startIcon={leadingIcon ? <Icon icon={leadingIcon} color={buttonStyle.textColor} /> : null}
+      endIcon={trailingIcon ? <Icon icon={trailingIcon} color={buttonStyle.textColor} /> : null}
       {...rest}
     >
       <Typography class="bold" size="base" color={buttonStyle.textColor}>
@@ -40,4 +40,4 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   );
 };
 
-export default ButtonComponent;
+export { Button };

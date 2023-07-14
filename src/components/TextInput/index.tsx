@@ -2,7 +2,7 @@ import { CustomTextField } from './styles';
 import * as Icons from 'tabler-icons-react';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { InputAdornment, TextFieldProps } from '@mui/material';
-import { Icon } from '../IconV2';
+import { Icon } from '../Icon';
 
 export type TextInputComponentProps = TextFieldProps & {
   label: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '../Typography';
 import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelIcon, RowContainer } from './styles';
-import { Icon } from '../IconV2';
+import { Icon } from '../Icon';
 
 const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   <HelperText>

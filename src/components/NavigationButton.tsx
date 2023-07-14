@@ -3,7 +3,7 @@ import { styled } from '@mui/material';
 import { ChevronDown, ChevronRight } from 'tabler-icons-react';
 
 import { Typography } from './Typography';
-import { Icon, IconProps } from './IconV2';
+import { Icon, IconProps } from './Icon';
 import FlexWrapper from './FlexWrapper';
 
 type NavigationButtonVariant = 'regular' | 'dark';
