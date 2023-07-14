@@ -65,7 +65,7 @@ export const KebabMenu = ({
         })}
         highlight={highlight}
       >
-        <KebabMenuIcon type="kebab-menu" color="inherit" />
+        <KebabMenuIcon icon="Menu2" color="mint75" />
       </IconButton>
       <Menu
         id="long-menu"
@@ -90,7 +90,7 @@ export const KebabMenu = ({
             isDisabled={option.disabled ?? false}
           >
             <Wrapper disabled={option.disabled ?? false}>
-              {option.icon && <MenuItemIcon className="kebab-menu-option-icon" type={option.icon} />}
+              {option.icon && <MenuItemIcon className="kebab-menu-option-icon" icon={option.icon} color="mint60" />}
               <CopyContainer>
                 {option.label}
                 {option.description && (
