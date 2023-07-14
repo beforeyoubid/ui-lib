@@ -31,6 +31,7 @@ const configCjs: RollupOptions = {
       tsconfig: './tsconfig.json',
       exclude: [
         'dist/**/*',
+        'types/**/*',
         'src/__tests__/**/*',
         'src/stories/**/*',
         'src/test-props.tsx',
@@ -75,6 +76,7 @@ const config: RollupOptions = {
       tsconfig: './tsconfig.json',
       exclude: [
         'dist/**/*',
+        'types/**/*',
         'src/__tests__/**/*',
         'src/stories/**/*',
         'src/test-props.tsx',

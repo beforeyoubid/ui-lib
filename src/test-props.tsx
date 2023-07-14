@@ -1,7 +1,7 @@
-import { Delete } from '@material-ui/icons';
-import { IconButton } from '@material-ui/core';
+import { IconButton } from '@mui/material';
 import { faker } from '@faker-js/faker';
 import moment from 'moment-timezone';
+import { Trash } from 'tabler-icons-react';
 
 const PRODUCT_TYPES = ['STRATA', 'BPI'];
 const PRODUCT_STATUSES = ['LIVE', 'CLOSED'];
@@ -27,7 +27,7 @@ const createOrder = () => {
 
 const actions = (
   <IconButton>
-    <Delete />
+    <Trash />
   </IconButton>
 );
 

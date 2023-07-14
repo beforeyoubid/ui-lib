@@ -1,7 +1,7 @@
-export interface MyTableData {
+export interface TableData {
   [key: string]: string | number | JSX.Element;
 }
 
-export interface MyTableProps {
-  data: MyTableData[];
+export interface TableProps {
+  data: TableData[];
 }
