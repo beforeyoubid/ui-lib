@@ -1,7 +1,7 @@
 const config = {
   testEnvironment: 'jsdom',
   collectCoverage: true,
-  testPathIgnorePatterns: ['module_test'],
+  testPathIgnorePatterns: ['module_test', 'dist', '.d.ts'],
   transform: {
     '\\.(ts|tsx)$': [
       '@swc/jest',

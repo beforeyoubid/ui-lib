@@ -4,9 +4,46 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react/recommended',
+  ],
   rules: {
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'react/react-in-jsx-scope': 0,
+    // not needed as we are running React 17
+    'react/prop-types': 0,
+    'react/jsx-boolean-value': 2,
+    'react/no-access-state-in-setstate': 2,
+    'react/jsx-no-useless-fragment': [
+      'warn',
+      {
+        allowExpressions: true,
+      },
+    ],
+    'react/jsx-curly-brace-presence': [
+      2,
+      {
+        props: 'never',
+        children: 'never',
+      },
+    ],
+    'react/no-array-index-key': 'error',
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+        html: true,
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+      },
+    ],
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/interface-name-prefix': 0,

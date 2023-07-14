@@ -1,4 +1,4 @@
-import { InputProps, TextField as TextFieldMui, TextFieldProps as TextFieldMuiProps } from '@material-ui/core';
+import { InputProps, TextField as TextFieldMui, TextFieldProps as TextFieldMuiProps } from '@mui/material';
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';
 
