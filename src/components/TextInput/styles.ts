@@ -1,7 +1,7 @@
 import { TextField, styled } from '@mui/material';
-import FlexWrapper from '../FlexWrapper';
+import { Flex } from '../Flex';
 
-const HelperTextErrorWrapper = styled(FlexWrapper)({
+const HelperTextErrorWrapper = styled(Flex)({
   maxHeight: 9.6,
   maxWidth: 9.6,
   width: 9.6,
