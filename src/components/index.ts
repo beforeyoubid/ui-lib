@@ -6,6 +6,7 @@ export * from './Icon';
 export * from './KebabMenu';
 export * from './KebabMenu/types';
 export * from './MediaCard';
+export * from './UploadDocumentCard';
 export * from './NavigationButton';
 export * from './NavigationMenu';
 export * from './PasswordInput';
