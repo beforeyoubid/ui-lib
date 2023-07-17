@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 // Material
 import { css, styled, LinearProgress, useTheme } from '@mui/material';
 // Tabler
-import { X } from 'tabler-icons-react';
+import { X, File, CloudUpload } from 'tabler-icons-react';
 
 // Relative Imports
 // Components
@@ -76,12 +76,51 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
         </Typography>
         <FlexCard direction="row" justify="space-between" border="dark45" background="lightL1" onClick={onClick}>
           <Flex direction="row" justify="flex-start" align="center">
-            <Icon icon="CloudUpload" color="dark60" />
+            <CloudUpload size="24px" color={theme.palette.colors.dark60} />
             <FlexTypography direction="column" align="flex-start">
               <Typography class="medium" size="sm" color="dark75" padding={0.5}>
                 Select a file or drag and drop here
               </Typography>
               <Typography class="roman" size="xs" color="dark60" padding={0.5}>
+                maximum file size is 200mb
+              </Typography>
+            </FlexTypography>
+          </Flex>
+          <Button
+            primaryVariant="secondary"
+            secondaryVariant="mint"
+            leadingIcon="Upload"
+            title="Upload file"
+            size="small"
+          />
+        </FlexCard>
+      </Flex>
+    );
+  }
+
+  if (state === 'error') {
+    const { label, errorMessage } = props as UploadDocumentCardProps<typeof state>;
+    const onClick = onUpload.bind(null, (props as UploadDocumentCardProps<typeof state>).onSelect);
+    // const onRemove = onRemoveWrapper.bind(null, (props as UploadDocumentCardProps<typeof state>).onRemove);
+    return (
+      <Flex direction="column">
+        <Flex direction="column">
+          <Typography class="medium" size="base" color="dark90">
+            {label}
+          </Typography>
+          <Typography class="medium" size="sm" color="error75">
+            {errorMessage}
+          </Typography>
+        </Flex>
+
+        <FlexCard direction="row" justify="space-between" border="error60" background="errorL1" onClick={onClick}>
+          <Flex direction="row" justify="flex-start" align="center">
+            <CloudUpload size="24px" color={theme.palette.colors.error60} />
+            <FlexTypography direction="column" align="flex-start">
+              <Typography class="medium" size="sm" color="error75" padding={0.5}>
+                Select a file or drag and drop here
+              </Typography>
+              <Typography class="roman" size="xs" color="error60" padding={0.5}>
                 maximum file size is 200mb
               </Typography>
             </FlexTypography>
@@ -107,7 +146,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
           {label}
         </Typography>
         <FlexCard direction="row" border="dark45" background="lightL1">
-          <Flex direction="row" align="center" style={{ border: '1px solid red', width: '100%' }}>
+          <Flex direction="row" align="center" style={{ width: '100%' }}>
             <Icon icon="File" color="dark60" />
 
             <Flex direction="column" style={{ width: '100%', border: '1px solid green' }}>
@@ -135,41 +174,30 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     );
   }
 
-  if (state === 'error') {
-    const { label, errorMessage } = props as UploadDocumentCardProps<typeof state>;
-    const onClick = onUpload.bind(null, (props as UploadDocumentCardProps<typeof state>).onSelect);
-    // const onRemove = onRemoveWrapper.bind(null, (props as UploadDocumentCardProps<typeof state>).onRemove);
+  if (state === 'uploaded') {
+    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
     return (
       <Flex direction="column">
-        <Flex direction="column">
-          <Typography class="medium" size="base" color="dark90">
-            {label}
-          </Typography>
-          <Typography class="medium" size="sm" color="error75">
-            {errorMessage}
-          </Typography>
-        </Flex>
-
-        <FlexCard direction="row" justify="space-between" border="error60" background="errorL1" onClick={onClick}>
-          <Flex direction="row" justify="flex-start" align="center">
-            <Icon icon="CloudUpload" color="error60" />
-            <FlexTypography direction="column" align="flex-start">
-              <Typography class="medium" size="sm" color="error75" padding={0.5}>
-                Select a file or drag and drop here
-              </Typography>
-              <Typography class="roman" size="xs" color="error60" padding={0.5}>
-                maximum file size is 200mb
-              </Typography>
-            </FlexTypography>
+        <Typography class="medium" size="base" color="dark90">
+          {label}
+        </Typography>
+        <UploadedFlexCard
+          direction="row"
+          justify="space-between"
+          align="center"
+          style={{ padding: '10px' }}
+          border="dark45"
+        >
+          <Flex direction="row">
+            <File size="24px" color={theme.palette.colors.dark60} />
+            <Typography class="medium" size="sm" color="dark75" padding={0.5}>
+              {fileName}
+            </Typography>
           </Flex>
-          <Button
-            primaryVariant="secondary"
-            secondaryVariant="mint"
-            leadingIcon="Upload"
-            title="Upload file"
-            size="small"
-          />
-        </FlexCard>
+          <Typography color="dark60" class="roman" size="xs">
+            {fileSize}
+          </Typography>
+        </UploadedFlexCard>
       </Flex>
     );
   }
@@ -186,7 +214,6 @@ export { UploadDocumentCard };
 const FlexTypography = styled(Flex)`
   margin-left: 12px;
   width: 100%;
-  border: 1px solid pink;
 `;
 
 const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors }>`
@@ -202,4 +229,8 @@ const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors 
       background-color: ${theme.palette.colors[background]};
     `}
   position: relative;
+`;
+
+const UploadedFlexCard = styled(FlexCard)`
+  padding: 10px;
 `;
