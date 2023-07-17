@@ -16,6 +16,7 @@ type CardButtonsProps = {
 
   canSave: boolean;
 
+  onEdit: () => void;
   onSave: () => void;
   onCancel: () => void;
 };
@@ -42,6 +43,7 @@ export function Card(props: CardProps) {
             cancelButtonTitle={props.cancelButtonTitle}
             saveButtonTitle={props.saveButtonTitle}
             canSave={props.canSave}
+            onEdit={props.onEdit}
             onSave={props.onSave}
             onCancel={props.onCancel}
           />
@@ -84,6 +86,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
           primaryVariant="tertiary"
           size="small"
           leadingIcon={editButtonIcon}
+          onClick={props.onEdit}
           secondaryVariant="mint"
         />
       )}
