@@ -40,7 +40,7 @@ export const Editable: Story = {
           gap={12}
           width="100%"
         >
-          <MediaCard src="/ken.png" state="uploaded" />
+          <MediaCard src="/ken.png" state="uploaded" onRemove={console.log} />
           <MediaCard src="/ken.png" state="locked" />
         </Flex>
       </Flex>
@@ -70,8 +70,9 @@ export const Editing: Story = {
           gap={12}
           width="100%"
         >
-          <MediaCard src="/ken.png" state="uploaded" />
+          <MediaCard src="/ken.png" state="uploaded" onRemove={console.log} />
           <MediaCard src="/ken.png" state="locked" />
+          <MediaCard state="upload" onSelect={console.log} />
         </Flex>
       </Flex>
     ),
