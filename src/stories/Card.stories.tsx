@@ -11,7 +11,7 @@ const meta: Meta<typeof Card> = {
   component: Card,
   parameters: {
     controls: {
-      exclude: /.*/g,
+      exclude: /^(children|on*)/g,
     },
   },
 };
