@@ -77,3 +77,11 @@ export const Editing: Story = {
     ),
   },
 };
+
+export const Empty: Story = {
+  args: {
+    title: 'Empty card',
+    editable: false,
+    children: <>.</>,
+  },
+};
