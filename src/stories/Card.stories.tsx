@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Card } from '../components/Card';
-import FlexWrapper from '../components/FlexWrapper';
+import { Flex } from '../components/Flex';
 import { Typography } from '../components/Typography';
 import { MediaCard } from '../components/MediaCard';
 import { theme } from '../mui-theme';
@@ -24,13 +24,13 @@ export const Editable: Story = {
     title: 'Gallery',
     editable: true,
     children: (
-      <FlexWrapper direction="column" gap={4}>
+      <Flex direction="column" gap={4}>
         <div>
           <Typography size="base" class="medium" color="dark90" padding={0}>
             Upload Photos and Videos
           </Typography>
         </div>
-        <FlexWrapper
+        <Flex
           style={{
             border: `1px dotted black`,
             padding: 12,
@@ -42,8 +42,8 @@ export const Editable: Story = {
         >
           <MediaCard src="/ken.png" state="uploaded" />
           <MediaCard src="/ken.png" state="locked" />
-        </FlexWrapper>
-      </FlexWrapper>
+        </Flex>
+      </Flex>
     ),
   },
 };
@@ -54,13 +54,13 @@ export const Editing: Story = {
     editable: true,
     editing: true,
     children: (
-      <FlexWrapper direction="column" gap={4}>
+      <Flex direction="column" gap={4}>
         <div>
           <Typography size="base" class="medium" color="dark90" padding={0}>
             Upload Photos and Videos
           </Typography>
         </div>
-        <FlexWrapper
+        <Flex
           style={{
             border: `1px dotted black`,
             padding: 12,
@@ -72,8 +72,8 @@ export const Editing: Story = {
         >
           <MediaCard src="/ken.png" state="uploaded" />
           <MediaCard src="/ken.png" state="locked" />
-        </FlexWrapper>
-      </FlexWrapper>
+        </Flex>
+      </Flex>
     ),
   },
 };
