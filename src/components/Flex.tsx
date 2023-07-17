@@ -1,7 +1,7 @@
 import { type CSSProperties } from 'react';
 import { styled, css } from '@mui/material';
 
-const FlexWrapper = styled('div')<{
+const Flex = styled('div')<{
   direction?: CSSProperties['flexDirection'];
   justify?: CSSProperties['justifyContent'];
   align?: CSSProperties['alignItems'];
@@ -40,4 +40,4 @@ const formatSize = (value: string | number) => {
   return `${value}px`;
 };
 
-export default FlexWrapper;
+export { Flex };
