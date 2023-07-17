@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox, styled } from '@mui/material';
 import { Typography } from '../Typography';
 import { getInfoCheckboxBackgroundColor } from './utils';
-import FlexWrapper from '../FlexWrapper';
+import { Flex } from '../Flex';
 import { theme } from '../../mui-theme';
 
 type InformationCheckboxProps = {
@@ -21,12 +21,12 @@ export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
 }) => {
   return (
     <Wrapper variant={variant}>
-      <FlexWrapper direction="row" justify="flex-start" align="center" gap={theme.spacing(1.25)}>
+      <Flex direction="row" justify="flex-start" align="center" gap={theme.spacing(1.25)}>
         <CheckBox checked={checked} onChange={onChange} />
         <Typography class="bold" size="base" color="dark90" padding={0}>
           {title}
         </Typography>
-      </FlexWrapper>
+      </Flex>
 
       <Description class="roman" size="sm" color="dark90" padding={0}>
         {description}
