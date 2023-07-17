@@ -16,6 +16,7 @@ type CardButtonsProps = {
 
   canSave: boolean;
 
+  onEdit: () => void;
   onSave: () => void;
   onCancel: () => void;
 };
@@ -23,12 +24,13 @@ type CardButtonsProps = {
 export type CardProps = {
   title: string;
   children: React.ReactNode;
+  fullWidth?: boolean;
 } & (({ editable: true } & CardButtonsProps) | { editable: false });
 
 export function Card(props: CardProps) {
   const theme = useTheme();
   return (
-    <Wrapper direction="column" gap={theme.spacing(4)}>
+    <Wrapper direction="column" gap={theme.spacing(4)} fullWidth={props.fullWidth ?? true}>
       <Flex direction="row" width="100%" align="center">
         <Typography color="navy" class="bold" size="2xl" padding={0}>
           {props.title}
@@ -41,6 +43,7 @@ export function Card(props: CardProps) {
             cancelButtonTitle={props.cancelButtonTitle}
             saveButtonTitle={props.saveButtonTitle}
             canSave={props.canSave}
+            onEdit={props.onEdit}
             onSave={props.onSave}
             onCancel={props.onCancel}
           />
@@ -83,6 +86,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
           primaryVariant="tertiary"
           size="small"
           leadingIcon={editButtonIcon}
+          onClick={props.onEdit}
           secondaryVariant="mint"
         />
       )}
@@ -92,10 +96,12 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
 
 const CardButtons = React.memo(CardButtonsNoMemo);
 
-const Wrapper = styled(Flex)(({ theme }) => ({
+const Wrapper = styled(Flex)<{ fullWidth: boolean }>(({ theme, fullWidth }) => ({
   outline: `1px solid ${theme.palette.colors.dark15}`,
   backgroundColor: theme.palette.colors.lightWhite,
   padding: theme.spacing(6, 5),
+  width: fullWidth ? `calc(100% - ${theme.spacing(5)})` : undefined,
+  maxWidth: `calc(100% - ${theme.spacing(10)})`,
 }));
 
 const ChildrenWrapper = styled('div')({
