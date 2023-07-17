@@ -21,6 +21,9 @@ export const Uploaded: Story = {
   args: {
     state: 'uploaded',
     fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    label: 'Label',
+    fileName: 'Building_and_Pest_Sample.pdf',
+    fileSize: '200 KB',
   },
 };
 
