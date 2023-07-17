@@ -1,7 +1,7 @@
 import { css, styled, useTheme } from '@mui/material';
 import React, { useCallback } from 'react';
 import { Colors } from '../theme.types';
-import FlexWrapper from './FlexWrapper';
+import { Flex } from './Flex';
 import { Loader2, PhotoPlus, Reload, X } from 'tabler-icons-react';
 import { Typography } from './Typography';
 
@@ -49,12 +49,12 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     const onClick = onUpload.bind(null, (props as MediaCardProps<typeof state>).onSelect);
     return (
       <Wrapper border="mint60" onClick={onClick}>
-        <FlexWrapper direction="column" justify="center" align="center" height="100%">
+        <Flex direction="column" justify="center" align="center" height="100%">
           <PhotoPlus color={theme.palette.colors.mint75} />
           <Typography class="medium" size="sm" color="mint75" padding={0.5}>
             Add media
           </Typography>
-        </FlexWrapper>
+        </Flex>
       </Wrapper>
     );
   }
@@ -66,14 +66,14 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
         <RemoveIconWrapper onClick={onRemove}>
           <X color={theme.palette.colors.lightL1} size="12px" />
         </RemoveIconWrapper>
-        <FlexWrapper direction="column" justify="center" align="center" height="100%" textAlign="center">
+        <Flex direction="column" justify="center" align="center" height="100%" textAlign="center">
           <Reload color={theme.palette.colors.error75} />
           <Typography class="medium" size="2xs" color="error75" padding={0.5}>
             Unable to upload.
             <br />
             Try again.
           </Typography>
-        </FlexWrapper>
+        </Flex>
       </Wrapper>
     );
   }
