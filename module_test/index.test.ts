@@ -1,5 +1,9 @@
-import {} from '@beforeyoubid/ui-lib';
+import * as UI from '@beforeyoubid/ui-lib';
 
-expect('import', () => {
-  describe('some test');
+describe('import', () => {
+  it('export has some exports', () => {
+    console.log('Keys: ');
+    console.log(Object.keys(UI).join('\n'));
+    expect(Object.keys(UI).length).toBeGreaterThan(0);
+  });
 });

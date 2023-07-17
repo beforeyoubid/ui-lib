@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/app/
   docker:
-    - image: cimg/node:14.19
+    - image: cimg/node:16.20.0
   resource_class: medium
 
 version: 2.1
@@ -90,13 +90,23 @@ jobs:
             cd module_test
             verdaccio --config verdaccio_config.yaml
           background: true
+      - run: yarn version --patch --no-git-tag-version
       - run: npm run build-and-publish-dryrun-ci
       - run:
           name: Test module install
           command: |
             cd module_test
             yarn install --registry http://localhost:4873
+      - run:
+          name: Test module usage - CJS
+          command: |
+            cd module_test
             yarn test
+      - run:
+          name: Test module usage - ESM
+          command: |
+            cd module_test
+            yarn vite build
       - save_cache:
           key: node_modules-{{ checksum "yarn.lock" }}
           paths:

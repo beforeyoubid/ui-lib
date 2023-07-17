@@ -1,22 +1,26 @@
 {
   "compilerOptions": {
     // Default
-    "target": "es5", 
-    "esModuleInterop": true, 
+    "target": "es5",
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true, 
+    "strict": true,
     "skipLibCheck": true,
 
     // Added
-    "jsx": "react-jsx", 
-    "module": "ESNext",  
+    "jsx": "react-jsx",
+    "module": "ESNext",
     "declaration": true,
     "declarationDir": "types",
     "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
-    "lib": ["es2017"]
-  }
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
+    "resolveJsonModule": true,
+    "paths": {
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+    }
+  },
+  "exclude": ["module_test/**/*", "dist/**/*"]
 }

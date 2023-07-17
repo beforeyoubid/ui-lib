@@ -1,50 +1,34 @@
-import { Table, TableCell, TableRow } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import { MyTableData, MyTableProps } from './types';
+import { Table as MuiTable, TableCell, TableRow, Paper, TableBody, TableContainer, TableHead } from '@mui/material';
 
-export const MyTable = ({ data }: MyTableProps): JSX.Element => {
-  const renderHeaders = (): JSX.Element => {
-    const headers = Object.keys(data[0]);
-    return (
-      <TableHead>
-        <TableRow>
-          {headers.map(h => (
-            <TableCell align="left" key={h}>
-              {h}
-            </TableCell>
-          ))}
-        </TableRow>
-      </TableHead>
-    );
-  };
+import { TableProps } from './types';
 
-  const renderAllRows = (): JSX.Element => {
-    const rows = Object.values(data[0]);
-
-    return <TableBody>{renderOneRow(rows)}</TableBody>;
-  };
-
-  const renderOneRow = (rowValue: (keyof MyTableData)[]): JSX.Element => {
-    return (
-      <TableRow>
-        {rowValue.map(r => (
-          <TableCell align="left" key={r}>
-            {r}
-          </TableCell>
-        ))}
-      </TableRow>
-    );
-  };
+export const Table = ({ data }: TableProps): JSX.Element => {
+  const headers = Object.keys(data[0]);
+  const rows = Object.values(data[0]);
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        {renderHeaders()}
-        {renderAllRows()}
-      </Table>
+      <MuiTable style={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            {headers.map(h => (
+              <TableCell align="left" key={h}>
+                {h}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            {rows.map((r, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <TableCell align="left" key={i}>
+                {r}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableBody>
+      </MuiTable>
     </TableContainer>
   );
 };
