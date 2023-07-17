@@ -2,10 +2,10 @@ import React from 'react';
 import { styled, Button } from '@mui/material';
 import { ButtonProps as MuiButtonProps } from '@mui/material';
 import { Typography } from '../Typography';
-import { getLinkButtonFontStyle, getLinkButtonStyle } from './utils';
+import { useLinkButtonFontStyle, getLinkButtonStyle } from './utils';
 import { Colors } from '../../mui-theme';
 
-type LinkButtonProps = {
+export type LinkButtonProps = {
   type: 'mint' | 'white' | 'grey' | 'red';
   title: string;
   size: 'lg' | 'md' | 'sm';
@@ -13,7 +13,7 @@ type LinkButtonProps = {
 
 export const LinkButton: React.FC<LinkButtonProps> = ({ type, title, size, disabled, ...rest }) => {
   const linkButtonStyle = getLinkButtonStyle(disabled ? 'grey' : type);
-  const linkFontStyle = getLinkButtonFontStyle(size);
+  const linkFontStyle = useLinkButtonFontStyle(size);
   return (
     <ButtonWrapper
       variant="text"
@@ -45,13 +45,13 @@ const ButtonWrapper = styled(Button)<{
   paddingTop: paddingTop,
   paddingBottom: paddingBottom,
   backgroundColor: 'transparent !important',
-  textDecoration: `underline  ${theme.palette.colors[bgColor]}!important`,
+  textDecoration: `underline${theme.palette.colors[bgColor]} !important`,
   textTransform: 'none',
 
   '&:hover': {
-    textDecoration: `underline  ${theme.palette.colors[hoverBgColor]}!important`,
+    textDecoration: `underline${theme.palette.colors[hoverBgColor]} !important`,
   },
   '&:active': {
-    textDecoration: `underline  ${theme.palette.colors[hoverBgColor]}!important`,
+    textDecoration: `underline${theme.palette.colors[hoverBgColor]} !important`,
   },
 }));
