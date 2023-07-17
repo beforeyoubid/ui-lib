@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox, styled } from '@mui/material';
 import { Typography } from '../Typography';
 import { getInfoCheckboxBackgroundColor } from './utils';
-import Flex from '../Flex';
+import { Flex } from '../Flex';
 import { theme } from '../../mui-theme';
 
 type InformationCheckboxProps = {
