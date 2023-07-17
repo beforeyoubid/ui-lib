@@ -74,7 +74,6 @@ export const DropdownComponent = (props: DropdownComponentProps) => {
             style={option.value === value ? { backgroundColor: theme.palette.colors.mintL3 } : {}}
           >
             <ListItemIcon>{option.value === value && <Icon icon="Check" color="mint90" />}</ListItemIcon>
-
             <Typography class="medium" size="base" color="dark90">
               {option.label}
             </Typography>
