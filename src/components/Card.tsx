@@ -2,7 +2,7 @@ import React from 'react';
 import { styled, useTheme } from '@mui/material';
 
 import { Button } from './Button';
-import FlexWrapper from './FlexWrapper';
+import { Flex } from './Flex';
 import { IconProps } from './Icon';
 import { Typography } from './Typography';
 
@@ -29,7 +29,7 @@ export function Card(props: CardProps) {
   const theme = useTheme();
   return (
     <Wrapper direction="column" gap={theme.spacing(4)}>
-      <FlexWrapper direction="row" width="100%" align="center">
+      <Flex direction="row" width="100%" align="center">
         <Typography color="navy" class="bold" size="2xl" padding={0}>
           {props.title}
         </Typography>
@@ -45,7 +45,7 @@ export function Card(props: CardProps) {
             onCancel={props.onCancel}
           />
         )}
-      </FlexWrapper>
+      </Flex>
       <ChildrenWrapper>{props.children}</ChildrenWrapper>
     </Wrapper>
   );
@@ -60,7 +60,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
     saveButtonTitle = 'Save changes',
   } = props;
   return (
-    <FlexWrapper align="center" width="100%" justify="flex-end" gap={theme.spacing(1)}>
+    <Flex align="center" width="100%" justify="flex-end" gap={theme.spacing(1)}>
       {props.editing && (
         <>
           <Typography color="dark90" size="base" class="medium">
@@ -86,13 +86,13 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
           secondaryVariant="mint"
         />
       )}
-    </FlexWrapper>
+    </Flex>
   );
 }
 
 const CardButtons = React.memo(CardButtonsNoMemo);
 
-const Wrapper = styled(FlexWrapper)(({ theme }) => ({
+const Wrapper = styled(Flex)(({ theme }) => ({
   outline: `1px solid ${theme.palette.colors.dark15}`,
   backgroundColor: theme.palette.colors.lightWhite,
   padding: theme.spacing(6, 5),
