@@ -4,6 +4,7 @@ import { Colors } from '../theme.types';
 import { Flex } from './Flex';
 import { Loader2, PhotoPlus, Reload, X } from 'tabler-icons-react';
 import { Typography } from './Typography';
+import { typedMemo } from '../utils';
 
 type MediaCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 
@@ -98,7 +99,7 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
   );
 };
 
-const MediaCard = React.memo(MediaCardNoMemo);
+const MediaCard = typedMemo(MediaCardNoMemo);
 
 export { MediaCard };
 
