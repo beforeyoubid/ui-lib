@@ -8,10 +8,14 @@ import { Typography } from './Typography';
 
 type CardButtonsProps = {
   editing: boolean;
-  cancelButtonTitle?: string;
-  editButtonTitle?: string;
+
   editButtonIcon?: IconProps['icon'];
+  editButtonTitle?: string;
+  saveButtonTitle?: string;
+  cancelButtonTitle?: string;
+
   canSave: boolean;
+
   onSave: () => void;
   onCancel: () => void;
 };
@@ -32,9 +36,10 @@ export function Card(props: CardProps) {
         {props.editable && (
           <CardButtons
             editing={props.editing}
-            cancelButtonTitle={props.cancelButtonTitle}
-            editButtonTitle={props.editButtonTitle}
             editButtonIcon={props.editButtonIcon}
+            editButtonTitle={props.editButtonTitle}
+            cancelButtonTitle={props.cancelButtonTitle}
+            saveButtonTitle={props.saveButtonTitle}
             canSave={props.canSave}
             onSave={props.onSave}
             onCancel={props.onCancel}
@@ -48,7 +53,12 @@ export function Card(props: CardProps) {
 
 function CardButtonsNoMemo(props: CardButtonsProps) {
   const theme = useTheme();
-  const { editButtonIcon = 'Pencil', editButtonTitle = 'Update', cancelButtonTitle = 'Cancel' } = props;
+  const {
+    editButtonIcon = 'Pencil',
+    editButtonTitle = 'Update',
+    cancelButtonTitle = 'Cancel',
+    saveButtonTitle = 'Save changes',
+  } = props;
   return (
     <FlexWrapper align="center" width="100%" justify="flex-end" gap={theme.spacing(1)}>
       {props.editing && (
@@ -61,7 +71,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
             primaryVariant="secondary"
             size="small"
             secondaryVariant="mint"
-            title="Save Changes"
+            title={saveButtonTitle}
             onClick={props.onSave}
             disabled={props.canSave}
           />
