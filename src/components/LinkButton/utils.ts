@@ -33,7 +33,7 @@ const getLinkButtonStyle = (
   return { BgColor, hoverBgColor };
 };
 
-const getLinkButtonFontStyle = (
+const useLinkButtonFontStyle = (
   size: 'lg' | 'md' | 'sm'
 ): { paddingTop: string; paddingBottom: string; fontClass: TypographyFontClass; fontSize: TypographyFontSize } => {
   const theme = useTheme();
@@ -76,4 +76,4 @@ const getLinkButtonFontStyle = (
     fontSize,
   };
 };
-export { getLinkButtonStyle, getLinkButtonFontStyle };
+export { getLinkButtonStyle, useLinkButtonFontStyle };
