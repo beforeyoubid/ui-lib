@@ -13,20 +13,24 @@ type Story = StoryObj<typeof UploadDocumentCard>;
 export const Upload: Story = {
   args: {
     state: 'upload',
+    label: 'Label',
   },
 };
 
 export const Uploaded: Story = {
   args: {
     state: 'uploaded',
-    file_url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
   },
 };
 
 export const Uploading: Story = {
   args: {
     state: 'uploading',
-    file_url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    fileName: 'Building_and_Pest_Sample.pdf',
+    fileSize: '200 KB',
+    uploadProgress: 10,
   },
 };
 
@@ -39,6 +43,6 @@ export const Error: Story = {
 export const Locked: Story = {
   args: {
     state: 'locked',
-    file_url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
   },
 };
