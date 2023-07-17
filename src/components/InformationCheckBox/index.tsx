@@ -1,16 +1,18 @@
 import React from 'react';
 import { Checkbox, styled } from '@mui/material';
 import { Typography } from '../Typography';
-import getInfoCheckboxBackgroundColor from './utils';
+import { getInfoCheckboxBackgroundColor } from './utils';
+import FlexWrapper from '../FlexWrapper';
+import { theme } from '../../mui-theme';
 
-type InformationCheckBoxProps = {
+type InformationCheckboxProps = {
   title: string;
   description: string;
   variant?: 'info' | 'warning' | 'error';
   checked: boolean;
   onChange: (event: React.ChangeEvent, checked: boolean) => void;
 };
-const InformationCheckBox: React.FC<InformationCheckBoxProps> = ({
+export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
   title,
   description,
   variant = 'info',
@@ -19,12 +21,12 @@ const InformationCheckBox: React.FC<InformationCheckBoxProps> = ({
 }) => {
   return (
     <Wrapper variant={variant}>
-      <Row>
+      <FlexWrapper direction="row" justify="flex-start" align="center" gap={theme.spacing(1.25)}>
         <CheckBox checked={checked} onChange={onChange} />
         <Typography class="bold" size="base" color="dark90" padding={0}>
           {title}
         </Typography>
-      </Row>
+      </FlexWrapper>
 
       <Description class="roman" size="sm" color="dark90" padding={0}>
         {description}
@@ -33,14 +35,17 @@ const InformationCheckBox: React.FC<InformationCheckBoxProps> = ({
   );
 };
 
-const Wrapper = styled('div')(({ variant }: { variant: string }) => ({
+const Wrapper = styled('div')<{ variant: string }>(({ theme, variant }) => ({
   backgroundColor: getInfoCheckboxBackgroundColor(variant),
   display: 'flex',
-  padding: '16px 12px',
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+  paddingLeft: theme.spacing(1.5),
+  paddingRight: theme.spacing(1.5),
   flexDirection: 'column',
   alignItems: 'flex-start',
   borderRadius: 4,
-  gap: 10,
+  gap: theme.spacing(1.25),
 }));
 
 const CheckBox = styled(Checkbox)(({ theme }) => ({
@@ -53,16 +58,6 @@ const CheckBox = styled(Checkbox)(({ theme }) => ({
   },
 }));
 
-const Row = styled('div')({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  gap: 10,
-});
-
 const Description = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(3.5),
 }));
-
-export default InformationCheckBox;

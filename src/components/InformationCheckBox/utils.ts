@@ -14,4 +14,4 @@ const getInfoCheckboxBackgroundColor = (variant: string) => {
   }
 };
 
-export default getInfoCheckboxBackgroundColor;
+export { getInfoCheckboxBackgroundColor };
