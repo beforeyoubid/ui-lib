@@ -44,9 +44,7 @@ const configCjs: RollupOptions = {
     }),
     terser(),
   ],
-  external: [...Object.keys(packageJson.peerDependencies), 'react-is', 'react/jsx-runtime'].filter(
-    k => k !== 'styled-components'
-  ),
+  external: [...Object.keys(packageJson.peerDependencies), 'react-is', 'react/jsx-runtime'],
 };
 
 const config: RollupOptions = {
