@@ -46,7 +46,7 @@ const getButtonStyles = (
     case 'secondary':
       switch (secondaryVariant) {
         case 'mint':
-          bgColor = '';
+          bgColor = theme.palette.colors.lightWhite;
           textColor = 'mint75';
           hoverColor = theme.palette.colors.mintL3;
           borderColor = theme.palette.colors.mint45;
