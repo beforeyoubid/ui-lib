@@ -1,10 +1,10 @@
-import { css, styled, useTheme } from '@mui/material';
+import { css, styled } from '@mui/material';
 import React, { useCallback } from 'react';
 import { Colors } from '../theme.types';
 import { Flex } from './Flex';
-import { Loader2, PhotoPlus, Reload, X } from 'tabler-icons-react';
 import { Typography } from './Typography';
 import { typedMemo } from '../utils';
+import { Icon } from './Icon';
 
 type MediaCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 
@@ -29,7 +29,6 @@ export type MediaCardProps<State extends MediaCardState> = {
   : ErrorProps);
 
 const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<State>) => {
-  const theme = useTheme();
   const state = props.state as MediaCardState;
   const onUpload = useCallback((onSelect: (file: File) => void) => {
     let input = document.createElement('input');
@@ -51,7 +50,7 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     return (
       <Wrapper border="mint60" onClick={onClick}>
         <Flex direction="column" justify="center" align="center" height="100%">
-          <PhotoPlus color={theme.palette.colors.mint75} />
+          <Icon icon="PhotoPlus" color="mint75" />
           <Typography class="medium" size="sm" color="mint75" padding={0.5}>
             Add media
           </Typography>
@@ -65,10 +64,10 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     return (
       <Wrapper border="error60" onClick={onClick}>
         <RemoveIconWrapper onClick={onRemove}>
-          <X color={theme.palette.colors.lightL1} size="12px" />
+          <Icon icon="X" color="lightL1" size="12px" />
         </RemoveIconWrapper>
         <Flex direction="column" justify="center" align="center" height="100%" textAlign="center">
-          <Reload color={theme.palette.colors.error75} />
+          <Icon icon="Reload" color="error75" />
           <Typography class="medium" size="2xs" color="error75" padding={0.5}>
             Unable to upload.
             <br />
@@ -83,13 +82,13 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     <Wrapper border="dark60" background="dark60">
       {state !== 'locked' && (
         <RemoveIconWrapper onClick={onRemoveWrapper.bind(null, (props as MediaCardProps<typeof state>).onRemove)}>
-          <X color={theme.palette.colors.lightL1} size="12px" />
+          <Icon icon="X" color="lightL1" size="12px" />
         </RemoveIconWrapper>
       )}
       <ImageWrapper>
         {state === 'uploading' && (
           <LoaderIconWrapper>
-            <Loader2 color={theme.palette.colors.lightWhite} size="24" />
+            <Icon icon="Loader2" color="lightWhite" size="24" />
           </LoaderIconWrapper>
         )}
 
