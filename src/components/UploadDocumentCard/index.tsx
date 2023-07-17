@@ -2,7 +2,9 @@
 // React
 import React, { useCallback } from 'react';
 // Material
-import { css, styled } from '@mui/material';
+import { css, styled, LinearProgress, useTheme } from '@mui/material';
+// Tabler
+import { X } from 'tabler-icons-react';
 
 // Relative Imports
 // Components
@@ -43,7 +45,7 @@ export type UploadDocumentCardProps<State extends UploadDocumentCardState> = {
   : ErrorProps);
 
 const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: UploadDocumentCardProps<State>) => {
-  // const theme = useTheme();
+  const theme = useTheme();
   const state = props.state as UploadDocumentCardState;
 
   const onUpload = useCallback((onSelect: (file: File) => void) => {
@@ -58,10 +60,10 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     input.click();
   }, []);
 
-  // const onRemoveWrapper = useCallback((onRemove: () => void, event: React.MouseEvent) => {
-  //   event.stopPropagation();
-  //   onRemove();
-  // }, []);
+  const onRemoveWrapper = useCallback((onRemove: () => void, event: React.MouseEvent) => {
+    event.stopPropagation();
+    onRemove();
+  }, []);
 
   // Renders
   if (state === 'upload') {
@@ -97,7 +99,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
   }
 
   if (state === 'uploading') {
-    // const onRemove = onRemoveWrapper.bind(null, (props as UploadDocumentCardProps<typeof state>).onRemove);
+    const onRemove = onRemoveWrapper.bind(null, (props as UploadDocumentCardProps<typeof state>).onRemove);
     const { label, fileName, fileSize, uploadProgress } = props as UploadDocumentCardProps<typeof state>;
     return (
       <Flex direction="column">
@@ -108,22 +110,25 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
           <Flex direction="row" align="center" style={{ border: '1px solid red', width: '100%' }}>
             <Icon icon="File" color="dark60" />
 
-            <FlexTypography direction="column" style={{ border: '1px solid green' }}>
-              <Flex direction="row" justify="space-between">
-                <Typography class="medium" size="sm" color="dark75" padding={0.5}>
-                  {fileName}
-                </Typography>
-                <Flex direction="row">
-                  <Typography class="roman" size="sm" color="dark75" padding={0.5}>
-                    {uploadProgress}
+            <Flex direction="column" style={{ width: '100%', border: '1px solid green' }}>
+              <Flex direction="row" justify="space-between" style={{ width: '100%', border: '1px solid blue' }}>
+                <Flex direction="column">
+                  <Typography class="medium" size="sm" color="dark75" padding={0.5}>
+                    {fileName}
                   </Typography>
-                  <Icon icon="X" color="dark75" />
+                  <Typography class="roman" size="xs" color="dark60" padding={0.5}>
+                    {fileSize}
+                  </Typography>
+                </Flex>
+                <Flex direction="row" align="center">
+                  <Typography class="roman" size="sm" color="dark75" padding={0.5}>
+                    {uploadProgress}%
+                  </Typography>
+                  <X color={theme.palette.colors.dark75} size="18px" onClick={onRemove} />
                 </Flex>
               </Flex>
-              <Typography class="roman" size="xs" color="dark60" padding={0.5}>
-                {fileSize}
-              </Typography>
-            </FlexTypography>
+              <LinearProgress value={uploadProgress} />
+            </Flex>
           </Flex>
         </FlexCard>
       </Flex>
