@@ -15,4 +15,4 @@ export * from './ResponsiveTable/types';
 export * from './TextField';
 export * from './Typography';
 export * from './Dropdown';
-export * from './InformationCheckBox';
+export * from './InformationCheckbox';

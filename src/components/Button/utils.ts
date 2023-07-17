@@ -82,6 +82,7 @@ const getButtonStyles = (
         tertiaryVariant = 'outlined';
       }
       break;
+
     default:
       break;
   }

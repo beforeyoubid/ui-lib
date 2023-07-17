@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import InformationCheckbox from '../components/InformationCheckBox';
+import { InformationCheckbox } from '../components/InformationCheckbox';
 
 const meta: Meta<typeof InformationCheckbox> = {
   component: InformationCheckbox,
