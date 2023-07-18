@@ -49,6 +49,7 @@ export const Error: Story = {
 export const Locked: Story = {
   args: {
     state: 'locked',
+    label: 'Label',
     fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
     fileName: 'Building_and_Pest_Sample.pdf',
     fileSize: '200 KB',
