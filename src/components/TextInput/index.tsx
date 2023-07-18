@@ -8,7 +8,7 @@ export type TextInputComponentProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
-  backgroundColor: string;
+  backgroundColor?: string;
   leadingIconName?: keyof typeof Icons;
   helperText?: string;
   errorText?: string;
