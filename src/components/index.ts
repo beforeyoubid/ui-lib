@@ -15,6 +15,7 @@ export * from './ProfilePicture';
 export * from './ResponsiveTable';
 export * from './ResponsiveTable/types';
 export * from './TextField';
+export * from './TextArea';
 export * from './Typography';
 export * from './Dropdown';
 export * from './InformationCheckbox';
