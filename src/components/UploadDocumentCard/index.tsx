@@ -64,6 +64,30 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
   }, []);
 
   // Renders
+  if (state === 'locked') {
+    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
+    return (
+      <Flex direction="column">
+        <Typography class="medium" size="base" color="dark90">
+          {label}
+        </Typography>
+        <FlexLockedCard direction="row" justify="space-between" align="center" border="dark45">
+          <Flex direction="row" align="center">
+            <File size="18px" color={theme.palette.colors.dark60} />
+            <Flex style={{ marginLeft: '8px' }}>
+              <Typography class="medium" size="sm" color="dark75" padding={0}>
+                {fileName}
+              </Typography>
+            </Flex>
+          </Flex>
+          <Typography color="dark60" class="roman" size="xs" padding={0}>
+            {fileSize}
+          </Typography>
+        </FlexLockedCard>
+      </Flex>
+    );
+  }
+
   if (state === 'upload') {
     const onClick = onUpload.bind(null, (props as UploadDocumentCardProps<typeof state>).onSelect);
     const { label } = props as UploadDocumentCardProps<typeof state>;
@@ -218,36 +242,6 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     );
   }
 
-  if (state === 'locked') {
-    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
-    return (
-      <Flex direction="column">
-        <Typography class="medium" size="base" color="dark90">
-          {label}
-        </Typography>
-        <UploadedFlexCard
-          direction="row"
-          justify="space-between"
-          align="center"
-          style={{ padding: '10px' }}
-          border="dark45"
-        >
-          <Flex direction="row" align="center">
-            <File size="18px" color={theme.palette.colors.dark60} />
-            <Flex style={{ marginLeft: '8px' }}>
-              <Typography class="medium" size="sm" color="dark75" padding={0}>
-                {fileName}
-              </Typography>
-            </Flex>
-          </Flex>
-          <Typography color="dark60" class="roman" size="xs" padding={0}>
-            {fileSize}
-          </Typography>
-        </UploadedFlexCard>
-      </Flex>
-    );
-  }
-
   const { fileUrl } = props as UploadDocumentCardProps<typeof state>;
   console.log('fileUrl:', fileUrl);
   return null;
@@ -277,7 +271,7 @@ const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors 
   position: relative;
 `;
 
-const UploadedFlexCard = styled(FlexCard)`
+const FlexLockedCard = styled(FlexCard)`
   padding: 10px;
   background-color: ${({ theme }) => theme.palette.colors.lightL1};
   border-color: ${({ theme }) => theme.palette.colors.dark15};
