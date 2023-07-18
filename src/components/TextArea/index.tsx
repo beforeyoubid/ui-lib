@@ -1,16 +1,16 @@
-import TextInputComponent, { TextInputComponentProps } from '../TextInput';
+import TextInput, { TextInputProps } from '../TextInput';
 import { Typography } from '../Typography';
 import { TextFieldProps } from '@mui/material';
 import { useCallback } from 'react';
 
-export type TextAreaComponentProps = TextInputComponentProps &
+export type TextAreaProps = TextInputProps &
   TextFieldProps & {
     minRow: number;
     maxCharacter: number;
     hideTextCount?: boolean;
   };
 
-export const TextAreaComponent = (props: TextAreaComponentProps) => {
+export const TextArea = (props: TextAreaProps) => {
   const wordCount = props.value.trim().length;
   const handleTextChange = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -23,7 +23,7 @@ export const TextAreaComponent = (props: TextAreaComponentProps) => {
   const characterReached: boolean = wordCount > props.maxCharacter;
   return (
     <>
-      <TextInputComponent
+      <TextInput
         errorText={characterReached ? 'Text limit reached.' : ''}
         {...props}
         multiline

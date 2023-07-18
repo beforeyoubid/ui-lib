@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextAreaComponent } from '../components/TextArea';
+import { TextArea } from '../components/TextArea';
 
-const meta: Meta<typeof TextAreaComponent> = {
-  component: TextAreaComponent,
+const meta: Meta<typeof TextArea> = {
+  component: TextArea,
 };
 
 export default meta;
-type Story = StoryObj<typeof TextAreaComponent>;
+type Story = StoryObj<typeof TextArea>;
 
 export const Active: Story = {
   args: {
