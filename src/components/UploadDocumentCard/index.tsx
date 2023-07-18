@@ -64,6 +64,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
   }, []);
 
   // Renders
+  // Done
   if (state === 'locked') {
     const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
     return (
@@ -88,6 +89,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     );
   }
 
+  // Done
   if (state === 'upload') {
     const onClick = onUpload.bind(null, (props as UploadDocumentCardProps<typeof state>).onSelect);
     const { label } = props as UploadDocumentCardProps<typeof state>;
@@ -122,40 +124,40 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     );
   }
 
+  // Done
   if (state === 'error') {
     const { label, errorMessage } = props as UploadDocumentCardProps<typeof state>;
     const onClick = onUpload.bind(null, (props as UploadDocumentCardProps<typeof state>).onSelect);
     // const onRemove = onRemoveWrapper.bind(null, (props as UploadDocumentCardProps<typeof state>).onRemove);
     return (
       <Flex direction="column">
-        <Flex direction="column">
-          <Typography class="medium" size="base" color="dark90">
-            {label}
-          </Typography>
-          <Typography class="medium" size="sm" color="error75">
-            {errorMessage}
-          </Typography>
-        </Flex>
-
-        <FlexCard direction="row" justify="space-between" border="error60" background="errorL1" onClick={onClick}>
-          <Flex direction="row" justify="flex-start" align="center">
-            <CloudUpload size="24px" color={theme.palette.colors.error60} />
-            <FlexTypography direction="column" align="flex-start">
-              <Typography class="medium" size="sm" color="error75" padding={0.5}>
-                Select a file or drag and drop here
-              </Typography>
-              <Typography class="roman" size="xs" color="error60" padding={0.5}>
-                maximum file size is 200mb
-              </Typography>
-            </FlexTypography>
+        <Typography class="medium" size="base" color="dark90" padding={0.5}>
+          {label}
+        </Typography>
+        <Typography class="roman" size="sm" color="error75" padding={0.5}>
+          {errorMessage}
+        </Typography>
+        <FlexCard direction="column" justify="center" border="error60" background="errorL1" onClick={onClick}>
+          <Flex direction="row" justify="space-between" align="center" width="100%">
+            <Flex direction="row" justify="flex-start" align="center">
+              <CloudUpload size="24px" color={theme.palette.colors.error60} />
+              <FlexTypography direction="column" align="flex-start">
+                <Typography class="medium" size="sm" color="error75" padding={0.4}>
+                  Select a file or drag and drop here
+                </Typography>
+                <Typography class="roman" size="xs" color="error60" padding={0.4}>
+                  maximum file size is 200mb
+                </Typography>
+              </FlexTypography>
+            </Flex>
+            <Button
+              primaryVariant="secondary"
+              secondaryVariant="mint"
+              leadingIcon="Upload"
+              title="Upload file"
+              size="small"
+            />
           </Flex>
-          <Button
-            primaryVariant="secondary"
-            secondaryVariant="mint"
-            leadingIcon="Upload"
-            title="Upload file"
-            size="small"
-          />
         </FlexCard>
       </Flex>
     );
