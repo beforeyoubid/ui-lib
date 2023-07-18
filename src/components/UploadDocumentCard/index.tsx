@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 // Material
 import { css, styled, LinearProgress, useTheme } from '@mui/material';
 // Tabler
-import { X, File, CloudUpload } from 'tabler-icons-react';
+import { X, File, CloudUpload, Trash } from 'tabler-icons-react';
 
 // Relative Imports
 // Components
@@ -17,13 +17,11 @@ import { Colors } from '../../theme.types';
 
 type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 
-type SharedProps = { label: string };
+type SharedProps = { label: string; fileName: string; fileSize?: string };
 
 type CardWithMediaProps = SharedProps & { fileUrl: string };
 type RemovableMediaProps = CardWithMediaProps & {
   onRemove: () => void;
-  fileName: string;
-  fileSize?: string;
   uploadProgress: number;
 };
 
@@ -152,21 +150,36 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
             <Flex direction="column" style={{ width: '100%', border: '1px solid green' }}>
               <Flex direction="row" justify="space-between" style={{ width: '100%', border: '1px solid blue' }}>
                 <Flex direction="column">
-                  <Typography class="medium" size="sm" color="dark75" padding={0.5}>
+                  <Typography class="medium" size="sm" color="dark75" padding={0.4}>
                     {fileName}
                   </Typography>
-                  <Typography class="roman" size="xs" color="dark60" padding={0.5}>
+                  <Typography class="roman" size="xs" color="dark60" padding={0.4}>
                     {fileSize}
                   </Typography>
                 </Flex>
                 <Flex direction="row" align="center">
-                  <Typography class="roman" size="sm" color="dark75" padding={0.5}>
+                  <Typography class="roman" size="sm" color="dark75" padding={0.4}>
                     {uploadProgress}%
                   </Typography>
                   <X color={theme.palette.colors.dark75} size="18px" onClick={onRemove} />
                 </Flex>
               </Flex>
-              <LinearProgress value={uploadProgress} />
+              <LinearProgress
+                value={50}
+                sx={{
+                  root: {
+                    height: 10,
+                    borderRadius: 5,
+                  },
+                  colorPrimary: {
+                    backgroundColor: theme.palette.colors.error90,
+                  },
+                  bar: {
+                    borderRadius: 5,
+                    backgroundColor: '#00ae95',
+                  },
+                }}
+              />
             </Flex>
           </Flex>
         </FlexCard>
@@ -181,6 +194,31 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
         <Typography class="medium" size="base" color="dark90">
           {label}
         </Typography>
+        <FlexCard direction="row" justify="space-between" align="center" border="dark45" background="lightL1">
+          <Flex direction="row" align="center">
+            <File size="24px" color={theme.palette.colors.dark60} />
+            <Flex direction="column" style={{ marginLeft: '12px' }}>
+              <Typography class="medium" size="sm" color="dark75" padding={0.4}>
+                {fileName}
+              </Typography>
+              <Typography class="roman" size="xs" color="dark60" padding={0.4}>
+                {fileSize}
+              </Typography>
+            </Flex>
+          </Flex>
+          <Trash size="18px" color={theme.palette.colors.dark90} />
+        </FlexCard>
+      </Flex>
+    );
+  }
+
+  if (state === 'locked') {
+    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
+    return (
+      <Flex direction="column">
+        <Typography class="medium" size="base" color="dark90">
+          {label}
+        </Typography>
         <UploadedFlexCard
           direction="row"
           justify="space-between"
@@ -188,13 +226,15 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
           style={{ padding: '10px' }}
           border="dark45"
         >
-          <Flex direction="row">
-            <File size="24px" color={theme.palette.colors.dark60} />
-            <Typography class="medium" size="sm" color="dark75" padding={0.5}>
-              {fileName}
-            </Typography>
+          <Flex direction="row" align="center">
+            <File size="18px" color={theme.palette.colors.dark60} />
+            <Flex style={{ marginLeft: '8px' }}>
+              <Typography class="medium" size="sm" color="dark75" padding={0}>
+                {fileName}
+              </Typography>
+            </Flex>
           </Flex>
-          <Typography color="dark60" class="roman" size="xs">
+          <Typography color="dark60" class="roman" size="xs" padding={0}>
             {fileSize}
           </Typography>
         </UploadedFlexCard>
