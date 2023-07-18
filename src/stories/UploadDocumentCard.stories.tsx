@@ -40,6 +40,8 @@ export const Uploading: Story = {
 export const Error: Story = {
   args: {
     state: 'error',
+    label: 'Label',
+    errorMessage: 'Error text',
   },
 };
 
