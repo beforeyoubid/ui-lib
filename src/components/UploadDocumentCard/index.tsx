@@ -46,6 +46,10 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
   const theme = useTheme();
   const state = props.state as UploadDocumentCardState;
 
+  const [confirmDelete, setConfirmDelete] = React.useState<boolean>(false);
+
+  const toggleConfirmDelete = React.useCallback(() => setConfirmDelete(curr => !curr), []);
+
   const onUpload = useCallback((onSelect: (file: File) => void) => {
     let input = document.createElement('input');
     input.type = 'file';
@@ -185,7 +189,18 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
                 </Typography>
               </FlexTypography>
             </Flex>
-            <Trash size="18px" color={theme.palette.colors.dark90} />
+            {!confirmDelete ? (
+              <Trash size="18px" color={theme.palette.colors.dark90} onClick={toggleConfirmDelete} />
+            ) : (
+              <Flex direction="row" align="center">
+                <div onClick={toggleConfirmDelete}>
+                  <Typography class="roman" size="xs" color="dark60" padding={0}>
+                    Cancel
+                  </Typography>
+                </div>
+                <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" />
+              </Flex>
+            )}
           </Flex>
         </FlexCard>
       </Flex>
@@ -203,8 +218,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
         <FlexCard direction="row" border="dark45" background="lightL1">
           <Flex direction="row" align="center" style={{ width: '100%' }}>
             <Icon icon="File" color="dark60" />
-
-            <Flex direction="column" width="100%">
+            <Flex direction="column" width="100%" style={{ marginLeft: 12 }}>
               <Flex direction="row" justify="space-between" width="100%">
                 <Flex direction="column">
                   <Typography class="medium" size="sm" color="dark75" padding={0.4}>
