@@ -273,4 +273,8 @@ const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors 
 
 const UploadedFlexCard = styled(FlexCard)`
   padding: 10px;
+  background-color: ${({ theme }) => theme.palette.colors.lightL1};
+  border-color: ${({ theme }) => theme.palette.colors.dark15};
+  border-style: solid;
+  border-width: 1px;
 `;
