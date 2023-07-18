@@ -204,8 +204,8 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
           <Flex direction="row" align="center" style={{ width: '100%' }}>
             <Icon icon="File" color="dark60" />
 
-            <Flex direction="column" style={{ width: '100%', border: '1px solid green' }}>
-              <Flex direction="row" justify="space-between" style={{ width: '100%', border: '1px solid blue' }}>
+            <Flex direction="column" width="100%">
+              <Flex direction="row" justify="space-between" width="100%">
                 <Flex direction="column">
                   <Typography class="medium" size="sm" color="dark75" padding={0.4}>
                     {fileName}
@@ -221,7 +221,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
                   <X color={theme.palette.colors.dark75} size="18px" onClick={onRemove} />
                 </Flex>
               </Flex>
-              <StyledLinearProgress value={50} variant="determinate" />
+              <StyledLinearProgress value={uploadProgress} variant="determinate" />
             </Flex>
           </Flex>
         </FlexCard>
