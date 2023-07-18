@@ -72,25 +72,27 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
         <Typography class="medium" size="base" color="dark90">
           {label}
         </Typography>
-        <FlexCard direction="row" justify="space-between" border="dark45" background="lightL1" onClick={onClick}>
-          <Flex direction="row" justify="flex-start" align="center">
-            <CloudUpload size="24px" color={theme.palette.colors.dark60} />
-            <FlexTypography direction="column" align="flex-start">
-              <Typography class="medium" size="sm" color="dark75" padding={0.5}>
-                Select a file or drag and drop here
-              </Typography>
-              <Typography class="roman" size="xs" color="dark60" padding={0.5}>
-                maximum file size is 200mb
-              </Typography>
-            </FlexTypography>
+        <FlexCard direction="column" justify="center" border="dark45" background="lightL1" onClick={onClick}>
+          <Flex direction="row" justify="space-between" align="center" width="100%">
+            <Flex direction="row" justify="flex-start" align="center">
+              <CloudUpload size="24px" color={theme.palette.colors.dark60} />
+              <FlexTypography direction="column" align="flex-start">
+                <Typography class="medium" size="sm" color="dark75" padding={0.4}>
+                  Select a file or drag and drop here
+                </Typography>
+                <Typography class="roman" size="xs" color="dark60" padding={0.4}>
+                  maximum file size is 200mb
+                </Typography>
+              </FlexTypography>
+            </Flex>
+            <Button
+              primaryVariant="secondary"
+              secondaryVariant="mint"
+              leadingIcon="Upload"
+              title="Upload file"
+              size="small"
+            />
           </Flex>
-          <Button
-            primaryVariant="secondary"
-            secondaryVariant="mint"
-            leadingIcon="Upload"
-            title="Upload file"
-            size="small"
-          />
         </FlexCard>
       </Flex>
     );
@@ -194,19 +196,23 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
         <Typography class="medium" size="base" color="dark90">
           {label}
         </Typography>
-        <FlexCard direction="row" justify="space-between" align="center" border="dark45" background="lightL1">
-          <Flex direction="row" align="center">
-            <File size="24px" color={theme.palette.colors.dark60} />
-            <Flex direction="column" style={{ marginLeft: '12px' }}>
-              <Typography class="medium" size="sm" color="dark75" padding={0.4}>
-                {fileName}
-              </Typography>
-              <Typography class="roman" size="xs" color="dark60" padding={0.4}>
-                {fileSize}
-              </Typography>
+        <FlexCard direction="column" justify="center" align="center" border="dark45" background="lightL1">
+          {/* inside */}
+          <Flex direction="row" justify="space-between" align="center" width="100%">
+            <Flex direction="row" align="center">
+              <File size="24px" color={theme.palette.colors.dark60} />
+              <Flex direction="column" style={{ marginLeft: '12px' }}>
+                <Typography class="medium" size="sm" color="dark75" padding={0.4}>
+                  {fileName}
+                </Typography>
+                <Typography class="roman" size="xs" color="dark60" padding={0.4}>
+                  {fileSize}
+                </Typography>
+              </Flex>
             </Flex>
+            <Trash size="18px" color={theme.palette.colors.dark90} />
           </Flex>
-          <Trash size="18px" color={theme.palette.colors.dark90} />
+          {/* inside */}
         </FlexCard>
       </Flex>
     );
