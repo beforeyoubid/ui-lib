@@ -32,6 +32,7 @@ export const Uploading: Story = {
     state: 'uploading',
     fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
     fileName: 'Building_and_Pest_Sample.pdf',
+    label: 'Label',
     fileSize: '200 KB',
     uploadProgress: 10,
   },

@@ -283,6 +283,7 @@ const FlexLockedCard = styled(FlexCard)`
 const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
   height: 4,
   borderRadius: 6,
+  marginLeft: 2,
   width: '100%',
   '& .MuiLinearProgress-bar': {
     backgroundColor: theme.palette.colors.mintL2,
