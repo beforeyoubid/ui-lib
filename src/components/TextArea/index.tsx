@@ -21,8 +21,6 @@ export const TextAreaComponent = (props: TextAreaComponentProps) => {
 
   // Check if character count exceed than character limit
   const characterReached: boolean = wordCount > props.maxCharacter;
-
-  console.log('character reached', characterReached);
   return (
     <>
       <TextInputComponent
