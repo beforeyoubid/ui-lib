@@ -4,7 +4,7 @@ import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { InputAdornment, TextFieldProps } from '@mui/material';
 import { Icon } from '../Icon';
 
-export type TextInputComponentProps = TextFieldProps & {
+export type TextInputProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
@@ -14,7 +14,7 @@ export type TextInputComponentProps = TextFieldProps & {
   errorText?: string;
 };
 
-const TextInputComponent = (props: TextInputComponentProps) => {
+const TextInput = (props: TextInputProps) => {
   const {
     label,
     placeHolder,
@@ -52,4 +52,4 @@ const TextInputComponent = (props: TextInputComponentProps) => {
   );
 };
 
-export default TextInputComponent;
+export default TextInput;
