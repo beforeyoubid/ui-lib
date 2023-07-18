@@ -163,6 +163,35 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     );
   }
 
+  // Done
+  if (state === 'uploaded') {
+    // const onClick = onUpload.bind(null, (props as UploadDocumentCardProps<typeof state>).onSelect);
+    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
+    return (
+      <Flex direction="column">
+        <Typography class="medium" size="base" color="dark90">
+          {label}
+        </Typography>
+        <FlexCard direction="column" justify="center" border="dark45" background="lightL1">
+          <Flex direction="row" justify="space-between" align="center" width="100%">
+            <Flex direction="row" justify="flex-start" align="center">
+              <File size="24px" color={theme.palette.colors.dark60} />
+              <FlexTypography direction="column" align="flex-start">
+                <Typography class="medium" size="sm" color="dark75" padding={0.4}>
+                  {fileName}
+                </Typography>
+                <Typography class="roman" size="xs" color="dark60" padding={0.4}>
+                  {fileSize}
+                </Typography>
+              </FlexTypography>
+            </Flex>
+            <Trash size="18px" color={theme.palette.colors.dark90} />
+          </Flex>
+        </FlexCard>
+      </Flex>
+    );
+  }
+
   if (state === 'uploading') {
     const onRemove = onRemoveWrapper.bind(null, (props as UploadDocumentCardProps<typeof state>).onRemove);
     const { label, fileName, fileSize, uploadProgress } = props as UploadDocumentCardProps<typeof state>;
@@ -210,35 +239,6 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
               />
             </Flex>
           </Flex>
-        </FlexCard>
-      </Flex>
-    );
-  }
-
-  if (state === 'uploaded') {
-    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
-    return (
-      <Flex direction="column">
-        <Typography class="medium" size="base" color="dark90">
-          {label}
-        </Typography>
-        <FlexCard direction="column" justify="center" align="center" border="dark45" background="lightL1">
-          {/* inside */}
-          <Flex direction="row" justify="space-between" align="center" width="100%">
-            <Flex direction="row" align="center">
-              <File size="24px" color={theme.palette.colors.dark60} />
-              <Flex direction="column" style={{ marginLeft: '12px' }}>
-                <Typography class="medium" size="sm" color="dark75" padding={0.4}>
-                  {fileName}
-                </Typography>
-                <Typography class="roman" size="xs" color="dark60" padding={0.4}>
-                  {fileSize}
-                </Typography>
-              </Flex>
-            </Flex>
-            <Trash size="18px" color={theme.palette.colors.dark90} />
-          </Flex>
-          {/* inside */}
         </FlexCard>
       </Flex>
     );
