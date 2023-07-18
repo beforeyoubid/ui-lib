@@ -267,9 +267,9 @@ const FlexLockedCard = styled(FlexCard)`
 `;
 
 const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
-  height: 4, // Adjust the height to your preference
+  height: 4,
+  borderRadius: 6,
   width: '100%',
-  borderRadius: 6, // Adjust the border radius to your preference
   '& .MuiLinearProgress-bar': {
     backgroundColor: theme.palette.colors.mintL2,
   },
