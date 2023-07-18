@@ -2,7 +2,7 @@
 // React
 import React, { useCallback } from 'react';
 // Material
-import { css, styled, LinearProgress, useTheme } from '@mui/material';
+import { css, LinearProgress, useTheme, styled, Theme } from '@mui/material';
 // Tabler
 import { X, File, CloudUpload, Trash } from 'tabler-icons-react';
 
@@ -221,22 +221,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
                   <X color={theme.palette.colors.dark75} size="18px" onClick={onRemove} />
                 </Flex>
               </Flex>
-              <LinearProgress
-                value={50}
-                sx={{
-                  root: {
-                    height: 10,
-                    borderRadius: 5,
-                  },
-                  colorPrimary: {
-                    backgroundColor: theme.palette.colors.error90,
-                  },
-                  bar: {
-                    borderRadius: 5,
-                    backgroundColor: '#00ae95',
-                  },
-                }}
-              />
+              <StyledLinearProgress value={50} variant="determinate" />
             </Flex>
           </Flex>
         </FlexCard>
@@ -280,3 +265,15 @@ const FlexLockedCard = styled(FlexCard)`
   border-style: solid;
   border-width: 1px;
 `;
+
+const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
+  height: 4, // Adjust the height to your preference
+  width: '100%',
+  borderRadius: 6, // Adjust the border radius to your preference
+  '& .MuiLinearProgress-bar': {
+    backgroundColor: theme.palette.colors.mintL2,
+  },
+  '& .MuiLinearProgress-barColorPrimary': {
+    backgroundColor: theme.palette.colors.mint60,
+  },
+}));
