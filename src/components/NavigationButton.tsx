@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { styled } from '@mui/material';
-import { ChevronDown, ChevronRight } from 'tabler-icons-react';
 
 import { Typography } from './Typography';
 import { Icon, IconProps } from './Icon';
@@ -45,7 +44,7 @@ function NavigationButtonNoMemo(props: NavigationButtonProps) {
         </Flex>
         {props.expandable && (
           <div style={{ width: 18, height: 18 }} onClick={onExpandWrapper} className="expand-icon">
-            {props.expanded ? <ChevronDown size="18" /> : <ChevronRight size="18" />}
+            <Icon icon={props.expanded ? 'ChevronDown' : 'ChevronRight'} color="dark90" size="18" />
           </div>
         )}
       </Flex>

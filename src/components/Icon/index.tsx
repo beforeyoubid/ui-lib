@@ -6,6 +6,7 @@ import { colorPalette } from '../../mui-theme';
 
 export type IconProps = {
   icon: keyof typeof Icons;
+  size?: string | number;
   color: keyof Colors;
   className?: string;
 };
@@ -13,7 +14,7 @@ export type IconProps = {
 function IconNoMemo(props: IconProps) {
   const IconComponent = useMemo(() => Icons[props.icon], [props.icon]);
 
-  return <IconComponent color={colorPalette[props.color]} className={props.className} />;
+  return <IconComponent color={colorPalette[props.color]} className={props.className} size={props.size} />;
 }
 
 const Icon = React.memo(IconNoMemo);
