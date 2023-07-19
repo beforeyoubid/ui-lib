@@ -38,18 +38,18 @@ const FlexCard = styled(Flex)<{ state: UploadDocumentCardState }>`
     `}
 `;
 
-// const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors; padding?: number }>`
-//   padding: ${({ padding }) => padding ?? 20}px;
-//   width: 442px;
-//   border-radius: 8px;
-//   border-width: 1px;
-//   border-color: ${({ theme, border }) => theme.palette.colors[border]};
-//   border-style: dashed;
-//   ${({ background, theme }) =>
-//     background &&
-//     css`
-//       background-color: ${theme.palette.colors[background]};
-//     `}
-// `;
+const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
+  height: 4,
+  borderRadius: 6,
+  marginLeft: 2,
+  marginTop: 4,
+  width: '100%',
+  '& .MuiLinearProgress-bar': {
+    backgroundColor: theme.palette.colors.mintL2,
+  },
+  '& .MuiLinearProgress-barColorPrimary': {
+    backgroundColor: theme.palette.colors.mint60,
+  },
+}));
 
-export { FlexCard };
+export { FlexCard, StyledLinearProgress };

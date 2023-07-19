@@ -1,8 +1,6 @@
 // External Imports
 // React
 import React, { useState, useMemo, useCallback } from 'react';
-// Material
-import { LinearProgress, styled, Theme } from '@mui/material';
 
 // Relative Imports
 // Components
@@ -10,7 +8,7 @@ import { Icon } from '../Icon';
 import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
-import { FlexCard } from './styles';
+import { FlexCard, StyledLinearProgress } from './styles';
 
 export type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 
@@ -43,6 +41,11 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
   // const theme = useTheme();
   const state = props.state as UploadDocumentCardState;
 
+  // Icon related
+  const isError = useMemo(() => state === 'error', [state]);
+  const isLocked = useMemo(() => state === 'locked', [state]);
+  const hasFile = useMemo(() => ['locked', 'uploaded', 'uploading'].includes(state), [state]);
+
   const onUpload = useCallback((onSelect: (file: File) => void) => {
     let input = document.createElement('input');
     input.type = 'file';
@@ -74,8 +77,11 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
       </Typography>
       {/* error text ??? */}
       <FlexCard direction="row" align="center" state={state}>
-        {/* icon */}
-        <CardIcon state={state} />
+        <Icon
+          icon={hasFile ? 'File' : 'CloudUpload'}
+          color={isError ? 'error60' : 'dark60'}
+          size={isLocked ? 18 : 24}
+        />
         {/* content */}
         <Flex direction="column" grow="1" style={{ marginLeft: '8px' }}>
           <Flex direction="row" justify="space-between" width="100%">
@@ -101,29 +107,6 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
 };
 
 export { UploadDocumentCard };
-
-const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
-  height: 4,
-  borderRadius: 6,
-  marginLeft: 2,
-  marginTop: 4,
-  width: '100%',
-  '& .MuiLinearProgress-bar': {
-    backgroundColor: theme.palette.colors.mintL2,
-  },
-  '& .MuiLinearProgress-barColorPrimary': {
-    backgroundColor: theme.palette.colors.mint60,
-  },
-}));
-
-const CardIcon = ({ state }: { state: UploadDocumentCardState }) => {
-  const isError = state === 'error';
-  const iconType = useMemo(() => (['upload', 'error'].includes(state) ? 'CloudUpload' : 'File'), [state]);
-  const iconSize = useMemo(() => (['uploaded', 'uploading'].includes(state) ? 24 : 18), [state]);
-  const iconColor = useMemo(() => (isError ? 'error60' : 'dark60'), [isError]);
-
-  return <Icon icon={iconType} size={iconSize} color={iconColor} />;
-};
 
 type LeftContentProps = {
   state: UploadDocumentCardState;
