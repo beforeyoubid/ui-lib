@@ -29,7 +29,6 @@ export const TextArea = (props: TextAreaProps) => {
         multiline
         value={props.value}
         onChange={handleTextChange}
-        fullWidth
       />
       {!props.hideTextCount && (
         <Typography class="medium" size="base" color="dark90">
