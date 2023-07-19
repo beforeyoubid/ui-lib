@@ -27,7 +27,7 @@ const TextInput = (props: TextInputProps) => {
   } = props;
 
   return (
-    <Flex direction="column" width="100%">
+    <Flex direction="column">
       <TextFieldLabel labelText={label} />
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
