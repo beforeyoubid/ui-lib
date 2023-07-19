@@ -70,7 +70,7 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
             {(state === 'upload' || state === 'error') && <Upload {...(props as UploadDocumentCardProps<'upload'>)} />}
             {state === 'uploading' && <Uploading {...(props as UploadDocumentCardProps<'uploading'>)} />}
             {state === 'uploaded' && <UploadCompleted {...(props as UploadDocumentCardProps<'uploaded'>)} />}
-            {props.state === 'locked' && <Locked {...(props as UploadDocumentCardProps<'locked'>)} />}
+            {state === 'locked' && <Locked {...(props as UploadDocumentCardProps<'locked'>)} />}
           </Flex>
           {/* upload progress */}
           {state === 'uploading' && (
