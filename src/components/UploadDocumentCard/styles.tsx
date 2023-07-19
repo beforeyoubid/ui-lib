@@ -116,13 +116,15 @@ const Upload: React.FC<UploadProps> = ({ onSelect }) => {
 
 type UploadingProps = UploadDocumentCardProps<'uploading'>;
 
-const Uploading: React.FC<UploadingProps> = ({ uploadProgress = 0 }) => {
+const Uploading: React.FC<UploadingProps> = ({ uploadProgress = 0, onRemove }) => {
   return (
     <Flex direction="row" align="center">
       <Typography class="roman" size="sm" color="dark75" padding={0.4}>
         {uploadProgress}%
       </Typography>
-      <Icon icon="X" color="dark75" size={18} />
+      <Flex onClick={onRemove}>
+        <Icon icon="X" color="dark75" size={18} />
+      </Flex>
     </Flex>
   );
 };
