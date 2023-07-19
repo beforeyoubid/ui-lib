@@ -14,7 +14,7 @@ export const Active: Story = {
     placeHolder: 'Placeholder',
     helperText: 'Please enter your company details',
     errorText: 'Error Text',
-    minRow: 3,
+    minRows: 3,
     disabled: false,
     maxCharacter: 50,
     hideTextCount: true,
