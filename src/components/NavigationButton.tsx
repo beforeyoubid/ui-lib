@@ -1,10 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 import { styled } from '@mui/material';
-import { ChevronDown, ChevronRight } from 'tabler-icons-react';
 
 import { Typography } from './Typography';
 import { Icon, IconProps } from './Icon';
-import FlexWrapper from './FlexWrapper';
+import { Flex } from './Flex';
 
 type NavigationButtonVariant = 'regular' | 'dark';
 export type NavigationButtonProps = {
@@ -35,20 +34,20 @@ function NavigationButtonNoMemo(props: NavigationButtonProps) {
   );
   return (
     <Button variant={props.variant ?? 'regular'} selected={props.selected} onClick={onClickWrapper}>
-      <FlexWrapper width="100%" align="center">
-        <FlexWrapper gap={10} align="center" style={{ flexGrow: 1 }} width="100%">
+      <Flex width="100%" align="center">
+        <Flex gap={10} align="center" style={{ flexGrow: 1 }} width="100%">
           {props.child && <div style={{ width: 16 }} />}
           {selectedIcon}
           <Typography class="roman" size="base" color="dark90" padding={0}>
             {props.label}
           </Typography>
-        </FlexWrapper>
+        </Flex>
         {props.expandable && (
           <div style={{ width: 18, height: 18 }} onClick={onExpandWrapper} className="expand-icon">
-            {props.expanded ? <ChevronDown size="18" /> : <ChevronRight size="18" />}
+            <Icon icon={props.expanded ? 'ChevronDown' : 'ChevronRight'} color="dark90" size="18" />
           </div>
         )}
-      </FlexWrapper>
+      </Flex>
     </Button>
   );
 }

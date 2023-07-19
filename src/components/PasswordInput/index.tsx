@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import TextInputComponent, { TextInputComponentProps } from '../TextInput';
+import TextInput, { TextInputProps } from '../TextInput';
 import { IconButton, InputAdornment, TextFieldProps } from '@mui/material';
-import { Eye, EyeOff } from 'tabler-icons-react';
+import { Icon } from '../Icon';
 
-export type PasswordInputComponentProps = TextInputComponentProps & TextFieldProps;
+export type PasswordInputProps = TextInputProps & TextFieldProps;
 
-const PasswordInput = (props: PasswordInputComponentProps) => {
+const PasswordInput = (props: PasswordInputProps) => {
   // Variables to shouw and hide password
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -13,14 +13,14 @@ const PasswordInput = (props: PasswordInputComponentProps) => {
   const toggleShowPassword = useCallback(() => setShowPassword(previousShowPassValue => !previousShowPassValue), []);
 
   return (
-    <TextInputComponent
+    <TextInput
       {...props}
       type={showPassword ? 'text' : 'password'}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
             <IconButton onClick={toggleShowPassword} edge="end">
-              {showPassword ? <Eye /> : <EyeOff />}
+              <Icon icon={showPassword ? 'Eye' : 'EyeOff'} color="dark90" />
             </IconButton>
           </InputAdornment>
         ),

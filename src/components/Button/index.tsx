@@ -5,7 +5,7 @@ import { ButtonProps as MuiButtonProps } from '@mui/material';
 import getButtonStyles from './utils';
 import { Typography } from '../Typography';
 
-export type ButtonProps = MuiButtonProps & {
+export type ButtonProps = Exclude<MuiButtonProps, 'variant' | 'children'> & {
   primaryVariant: 'primary' | 'secondary' | 'tertiary';
   secondaryVariant: 'mint' | 'destructive' | 'disabled';
   leadingIcon?: IconProps['icon'];

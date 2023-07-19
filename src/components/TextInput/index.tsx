@@ -1,20 +1,19 @@
 import { CustomTextField } from './styles';
-import * as Icons from 'tabler-icons-react';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { InputAdornment, TextFieldProps } from '@mui/material';
-import { Icon } from '../Icon';
+import { Icon, IconProps } from '../Icon';
 
-export type TextInputComponentProps = TextFieldProps & {
+export type TextInputProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
   backgroundColor?: string;
-  leadingIconName?: keyof typeof Icons;
+  leadingIconName?: IconProps['icon'];
   helperText?: string;
   errorText?: string;
 };
 
-const TextInputComponent = (props: TextInputComponentProps) => {
+const TextInput = (props: TextInputProps) => {
   const {
     label,
     placeHolder,
@@ -52,4 +51,4 @@ const TextInputComponent = (props: TextInputComponentProps) => {
   );
 };
 
-export default TextInputComponent;
+export default TextInput;
