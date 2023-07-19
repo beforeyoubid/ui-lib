@@ -7,6 +7,7 @@ import React, { useMemo } from 'react';
 import { Icon } from '../Icon';
 import { Flex } from '../Flex';
 import { Typography } from '../Typography';
+// Styled Components
 import { FlexCard, StyledLinearProgress, LeftContent, Locked, Upload, Uploading, UploadCompleted } from './styles';
 
 export type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
@@ -36,25 +37,22 @@ export type UploadDocumentCardProps<State extends UploadDocumentCardState> = {
   : ErrorProps);
 
 const UploadDocumentCard = <State extends UploadDocumentCardState>(props: UploadDocumentCardProps<State>) => {
-  // const theme = useTheme();
-  const state = props.state as UploadDocumentCardState;
+  const state = props.state;
 
-  // Icon related
   const isError = useMemo(() => state === 'error', [state]);
   const isLocked = useMemo(() => state === 'locked', [state]);
   const hasFile = useMemo(() => ['locked', 'uploaded', 'uploading'].includes(state), [state]);
 
-  // Render
   const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
-  const { errorMessage } = props as UploadDocumentCardProps<'error'>;
+  const { errorMessage = '' } = props as UploadDocumentCardProps<'error'>;
 
   return (
     <Flex direction="column">
-      <Typography class="medium" size="base" color="dark90">
+      <Typography class="medium" size="base" color="dark90" padding={0.2}>
         {label}
       </Typography>
       {errorMessage && (
-        <Typography class="medium" size="sm" color="error75">
+        <Typography class="medium" size="sm" color="error75" padding={0.2}>
           {errorMessage}
         </Typography>
       )}
@@ -64,7 +62,6 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
           color={isError ? 'error60' : 'dark60'}
           size={isLocked ? 18 : 24}
         />
-        {/* content */}
         <Flex direction="column" grow="1" style={{ marginLeft: '8px' }}>
           <Flex direction="row" justify="space-between" width="100%">
             {/* left content */}
@@ -75,7 +72,7 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
             {state === 'uploaded' && <UploadCompleted {...(props as UploadDocumentCardProps<'uploaded'>)} />}
             {props.state === 'locked' && <Locked {...(props as UploadDocumentCardProps<'locked'>)} />}
           </Flex>
-          {/* linear progress */}
+          {/* upload progress */}
           {state === 'uploading' && (
             <StyledLinearProgress
               value={(props as UploadDocumentCardProps<'uploading'>).uploadProgress}
