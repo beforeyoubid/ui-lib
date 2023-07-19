@@ -3,12 +3,13 @@ import * as Icons from 'tabler-icons-react';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { InputAdornment, TextFieldProps } from '@mui/material';
 import { Icon } from '../Icon';
+import { Flex } from '../Flex';
 
 export type TextInputProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
-  backgroundColor: string;
+  backgroundColor?: string;
   leadingIconName?: keyof typeof Icons;
   helperText?: string;
   errorText?: string;
@@ -27,7 +28,7 @@ const TextInput = (props: TextInputProps) => {
   } = props;
 
   return (
-    <>
+    <Flex direction="column" width="100%">
       <TextFieldLabel labelText={label} />
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
@@ -39,6 +40,7 @@ const TextInput = (props: TextInputProps) => {
         placeholder={placeHolder}
         color="primary"
         value={value}
+        fullWidth
         InputProps={{
           startAdornment: leadingIconName ? (
             <InputAdornment position="start">
@@ -48,7 +50,7 @@ const TextInput = (props: TextInputProps) => {
         }}
         {...rest}
       />
-    </>
+    </Flex>
   );
 };
 

@@ -10,6 +10,7 @@ type InformationCheckboxProps = {
   description: string;
   variant?: 'info' | 'warning' | 'error';
   checked: boolean;
+  disabled?: boolean;
   onChange: (event: React.ChangeEvent, checked: boolean) => void;
 };
 export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
@@ -17,12 +18,13 @@ export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
   description,
   variant = 'info',
   checked,
+  disabled = false,
   onChange,
 }) => {
   return (
     <Wrapper variant={variant}>
       <Flex direction="row" justify="flex-start" align="center" gap={theme.spacing(1.25)}>
-        <CheckBox checked={checked} onChange={onChange} />
+        <CheckBox checked={checked} onChange={onChange} disabled={disabled} />
         <Typography class="bold" size="base" color="dark90" padding={0}>
           {title}
         </Typography>
