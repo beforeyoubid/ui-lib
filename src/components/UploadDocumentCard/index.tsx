@@ -14,7 +14,7 @@ import { Button } from '../Button';
 // Styling
 import { Colors } from '../../theme.types';
 
-type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
+export type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 
 type SharedProps = { label: string; fileName: string; fileSize?: string };
 
@@ -41,8 +41,8 @@ export type UploadDocumentCardProps<State extends UploadDocumentCardState> = {
   ? UploadProps
   : ErrorProps);
 
-const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: UploadDocumentCardProps<State>) => {
-  const theme = useTheme();
+const UploadDocumentCard = <State extends UploadDocumentCardState>(props: UploadDocumentCardProps<State>) => {
+  // const theme = useTheme();
   const state = props.state as UploadDocumentCardState;
 
   const onUpload = useCallback((onSelect: (file: File) => void) => {
@@ -62,31 +62,7 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
     onRemove();
   }, []);
 
-  // Renders
-  // Done
-  if (state === 'locked') {
-    const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
-    return (
-      <Flex direction="column">
-        <Typography class="medium" size="base" color="dark90">
-          {label}
-        </Typography>
-        <FlexLockedCard direction="row" justify="space-between" align="center" border="dark45">
-          <Flex direction="row" align="center">
-            <File size="18px" color={theme.palette.colors.dark60} />
-            <Flex style={{ marginLeft: '8px' }}>
-              <Typography class="medium" size="sm" color="dark75" padding={0}>
-                {fileName}
-              </Typography>
-            </Flex>
-          </Flex>
-          <Typography color="dark60" class="roman" size="xs" padding={0}>
-            {fileSize}
-          </Typography>
-        </FlexLockedCard>
-      </Flex>
-    );
-  }
+  // Render
 
   // if (state === 'upload' || state === 'error' || state === 'uploaded' || state === 'uploading') {
   //   // const onClick =
@@ -102,33 +78,41 @@ const UploadDocumentCardNoMemo = <State extends UploadDocumentCardState>(props: 
       <FlexCard
         direction="row"
         align="center"
-        border={isError ? 'error45' : 'dark45'}
+        padding={state === 'locked' ? 10 : 20}
+        border={isError ? 'error45' : state === 'locked' ? 'dark15' : 'dark45'}
         background={isError ? 'errorL1' : 'lightL1'}
       >
         {/* icon */}
         <CardIcon state={state} />
         {/* content */}
-        <Flex direction="column" style={{ flexGrow: 1, marginLeft: '12px' }}>
+        <Flex direction="column" style={{ flexGrow: 1, marginLeft: '8px' }}>
           <Flex direction="row" justify="space-between" width="100%">
             {/* left content */}
             <LeftContent state={state} fileName={fileName} fileSize={fileSize} />
             {/* right content */}
-            <RightContent state={state} />
+            {state === 'locked' && <Locked fileSize={fileSize} />}
+            {state === 'upload' && <Upload />}
+            {state === 'error' && <Upload />}
+            {state === 'uploading' && <Uploading />}
+            {state === 'uploaded' && <UploadComplete />}
           </Flex>
           {/* linear progress */}
-          {state === 'uploading' && <StyledLinearProgress value={50} variant="determinate" />}
+          {state === 'uploading' && (
+            <StyledLinearProgress
+              value={(props as UploadDocumentCardProps<'uploading'>).uploadProgress}
+              variant="determinate"
+            />
+          )}
         </Flex>
       </FlexCard>
     </Flex>
   );
 };
 
-const UploadDocumentCard = React.memo(UploadDocumentCardNoMemo);
-
 export { UploadDocumentCard };
 
-const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors }>`
-  padding: 20px;
+const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors; padding?: number }>`
+  padding: ${({ padding }) => padding ?? 20}px;
   width: 442px;
   border-radius: 8px;
   border-width: 1px;
@@ -139,14 +123,6 @@ const FlexCard = styled(Flex)<{ border: keyof Colors; background?: keyof Colors 
     css`
       background-color: ${theme.palette.colors[background]};
     `}
-`;
-
-const FlexLockedCard = styled(FlexCard)`
-  padding: 10px;
-  background-color: ${({ theme }) => theme.palette.colors.lightL1};
-  border-color: ${({ theme }) => theme.palette.colors.dark15};
-  border-style: solid;
-  border-width: 1px;
 `;
 
 const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
@@ -165,7 +141,6 @@ const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }
 
 const CardIcon = ({ state }: { state: UploadDocumentCardState }) => {
   const theme = useTheme();
-
   if (state === 'upload') {
     return <CloudUpload size="18px" color={theme.palette.colors.dark60} />;
   }
@@ -174,6 +149,9 @@ const CardIcon = ({ state }: { state: UploadDocumentCardState }) => {
   }
   if (state === 'uploaded' || state === 'uploading') {
     return <File size="24px" color={theme.palette.colors.dark60} />;
+  }
+  if (state === 'locked') {
+    return <File size="18px" color={theme.palette.colors.dark60} />;
   }
 };
 
@@ -188,60 +166,81 @@ const LeftContent = ({ state, fileName, fileSize }: LeftContentProps) => {
       <Typography class="medium" size="sm" padding={0.4} color={isError ? 'error75' : 'dark75'}>
         {fileName ?? 'Select a file or drag and drop here'}
       </Typography>
-      <Typography class="roman" size="xs" padding={0.4} color={isError ? 'error60' : 'dark60'}>
-        {fileSize ?? 'maximum file size is 200mb'}
+      {state !== 'locked' && (
+        <Typography class="roman" size="xs" padding={0.4} color={isError ? 'error60' : 'dark60'}>
+          {fileSize ?? 'maximum file size is 200mb'}
+        </Typography>
+      )}
+    </Flex>
+  );
+};
+
+type LockedProps = { fileSize: SharedProps['fileSize'] };
+
+const Locked: React.FC<LockedProps> = ({ fileSize }) => {
+  return (
+    <Flex direction="column" justify="center" style={{ alignSelf: 'stretch' }}>
+      <Typography color="dark60" class="roman" size="xs" padding={0}>
+        {fileSize}
       </Typography>
     </Flex>
   );
 };
 
-type RightContentProps = {
-  state: UploadDocumentCardState;
+// type LeftContentUploadProps = {};
+
+const Upload: React.FC = () => {
+  return (
+    <Flex direction="row" align="center">
+      <Button
+        primaryVariant="secondary"
+        secondaryVariant="mint"
+        leadingIcon="Upload"
+        title="Upload file"
+        size="small"
+      />
+    </Flex>
+  );
 };
 
-const RightContent: React.FC<RightContentProps> = ({ state }) => {
+type UploadingProps = {
+  uploadProgress?: number;
+};
+
+const Uploading: React.FC<UploadingProps> = ({ uploadProgress = 0 }) => {
+  const theme = useTheme();
+  return (
+    <Flex direction="row" align="center">
+      <Typography class="roman" size="sm" color="dark75" padding={0.4}>
+        {uploadProgress}%
+      </Typography>
+      <X color={theme.palette.colors.dark75} size="18px" />
+    </Flex>
+  );
+};
+
+const UploadComplete: React.FC = () => {
   const theme = useTheme();
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
 
-  switch (state) {
-    case 'upload':
-    case 'error':
-      return (
-        <Flex direction="row" align="center">
-          <Button
-            primaryVariant="secondary"
-            secondaryVariant="mint"
-            leadingIcon="Upload"
-            title="Upload file"
-            size="small"
-          />
-        </Flex>
-      );
-    case 'uploading':
-      return (
-        <Flex direction="row" align="center">
-          <Typography class="roman" size="sm" color="dark75" padding={0.4}>
-            {50}%
-          </Typography>
-          <X color={theme.palette.colors.dark75} size="18px" />
-        </Flex>
-      );
-    case 'uploaded':
-      return !confirmDelete ? (
-        <Flex direction="column" justify="center" style={{ alignSelf: 'stretch' }}>
-          <Trash size="18px" color={theme.palette.colors.dark90} onClick={toggleConfirmDelete} />
-        </Flex>
-      ) : (
-        <Flex direction="row" align="center" justify="center">
-          <div onClick={toggleConfirmDelete}>
-            <Typography class="roman" size="xs" color="dark60" padding={0}>
-              Cancel
-            </Typography>
-          </div>
-          <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" />
-        </Flex>
-      );
+  if (!confirmDelete) {
+    return (
+      <Flex direction="column" justify="center" style={{ alignSelf: 'stretch' }}>
+        <Trash size="18px" color={theme.palette.colors.dark90} onClick={toggleConfirmDelete} />
+      </Flex>
+    );
   }
+
+  return (
+    <Flex direction="row" align="center" justify="center">
+      <div onClick={toggleConfirmDelete}>
+        <Typography class="roman" size="xs" color="dark60" padding={0}>
+          Cancel
+        </Typography>
+      </div>
+      <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" />
+    </Flex>
+  );
 };
