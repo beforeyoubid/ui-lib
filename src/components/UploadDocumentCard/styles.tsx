@@ -1,6 +1,6 @@
 // External Imports
 // React
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 // Material
 import { css, LinearProgress, styled, Theme } from '@mui/material';
 
@@ -11,8 +11,7 @@ import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
 // Styling
-import { Colors } from '../../theme.types';
-import { UploadDocumentCardState } from './index';
+import { UploadDocumentCardState, UploadDocumentCardProps, SharedProps } from './index';
 
 const FlexCard = styled(Flex)<{ state: UploadDocumentCardState }>`
   width: 442px;
@@ -52,4 +51,116 @@ const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }
   },
 }));
 
-export { FlexCard, StyledLinearProgress };
+type LeftContentProps = {
+  state: UploadDocumentCardState;
+} & Pick<SharedProps, 'fileName' | 'fileSize'>;
+
+const LeftContent: React.FC<LeftContentProps> = ({ state, fileName, fileSize }) => {
+  const isError = state === 'error';
+  return (
+    <Flex direction="column" grow="1">
+      <Typography class="medium" size="sm" padding={0.4} color={isError ? 'error75' : 'dark75'}>
+        {fileName ?? 'Select a file or drag and drop here'}
+      </Typography>
+      {state !== 'locked' && (
+        <Typography class="roman" size="xs" padding={0.4} color={isError ? 'error60' : 'dark60'}>
+          {fileSize ?? 'maximum file size is 200mb'}
+        </Typography>
+      )}
+    </Flex>
+  );
+};
+
+type LockedProps = UploadDocumentCardProps<'locked'>;
+
+const Locked: React.FC<LockedProps> = ({ fileSize }) => {
+  return (
+    <Flex direction="column" justify="center" alignSelf="stretch">
+      <Typography color="dark60" class="roman" size="xs" padding={0}>
+        {fileSize}
+      </Typography>
+    </Flex>
+  );
+};
+
+type UploadProps = UploadDocumentCardProps<'upload'>;
+
+const Upload: React.FC<UploadProps> = ({ onSelect }) => {
+  const onUpload = useCallback((onSelect: (file: File) => void) => {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.pdf';
+    input.onchange = function () {
+      if (input.files) {
+        onSelect(input.files?.[0]);
+      }
+    };
+    input.click();
+  }, []);
+
+  const onClick = onUpload.bind(null, onSelect);
+
+  return (
+    <Flex direction="row" align="center">
+      <Button
+        primaryVariant="secondary"
+        secondaryVariant="mint"
+        leadingIcon="Upload"
+        title="Upload file"
+        size="small"
+        onClick={onClick}
+      />
+    </Flex>
+  );
+};
+
+type UploadingProps = UploadDocumentCardProps<'uploading'>;
+
+const Uploading: React.FC<UploadingProps> = ({ uploadProgress = 0 }) => {
+  return (
+    <Flex direction="row" align="center">
+      <Typography class="roman" size="sm" color="dark75" padding={0.4}>
+        {uploadProgress}%
+      </Typography>
+      <Icon icon="X" color="dark75" size={18} />
+    </Flex>
+  );
+};
+
+type UploadCompletedProps = UploadDocumentCardProps<'uploaded'>;
+
+const UploadCompleted: React.FC<UploadCompletedProps> = ({ onRemove }) => {
+  const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
+
+  const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
+
+  const onRemoveWrapper = useCallback((onRemove: () => void, event: React.MouseEvent) => {
+    event.stopPropagation();
+    onRemove();
+  }, []);
+
+  const onClick = onRemoveWrapper.bind(null, onRemove);
+
+  if (!confirmDelete) {
+    return (
+      <Flex direction="column" justify="center" alignSelf="stretch">
+        <span onClick={toggleConfirmDelete}>
+          <Icon icon="Trash" size={18} color="dark90" />
+        </span>
+      </Flex>
+    );
+  }
+
+  return (
+    <Flex direction="row" align="center" justify="center">
+      <div onClick={toggleConfirmDelete}>
+        <Typography class="roman" size="xs" color="dark60" padding={0}>
+          Cancel
+        </Typography>
+      </div>
+      <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" onClick={onClick} />
+    </Flex>
+  );
+};
+
+export { FlexCard, StyledLinearProgress, Locked, LeftContent, Upload, Uploading, UploadCompleted };
