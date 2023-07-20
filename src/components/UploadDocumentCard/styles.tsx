@@ -2,7 +2,7 @@
 // React
 import React, { useState, useCallback } from 'react';
 // Material
-import { css, LinearProgress, styled, Theme } from '@mui/material';
+import { css, LinearProgress, styled } from '@mui/material';
 
 // Relative Imports
 // Components
@@ -11,7 +11,7 @@ import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
 // Styling
-import { UploadDocumentCardState, UploadDocumentCardProps, SharedProps } from './index';
+import { UploadDocumentCardState, SharedProps } from './index';
 
 const FlexCard = styled(Flex)<{ state: UploadDocumentCardState }>`
   width: 442px;
@@ -37,7 +37,7 @@ const FlexCard = styled(Flex)<{ state: UploadDocumentCardState }>`
     `}
 `;
 
-const StyledLinearProgress = styled(LinearProgress)(({ theme }: { theme: Theme }) => ({
+const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 4,
   borderRadius: 6,
   marginLeft: 2,
@@ -71,9 +71,7 @@ const LeftContent: React.FC<LeftContentProps> = ({ state, fileName, fileSize }) 
   );
 };
 
-type LockedProps = UploadDocumentCardProps<'locked'>;
-
-const Locked: React.FC<LockedProps> = ({ fileSize }) => {
+const Locked: React.FC<{ fileSize?: string }> = ({ fileSize = '-' }) => {
   return (
     <Flex direction="column" justify="center" alignSelf="stretch">
       <Typography color="dark60" class="roman" size="xs" padding={0}>
@@ -83,9 +81,7 @@ const Locked: React.FC<LockedProps> = ({ fileSize }) => {
   );
 };
 
-type UploadProps = UploadDocumentCardProps<'upload'>;
-
-const Upload: React.FC<UploadProps> = ({ onSelect }) => {
+const Upload: React.FC<{ onSelect: (file: File) => void }> = ({ onSelect }) => {
   const onUpload = useCallback((onSelect: (file: File) => void) => {
     let input = document.createElement('input');
     input.type = 'file';
@@ -114,13 +110,11 @@ const Upload: React.FC<UploadProps> = ({ onSelect }) => {
   );
 };
 
-type UploadingProps = UploadDocumentCardProps<'uploading'>;
-
-const Uploading: React.FC<UploadingProps> = ({ uploadProgress = 0, onRemove }) => {
+const Uploading: React.FC<{ progress: number; onRemove: () => void }> = ({ progress = 0, onRemove }) => {
   return (
     <Flex direction="row" align="center">
       <Typography class="roman" size="sm" color="dark75" padding={0.4}>
-        {uploadProgress}%
+        {progress}%
       </Typography>
       <Flex onClick={onRemove}>
         <Icon icon="X" color="dark75" size={18} />
@@ -129,19 +123,10 @@ const Uploading: React.FC<UploadingProps> = ({ uploadProgress = 0, onRemove }) =
   );
 };
 
-type UploadCompletedProps = UploadDocumentCardProps<'uploaded'>;
-
-const UploadCompleted: React.FC<UploadCompletedProps> = ({ onRemove }) => {
+const UploadCompleted: React.FC<{ onRemove: () => void }> = ({ onRemove }) => {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
-
-  const onRemoveWrapper = useCallback((onRemove: () => void, event: React.MouseEvent) => {
-    event.stopPropagation();
-    onRemove();
-  }, []);
-
-  const onClick = onRemoveWrapper.bind(null, onRemove);
 
   if (!confirmDelete) {
     return (
@@ -160,7 +145,7 @@ const UploadCompleted: React.FC<UploadCompletedProps> = ({ onRemove }) => {
           Cancel
         </Typography>
       </div>
-      <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" onClick={onClick} />
+      <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" onClick={onRemove} />
     </Flex>
   );
 };
