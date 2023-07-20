@@ -44,7 +44,10 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
   const hasFile = useMemo(() => ['locked', 'uploaded', 'uploading'].includes(state), [state]);
 
   const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
+
   const { errorMessage = '' } = props as UploadDocumentCardProps<'error'>;
+  const { onSelect } = props as UploadDocumentCardProps<'upload'>;
+  const { onRemove, uploadProgress } = props as UploadDocumentCardProps<'uploading'>;
 
   return (
     <Flex direction="column">
@@ -67,10 +70,10 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
             {/* left content */}
             <LeftContent state={state} fileName={fileName} fileSize={fileSize} />
             {/* right content */}
-            {(state === 'upload' || state === 'error') && <Upload {...(props as UploadDocumentCardProps<'upload'>)} />}
-            {state === 'uploading' && <Uploading {...(props as UploadDocumentCardProps<'uploading'>)} />}
-            {state === 'uploaded' && <UploadCompleted {...(props as UploadDocumentCardProps<'uploaded'>)} />}
-            {state === 'locked' && <Locked {...(props as UploadDocumentCardProps<'locked'>)} />}
+            {state === 'locked' && <Locked fileSize={fileSize} />}
+            {(state === 'upload' || state === 'error') && <Upload onSelect={onSelect} />}
+            {state === 'uploading' && <Uploading progress={uploadProgress} onRemove={onRemove} />}
+            {state === 'uploaded' && <UploadCompleted onRemove={onRemove} />}
           </Flex>
           {/* upload progress */}
           {state === 'uploading' && (
