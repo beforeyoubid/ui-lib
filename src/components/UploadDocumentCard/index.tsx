@@ -8,7 +8,8 @@ import { Icon } from '../Icon';
 import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 // Styled Components
-import { FlexCard, StyledLinearProgress, LeftContent, Locked, Upload, Uploading, UploadCompleted } from './styles';
+import { FlexCard, StyledLinearProgress, LeftContent } from './styles';
+import { Locked, Upload, Uploading, Uploaded } from './RightContent';
 
 export type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 export type SharedProps = { label: string; fileName: string; fileSize?: string };
@@ -73,7 +74,7 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
             {state === 'locked' && <Locked fileSize={fileSize} />}
             {(state === 'upload' || state === 'error') && <Upload onSelect={onSelect} />}
             {state === 'uploading' && <Uploading progress={uploadProgress} onRemove={onRemove} />}
-            {state === 'uploaded' && <UploadCompleted onRemove={onRemove} />}
+            {state === 'uploaded' && <Uploaded onRemove={onRemove} />}
           </Flex>
           {/* upload progress */}
           {state === 'uploading' && (
