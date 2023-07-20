@@ -7,7 +7,7 @@ export type TextInputProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
-  backgroundColor: string;
+  backgroundColor?: string;
   leadingIconName?: IconProps['icon'];
   helperText?: string;
   errorText?: string;
