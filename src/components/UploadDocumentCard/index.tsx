@@ -8,7 +8,8 @@ import { Icon } from '../Icon';
 import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 // Styled Components
-import { FlexCard, StyledLinearProgress, LeftContent } from './styles';
+import { FlexCard, StyledLinearProgress } from './styles';
+import { LeftContent } from './LeftContent';
 import { Locked, Upload, Uploading, Uploaded } from './RightContent';
 
 export type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
