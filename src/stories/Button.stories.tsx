@@ -4,6 +4,7 @@ import { Typography } from '../components/Typography';
 
 const meta: Meta<ButtonProps> = {
   component: Button,
+  title: 'Input/Button',
 };
 
 export default meta;

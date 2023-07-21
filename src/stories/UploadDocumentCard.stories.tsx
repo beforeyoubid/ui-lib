@@ -5,6 +5,7 @@ import { UploadDocumentCard } from '../components/UploadDocumentCard';
 
 const meta: Meta<typeof UploadDocumentCard> = {
   component: UploadDocumentCard,
+  title: 'Display/UploadDocumentCard',
 };
 
 export default meta;
