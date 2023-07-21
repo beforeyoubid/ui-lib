@@ -5,6 +5,7 @@ import { Typography } from '../components/Typography';
 
 const meta: Meta<typeof Typography> = {
   component: Typography,
+  title: 'Display/Typography',
 };
 
 export default meta;
