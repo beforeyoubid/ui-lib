@@ -3,6 +3,7 @@ import { TextArea } from '../components/TextArea';
 
 const meta: Meta<typeof TextArea> = {
   component: TextArea,
+  title: 'Input/TextArea',
 };
 
 export default meta;

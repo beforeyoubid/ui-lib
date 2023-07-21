@@ -3,6 +3,7 @@ import { InformationCheckbox } from '../components/InformationCheckbox';
 
 const meta: Meta<typeof InformationCheckbox> = {
   component: InformationCheckbox,
+  title: 'Input/InformationCheckbox',
 };
 
 export default meta;
