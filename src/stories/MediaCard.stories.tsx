@@ -5,6 +5,11 @@ import { MediaCard } from '../components/MediaCard';
 
 const meta: Meta<typeof MediaCard> = {
   component: MediaCard,
+  title: 'Display/MediaCard',
+  argTypes: {
+    onSelect: { action: 'onSelect' },
+    onRemove: { action: 'onRemove' },
+  },
 };
 
 export default meta;

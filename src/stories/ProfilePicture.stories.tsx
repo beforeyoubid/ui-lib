@@ -3,6 +3,7 @@ import { ProfilePicture } from '../components';
 
 const meta: Meta<typeof ProfilePicture> = {
   component: ProfilePicture,
+  title: 'Display/ProfilePicture',
 };
 
 export default meta;
