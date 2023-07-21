@@ -5,6 +5,7 @@ import { NavigationButton } from '../components/NavigationButton';
 
 const meta: Meta<typeof NavigationButton> = {
   component: NavigationButton,
+  title: 'Navigation/NavigationButton',
 };
 
 export default meta;
