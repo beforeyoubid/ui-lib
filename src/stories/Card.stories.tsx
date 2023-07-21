@@ -9,9 +9,10 @@ import { theme } from '../mui-theme';
 
 const meta: Meta<typeof Card> = {
   component: Card,
+  title: 'Display/Card',
   parameters: {
     controls: {
-      exclude: /^(children|on*)/g,
+      exclude: /children/g,
     },
   },
 };

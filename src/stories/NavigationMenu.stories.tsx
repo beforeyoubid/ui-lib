@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const meta: Meta<typeof NavigationMenu> = {
   component: NavigationMenu,
+  title: 'Navigation/NavigationMenu',
 };
 
 export default meta;
