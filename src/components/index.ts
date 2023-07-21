@@ -5,6 +5,7 @@ export * from './Button';
 export * from './Card';
 export * from './Flex';
 export * from './Icon';
+export * from './ImageUpload';
 export * from './KebabMenu';
 export * from './KebabMenu/types';
 export * from './MediaCard';
