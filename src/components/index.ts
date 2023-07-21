@@ -6,6 +6,7 @@ export * from './Card';
 export * from './Dropdown';
 export * from './Flex';
 export * from './Icon';
+export * from './ImageUpload';
 export * from './InformationCheckbox';
 export * from './KebabMenu';
 export * from './KebabMenu/types';
