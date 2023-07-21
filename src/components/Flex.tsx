@@ -12,8 +12,11 @@ const Flex = styled('div')<{
   basis?: CSSProperties['flexBasis'];
   width?: CSSProperties['width'];
   height?: CSSProperties['height'];
+  grow?: CSSProperties['flexGrow'];
+  alignSelf?: CSSProperties['alignSelf'];
 }>`
   display: flex;
+  flex-grow: ${props => props.grow ?? 0};
   flex-direction: ${props => props.direction ?? 'row'};
   justify-content: ${props => props.justify ?? 'flex-start'};
   align-items: ${props => props.align ?? 'flex-start'};
@@ -22,6 +25,7 @@ const Flex = styled('div')<{
   gap: ${props => (props.gap ? formatSize(props.gap) : 'auto')};
   text-align: ${props => props.textAlign ?? 'auto'};
   flex-basis: ${props => props.basis ?? 'auto'};
+  align-self: ${props => props.alignSelf ?? 'auto'};
   ${({ width }) =>
     width &&
     css`

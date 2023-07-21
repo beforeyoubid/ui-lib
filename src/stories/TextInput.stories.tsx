@@ -3,6 +3,7 @@ import TextInput from '../components/TextInput';
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
+  title: 'Input/TextInput',
 };
 
 export default meta;
