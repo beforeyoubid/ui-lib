@@ -5,6 +5,7 @@ import { Button } from './Button';
 import { Flex } from './Flex';
 import { IconProps } from './Icon';
 import { Typography } from './Typography';
+import { LinkButton } from './LinkButton';
 
 type CardButtonsProps = {
   editing: boolean;
@@ -66,9 +67,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
     <Flex align="center" width="100%" justify="flex-end" gap={theme.spacing(1)}>
       {props.editing && (
         <>
-          <Typography color="dark90" size="base" class="medium">
-            {cancelButtonTitle}
-          </Typography>
+          <LinkButton onClick={props.onCancel} type="grey" title={cancelButtonTitle} size="md" />
 
           <Button
             primaryVariant="secondary"

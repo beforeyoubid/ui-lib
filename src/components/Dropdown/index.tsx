@@ -9,7 +9,7 @@ type Option = {
   value: string;
 };
 
-export type DropdownComponentProps = {
+export type DropdownProps = {
   label: string;
   value: string;
   options: Option[];
@@ -26,7 +26,7 @@ const renderValue = ({ label }: Option) => (
   </Typography>
 );
 
-export const DropdownComponent = (props: DropdownComponentProps) => {
+export const Dropdown = (props: DropdownProps) => {
   const { label, value, options, errorText = '', placeholder, fullWidth, disabled, onChange } = props;
 
   const theme = useTheme();

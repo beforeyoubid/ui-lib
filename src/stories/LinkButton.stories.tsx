@@ -3,6 +3,7 @@ import { LinkButton } from '../components/LinkButton';
 
 const meta: Meta<typeof LinkButton> = {
   component: LinkButton,
+  title: 'Input/LinkButton',
 };
 
 export default meta;

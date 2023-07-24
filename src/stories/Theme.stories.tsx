@@ -14,7 +14,7 @@ const colorGroups = colorNames.reduce((groups, name) => {
   return groups;
 }, {} as Record<string, (keyof Colors)[]>);
 
-const ColorPalette = () =>
+const Theme = () =>
   Object.entries(colorGroups).map(([groupName, colors]) => (
     <>
       <Typography color="dark100" class="roman" size="2xl">
@@ -47,11 +47,12 @@ const ColorPalette = () =>
     </>
   ));
 
-const meta: Meta<typeof ColorPalette> = {
-  component: ColorPalette,
+const meta: Meta<typeof Theme> = {
+  component: Theme,
+  title: 'Utils/Theme',
 };
 
 export default meta;
-type Story = StoryObj<typeof ColorPalette>;
+type Story = StoryObj<typeof Theme>;
 
 export const Main: Story = {};
