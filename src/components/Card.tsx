@@ -70,9 +70,10 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
           <LinkButton onClick={props.onCancel} type="grey" title={cancelButtonTitle} size="md" />
 
           <Button
-            primaryVariant="secondary"
-            size="small"
-            secondaryVariant="mint"
+            variant="secondary"
+            size="sm"
+            type="mint"
+            wrap="wide"
             title={saveButtonTitle}
             onClick={props.onSave}
             disabled={!props.canSave}
@@ -82,11 +83,12 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
       {!props.editing && (
         <Button
           title={editButtonTitle}
-          primaryVariant="tertiary"
-          size="small"
+          variant="tertiary"
+          wrap="wide"
+          size="sm"
           leadingIcon={editButtonIcon}
           onClick={props.onEdit}
-          secondaryVariant="mint"
+          type="mint"
         />
       )}
     </Flex>
