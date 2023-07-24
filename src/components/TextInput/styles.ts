@@ -42,7 +42,6 @@ const CustomTextField = styled(TextField)`
     & fieldset {
       border-color: ${({ theme }) => theme.palette.colors.dark45};
     }
-
     &.Mui-focused fieldset {
       border-color: ${({ error, theme }) => (error ? theme.palette.colors.error60 : theme.palette.colors.mint60)};
     }
@@ -54,6 +53,7 @@ const CustomTextField = styled(TextField)`
       resize: both;
     }
   }
+
   & .MuiOutlinedInput-startAdornment {
     position: absolute;
     left: 0;
