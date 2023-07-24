@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
       endIcon={trailingIcon ? <Icon icon={trailingIcon} color={buttonStyle.textColor} /> : null}
       {...rest}
     >
-      <Typography class="bold" size="sm" color={buttonStyle.textColor} padding={0}>
+      <Typography class="bold" size={buttonFontStyle.fontSize} color={buttonStyle.textColor} padding={0}>
         {title}
       </Typography>
     </ButtonWrapper>
