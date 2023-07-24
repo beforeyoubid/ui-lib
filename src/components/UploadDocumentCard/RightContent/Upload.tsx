@@ -30,12 +30,13 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
   return (
     <Flex direction="row" align="center">
       <Button
-        primaryVariant="secondary"
-        secondaryVariant="mint"
+        variant="secondary"
+        type="mint"
         leadingIcon="Upload"
-        title="Upload file"
-        size="small"
+        title="Upload File"
+        size="md"
         onClick={onClick}
+        wrap="wide"
       />
     </Flex>
   );
