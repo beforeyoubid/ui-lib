@@ -1,5 +1,7 @@
-import { Colors, theme } from '../../mui-theme';
-const getButtonStyles = (
+import { useTheme } from '@mui/material';
+import { Colors, TypographyFontSize } from '../../mui-theme';
+
+const useButtonStyles = (
   primaryVariant: 'primary' | 'secondary' | 'tertiary',
   secondaryVariant: 'mint' | 'destructive' | 'navy' | 'disabled'
 ): {
@@ -10,6 +12,7 @@ const getButtonStyles = (
   isDisabled: boolean;
   tertiaryVariant: 'contained' | 'outlined';
 } => {
+  const theme = useTheme();
   let bgColor = '';
   let borderColor = '';
   let hoverColor = '';
@@ -29,7 +32,7 @@ const getButtonStyles = (
           break;
         case 'destructive':
           bgColor = theme.palette.colors.error75;
-          textColor = 'error75';
+          textColor = 'lightWhite';
           hoverColor = theme.palette.colors.error90;
           borderColor = theme.palette.colors.error15;
           tertiaryVariant = 'contained';
@@ -90,4 +93,53 @@ const getButtonStyles = (
   return { bgColor, borderColor, hoverColor, textColor, isDisabled, tertiaryVariant };
 };
 
-export default getButtonStyles;
+type ButtonSize = 'lg' | 'md' | 'sm';
+type ButtonWrap = 'narrow' | 'wide';
+
+const useButtonFontStyle = (
+  size: ButtonSize = 'md',
+  wrap: ButtonWrap = 'narrow'
+): { padding: string; fontSize: TypographyFontSize; height: string; width: string } => {
+  const theme = useTheme();
+  // Use Medium button's heighht and width by default
+  let height = '53px';
+  let width = '117px';
+  let padding: string;
+  let fontSize: TypographyFontSize;
+
+  switch (size) {
+    case 'lg':
+      padding = wrap === 'narrow' ? theme.spacing(1.5, 2) : theme.spacing(2, 2.5);
+      height = wrap === 'narrow' ? '50px' : '58px';
+      width = wrap === 'narrow' ? '148px' : '132px';
+      fontSize = 'xl';
+      break;
+    case 'md':
+      padding = wrap === 'narrow' ? theme.spacing(1, 1.5) : theme.spacing(2, 2.5);
+      height = wrap === 'narrow' ? '37px' : '53px';
+      width = wrap === 'narrow' ? '127px' : '117px';
+      fontSize = 'sm';
+      break;
+    case 'sm':
+      padding = wrap === 'narrow' ? theme.spacing(1, 2) : theme.spacing(1.5, 2.5);
+      height = wrap === 'narrow' ? '32px' : '40px';
+      width = wrap === 'narrow' ? '126px' : '102.006px';
+      fontSize = 'base';
+      break;
+    default:
+      padding = wrap === 'narrow' ? theme.spacing(1.5, 1) : theme.spacing(1, 1.5);
+      height = wrap === 'narrow' ? '37px' : '53px';
+      width = wrap === 'narrow' ? '127px' : '117px';
+      fontSize = 'base';
+      break;
+  }
+
+  return {
+    padding,
+    fontSize,
+    height,
+    width,
+  };
+};
+
+export { useButtonStyles, useButtonFontStyle };
