@@ -52,7 +52,7 @@ export const ButtonDimension = {
   lg: {
     narrow: {
       height: '50px',
-      wide: '148px',
+      width: '148px',
     },
     wide: {
       height: '58px',
