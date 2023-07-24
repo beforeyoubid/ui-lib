@@ -111,27 +111,27 @@ const useButtonFontStyle = (
   switch (size) {
     case 'lg':
       padding = wrap === 'narrow' ? theme.spacing(1.5, 2) : theme.spacing(2, 2.5);
-      height = wrap === 'narrow' ? ButtonDimension.lg.narrow.height : ButtonDimension.lg.wide.height;
-      width = wrap === 'narrow' ? ButtonDimension.lg.narrow.width : ButtonDimension.lg.wide.width;
+      height = wrap === 'narrow' ? ButtonDimension.LG.Narrow.Height : ButtonDimension.LG.Wide.Height;
+      width = wrap === 'narrow' ? ButtonDimension.LG.Narrow.Width : ButtonDimension.LG.Wide.Width;
       fontSize = 'xl';
       break;
     case 'md':
       padding = wrap === 'narrow' ? theme.spacing(1, 1.5) : theme.spacing(2, 2.5);
-      height = wrap === 'narrow' ? ButtonDimension.md.narrow.height : ButtonDimension.md.wide.height;
-      width = wrap === 'narrow' ? ButtonDimension.md.narrow.width : ButtonDimension.md.wide.width;
+      height = wrap === 'narrow' ? ButtonDimension.MD.Narrow.Height : ButtonDimension.MD.Wide.Height;
+      width = wrap === 'narrow' ? ButtonDimension.MD.Narrow.Width : ButtonDimension.MD.Wide.Width;
       fontSize = 'xl';
       fontSize = 'sm';
       break;
     case 'sm':
       padding = wrap === 'narrow' ? theme.spacing(1, 2) : theme.spacing(1.5, 2.5);
-      height = wrap === 'narrow' ? ButtonDimension.sm.narrow.height : ButtonDimension.sm.wide.height;
-      width = wrap === 'narrow' ? ButtonDimension.sm.narrow.width : ButtonDimension.sm.wide.width;
+      height = wrap === 'narrow' ? ButtonDimension.SM.Narrow.Height : ButtonDimension.SM.Wide.Height;
+      width = wrap === 'narrow' ? ButtonDimension.SM.Narrow.Width : ButtonDimension.SM.Wide.Width;
       fontSize = 'base';
       break;
     default:
       padding = wrap === 'narrow' ? theme.spacing(1.5, 1) : theme.spacing(1, 1.5);
-      height = wrap === 'narrow' ? ButtonDimension.md.narrow.height : ButtonDimension.md.wide.height;
-      width = wrap === 'narrow' ? ButtonDimension.md.narrow.width : ButtonDimension.md.wide.width;
+      height = wrap === 'narrow' ? ButtonDimension.MD.Narrow.Height : ButtonDimension.MD.Wide.Height;
+      width = wrap === 'narrow' ? ButtonDimension.MD.Narrow.Width : ButtonDimension.MD.Wide.Width;
       fontSize = 'base';
       break;
   }

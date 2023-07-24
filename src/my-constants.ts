@@ -49,34 +49,34 @@ export const Keys = {
 };
 
 export const ButtonDimension = {
-  lg: {
-    narrow: {
-      height: '50px',
-      width: '148px',
+  LG: {
+    Narrow: {
+      Height: '50px',
+      Width: '148px',
     },
-    wide: {
-      height: '58px',
-      width: '132px',
-    },
-  },
-  md: {
-    narrow: {
-      height: '37px',
-      width: '127px',
-    },
-    wide: {
-      height: '53px',
-      width: '117px',
+    Wide: {
+      Height: '58px',
+      Width: '132px',
     },
   },
-  sm: {
-    narrow: {
-      height: '32px',
-      width: '126px',
+  MD: {
+    Narrow: {
+      Height: '37px',
+      Width: '127px',
     },
-    wide: {
-      height: '40px',
-      width: '102.006px',
+    Wide: {
+      Height: '53px',
+      Width: '117px',
+    },
+  },
+  SM: {
+    Narrow: {
+      Height: '32px',
+      Width: '126px',
+    },
+    Wide: {
+      Height: '40px',
+      Width: '102.006px',
     },
   },
 };
