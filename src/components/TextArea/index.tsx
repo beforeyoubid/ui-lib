@@ -1,4 +1,5 @@
-import TextInput, { TextInputProps } from '../TextInput';
+import { Flex } from '../Flex';
+import { TextInput, TextInputProps } from '../TextInput';
 import { Typography } from '../Typography';
 import { TextFieldProps } from '@mui/material';
 import { useCallback } from 'react';
@@ -22,10 +23,11 @@ export const TextArea = (props: TextAreaProps) => {
   // Check if character count exceed than character limit
   const characterReached: boolean = wordCount > props.maxCharacter;
   return (
-    <>
+    <Flex direction="column">
       <TextInput
         errorText={characterReached ? 'Text limit reached.' : ''}
         {...props}
+        fullWidth
         multiline
         value={props.value}
         onChange={handleTextChange}
@@ -35,6 +37,6 @@ export const TextArea = (props: TextAreaProps) => {
           {wordCount}/{props.maxCharacter} characters
         </Typography>
       )}
-    </>
+    </Flex>
   );
 };
