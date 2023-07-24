@@ -1,5 +1,6 @@
 import { useTheme } from '@mui/material';
 import { Colors, TypographyFontSize } from '../../mui-theme';
+import { ButtonDimension } from '../../my-constants';
 
 const useButtonStyles = (
   primaryVariant: 'primary' | 'secondary' | 'tertiary',
@@ -110,26 +111,27 @@ const useButtonFontStyle = (
   switch (size) {
     case 'lg':
       padding = wrap === 'narrow' ? theme.spacing(1.5, 2) : theme.spacing(2, 2.5);
-      height = wrap === 'narrow' ? '50px' : '58px';
-      width = wrap === 'narrow' ? '148px' : '132px';
+      height = wrap === 'narrow' ? ButtonDimension.lg.narrow.height : ButtonDimension.lg.wide.height;
+      width = wrap === 'narrow' ? ButtonDimension.lg.narrow.width : ButtonDimension.lg.wide.width;
       fontSize = 'xl';
       break;
     case 'md':
       padding = wrap === 'narrow' ? theme.spacing(1, 1.5) : theme.spacing(2, 2.5);
-      height = wrap === 'narrow' ? '37px' : '53px';
-      width = wrap === 'narrow' ? '127px' : '117px';
+      height = wrap === 'narrow' ? ButtonDimension.md.narrow.height : ButtonDimension.md.wide.height;
+      width = wrap === 'narrow' ? ButtonDimension.md.narrow.width : ButtonDimension.md.wide.width;
+      fontSize = 'xl';
       fontSize = 'sm';
       break;
     case 'sm':
       padding = wrap === 'narrow' ? theme.spacing(1, 2) : theme.spacing(1.5, 2.5);
-      height = wrap === 'narrow' ? '32px' : '40px';
-      width = wrap === 'narrow' ? '126px' : '102.006px';
+      height = wrap === 'narrow' ? ButtonDimension.sm.narrow.height : ButtonDimension.sm.wide.height;
+      width = wrap === 'narrow' ? ButtonDimension.sm.narrow.width : ButtonDimension.sm.wide.width;
       fontSize = 'base';
       break;
     default:
       padding = wrap === 'narrow' ? theme.spacing(1.5, 1) : theme.spacing(1, 1.5);
-      height = wrap === 'narrow' ? '37px' : '53px';
-      width = wrap === 'narrow' ? '127px' : '117px';
+      height = wrap === 'narrow' ? ButtonDimension.md.narrow.height : ButtonDimension.md.wide.height;
+      width = wrap === 'narrow' ? ButtonDimension.md.narrow.width : ButtonDimension.md.wide.width;
       fontSize = 'base';
       break;
   }

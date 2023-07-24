@@ -47,3 +47,36 @@ export const Keys = {
     },
   },
 };
+
+export const ButtonDimension = {
+  lg: {
+    narrow: {
+      height: '50px',
+      wide: '148px',
+    },
+    wide: {
+      height: '58px',
+      width: '132px',
+    },
+  },
+  md: {
+    narrow: {
+      height: '37px',
+      width: '127px',
+    },
+    wide: {
+      height: '53px',
+      width: '117px',
+    },
+  },
+  sm: {
+    narrow: {
+      height: '32px',
+      width: '126px',
+    },
+    wide: {
+      height: '40px',
+      width: '102.006px',
+    },
+  },
+};
