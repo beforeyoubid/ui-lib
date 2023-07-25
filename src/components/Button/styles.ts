@@ -14,7 +14,7 @@ const ButtonWrapper = styled(Button)<ButtonWrapperProps>(
     backgroundColor: `${bgColor} !important`,
     borderColor: `${borderColor} !important`,
     height: height,
-    width: width,
+    minWidth: width,
     padding: padding,
     borderRadius: '4px',
     textTransform: 'none',

@@ -33,7 +33,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
         variant="secondary"
         type="mint"
         leadingIcon="Upload"
-        title="Upload File"
+        title="Upload file"
         size="md"
         onClick={onClick}
         wrap="wide"
