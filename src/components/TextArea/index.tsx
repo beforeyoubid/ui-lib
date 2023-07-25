@@ -6,7 +6,6 @@ import { useCallback } from 'react';
 
 export type TextAreaProps = TextInputProps &
   TextFieldProps & {
-    minRow: number;
     maxCharacter: number;
     hideTextCount?: boolean;
   };
@@ -20,13 +19,14 @@ export const TextArea = (props: TextAreaProps) => {
     [props.onChange]
   );
 
-  // Check if character count exceed than character limit
+  // Check if character count exceed than character <limit>     </limit>
   const characterReached: boolean = wordCount > props.maxCharacter;
   return (
     <Flex direction="column">
       <TextInput
         errorText={characterReached ? 'Text limit reached.' : ''}
         {...props}
+        disabled={props.disabled || characterReached}
         fullWidth
         multiline
         value={props.value}
