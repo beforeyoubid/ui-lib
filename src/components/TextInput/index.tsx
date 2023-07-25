@@ -14,7 +14,7 @@ export type TextInputProps = TextFieldProps & {
   errorText?: string;
 };
 
-const TextInput = (props: TextInputProps) => {
+export const TextInput = (props: TextInputProps) => {
   const {
     label,
     placeHolder,
@@ -52,5 +52,3 @@ const TextInput = (props: TextInputProps) => {
     </Flex>
   );
 };
-
-export { TextInput };
