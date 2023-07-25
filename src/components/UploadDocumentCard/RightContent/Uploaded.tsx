@@ -34,7 +34,7 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onRemove }) => {
           Cancel
         </Typography>
       </div>
-      <Button primaryVariant="primary" secondaryVariant="destructive" title="Delete" size="small" onClick={onRemove} />
+      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onRemove} wrap="wide" />
     </Flex>
   );
 };

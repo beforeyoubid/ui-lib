@@ -84,8 +84,10 @@ export function ImageUpload(props: ImageUploadProps) {
               <Spacer size={0.5} />
               <Button
                 title={props.uploadButtonText ?? 'Upload photo'}
-                primaryVariant="tertiary"
-                secondaryVariant="mint"
+                variant="tertiary"
+                type="mint"
+                size="sm"
+                wrap="narrow"
                 onClick={onUpload.bind(null, props.onSelect)}
               />
             </>

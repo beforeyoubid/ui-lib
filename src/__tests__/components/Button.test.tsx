@@ -6,7 +6,7 @@ describe('Button', () => {
   test('renders component', () => {
     render(
       <ThemedApp>
-        <Button title="Close" primaryVariant="primary" secondaryVariant="mint" />
+        <Button title="Close" variant="primary" type="mint" size="md" wrap="narrow" />
       </ThemedApp>
     );
   });

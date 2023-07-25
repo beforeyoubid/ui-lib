@@ -5,7 +5,7 @@ import { getInfoCheckboxBackgroundColor } from './utils';
 import { Flex } from '../Flex';
 import { theme } from '../../mui-theme';
 
-type InformationCheckboxProps = {
+export type InformationCheckboxProps = {
   title: string;
   description: string;
   variant?: 'info' | 'warning' | 'error';
