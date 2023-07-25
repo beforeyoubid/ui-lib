@@ -19,7 +19,7 @@ export const TextArea = (props: TextAreaProps) => {
     [props.onChange]
   );
 
-  // Check if character count exceed than character <limit>     </limit>
+  // Check if character count exceed than character limit
   const characterReached: boolean = wordCount > props.maxCharacter;
   return (
     <Flex direction="column">
