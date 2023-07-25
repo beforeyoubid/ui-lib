@@ -78,15 +78,17 @@ const useButtonStyles = (
       }
       break;
     case 'tertiary':
-      {
+      if (secondaryVariant === 'disabled') {
+        isDisabled = true;
+        bgColor = theme.palette.colors.dark30;
+        tertiaryVariant = 'contained';
+      } else {
         bgColor = theme.palette.colors.lightWhite;
         textColor = 'dark75';
         hoverColor = theme.palette.colors.dark15;
         borderColor = theme.palette.colors.dark45;
         tertiaryVariant = 'outlined';
       }
-      break;
-
     default:
       break;
   }

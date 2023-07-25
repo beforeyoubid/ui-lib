@@ -37,6 +37,7 @@ const Button: React.FC<ButtonProps> = ({
       variant={buttonStyle.tertiaryVariant}
       padding={buttonFontStyle.padding}
       disableRipple
+      disableElevation
       disabled={disabled || buttonStyle.isDisabled}
       startIcon={leadingIcon ? <Icon icon={leadingIcon} color={buttonStyle.textColor} /> : null}
       endIcon={trailingIcon ? <Icon icon={trailingIcon} color={buttonStyle.textColor} /> : null}
