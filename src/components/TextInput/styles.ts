@@ -42,6 +42,11 @@ const CustomTextField = styled(TextField)`
     & fieldset {
       border-color: ${({ theme }) => theme.palette.colors.dark45};
     }
+    &:hover fieldset {
+      border-color: ${({ error, disabled, theme }) =>
+        disabled ? theme.palette.colors.dark45 : error ? theme.palette.colors.error60 : theme.palette.colors.mint60};
+    }
+    ,
     &.Mui-focused fieldset {
       border-color: ${({ error, theme }) => (error ? theme.palette.colors.error60 : theme.palette.colors.mint60)};
     }

@@ -8,23 +8,13 @@ export type TextInputProps = TextFieldProps & {
   label: string;
   placeHolder: string;
   value: string;
-  backgroundColor?: string;
   leadingIconName?: IconProps['icon'];
   helperText?: string;
   errorText?: string;
 };
 
 export const TextInput = (props: TextInputProps) => {
-  const {
-    label,
-    placeHolder,
-    value,
-    backgroundColor,
-    leadingIconName,
-    helperText = '',
-    errorText = '',
-    ...rest
-  } = props;
+  const { label, placeHolder, value, leadingIconName, helperText = '', errorText = '', ...rest } = props;
 
   return (
     <Flex direction="column" width="100%">
@@ -33,7 +23,6 @@ export const TextInput = (props: TextInputProps) => {
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <CustomTextField
         error={!!errorText || false}
-        style={{ backgroundColor }}
         id="outlined-basic"
         variant="outlined"
         placeholder={placeHolder}

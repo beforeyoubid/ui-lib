@@ -6,7 +6,6 @@ import { useCallback } from 'react';
 
 export type TextAreaProps = TextInputProps &
   TextFieldProps & {
-    minRow: number;
     maxCharacter: number;
     hideTextCount?: boolean;
   };
@@ -27,6 +26,7 @@ export const TextArea = (props: TextAreaProps) => {
       <TextInput
         errorText={characterReached ? 'Text limit reached.' : ''}
         {...props}
+        disabled={props.disabled || characterReached}
         fullWidth
         multiline
         value={props.value}
