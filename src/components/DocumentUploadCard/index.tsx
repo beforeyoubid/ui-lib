@@ -12,7 +12,7 @@ import { FlexCard, StyledLinearProgress } from './styles';
 import { LeftContent } from './LeftContent';
 import { Locked, Upload, Uploading, Uploaded } from './RightContent';
 
-export type UploadDocumentCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
+export type DocumentUploadCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 export type SharedProps = { label: string; fileName: string; fileSize?: string };
 
 type CardWithMediaProps = SharedProps & { fileUrl: string };
@@ -28,7 +28,7 @@ type ErrorProps = UploadProps & {
   errorMessage: string;
 };
 
-export type UploadDocumentCardProps<State extends UploadDocumentCardState> = {
+export type DocumentUploadCardProps<State extends DocumentUploadCardState> = {
   state: State;
 } & (State extends 'uploading' | 'uploaded' | 'locked'
   ? State extends 'uploading' | 'uploaded'
@@ -38,18 +38,18 @@ export type UploadDocumentCardProps<State extends UploadDocumentCardState> = {
   ? UploadProps
   : ErrorProps);
 
-const UploadDocumentCard = <State extends UploadDocumentCardState>(props: UploadDocumentCardProps<State>) => {
+const DocumentUploadCard = <State extends DocumentUploadCardState>(props: DocumentUploadCardProps<State>) => {
   const state = props.state;
 
   const isError = useMemo(() => state === 'error', [state]);
   const isLocked = useMemo(() => state === 'locked', [state]);
   const hasFile = useMemo(() => ['locked', 'uploaded', 'uploading'].includes(state), [state]);
 
-  const { label, fileName, fileSize } = props as UploadDocumentCardProps<typeof state>;
+  const { label, fileName, fileSize } = props as DocumentUploadCardProps<typeof state>;
 
-  const { errorMessage = '' } = props as UploadDocumentCardProps<'error'>;
-  const { onSelect } = props as UploadDocumentCardProps<'upload'>;
-  const { onRemove, uploadProgress } = props as UploadDocumentCardProps<'uploading'>;
+  const { errorMessage = '' } = props as DocumentUploadCardProps<'error'>;
+  const { onSelect } = props as DocumentUploadCardProps<'upload'>;
+  const { onRemove, uploadProgress } = props as DocumentUploadCardProps<'uploading'>;
 
   return (
     <Flex direction="column">
@@ -80,7 +80,7 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
           {/* upload progress */}
           {state === 'uploading' && (
             <StyledLinearProgress
-              value={(props as UploadDocumentCardProps<'uploading'>).uploadProgress}
+              value={(props as DocumentUploadCardProps<'uploading'>).uploadProgress}
               variant="determinate"
             />
           )}
@@ -90,4 +90,4 @@ const UploadDocumentCard = <State extends UploadDocumentCardState>(props: Upload
   );
 };
 
-export { UploadDocumentCard };
+export { DocumentUploadCard };

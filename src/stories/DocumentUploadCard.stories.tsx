@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { UploadDocumentCard } from '../components/UploadDocumentCard';
+import { DocumentUploadCard } from '../components/DocumentUploadCard';
 // import { ThemedApp } from './styles';
 
-const meta: Meta<typeof UploadDocumentCard> = {
-  component: UploadDocumentCard,
-  title: 'Display/UploadDocumentCard',
+const meta: Meta<typeof DocumentUploadCard> = {
+  component: DocumentUploadCard,
+  title: 'Display/DocumentUploadCard',
 };
 
 export default meta;
-type Story = StoryObj<typeof UploadDocumentCard>;
+type Story = StoryObj<typeof DocumentUploadCard>;
 
 export const Upload: Story = {
   args: {
