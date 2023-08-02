@@ -18,7 +18,7 @@ export const TextArea = (props: TextAreaProps) => {
       if (props.stopTypingAfterMaxCharacter && event.target.value.length > props.maxCharacter) return;
       props.onChange?.(event);
     },
-    [props.onChange]
+    [props]
   );
 
   return (
