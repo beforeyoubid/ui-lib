@@ -12,7 +12,7 @@ import { typedMemo } from '../../../utils';
 
 type UploadProps = { onSelect: (file: File) => void };
 
-export const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
+const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
   const onUpload = useCallback((onSelect: (file: File) => void) => {
     const input = document.createElement('input');
     input.type = 'file';
