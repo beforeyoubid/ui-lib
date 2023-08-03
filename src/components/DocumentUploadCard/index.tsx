@@ -17,8 +17,8 @@ type DocumentUploadCardProps = {
   fileName?: string;
   fileSize?: string;
   isUploading: boolean;
-  uploadProgress?: number; // we know that upload is in progress
-  errorMessage?: string; // we know that an error occurred
+  uploadProgress?: number;
+  errorMessage?: string; // indicates an error occurred
   onUploadCancel?: () => void;
   onFileSelect: (file: File) => void;
   onFileDelete: () => void;
