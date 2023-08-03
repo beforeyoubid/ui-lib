@@ -73,7 +73,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
           <Button
             variant="secondary"
             size="sm"
-            type="mint"
+            type={props.canSave ? 'mint' : 'disabled'}
             wrap="wide"
             title={saveButtonTitle}
             onClick={props.onSave}
