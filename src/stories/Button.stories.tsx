@@ -12,7 +12,7 @@ type Story = StoryObj<ButtonProps>;
 export const Active: Story = {
   args: {
     variant: 'primary',
-    type: 'disabled',
+    type: 'mint',
     size: 'sm',
     title: 'Login',
     wrap: 'narrow',

@@ -10,6 +10,7 @@ export * from './ImageUpload';
 export * from './InformationCheckbox';
 export * from './KebabMenu';
 export * from './KebabMenu/types';
+export * from './LinkButton';
 export * from './MediaCard';
 export * from './NavigationButton';
 export * from './NavigationMenu';
