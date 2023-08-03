@@ -19,4 +19,4 @@ export * from './ProfilePicture';
 export * from './TextArea';
 export * from './TextInput';
 export * from './Typography';
-export * from './UploadDocumentCard';
+export * from './DocumentUploadCard';
