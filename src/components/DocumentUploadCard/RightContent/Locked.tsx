@@ -7,14 +7,33 @@ import { typedMemo } from '../../../utils';
 // Relative Imports
 // Components
 import { Flex } from '../../Flex';
+import { Icon } from '../../Icon';
 import { Typography } from '../../Typography';
 
-type LockedProps = { fileSize?: string };
+type LockedProps = {
+  fileName: string;
+  fileSize?: string;
+};
 
-const LockedNoMemo: React.FC<LockedProps> = ({ fileSize = '-' }) => {
+export const LockedNoMemo: React.FC<LockedProps> = ({ fileName, fileSize = '-' }) => {
+  if (!fileName) {
+    return (
+      <Flex direction="row" justify="center" align="center" grow={1}>
+        <Icon icon="FileOff" size="18" color="dark75" />
+        <Typography class="medium" size="sm" color="dark75">
+          No saved document
+        </Typography>
+      </Flex>
+    );
+  }
+
   return (
-    <Flex direction="column" justify="center" alignSelf="stretch">
-      <Typography color="dark60" class="roman" size="xs" padding={0}>
+    <Flex direction="row" width="100%" justify="space-between" align="center">
+      <Icon icon="File" size={18} color="dark75" />
+      <Typography class="medium" size="sm" color="dark75" padding={0}>
+        {fileName}
+      </Typography>
+      <Typography class="roman" size="xs" color="dark60" padding={0}>
         {fileSize}
       </Typography>
     </Flex>
