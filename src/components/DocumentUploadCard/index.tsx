@@ -77,7 +77,7 @@ const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
             <Flex direction="column" width="100%">
               <Flex direction="row" align="center" width="100%">
                 {/* left content */}
-                <LeftContent isEditing fileName={fileName} fileSize={fileSize} hasError={!!errorMessage} />
+                <LeftContent fileName={fileName} fileSize={fileSize} hasError={!!errorMessage} />
                 {/* right content */}
                 {!isUploading && !fileUrl && <Upload onSelect={onFileSelect} />}
                 {isUploading && <Uploading progress={uploadProgress} />}
