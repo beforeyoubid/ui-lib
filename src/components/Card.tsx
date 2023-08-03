@@ -103,7 +103,7 @@ const Wrapper = styled(Flex)<{ fullWidth: boolean }>(({ theme, fullWidth }) => (
   backgroundColor: theme.palette.colors.lightWhite,
   padding: theme.spacing(6, 5),
   width: fullWidth ? `calc(100% - ${theme.spacing(5)})` : undefined,
-  maxWidth: `calc(100% - ${theme.spacing(10)})`,
+  maxWidth: theme.spacing(100),
 }));
 
 const ChildrenWrapper = styled('div')({
