@@ -6,13 +6,13 @@ import React, { useState, useCallback } from 'react';
 // Components
 import { Icon } from '../../Icon';
 import { Flex } from '../../Flex';
-import { Typography } from '../../Typography';
 import { Button } from '../../Button';
+import { LinkButton } from '../../LinkButton';
 import { typedMemo } from '../../../utils';
 
-type UploadedProps = { onRemove: () => void };
+type UploadedProps = { onFileDelete: () => void };
 
-const UploadedNoMemo: React.FC<UploadedProps> = ({ onRemove }) => {
+const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
@@ -29,12 +29,8 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onRemove }) => {
 
   return (
     <Flex direction="row" align="center" justify="center">
-      <div onClick={toggleConfirmDelete}>
-        <Typography class="roman" size="xs" color="dark60" padding={0}>
-          Cancel
-        </Typography>
-      </div>
-      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onRemove} wrap="wide" />
+      <LinkButton type="grey" size="md" title="Cancel" onClick={toggleConfirmDelete} />
+      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onFileDelete} wrap="narrow" />
     </Flex>
   );
 };
