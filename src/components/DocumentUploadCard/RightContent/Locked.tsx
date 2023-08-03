@@ -29,10 +29,12 @@ export const LockedNoMemo: React.FC<LockedProps> = ({ fileName, fileSize = '-' }
 
   return (
     <Flex direction="row" width="100%" justify="space-between" align="center">
-      <Icon icon="File" size={18} color="dark75" />
-      <Typography class="medium" size="sm" color="dark75" padding={0}>
-        {fileName}
-      </Typography>
+      <Flex direction="row" grow={1} align="center" gap={12}>
+        <Icon icon="File" size={18} color="dark75" />
+        <Typography class="medium" size="sm" color="dark75" padding={0}>
+          {fileName}
+        </Typography>
+      </Flex>
       <Typography class="roman" size="xs" color="dark60" padding={0}>
         {fileSize}
       </Typography>
