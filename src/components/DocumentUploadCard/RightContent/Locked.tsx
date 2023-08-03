@@ -15,7 +15,7 @@ type LockedProps = {
   fileSize?: string;
 };
 
-export const LockedNoMemo: React.FC<LockedProps> = ({ fileName, fileSize = '-' }) => {
+const LockedNoMemo: React.FC<LockedProps> = ({ fileName, fileSize = '-' }) => {
   if (!fileName) {
     return (
       <Flex direction="row" justify="center" align="center" grow={1}>

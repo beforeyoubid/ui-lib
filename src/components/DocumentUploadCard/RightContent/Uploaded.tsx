@@ -6,13 +6,13 @@ import React, { useState, useCallback } from 'react';
 // Components
 import { Icon } from '../../Icon';
 import { Flex } from '../../Flex';
-import { Typography } from '../../Typography';
 import { Button } from '../../Button';
+import { LinkButton } from '../../LinkButton';
 import { typedMemo } from '../../../utils';
 
 type UploadedProps = { onFileDelete: () => void };
 
-export const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
+const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
@@ -30,12 +30,7 @@ export const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
 
   return (
     <Flex direction="row" align="center" justify="center">
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <Flex onClick={toggleConfirmDelete}>
-        <Typography class="roman" size="sm" color="dark60" padding={0.9}>
-          Cancel
-        </Typography>
-      </Flex>
+      <LinkButton type="grey" size="md" title="Cancel" onClick={toggleConfirmDelete} />
       <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onFileDelete} wrap="narrow" />
     </Flex>
   );
