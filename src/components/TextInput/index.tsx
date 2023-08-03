@@ -1,6 +1,6 @@
 import { CustomTextField } from './styles';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
-import { InputAdornment, TextFieldProps } from '@mui/material';
+import { InputAdornment, StandardTextFieldProps } from '@mui/material';
 import { Icon, IconProps } from '../Icon';
 import { Flex } from '../Flex';
 
@@ -12,7 +12,8 @@ export type TextInputProps = {
   helperText?: string;
   errorText?: string;
   required?: boolean;
-} & Omit<TextFieldProps, 'required'>;
+  isOptional?: boolean;
+} & Omit<StandardTextFieldProps, 'required' | 'variant'>;
 
 export const TextInput = (props: TextInputProps) => {
   const {
@@ -23,12 +24,13 @@ export const TextInput = (props: TextInputProps) => {
     helperText = '',
     errorText = '',
     required = false,
+    isOptional = false,
     ...rest
   } = props;
 
   return (
     <Flex direction="column" width="100%">
-      <TextFieldLabel labelText={label} required={required} />
+      <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <CustomTextField

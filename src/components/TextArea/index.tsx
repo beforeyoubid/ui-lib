@@ -1,11 +1,11 @@
 import { Flex } from '../Flex';
 import { TextInput, TextInputProps } from '../TextInput';
 import { Typography } from '../Typography';
-import { TextFieldProps } from '@mui/material';
+import { OutlinedTextFieldProps } from '@mui/material';
 import { useCallback } from 'react';
 
 export type TextAreaProps = TextInputProps &
-  TextFieldProps & {
+  Omit<OutlinedTextFieldProps, 'variant'> & {
     maxCharacter: number;
     hideTextCount?: boolean;
     stopTypingAfterMaxCharacter?: boolean;
