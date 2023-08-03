@@ -11,16 +11,31 @@ const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   </HelperText>
 );
 
-const TextFieldLabelNoMemo = ({ labelText, required }: { labelText: string; required: boolean }) => (
-  <LabelRowContainer>
+const TextFieldLabelNoMemo = ({
+  labelText,
+  required,
+  isOptional,
+}: {
+  labelText: string;
+  required: boolean;
+  isOptional: boolean;
+}) => (
+  <LabelRowContainer required={required}>
     <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
     </Typography>
 
     {required && (
       <span>
-        <Typography class="medium" size="xs" color="mint60" padding={0}>
+        <Typography class="bold" size="xs" color="mint60" padding={0}>
           *
+        </Typography>
+      </span>
+    )}
+    {!required && isOptional && (
+      <span>
+        <Typography class="roman" size="sm" color="dark75" padding={0}>
+          (optional)
         </Typography>
       </span>
     )}

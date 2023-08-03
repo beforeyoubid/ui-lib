@@ -28,11 +28,11 @@ const RowContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(0.5),
 }));
 
-const LabelRowContainer = styled('div')(({ theme }) => ({
+const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, required }) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'start',
-  alignItems: 'start',
+  alignItems: required ? 'start' : 'center',
   gap: theme.spacing(0.25),
 }));
 

@@ -18,6 +18,7 @@ export type DropdownProps = {
   fullWidth?: boolean;
   disabled?: boolean;
   required?: boolean;
+  isOptional?: boolean;
   onChange: (event: Option) => void;
 };
 
@@ -28,7 +29,18 @@ const renderValue = ({ label }: Option) => (
 );
 
 export const Dropdown = (props: DropdownProps) => {
-  const { label, value, options, errorText = '', placeholder, fullWidth, disabled, required = false, onChange } = props;
+  const {
+    label,
+    value,
+    options,
+    errorText = '',
+    placeholder,
+    fullWidth,
+    disabled,
+    required = false,
+    isOptional = false,
+    onChange,
+  } = props;
 
   const theme = useTheme();
   // Menu item props
@@ -56,7 +68,7 @@ export const Dropdown = (props: DropdownProps) => {
   );
   return (
     <>
-      <TextFieldLabel labelText={label} required={required} />
+      <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
       <StyledSelect
         value={selectedOption}
         fullWidth={fullWidth}
