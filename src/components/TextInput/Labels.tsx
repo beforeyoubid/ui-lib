@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '../Typography';
-import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelIcon, RowContainer } from './styles';
+import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
 import { Icon } from '../Icon';
 
 const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
@@ -11,18 +11,20 @@ const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   </HelperText>
 );
 
-const TextFieldLabelNoMemo = ({ labelText }: { labelText: string }) => (
-  <RowContainer>
+const TextFieldLabelNoMemo = ({ labelText, showMandatory }: { labelText: string; showMandatory: boolean }) => (
+  <LabelRowContainer>
     <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
     </Typography>
 
-    <LabelIcon>
-      <Typography class="medium" size="sm" color="mint60" padding={0}>
-        *
-      </Typography>
-    </LabelIcon>
-  </RowContainer>
+    {showMandatory && (
+      <span>
+        <Typography class="medium" size="xs" color="mint60" padding={0}>
+          *
+        </Typography>
+      </span>
+    )}
+  </LabelRowContainer>
 );
 
 const TextFieldErrorLabelNoMemo = ({ errorText }: { errorText: string }) => (

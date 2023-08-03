@@ -11,14 +11,24 @@ export type TextInputProps = TextFieldProps & {
   leadingIconName?: IconProps['icon'];
   helperText?: string;
   errorText?: string;
+  showMandatory?: boolean;
 };
 
 export const TextInput = (props: TextInputProps) => {
-  const { label, placeHolder, value, leadingIconName, helperText = '', errorText = '', ...rest } = props;
+  const {
+    label,
+    placeHolder,
+    value,
+    leadingIconName,
+    helperText = '',
+    errorText = '',
+    showMandatory = true,
+    ...rest
+  } = props;
 
   return (
     <Flex direction="column" width="100%">
-      <TextFieldLabel labelText={label} />
+      <TextFieldLabel labelText={label} showMandatory={showMandatory} />
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <CustomTextField
