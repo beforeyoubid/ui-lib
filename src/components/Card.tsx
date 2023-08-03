@@ -33,9 +33,11 @@ export function Card(props: CardProps) {
   return (
     <Wrapper direction="column" gap={theme.spacing(4)} fullWidth={props.fullWidth ?? true}>
       <Flex direction="row" width="100%" align="center">
-        <Typography color="navy" class="bold" size="2xl" padding={0}>
-          {props.title}
-        </Typography>
+        <Flex direction="row" align="center" grow={1}>
+          <Typography color="navy" class="bold" size="2xl" padding={0}>
+            {props.title}
+          </Typography>
+        </Flex>
         {props.editable && (
           <CardButtons
             editing={props.editing}
@@ -64,11 +66,10 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
     saveButtonTitle = 'Save changes',
   } = props;
   return (
-    <Flex align="center" width="100%" justify="flex-end" gap={theme.spacing(1)}>
+    <Flex align="center" grow={1} justify="flex-end" gap={theme.spacing(1)}>
       {props.editing && (
         <>
           <LinkButton onClick={props.onCancel} type="grey" title={cancelButtonTitle} size="md" />
-
           <Button
             variant="secondary"
             size="sm"
