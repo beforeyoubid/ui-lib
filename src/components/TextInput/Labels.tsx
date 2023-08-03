@@ -11,13 +11,13 @@ const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   </HelperText>
 );
 
-const TextFieldLabelNoMemo = ({ labelText, showMandatory }: { labelText: string; showMandatory: boolean }) => (
+const TextFieldLabelNoMemo = ({ labelText, required }: { labelText: string; required: boolean }) => (
   <LabelRowContainer>
     <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
     </Typography>
 
-    {showMandatory && (
+    {required && (
       <span>
         <Typography class="medium" size="xs" color="mint60" padding={0}>
           *

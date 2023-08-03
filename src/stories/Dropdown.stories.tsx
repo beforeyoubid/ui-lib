@@ -18,6 +18,7 @@ export const Active: Story = {
     value: 'Ben',
     disabled: false,
     fullWidth: true,
+    required: true,
     onChange: value => {
       console.log('Selected value:', value);
     },
