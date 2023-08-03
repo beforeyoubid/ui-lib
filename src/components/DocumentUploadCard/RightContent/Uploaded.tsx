@@ -10,9 +10,9 @@ import { Typography } from '../../Typography';
 import { Button } from '../../Button';
 import { typedMemo } from '../../../utils';
 
-type UploadedProps = { onRemove: () => void };
+type UploadedProps = { onFileDelete: () => void };
 
-const UploadedNoMemo: React.FC<UploadedProps> = ({ onRemove }) => {
+export const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
@@ -20,6 +20,7 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onRemove }) => {
   if (!confirmDelete) {
     return (
       <Flex direction="column" justify="center" alignSelf="stretch">
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <span onClick={toggleConfirmDelete}>
           <Icon icon="Trash" size={18} color="dark90" />
         </span>
@@ -29,12 +30,13 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onRemove }) => {
 
   return (
     <Flex direction="row" align="center" justify="center">
-      <div onClick={toggleConfirmDelete}>
-        <Typography class="roman" size="xs" color="dark60" padding={0}>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      <Flex onClick={toggleConfirmDelete}>
+        <Typography class="roman" size="sm" color="dark60" padding={0.9}>
           Cancel
         </Typography>
-      </div>
-      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onRemove} wrap="wide" />
+      </Flex>
+      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onFileDelete} wrap="narrow" />
     </Flex>
   );
 };

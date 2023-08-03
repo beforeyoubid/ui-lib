@@ -12,9 +12,9 @@ import { typedMemo } from '../../../utils';
 
 type UploadProps = { onSelect: (file: File) => void };
 
-const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
+export const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
   const onUpload = useCallback((onSelect: (file: File) => void) => {
-    let input = document.createElement('input');
+    const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.pdf';
     input.onchange = function () {
@@ -28,15 +28,15 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect }) => {
   const onClick = onUpload.bind(null, onSelect);
 
   return (
-    <Flex direction="row" align="center">
+    <Flex direction="row">
       <Button
-        variant="secondary"
-        type="mint"
-        leadingIcon="Upload"
         title="Upload file"
+        leadingIcon="Upload"
+        variant="secondary"
+        wrap="narrow"
+        type="mint"
         size="md"
         onClick={onClick}
-        wrap="wide"
       />
     </Flex>
   );

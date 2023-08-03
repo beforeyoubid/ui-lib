@@ -6,25 +6,27 @@ import React from 'react';
 // Components
 import { Flex } from '../../Flex';
 import { Typography } from '../../Typography';
-// Styling
-import { UploadDocumentCardState, SharedProps } from '../index';
 
 type LeftContentProps = {
-  state: UploadDocumentCardState;
-} & Pick<SharedProps, 'fileName' | 'fileSize'>;
+  fileName?: string;
+  fileSize?: string;
+  hasError: boolean;
+  isEditing: boolean;
+};
 
-const LeftContent: React.FC<LeftContentProps> = ({ state, fileName, fileSize }) => {
-  const isError = state === 'error';
+const LeftContent: React.FC<LeftContentProps> = ({ fileName, fileSize, isEditing, hasError }) => {
   return (
-    <Flex direction="column" grow="1">
-      <Typography class="medium" size="sm" padding={0.4} color={isError ? 'error75' : 'dark75'}>
-        {fileName ?? 'Select a file or drag and drop here'}
-      </Typography>
-      {state !== 'locked' && (
-        <Typography class="roman" size="xs" padding={0.4} color={isError ? 'error60' : 'dark60'}>
-          {fileSize ?? 'maximum file size is 200mb'}
+    <Flex direction="row" grow={1} align="stretch">
+      <Flex direction="column" grow={1}>
+        <Typography class="medium" size="sm" padding={0.4} color={hasError ? 'error75' : 'dark75'}>
+          {fileName ? fileName : 'Select a file or drag and drop here'}
         </Typography>
-      )}
+        {isEditing && (
+          <Typography class="roman" size="xs" padding={0.4} color={hasError ? 'error60' : 'dark60'}>
+            {fileSize ? fileSize : 'maximum file size is 200mb'}
+          </Typography>
+        )}
+      </Flex>
     </Flex>
   );
 };
