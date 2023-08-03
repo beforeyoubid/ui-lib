@@ -17,6 +17,6 @@ export const Active: Story = {
     helperText: 'Please enter your full name',
     errorText: 'Full name is not valid.',
     value: 'Before You Bid',
-    showMandatory: true,
+    required: true,
   },
 };

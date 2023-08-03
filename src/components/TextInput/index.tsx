@@ -4,15 +4,15 @@ import { InputAdornment, TextFieldProps } from '@mui/material';
 import { Icon, IconProps } from '../Icon';
 import { Flex } from '../Flex';
 
-export type TextInputProps = TextFieldProps & {
+export type TextInputProps = {
   label: string;
   placeHolder: string;
   value: string;
   leadingIconName?: IconProps['icon'];
   helperText?: string;
   errorText?: string;
-  showMandatory?: boolean;
-};
+  required?: boolean;
+} & Omit<TextFieldProps, 'required'>;
 
 export const TextInput = (props: TextInputProps) => {
   const {
@@ -22,13 +22,13 @@ export const TextInput = (props: TextInputProps) => {
     leadingIconName,
     helperText = '',
     errorText = '',
-    showMandatory = true,
+    required = false,
     ...rest
   } = props;
 
   return (
     <Flex direction="column" width="100%">
-      <TextFieldLabel labelText={label} showMandatory={showMandatory} />
+      <TextFieldLabel labelText={label} required={required} />
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <CustomTextField
