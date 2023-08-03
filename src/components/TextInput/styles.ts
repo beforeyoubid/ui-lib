@@ -28,8 +28,12 @@ const RowContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(0.5),
 }));
 
-const LabelIcon = styled('div')(({ theme }) => ({
-  marginLeft: theme.spacing(0.5),
+const LabelRowContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'start',
+  alignItems: 'start',
+  gap: theme.spacing(0.25),
 }));
 
 const CustomTextField = styled(TextField)`
@@ -68,4 +72,4 @@ const CustomTextField = styled(TextField)`
   }
 `;
 
-export { HelperTextErrorWrapper, HelperText, RowContainer, CustomTextField, LabelIcon, HelperErrorText };
+export { HelperTextErrorWrapper, HelperText, RowContainer, CustomTextField, HelperErrorText, LabelRowContainer };
