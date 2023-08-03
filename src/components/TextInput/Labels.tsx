@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '../Typography';
-import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelIcon, RowContainer } from './styles';
+import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
 import { Icon } from '../Icon';
 
 const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
@@ -11,18 +11,35 @@ const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   </HelperText>
 );
 
-const TextFieldLabelNoMemo = ({ labelText }: { labelText: string }) => (
-  <RowContainer>
+const TextFieldLabelNoMemo = ({
+  labelText,
+  required,
+  isOptional,
+}: {
+  labelText: string;
+  required: boolean;
+  isOptional: boolean;
+}) => (
+  <LabelRowContainer required={required}>
     <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
     </Typography>
 
-    <LabelIcon>
-      <Typography class="medium" size="sm" color="mint60" padding={0}>
-        *
-      </Typography>
-    </LabelIcon>
-  </RowContainer>
+    {required && (
+      <span>
+        <Typography class="bold" size="xs" color="mint60" padding={0}>
+          *
+        </Typography>
+      </span>
+    )}
+    {!required && isOptional && (
+      <span>
+        <Typography class="roman" size="sm" color="dark75" padding={0}>
+          (optional)
+        </Typography>
+      </span>
+    )}
+  </LabelRowContainer>
 );
 
 const TextFieldErrorLabelNoMemo = ({ errorText }: { errorText: string }) => (
