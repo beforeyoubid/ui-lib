@@ -20,7 +20,6 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   if (!confirmDelete) {
     return (
       <Flex direction="column" justify="center" alignSelf="stretch">
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <span onClick={toggleConfirmDelete}>
           <Icon icon="Trash" size={18} color="dark90" />
         </span>
