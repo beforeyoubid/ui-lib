@@ -8,14 +8,13 @@ export type TextAreaProps = TextInputProps &
   Omit<OutlinedTextFieldProps, 'variant'> & {
     maxCharacter: number;
     hideTextCount?: boolean;
-    stopTypingAfterMaxCharacter?: boolean;
   };
 
 export const TextArea = (props: TextAreaProps) => {
-  const wordCount = props.value?.trim().length;
+  const wordCount = props.value?.trim().length ?? 0;
+
   const handleTextChange = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      if (props.stopTypingAfterMaxCharacter && event.target.value.length > props.maxCharacter) return;
       props.onChange?.(event);
     },
     [props]
