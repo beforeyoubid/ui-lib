@@ -23,7 +23,7 @@ export type DropdownProps = {
 };
 
 const renderValue = ({ label }: Option) => (
-  <Typography class="roman" size="base" color="dark90">
+  <Typography class="roman" size="base" color="dark90" padding={0}>
     {label}
   </Typography>
 );
