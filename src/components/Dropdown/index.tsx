@@ -13,7 +13,7 @@ export type DropdownProps = {
   label: string;
   value: string;
   options: Option[];
-  placeholder: string;
+  placeholder?: string;
   errorText?: string;
   fullWidth?: boolean;
   disabled?: boolean;

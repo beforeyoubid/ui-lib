@@ -6,7 +6,7 @@ import { Flex } from '../Flex';
 
 export type TextInputProps = {
   label: string;
-  placeHolder: string;
+  placeHolder?: string;
   value: string;
   leadingIconName?: IconProps['icon'];
   helperText?: string;
