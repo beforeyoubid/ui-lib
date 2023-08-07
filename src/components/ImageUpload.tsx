@@ -15,6 +15,7 @@ export type ImageUploadProps = {
   variant: 'large';
   fullWidth?: boolean;
   src?: string;
+  uploading?: boolean;
 } & (
   | { canUpload: false }
   | {
@@ -73,6 +74,11 @@ export function ImageUpload(props: ImageUploadProps) {
             canUpload={props.canUpload}
             onClick={props.canUpload ? onUpload.bind(null, props.onSelect) : undefined}
           >
+            {props.src && props.uploading && (
+              <LoaderIconWrapper>
+                <Icon icon="Loader2" color="lightWhite" size="24" />
+              </LoaderIconWrapper>
+            )}
             {props.src ? (
               <Image src={props.src} />
             ) : (
@@ -111,9 +117,29 @@ const UploadSection = styled(Flex)<{ error?: boolean; canUpload?: boolean }>(({ 
   borderRadius: 4,
   minHeight: 150,
   cursor: canUpload ? 'pointer' : 'default',
+  position: 'relative',
 }));
 
 const Spacer = styled('div')<{ size: number }>(({ theme, size }) => ({
   height: theme.spacing(size),
   width: '100%',
 }));
+
+const LoaderIconWrapper = styled('div')`
+  height: 100%;
+  width: 100%;
+  max-height: 150px;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.palette.colors.transparentOverlay50};
+  svg {
+    animation: rotate 1.5s linear infinite;
+  }
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;

@@ -58,3 +58,17 @@ export const LargeUploaded: Story = {
     src: '/ken.png',
   },
 };
+
+export const LargeUploading: Story = {
+  args: {
+    variant: 'large',
+    label: 'Label',
+    labelRequired: true,
+    helperText: 'This is hint text to help the user.',
+    errorText: 'Error text',
+    canUpload: true,
+    error: false,
+    src: '/ken.png',
+    uploading: true,
+  },
+};
