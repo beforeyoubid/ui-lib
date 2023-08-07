@@ -10,6 +10,7 @@ module.exports = {
     'plugin:storybook/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
   ],
   rules: {
     'react/react-in-jsx-scope': 0,

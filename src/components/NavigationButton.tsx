@@ -20,14 +20,9 @@ export type NavigationButtonProps = {
 };
 
 function NavigationButtonNoMemo(props: NavigationButtonProps) {
-  const onClickWrapper = useCallback(
-    (e: React.MouseEvent) => props.onClick(props.value, e),
-    [props.onClick, props.value]
-  );
-  const onExpandWrapper = useCallback(
-    (e: React.MouseEvent) => props.onExpand?.(props.value, e),
-    [props.onExpand, props.value]
-  );
+  const { onClick, onExpand, value } = props;
+  const onClickWrapper = useCallback((e: React.MouseEvent) => onClick(value, e), [onClick, value]);
+  const onExpandWrapper = useCallback((e: React.MouseEvent) => onExpand?.(value, e), [onExpand, value]);
   const selectedIcon = useMemo(
     () => (props.icon ? <StyledIcon icon={props.icon} color="dark90" /> : <span />),
     [props.icon]
