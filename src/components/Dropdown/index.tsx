@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { Select, MenuItem, SelectChangeEvent, styled, useTheme, ListItemIcon } from '@mui/material';
-import { TextFieldLabel } from '../TextInput/Labels';
+import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
 import { Typography } from '../Typography';
 import { Icon } from '../Icon';
 
@@ -69,6 +69,7 @@ export const Dropdown = (props: DropdownProps) => {
   return (
     <>
       <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
+      {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <StyledSelect
         value={selectedOption}
         fullWidth={fullWidth}
