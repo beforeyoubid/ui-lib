@@ -39,7 +39,7 @@ export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
 };
 
 const Wrapper = styled(Flex)<{ variant: string }>(({ theme, variant }) => ({
-  backgroundColor: getInfoCheckboxBackgroundColor(variant),
+  backgroundColor: getInfoCheckboxBackgroundColor(theme, variant),
   paddingTop: theme.spacing(2),
   paddingBottom: theme.spacing(2),
   paddingLeft: theme.spacing(1.5),

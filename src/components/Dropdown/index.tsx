@@ -56,9 +56,9 @@ export const Dropdown = (props: DropdownProps) => {
         },
       },
     }),
-    []
+    [theme]
   );
-  const selectedOption = useMemo(() => options.find(o => o.value === value), [options]);
+  const selectedOption = useMemo(() => options.find(o => o.value === value), [options, value]);
   const onChangeWrapper = useCallback(
     (event: SelectChangeEvent<Option>) => {
       const option = options.find(o => o.value === event.target.value);
