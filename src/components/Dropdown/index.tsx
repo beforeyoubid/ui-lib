@@ -99,7 +99,6 @@ export const Dropdown = (props: DropdownProps) => {
 };
 
 const StyledSelect = styled(Select<Option>)(({ theme }) => ({
-  marginTop: theme.spacing(0.5),
   '.MuiOutlinedInput-notchedOutline': {
     borderColor: theme.palette.colors.dark45,
   },
