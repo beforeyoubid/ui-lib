@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { Select, MenuItem, SelectChangeEvent, styled, useTheme, ListItemIcon } from '@mui/material';
-import { TextFieldLabel } from '../TextInput/Labels';
+import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
 import { Typography } from '../Typography';
 import { Icon } from '../Icon';
 
@@ -13,7 +13,7 @@ export type DropdownProps = {
   label: string;
   value: string;
   options: Option[];
-  placeholder: string;
+  placeholder?: string;
   errorText?: string;
   fullWidth?: boolean;
   disabled?: boolean;
@@ -21,12 +21,6 @@ export type DropdownProps = {
   isOptional?: boolean;
   onChange: (event: Option) => void;
 };
-
-const renderValue = ({ label }: Option) => (
-  <Typography class="roman" size="base" color="dark90">
-    {label}
-  </Typography>
-);
 
 export const Dropdown = (props: DropdownProps) => {
   const {
@@ -56,9 +50,9 @@ export const Dropdown = (props: DropdownProps) => {
         },
       },
     }),
-    []
+    [theme]
   );
-  const selectedOption = useMemo(() => options.find(o => o.value === value), [options]);
+  const selectedOption = useMemo(() => options.find(o => o.value === value), [options, value]);
   const onChangeWrapper = useCallback(
     (event: SelectChangeEvent<Option>) => {
       const option = options.find(o => o.value === event.target.value);
@@ -69,7 +63,9 @@ export const Dropdown = (props: DropdownProps) => {
   return (
     <>
       <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
+      {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <StyledSelect
+        displayEmpty
         value={selectedOption}
         fullWidth={fullWidth}
         disabled={disabled}
@@ -78,7 +74,11 @@ export const Dropdown = (props: DropdownProps) => {
         placeholder={placeholder}
         variant="outlined"
         MenuProps={menuProps}
-        renderValue={renderValue}
+        renderValue={opt => (
+          <Typography class="roman" size="base" color={opt?.label ? 'dark90' : 'dark60'} padding={0}>
+            {opt?.label ?? placeholder}
+          </Typography>
+        )}
       >
         {options.map(option => (
           <MenuItem
