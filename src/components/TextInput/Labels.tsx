@@ -1,14 +1,12 @@
 import React from 'react';
 import { Typography } from '../Typography';
-import { HelperErrorText, HelperText, HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
+import { HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
 import { Icon } from '../Icon';
 
 const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
-  <HelperText>
-    <Typography class="roman" size="sm" color="dark75" padding={0}>
-      {hintText}
-    </Typography>
-  </HelperText>
+  <Typography class="roman" size="sm" color="dark75" padding={0}>
+    {hintText}
+  </Typography>
 );
 
 const TextFieldLabelNoMemo = ({
@@ -47,11 +45,9 @@ const TextFieldErrorLabelNoMemo = ({ errorText }: { errorText: string }) => (
     <HelperTextErrorWrapper align="center" justify="center">
       <Icon icon="AlertCircle" color="error75" />
     </HelperTextErrorWrapper>
-    <HelperErrorText>
-      <Typography class="roman" size="sm" color="error75" padding={0}>
-        {errorText}
-      </Typography>
-    </HelperErrorText>
+    <Typography class="roman" size="sm" color="error75" padding={0}>
+      {errorText}
+    </Typography>
   </RowContainer>
 );
 
