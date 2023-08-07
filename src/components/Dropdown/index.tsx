@@ -66,7 +66,7 @@ export const Dropdown = (props: DropdownProps) => {
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <StyledSelect
         displayEmpty
-        value={selectedOption}
+        value={selectedOption ?? ''}
         fullWidth={fullWidth}
         disabled={disabled}
         onChange={onChangeWrapper}
