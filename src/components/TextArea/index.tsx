@@ -11,7 +11,7 @@ export type TextAreaProps = TextInputProps &
   };
 
 export const TextArea = (props: TextAreaProps) => {
-  const wordCount = props.value?.trim().length ?? 0;
+  const characterCount = props.value?.trim().length ?? 0;
 
   const handleTextChange = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -25,7 +25,7 @@ export const TextArea = (props: TextAreaProps) => {
       <TextInput {...props} fullWidth multiline value={props.value} onChange={handleTextChange} />
       {!props.hideTextCount && (
         <Typography class="medium" size="base" color="dark90">
-          {wordCount}/{props.maxCharacter} characters
+          {characterCount}/{props.maxCharacter} characters
         </Typography>
       )}
     </Flex>
