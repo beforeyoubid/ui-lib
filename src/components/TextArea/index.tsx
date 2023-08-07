@@ -11,7 +11,7 @@ export type TextAreaProps = TextInputProps &
   };
 
 export const TextArea = (props: TextAreaProps) => {
-  const characterCount = props.value?.trim().length ?? 0;
+  const characterCount = props.value?.length ?? 0;
 
   const handleTextChange = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
