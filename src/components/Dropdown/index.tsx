@@ -22,12 +22,6 @@ export type DropdownProps = {
   onChange: (event: Option) => void;
 };
 
-const renderValue = ({ label }: Option) => (
-  <Typography class="roman" size="base" color="dark90" padding={0}>
-    {label}
-  </Typography>
-);
-
 export const Dropdown = (props: DropdownProps) => {
   const {
     label,
@@ -71,6 +65,7 @@ export const Dropdown = (props: DropdownProps) => {
       <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <StyledSelect
+        displayEmpty
         value={selectedOption}
         fullWidth={fullWidth}
         disabled={disabled}
@@ -79,7 +74,11 @@ export const Dropdown = (props: DropdownProps) => {
         placeholder={placeholder}
         variant="outlined"
         MenuProps={menuProps}
-        renderValue={renderValue}
+        renderValue={opt => (
+          <Typography class="roman" size="base" color={opt?.label ? 'dark90' : 'dark60'} padding={0}>
+            {opt?.label ?? placeholder}
+          </Typography>
+        )}
       >
         {options.map(option => (
           <MenuItem
