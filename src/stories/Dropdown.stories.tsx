@@ -11,11 +11,11 @@ type Story = StoryObj<typeof Dropdown>;
 
 export const Active: Story = {
   args: {
-    label: 'Enter Full Name',
-    placeholder: 'Senior Engineer',
-    errorText: 'Full name is not valid.',
-    options: ['Ben', 'Bailey', 'Akram', 'Shiwam', 'Mitch', 'Cayo', 'Dima'].map(v => ({ label: v, value: v })),
-    value: 'Ben',
+    label: 'State',
+    placeholder: 'Please select your state',
+    errorText: 'You must select a state.',
+    options: ['NSW', 'QLD', 'VIC', 'SA', 'WA', 'TAS', 'NT', 'ACT'].map(v => ({ label: v, value: v })),
+    value: 'NSW',
     disabled: false,
     fullWidth: true,
     required: true,
