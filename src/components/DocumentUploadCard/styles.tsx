@@ -6,7 +6,7 @@ const FlexCard = styled(Flex)<{
   hasFile: boolean;
   hasError: boolean;
 }>`
-  padding: ${({ theme }) => theme.spacing(2.5)}px;
+  padding: ${({ theme }) => theme.spacing(2.5)};
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
@@ -53,7 +53,7 @@ const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const TypographyContainer = styled(Flex)`
-  margin-bottom: ${({ theme }) => theme.spacing(0.5)}px;
+  margin-bottom: ${({ theme }) => theme.spacing(0.5)};
 `;
 
 export { FlexCard, StyledLinearProgress, TypographyContainer };
