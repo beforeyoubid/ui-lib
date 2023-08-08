@@ -23,7 +23,7 @@ export const TextArea = (props: TextAreaProps) => {
   return (
     <Flex direction="column">
       <TextInput {...props} fullWidth multiline value={props.value} onChange={handleTextChange} />
-      {!props.hideTextCount && (
+      {(!props.hideTextCount || !props.maxCharacter) && (
         <Typography class="medium" size="base" color="dark90">
           {characterCount}/{props.maxCharacter} characters
         </Typography>

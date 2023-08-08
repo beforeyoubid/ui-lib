@@ -11,6 +11,12 @@ type Story = StoryObj<typeof TextInput>;
 
 export const Active: Story = {
   args: {
-    label: 'Enter Full Name',
+    label: 'Label',
+    required: true,
+    helperText: 'This is hint text to help the user.',
+    errorText: 'Error text',
+
+    isOptional: false,
+    placeHolder: 'Placeholder text',
   },
 };
