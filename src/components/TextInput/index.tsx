@@ -6,7 +6,7 @@ import { Flex } from '../Flex';
 
 export type TextInputProps = {
   label: string;
-  placeHolder?: string;
+  placeholder?: string;
   value: string;
   leadingIconName?: IconProps['icon'];
   helperText?: string;
@@ -19,7 +19,7 @@ export const TextInput = (props: TextInputProps) => {
   const theme = useTheme();
   const {
     label,
-    placeHolder,
+    placeholder,
     value,
     leadingIconName,
     helperText = '',
@@ -38,7 +38,7 @@ export const TextInput = (props: TextInputProps) => {
         error={!!errorText || false}
         id="outlined-basic"
         variant="outlined"
-        placeholder={placeHolder}
+        placeholder={placeholder}
         color="primary"
         value={value}
         fullWidth

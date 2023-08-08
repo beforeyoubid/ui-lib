@@ -6,20 +6,20 @@ export type TypographyProps = {
   size: TypographyFontSize;
   color: Color;
   hoverColor?: Color;
-  padding?: number;
   className?: string;
   children: React.ReactNode;
+  padding?: number;
 };
 
 export function Typography(props: TypographyProps) {
   return (
     <Div
+      className={props.className}
       fontClass={props.class}
       size={props.size}
       color={props.color}
       hoverColor={props.hoverColor}
-      padding={props.padding ?? 1}
-      className={props.className}
+      padding={props.padding ? props.padding : 0}
     >
       {props.children}
     </Div>
