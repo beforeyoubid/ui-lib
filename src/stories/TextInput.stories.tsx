@@ -17,6 +17,6 @@ export const Active: Story = {
     errorText: 'Error text',
 
     isOptional: false,
-    placeHolder: 'Placeholder text',
+    placeholder: 'Placeholder text',
   },
 };
