@@ -11,7 +11,7 @@ type Story = StoryObj<typeof PasswordInput>;
 export const Active: Story = {
   args: {
     label: 'I am text input',
-    placeHolder: 'Placeholder',
+    placeholder: 'Placeholder',
     leadingIconName: 'EyeCheck',
     helperText: 'Please enter your password.',
     value: 'Ben1234',
