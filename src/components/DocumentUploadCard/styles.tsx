@@ -13,11 +13,11 @@ const FlexCard = styled(Flex)<{
   border-color: ${({ theme }) => theme.palette.colors.dark15};
   background-color: ${({ theme }) => theme.palette.colors.lightL1};
 
-  ${({ isEditing, hasFile }) =>
+  ${({ theme, isEditing, hasFile }) =>
     !isEditing &&
     !hasFile &&
     css`
-      padding: 10px;
+      padding: ${theme.spacing(1.25)}px;
     `}
 
   ${({ isEditing, theme }) =>
