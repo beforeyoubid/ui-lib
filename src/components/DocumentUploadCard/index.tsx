@@ -64,7 +64,7 @@ const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
         hasFile={Boolean(fileName)}
         hasError={Boolean(errorMessage)}
       >
-        {!isEditing && <Locked fileName={fileName ?? ''} fileSize={fileSize} />}
+        {!isEditing && <Locked fileUrl={fileUrl} fileName={fileName} fileSize={fileSize} />}
         {isEditing && (
           <Flex direction="row" grow={1} gap={12}>
             <Flex direction="column" align="center" alignSelf="stretch" justify="center">
