@@ -24,6 +24,7 @@ export const Editable: Story = {
   args: {
     title: 'Gallery',
     editable: true,
+    loading: true,
     children: (
       <Flex direction="column" gap={4}>
         <div>
