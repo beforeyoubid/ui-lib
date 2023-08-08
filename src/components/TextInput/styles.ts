@@ -1,34 +1,21 @@
 import { TextField, styled } from '@mui/material';
 import { Flex } from '../Flex';
 
-const HelperTextErrorWrapper = styled(Flex)({
+export const HelperTextErrorWrapper = styled(Flex)({
   maxHeight: 9.6,
   maxWidth: 9.6,
   width: 9.6,
 });
 
-const HelperErrorText = styled('div')(({ theme }) => ({
-  maxHeight: '9.6px',
-  marginRight: theme.spacing(0.5),
-  marginBottom: theme.spacing(0.5),
-}));
-
-const HelperText = styled('div')(({ theme }) => ({
-  marginTop: theme.spacing(0.25),
-  marginRight: theme.spacing(0.5),
-  marginBottom: theme.spacing(0.5),
-}));
-
-const RowContainer = styled('div')(({ theme }) => ({
+export const RowContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'start',
   alignItems: 'center',
   gap: theme.spacing(0.5),
-  marginBottom: theme.spacing(0.5),
 }));
 
-const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, required }) => ({
+export const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, required }) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'start',
@@ -36,7 +23,7 @@ const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, require
   gap: theme.spacing(0.25),
 }));
 
-const CustomTextField = styled(TextField)`
+export const CustomTextField = styled(TextField)`
   & .MuiOutlinedInput-root {
     border-color: ${({ error, disabled, theme }) =>
       error ? theme.palette.colors.error60 : disabled ? theme.palette.colors.error15 : theme.palette.colors.dark45};
@@ -71,5 +58,3 @@ const CustomTextField = styled(TextField)`
     pointer-events: none;
   }
 `;
-
-export { HelperTextErrorWrapper, HelperText, RowContainer, CustomTextField, HelperErrorText, LabelRowContainer };
