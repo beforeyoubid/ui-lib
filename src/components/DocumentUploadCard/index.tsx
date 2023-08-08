@@ -7,7 +7,6 @@ import { Flex } from '../../components/Flex';
 import { FlexCard, StyledLinearProgress, TypographyContainer } from './styles';
 import { LeftContent } from './LeftContent';
 import { Locked, Upload, Uploading, Uploaded } from './RightContent';
-import { useMemo } from 'react';
 
 type DocumentUploadCardProps = {
   label: string;
@@ -36,8 +35,6 @@ const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   onFileSelect,
   onFileDelete,
 }) => {
-  const isUploaded = useMemo(() => !isUploading && uploadProgress >= 100, [isUploading, uploadProgress]);
-
   return (
     <Flex direction="column" width="100%">
       <TypographyContainer>
@@ -80,7 +77,7 @@ const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
                 {/* right content */}
                 {!isUploading && !fileUrl && <Upload onSelect={onFileSelect} />}
                 {isUploading && <Uploading progress={uploadProgress} />}
-                {isUploaded && fileUrl && <Uploaded onFileDelete={onFileDelete} />}
+                {fileUrl && <Uploaded onFileDelete={onFileDelete} />}
               </Flex>
               {/* upload progress */}
               {isUploading && <StyledLinearProgress value={uploadProgress} variant="determinate" />}
