@@ -26,6 +26,8 @@ export type CardProps = {
   title: string;
   children: React.ReactNode;
   fullWidth?: boolean;
+  loading?: boolean;
+  loadingComponent?: React.ReactNode;
 } & (({ editable: true } & CardButtonsProps) | { editable: false });
 
 export function Card(props: CardProps) {
@@ -52,7 +54,17 @@ export function Card(props: CardProps) {
           />
         )}
       </Flex>
-      <ChildrenWrapper>{props.children}</ChildrenWrapper>
+      {props.loading ? (
+        props.loadingComponent ? (
+          <ChildrenWrapper>{props.loadingComponent}</ChildrenWrapper>
+        ) : (
+          <Typography color="dark75" class="medium" size="base" padding={0}>
+            Loading ...
+          </Typography>
+        )
+      ) : (
+        <ChildrenWrapper>{props.children}</ChildrenWrapper>
+      )}
     </Wrapper>
   );
 }

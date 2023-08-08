@@ -6,18 +6,18 @@ const FlexCard = styled(Flex)<{
   hasFile: boolean;
   hasError: boolean;
 }>`
-  padding: 20px;
+  padding: ${({ theme }) => theme.spacing(2.5)};
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   border-color: ${({ theme }) => theme.palette.colors.dark15};
   background-color: ${({ theme }) => theme.palette.colors.lightL1};
 
-  ${({ isEditing, hasFile }) =>
+  ${({ theme, isEditing, hasFile }) =>
     !isEditing &&
     !hasFile &&
     css`
-      padding: 10px;
+      padding: ${theme.spacing(1.25)}px;
     `}
 
   ${({ isEditing, theme }) =>
@@ -36,11 +36,11 @@ const FlexCard = styled(Flex)<{
 `;
 
 const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 4,
-  borderRadius: 6,
-  marginLeft: 2,
-  marginTop: 10,
   width: '100%',
+  height: theme.spacing(0.5),
+  marginLeft: theme.spacing(0.25),
+  marginTop: theme.spacing(1.25),
+  borderRadius: 6,
   '& .MuiLinearProgress-bar': {
     backgroundColor: theme.palette.colors.mintL2,
   },
@@ -53,7 +53,7 @@ const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const TypographyContainer = styled(Flex)`
-  margin-bottom: 4px;
+  margin-bottom: ${({ theme }) => theme.spacing(0.5)};
 `;
 
 export { FlexCard, StyledLinearProgress, TypographyContainer };

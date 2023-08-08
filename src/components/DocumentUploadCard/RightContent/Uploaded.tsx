@@ -17,6 +17,11 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
 
+  const handleDelete = useCallback(() => {
+    onFileDelete();
+    toggleConfirmDelete();
+  }, [onFileDelete, toggleConfirmDelete]);
+
   if (!confirmDelete) {
     return (
       <Flex direction="column" justify="center" alignSelf="stretch">
@@ -30,7 +35,7 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   return (
     <Flex direction="row" align="center" justify="center">
       <LinkButton type="grey" size="md" title="Cancel" onClick={toggleConfirmDelete} />
-      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={onFileDelete} wrap="narrow" />
+      <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={handleDelete} wrap="narrow" />
     </Flex>
   );
 };
