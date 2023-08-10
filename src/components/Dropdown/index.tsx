@@ -4,6 +4,8 @@ import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
 import { Typography } from '../Typography';
 import { Icon } from '../Icon';
 
+import { automation } from '../../utils';
+
 type Option = {
   label: string;
   value: string;
@@ -20,6 +22,7 @@ export type DropdownProps = {
   required?: boolean;
   isOptional?: boolean;
   onChange: (event: Option) => void;
+  automationKey?: string;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -34,6 +37,7 @@ export const Dropdown = (props: DropdownProps) => {
     required = false,
     isOptional = false,
     onChange,
+    automationKey,
   } = props;
 
   const theme = useTheme();
@@ -79,6 +83,9 @@ export const Dropdown = (props: DropdownProps) => {
             {opt?.label ?? placeholder}
           </Typography>
         )}
+        inputProps={{
+          ...automation([automationKey], { label }),
+        }}
       >
         {options.map(option => (
           <MenuItem
