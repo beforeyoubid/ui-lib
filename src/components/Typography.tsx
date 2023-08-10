@@ -1,6 +1,8 @@
 import { styled } from '@mui/material';
 import { Color, TypographyFontSize, TypographyFontClass } from '../mui-theme';
 
+import { automation } from '../utils';
+
 export type TypographyProps = {
   class: TypographyFontClass;
   size: TypographyFontSize;
@@ -9,6 +11,7 @@ export type TypographyProps = {
   className?: string;
   children: React.ReactNode;
   padding?: number;
+  automationKey?: string;
 };
 
 export function Typography(props: TypographyProps) {
@@ -20,6 +23,7 @@ export function Typography(props: TypographyProps) {
       color={props.color}
       hoverColor={props.hoverColor}
       padding={props.padding ? props.padding : 0}
+      {...automation([props.automationKey])}
     >
       {props.children}
     </Div>
