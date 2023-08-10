@@ -1,8 +1,11 @@
+import { InputAdornment, StandardTextFieldProps, useTheme } from '@mui/material';
+
 import { CustomTextField } from './styles';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
-import { InputAdornment, StandardTextFieldProps, useTheme } from '@mui/material';
 import { Icon, IconProps } from '../Icon';
 import { Flex } from '../Flex';
+
+import { automation } from '../../utils';
 
 export type TextInputProps = {
   label: string;
@@ -13,6 +16,7 @@ export type TextInputProps = {
   errorText?: string;
   required?: boolean;
   isOptional?: boolean;
+  automationKey?: string;
 } & Omit<StandardTextFieldProps, 'required' | 'variant' | 'helperText'>;
 
 export const TextInput = (props: TextInputProps) => {
@@ -26,6 +30,7 @@ export const TextInput = (props: TextInputProps) => {
     errorText = '',
     required = false,
     isOptional = false,
+    automationKey,
     ...rest
   } = props;
 
@@ -48,6 +53,9 @@ export const TextInput = (props: TextInputProps) => {
               <Icon icon={leadingIconName} color="dark75" />
             </InputAdornment>
           ) : null,
+        }}
+        inputProps={{
+          ...automation([automationKey], { label }),
         }}
         {...rest}
       />

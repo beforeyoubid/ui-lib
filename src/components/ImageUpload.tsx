@@ -6,6 +6,8 @@ import { Typography } from './Typography';
 import { Icon } from './Icon';
 import { Button } from './Button';
 
+import { automation } from '../utils';
+
 export type ImageUploadProps = {
   label: string;
   labelRequired?: boolean;
@@ -16,6 +18,7 @@ export type ImageUploadProps = {
   fullWidth?: boolean;
   src?: string;
   uploading?: boolean;
+  automationKey?: string;
 } & (
   | { canUpload: false }
   | {
@@ -40,7 +43,12 @@ export function ImageUpload(props: ImageUploadProps) {
     input.click();
   }, []);
   return (
-    <Flex direction="column" width={fullWidth ? '100%' : undefined} gap={theme.spacing(0.5)}>
+    <Flex
+      direction="column"
+      width={fullWidth ? '100%' : undefined}
+      gap={theme.spacing(0.5)}
+      {...automation([props.automationKey], { label: props.label })}
+    >
       <Flex gap={theme.spacing(0.5)}>
         <Typography class="medium" size="base" color="dark90" padding={0}>
           {props.label}
