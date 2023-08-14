@@ -70,6 +70,7 @@ const Button = styled('div')<{
   border: selected ? '1px' : undefined,
   borderRadius: '4px',
   userSelect: 'none',
+  cursor: 'pointer',
   '&:hover': {
     backgroundColor: selected ? theme.palette.colors.mintL2 : theme.palette.colors.lightL2,
     transition: 'background 0.5s',
