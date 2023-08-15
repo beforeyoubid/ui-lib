@@ -4,24 +4,22 @@ import { theme } from '../../mui-theme';
 export type ProfilePictureProps = {
   link: string;
   alt: string;
-  borderRadius?: number;
-  margin?: number;
-  height?: number;
-  width?: number;
+  className?: string;
+  size: number;
 };
 
 export const ProfilePicture = (props: ProfilePictureProps) => {
   return (
     <Avatar
-      style={{ margin: props.margin }}
+      className={props.className}
       alt={props.alt}
       src={props.link}
       sx={{
-        borderRadius: props.borderRadius,
-        border: 2,
-        borderColor: theme.palette.colors.transparentButtonB,
-        width: props.height,
-        height: props.width,
+        borderRadius: '200px',
+        border: `1px solid ${theme.palette.colors.lightL2}`,
+        width: props.size,
+        height: props.size,
+        backgroundColor: theme.palette.colors.lightWhite,
       }}
     />
   );
