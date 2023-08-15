@@ -12,6 +12,7 @@ type Story = StoryObj<typeof ProfilePicture>;
 export const Active: Story = {
   args: {
     alt: 'Bhupendra Ojha',
-    link: 'https://images.pexels.com/photos/64152/tiger-cub-tiger-cub-big-cat-64152.jpeg?cs=srgb&dl=pexels-pixabay-64152.jpg&fm=jpg',
+    size: 200,
+    link: 'https://www.lunapic.com/editor/premade/transparent.gif',
   },
 };
