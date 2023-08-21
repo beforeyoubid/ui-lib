@@ -1,7 +1,7 @@
 import { TableRow as TableRowMui, styled } from '@mui/material';
 
 export type TableRowProps = {
-  children: React.ReactNode[];
+  children: React.ReactNode;
 };
 
 export function TableRow(props: TableRowProps) {

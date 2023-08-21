@@ -2,7 +2,7 @@ import { TableHead as TableHeadMui, styled } from '@mui/material';
 import { TableRow } from './TableRow';
 
 export type TableHeaderProps = {
-  children: React.ReactNode[];
+  children: React.ReactNode;
 };
 
 export function TableHeader(props: TableHeaderProps) {
