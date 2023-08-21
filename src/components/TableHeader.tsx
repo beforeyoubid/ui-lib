@@ -30,9 +30,9 @@ const StyledTableHead = styled(TableHeadMui)`
       top: 15%;
 
       background-color: ${({ theme }) => theme.palette.colors.dark15};
-      &:last-child {
-        display: none;
-      }
+    }
+    :last-child:after {
+      display: none;
     }
   }
 `;
