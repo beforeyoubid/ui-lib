@@ -1,6 +1,6 @@
 {
   "name": "@beforeyoubid/ui-lib",
-  "version": "2.0.17",
+  "version": "2.0.18",
   "scripts": {
     "test": "jest --coverage",
     "ts": "tsc --noEmit",
