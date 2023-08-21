@@ -25,6 +25,7 @@ const preview: Preview = {
   decorators: [
     Story => (
       <ThemedApp>
+        <link rel="stylesheet" href="./fonts.css" />
         <Story />
       </ThemedApp>
     ),

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { MediaCard } from '../components/MediaCard';
-// import { ThemedApp } from './styles';
 
 const meta: Meta<typeof MediaCard> = {
   component: MediaCard,
