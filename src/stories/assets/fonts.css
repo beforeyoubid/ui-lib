@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Avenir-Roman';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./Avenir-Roman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir-Heavy';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./Avenir-Heavy.ttf') format('truetype');
+}
