@@ -1,7 +1,7 @@
 import { Table as TableMui, styled } from '@mui/material';
 
 export type TableProps = {
-  children: React.ReactNode[];
+  children: React.ReactNode;
 };
 
 export function Table(props: TableProps) {

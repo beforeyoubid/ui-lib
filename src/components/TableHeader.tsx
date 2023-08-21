@@ -2,7 +2,7 @@ import { TableHead as TableHeadMui, styled } from '@mui/material';
 import { TableRow } from './TableRow';
 
 export type TableHeaderProps = {
-  children: React.ReactNode[];
+  children: React.ReactNode;
 };
 
 export function TableHeader(props: TableHeaderProps) {
@@ -30,9 +30,9 @@ const StyledTableHead = styled(TableHeadMui)`
       top: 15%;
 
       background-color: ${({ theme }) => theme.palette.colors.dark15};
-      &:last-child {
-        display: none;
-      }
+    }
+    :last-child:after {
+      display: none;
     }
   }
 `;

@@ -3,6 +3,7 @@
 */
 export * from './Button';
 export * from './Card';
+export * from './DocumentUploadCard';
 export * from './Dropdown';
 export * from './Flex';
 export * from './Icon';
@@ -16,7 +17,11 @@ export * from './NavigationButton';
 export * from './NavigationMenu';
 export * from './PasswordInput';
 export * from './ProfilePicture';
+export * from './Table';
+export * from './TableBody';
+export * from './TableCell';
+export * from './TableHeader';
+export * from './TableRow';
 export * from './TextArea';
 export * from './TextInput';
 export * from './Typography';
-export * from './DocumentUploadCard';
