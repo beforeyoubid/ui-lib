@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 
 export type TableCellProps = {
   children: React.ReactNode;
-} & Pick<TableCellPropsMuiProps, 'align' | 'component' | 'scope'> &
+} & Pick<TableCellPropsMuiProps, 'align' | 'component' | 'scope' | 'onClick'> &
   (
     | {
         sort: true;
