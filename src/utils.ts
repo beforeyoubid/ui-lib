@@ -35,3 +35,8 @@ export function automation(componentKeys: Maybe<string>[] | string, attributes =
     ...dataAttributes,
   };
 }
+
+export const formatSizeToPx = (value: string | number): string => {
+  if (typeof value === 'number') return `${value}px`;
+  return value;
+};
