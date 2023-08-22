@@ -12,6 +12,7 @@ export type TypographyProps = {
   children: React.ReactNode;
   padding?: number;
   automationKey?: string;
+  fullWidth?: boolean;
 };
 
 export function Typography(props: TypographyProps) {
@@ -22,6 +23,7 @@ export function Typography(props: TypographyProps) {
       size={props.size}
       color={props.color}
       hoverColor={props.hoverColor}
+      fullWidth={props.fullWidth ?? false}
       padding={props.padding ? props.padding : 0}
       {...automation([props.automationKey])}
     >
@@ -36,13 +38,15 @@ const Div = styled('div')<{
   color: Color;
   hoverColor?: Color;
   padding: number;
-}>(({ theme, fontClass, size, color, hoverColor, padding }) => ({
+  fullWidth: boolean;
+}>(({ theme, fontClass, size, color, hoverColor, padding, fullWidth }) => ({
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.size[size].fontSize,
   lineHeight: theme.typography.size[size].lineHeight,
   fontWeight: theme.typography.fontWeight[fontClass],
   color: theme.palette.colors[color],
   padding: theme.spacing(padding),
+  width: fullWidth ? '100%' : undefined,
   '&:hover': {
     color: hoverColor ? theme.palette.colors[hoverColor] : undefined,
   },
