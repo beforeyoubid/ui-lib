@@ -1,4 +1,4 @@
-import { TextField, styled, css } from '@mui/material';
+import { TextField, styled } from '@mui/material';
 import { Flex } from '../Flex';
 
 export const HelperTextErrorWrapper = styled(Flex)(({ theme }) => ({
