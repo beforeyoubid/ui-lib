@@ -14,7 +14,7 @@ export type ButtonProps = Omit<MuiButtonProps, 'variant' | 'type' | 'size' | 'ch
   trailingIcon?: IconProps['icon'];
 };
 
-const Button: React.FC<ButtonProps> = ({
+const ButtonNoMemo: React.FC<ButtonProps> = ({
   variant = 'primary',
   type = 'mint',
   size = 'md',
@@ -50,4 +50,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export { Button };
+export const Button = React.memo(ButtonNoMemo);

@@ -13,6 +13,7 @@ export type TypographyProps = {
   padding?: number;
   automationKey?: string;
   fullWidth?: boolean;
+  strikethrough?: boolean;
 };
 
 export function Typography(props: TypographyProps) {
@@ -25,6 +26,7 @@ export function Typography(props: TypographyProps) {
       hoverColor={props.hoverColor}
       fullWidth={props.fullWidth ?? false}
       padding={props.padding ? props.padding : 0}
+      strikethrough={props.strikethrough ?? false}
       {...automation([props.automationKey])}
     >
       {props.children}
@@ -39,7 +41,8 @@ const Div = styled('div')<{
   hoverColor?: Color;
   padding: number;
   fullWidth: boolean;
-}>(({ theme, fontClass, size, color, hoverColor, padding, fullWidth }) => ({
+  strikethrough: boolean;
+}>(({ theme, fontClass, size, color, hoverColor, padding, fullWidth, strikethrough }) => ({
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.size[size].fontSize,
   lineHeight: theme.typography.size[size].lineHeight,
@@ -47,6 +50,7 @@ const Div = styled('div')<{
   color: theme.palette.colors[color],
   padding: theme.spacing(padding),
   width: fullWidth ? '100%' : undefined,
+  textDecoration: strikethrough ? 'line-through' : undefined,
   '&:hover': {
     color: hoverColor ? theme.palette.colors[hoverColor] : undefined,
   },
