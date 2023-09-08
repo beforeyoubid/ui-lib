@@ -1,11 +1,12 @@
-import { TextField, styled } from '@mui/material';
+import { TextField, styled, css } from '@mui/material';
 import { Flex } from '../Flex';
 
-export const HelperTextErrorWrapper = styled(Flex)({
+export const HelperTextErrorWrapper = styled(Flex)(({ theme }) => ({
   maxHeight: 9.6,
   maxWidth: 9.6,
   width: 9.6,
-});
+  marginBottom: theme.spacing(0.25),
+}));
 
 export const RowContainer = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -56,5 +57,12 @@ export const CustomTextField = styled(TextField)`
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+  }
+  & .MuiOutlinedInput-root {
+    padding: 0px;
+    .MuiOutlinedInput-input {
+      padding: ${({ theme }) => theme.spacing(1.5, 1.75)};
+      ${({ multiline }) => !multiline && `height: 21px;`}
+    }
   }
 `;
