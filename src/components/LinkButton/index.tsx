@@ -68,6 +68,15 @@ const ButtonWrapper = styled(Button)<{
   paddingBottom: paddingBottom,
   backgroundColor: 'transparent !important',
   textTransform: 'none',
+  '&:hover': {
+    color: theme.palette.colors[hoverBgColor],
+    '.BYB-Typography': {
+      color: theme.palette.colors[hoverBgColor],
+    },
+    svg: {
+      color: theme.palette.colors[hoverBgColor],
+    },
+  },
   ...(!underline
     ? {}
     : {
