@@ -9,9 +9,11 @@ export type LinkButtonProps = {
   type: 'mint' | 'white' | 'grey' | 'red';
   title: string;
   size: 'lg' | 'md' | 'sm';
+  underline?: boolean;
 } & Omit<MuiButtonProps, 'variant' | 'children' | 'color' | 'type' | 'size'>;
 
 export const LinkButton: React.FC<LinkButtonProps> = ({ type, title, size, disabled, ...rest }) => {
+  underline,
   const linkButtonStyle = getLinkButtonStyle(disabled ? 'grey' : type);
   const linkFontStyle = useLinkButtonFontStyle(size);
   return (
@@ -22,6 +24,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({ type, title, size, disab
       paddingTop={linkFontStyle.paddingTop}
       paddingBottom={linkFontStyle.paddingBottom}
       disableRipple
+      underline={underline ?? true}
       {...rest}
     >
       <Typography
@@ -41,17 +44,22 @@ const ButtonWrapper = styled(Button)<{
   hoverBgColor: keyof Colors;
   paddingTop: string;
   paddingBottom: string;
-}>(({ bgColor, hoverBgColor, paddingTop, paddingBottom, theme }) => ({
+  underline?: boolean;
+}>(({ bgColor, hoverBgColor, paddingTop, paddingBottom, underline, theme }) => ({
   paddingTop: paddingTop,
   paddingBottom: paddingBottom,
   backgroundColor: 'transparent !important',
-  textDecoration: `underline${theme.palette.colors[bgColor]} !important`,
   textTransform: 'none',
+  ...(!underline
+    ? {}
+    : {
+        textDecoration: `underline ${theme.palette.colors[bgColor]} !important`,
 
-  '&:hover': {
-    textDecoration: `underline${theme.palette.colors[hoverBgColor]} !important`,
-  },
-  '&:active': {
-    textDecoration: `underline${theme.palette.colors[hoverBgColor]} !important`,
-  },
+        '&:hover': {
+          textDecoration: `underline ${theme.palette.colors[hoverBgColor]} !important`,
+        },
+        '&:active': {
+          textDecoration: `underline ${theme.palette.colors[hoverBgColor]} !important`,
+        },
+      }),
 }));
