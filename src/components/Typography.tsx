@@ -19,7 +19,7 @@ export type TypographyProps = {
 export function Typography(props: TypographyProps) {
   return (
     <Div
-      className={props.className}
+      className={`BYB-Typography ${props.className ?? ''}`}
       fontClass={props.class}
       size={props.size}
       color={props.color}
