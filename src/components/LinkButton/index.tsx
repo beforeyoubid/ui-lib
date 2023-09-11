@@ -46,6 +46,8 @@ const ButtonWrapper = styled(Button)<{
   paddingBottom: string;
   underline?: boolean;
 }>(({ bgColor, hoverBgColor, paddingTop, paddingBottom, underline, theme }) => ({
+  pointerEvents: 'all',
+  cursor: 'pointer',
   paddingTop: paddingTop,
   paddingBottom: paddingBottom,
   backgroundColor: 'transparent !important',
