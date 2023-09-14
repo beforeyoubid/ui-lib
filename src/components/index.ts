@@ -3,6 +3,7 @@
 */
 export * from './Button';
 export * from './Card';
+export { Checkbox } from './Checkbox';
 export * from './DocumentUploadCard';
 export * from './Dropdown';
 export * from './Flex';
