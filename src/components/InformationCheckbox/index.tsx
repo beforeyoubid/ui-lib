@@ -1,10 +1,11 @@
 import React from 'react';
-import { Checkbox, styled } from '@mui/material';
-import { Typography } from '../Typography';
-import { getInfoCheckboxBackgroundColor } from './utils';
-import { Flex } from '../Flex';
-import { theme } from '../../mui-theme';
+import { styled, useTheme } from '@mui/material';
 
+import { Typography } from '../Typography';
+import { Flex } from '../Flex';
+import { RawCheckbox } from '../Checkbox';
+
+import { getInfoCheckboxBackgroundColor } from './utils';
 import { automation } from '../../utils';
 
 export type InformationCheckboxProps = {
@@ -25,6 +26,7 @@ export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
   onChange,
   automationKey,
 }) => {
+  const theme = useTheme();
   return (
     <Wrapper
       direction="column"
@@ -33,14 +35,14 @@ export const InformationCheckbox: React.FC<InformationCheckboxProps> = ({
       align="stretch"
       {...automation([automationKey], { title })}
     >
-      <Flex direction="row" justify="flex-start" align="center" gap={theme.spacing(1.25)}>
-        <CheckBox checked={checked} onChange={onChange} disabled={disabled} />
-        <Typography class="bold" size="base" color="dark90" padding={0}>
+      <Flex direction="row" justify="flex-start" align="center" gap={theme.spacing(0.5)}>
+        <RawCheckbox checked={checked} onChange={onChange} disabled={disabled} size="lg" />
+        <Typography class="bold" size="base" color="dark90">
           {title}
         </Typography>
       </Flex>
       {description && (
-        <Description class="roman" size="sm" color="dark90" padding={0}>
+        <Description class="roman" size="sm" color="dark90">
           {description}
         </Description>
       )}
@@ -58,16 +60,6 @@ const Wrapper = styled(Flex)<{ variant: string }>(({ theme, variant }) => ({
   borderRadius: 4,
 }));
 
-const CheckBox = styled(Checkbox)(({ theme }) => ({
-  height: 18,
-  width: 18,
-  color: theme.palette.colors.dark30,
-  backgroundColor: theme.palette.colors.lightWhite,
-  '&.Mui-checked': {
-    color: theme.palette.colors.mint60,
-  },
-}));
-
 const Description = styled(Typography)(({ theme }) => ({
-  marginLeft: theme.spacing(3.5),
+  marginLeft: theme.spacing(4.3),
 }));
