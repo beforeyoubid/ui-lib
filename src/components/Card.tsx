@@ -78,7 +78,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
     saveButtonTitle = 'Save changes',
   } = props;
   return (
-    <Flex align="center" grow={1} justify="flex-end" gap={theme.spacing(1)}>
+    <Flex align="center" grow={1} justify="flex-end" gap={theme.spacing(2)}>
       {props.editing && (
         <>
           <LinkButton onClick={props.onCancel} type="grey" title={cancelButtonTitle} size="md" />
