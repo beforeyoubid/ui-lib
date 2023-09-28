@@ -20,9 +20,11 @@ export const TextArea = (props: TextAreaProps) => {
     [props]
   );
 
+  const fullWidth = props.fullWidth ?? true;
+
   return (
-    <Flex direction="column" gap={4}>
-      <TextInput {...props} fullWidth multiline value={props.value} onChange={handleTextChange} />
+    <Flex direction="column" gap={4} width={fullWidth ? '100%' : undefined}>
+      <TextInput {...props} fullWidth={fullWidth} multiline value={props.value} onChange={handleTextChange} />
       {(!props.hideTextCount || !props.maxCharacter) && (
         <Typography class="medium" size="base" color={props.errorText ? 'error75' : 'dark90'}>
           {characterCount}/{props.maxCharacter} characters
