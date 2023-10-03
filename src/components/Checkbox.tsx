@@ -58,6 +58,7 @@ export const RawCheckbox = (
     color="primary"
     checked={props.checked}
     onChange={props.onChange}
+    disabled={props.disabled ?? false}
     indeterminate={props.indeterminate ?? false}
     checkedIcon={
       <IconWrapper size={props.size} disabled={props.disabled ?? false}>
