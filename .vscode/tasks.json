@@ -6,7 +6,7 @@
     {
       "label": "TypeScript",
       "command": "yarn",
-      "args": ["tsc", "-w", "-p", "."],
+      "args": ["tsc", "-w", "--noEmit", "-p", "."],
       "isBackground": true,
       "problemMatcher": "$tsc-watch",
       "runOptions": {
