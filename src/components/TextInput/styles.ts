@@ -52,7 +52,6 @@ export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
   }
 
   & .MuiInputAdornment-positionStart.MuiInputAdornment-outlined {
-    pointer-events: none;
     &:not(.icon-adornment) {
       margin-left: 0;
       margin-right: 0;
@@ -60,7 +59,6 @@ export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
     }
   }
   & .MuiInputAdornment-positionEnd.MuiInputAdornment-outlined {
-    pointer-events: none;
     &:not(.icon-adornment) {
       margin-left: 0;
       margin-right: 0;
@@ -93,7 +91,7 @@ export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
   }
 `;
 
-export const StyledInputAdornment = styled(InputAdornment)<{ icon?: boolean }>`
+export const StyledInputAdornment = styled(InputAdornment)<{ icon?: boolean; showBorder?: boolean }>`
   position: relative;
   padding: ${({ theme }) => theme.spacing(0, 1, 0, 1.75)};
 
@@ -103,7 +101,7 @@ export const StyledInputAdornment = styled(InputAdornment)<{ icon?: boolean }>`
     height: 45px;
     background-color: ${({ theme }) => theme.palette.colors.dark45};
     width: 1px;
-    display: block;
+    display: ${({ showBorder = true }) => (showBorder ? 'block' : 'none')};
     ${({ position }) => (position === 'start' ? 'right' : 'left')}: 0;
     top: -${({ theme }) => theme.spacing(2.75)};
   }

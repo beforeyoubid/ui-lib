@@ -26,7 +26,11 @@ export const TextAdornment: Story = {
   args: {
     label: 'Label',
     startAdornment: 'byb.au/',
-    endAdornment: <LinkButton type="grey" size="md" title="Search" leadingIcon="Search" underline={false} />,
+    endAdornment: (
+      <LinkButton type="grey" size="md" title="Search" leadingIcon="Search" underline={false} onClick={console.log} />
+    ),
+    showStartAdornmentBorder: true,
+    showEndAdornmentBorder: true,
   },
 };
 

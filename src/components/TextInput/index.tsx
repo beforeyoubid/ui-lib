@@ -20,6 +20,8 @@ export type TextInputProps = {
   automationKey?: string;
   startAdornment?: string | React.ReactNode;
   endAdornment?: string | React.ReactNode;
+  showStartAdornmentBorder?: boolean;
+  showEndAdornmentBorder?: boolean;
 } & Omit<StandardTextFieldProps, 'required' | 'variant' | 'helperText'>;
 
 export const TextInput = (props: TextInputProps) => {
@@ -36,6 +38,8 @@ export const TextInput = (props: TextInputProps) => {
     automationKey,
     startAdornment,
     endAdornment,
+    showStartAdornmentBorder = true,
+    showEndAdornmentBorder = true,
     ...rest
   } = props;
 
@@ -54,8 +58,15 @@ export const TextInput = (props: TextInputProps) => {
         fullWidth
         hasLeadingIcon={!!leadingIconName}
         InputProps={{
-          startAdornment: <Adornment position="start" adornment={startAdornment} icon={leadingIconName} />,
-          endAdornment: <Adornment position="end" adornment={endAdornment} />,
+          startAdornment: (
+            <Adornment
+              position="start"
+              adornment={startAdornment}
+              icon={leadingIconName}
+              showBorder={showStartAdornmentBorder}
+            />
+          ),
+          endAdornment: <Adornment position="end" adornment={endAdornment} showBorder={showEndAdornmentBorder} />,
         }}
         inputProps={{
           ...automation([automationKey], { label }),
@@ -70,27 +81,39 @@ const Adornment = ({
   adornment,
   position,
   icon,
+  showBorder = true,
 }: {
   adornment?: string | React.ReactNode;
   position: 'start' | 'end';
   icon?: TextInputProps['leadingIconName'];
+  showBorder?: boolean;
 }) => {
   if (adornment && icon) {
     throw new Error('cannot have both adornment and leadingIconName');
   }
   if (icon) {
     return (
-      <StyledInputAdornment position={position} icon className="icon-adornment">
+      <StyledInputAdornment
+        position={position}
+        icon
+        className="icon-adornment"
+        disablePointerEvents
+        showBorder={showBorder}
+      >
         <Icon icon={icon} color="dark75" size="18" />
       </StyledInputAdornment>
     );
   }
   if (!adornment) return null;
   if (!(typeof adornment === 'string')) {
-    return <StyledInputAdornment position={position}>{adornment}</StyledInputAdornment>;
+    return (
+      <StyledInputAdornment position={position} disablePointerEvents showBorder={showBorder}>
+        {adornment}
+      </StyledInputAdornment>
+    );
   }
   return (
-    <StyledInputAdornment position={position}>
+    <StyledInputAdornment position={position} showBorder={showBorder}>
       <Typography color="dark60" class="medium" size="base">
         {adornment}
       </Typography>
