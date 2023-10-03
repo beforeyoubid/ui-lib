@@ -4,6 +4,11 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
