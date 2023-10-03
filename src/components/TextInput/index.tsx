@@ -80,14 +80,18 @@ const Adornment = ({
   }
   if (icon) {
     return (
-      <StyledInputAdornment position={position} icon className="icon-adornment">
+      <StyledInputAdornment position={position} icon className="icon-adornment" disablePointerEvents>
         <Icon icon={icon} color="dark75" size="18" />
       </StyledInputAdornment>
     );
   }
   if (!adornment) return null;
   if (!(typeof adornment === 'string')) {
-    return <StyledInputAdornment position={position}>{adornment}</StyledInputAdornment>;
+    return (
+      <StyledInputAdornment position={position} disablePointerEvents>
+        {adornment}
+      </StyledInputAdornment>
+    );
   }
   return (
     <StyledInputAdornment position={position}>

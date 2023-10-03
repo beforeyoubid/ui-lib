@@ -52,7 +52,6 @@ export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
   }
 
   & .MuiInputAdornment-positionStart.MuiInputAdornment-outlined {
-    pointer-events: none;
     &:not(.icon-adornment) {
       margin-left: 0;
       margin-right: 0;
@@ -60,7 +59,6 @@ export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
     }
   }
   & .MuiInputAdornment-positionEnd.MuiInputAdornment-outlined {
-    pointer-events: none;
     &:not(.icon-adornment) {
       margin-left: 0;
       margin-right: 0;
