@@ -6,13 +6,16 @@ import { Tooltip } from '@mui/material';
 import { Typography } from '../components/Typography';
 
 const colorNames = Object.keys(colorPalette) as (keyof Colors)[];
-const colorGroups = colorNames.reduce((groups, name) => {
-  const [groupName] = name.match(/^([a-z]+)/) ?? [];
-  if (!groupName) return groups;
-  if (!groups[groupName]) groups[groupName] = [];
-  groups[groupName].push(name);
-  return groups;
-}, {} as Record<string, (keyof Colors)[]>);
+const colorGroups = colorNames.reduce(
+  (groups, name) => {
+    const [groupName] = name.match(/^([a-z]+)/) ?? [];
+    if (!groupName) return groups;
+    if (!groups[groupName]) groups[groupName] = [];
+    groups[groupName].push(name);
+    return groups;
+  },
+  {} as Record<string, (keyof Colors)[]>
+);
 
 const Theme = () =>
   Object.entries(colorGroups).map(([groupName, colors]) => (
