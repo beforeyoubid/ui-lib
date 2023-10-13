@@ -4,10 +4,13 @@ import { Typography } from '../Typography';
 import { OutlinedTextFieldProps } from '@mui/material';
 import { useCallback } from 'react';
 
-export type TextAreaProps = TextInputProps &
+export type TextAreaProps = Omit<TextInputProps, 'multiline'> &
   Omit<OutlinedTextFieldProps, 'variant'> & {
     maxCharacter: number;
     hideTextCount?: boolean;
+    resize?: React.CSSProperties['resize'];
+    minHeight?: React.CSSProperties['minHeight'];
+    maxHeight?: React.CSSProperties['maxHeight'];
   };
 
 export const TextArea = (props: TextAreaProps) => {
@@ -24,7 +27,20 @@ export const TextArea = (props: TextAreaProps) => {
 
   return (
     <Flex direction="column" gap={4} width={fullWidth ? '100%' : undefined}>
-      <TextInput {...props} fullWidth={fullWidth} multiline value={props.value} onChange={handleTextChange} />
+      <TextInput
+        {...props}
+        fullWidth={fullWidth}
+        multiline
+        value={props.value}
+        onChange={handleTextChange}
+        sx={{
+          '& textarea': {
+            resize: props.resize,
+            minHeight: props.minHeight ?? 15,
+            maxHeight: props.maxHeight,
+          },
+        }}
+      />
       {(!props.hideTextCount || !props.maxCharacter) && (
         <Typography class="medium" size="base" color={props.errorText ? 'error75' : 'dark90'}>
           {characterCount}/{props.maxCharacter} characters
