@@ -81,9 +81,10 @@ export function ImageUpload(props: ImageUploadProps) {
             width="100%"
             canUpload={props.canUpload}
             onClick={props.canUpload ? onUpload.bind(null, props.onSelect) : undefined}
+            variant={props.variant}
           >
             {props.src && props.uploading && (
-              <LoaderIconWrapper variant={props.variant}>
+              <LoaderIconWrapper>
                 <Icon icon="Loader2" color="lightWhite" size="24" />
               </LoaderIconWrapper>
             )}
@@ -119,31 +120,31 @@ const Image = styled('img')`
   max-height: 150px;
 `;
 
-const UploadSection = styled(Flex)<{ error?: boolean; canUpload?: boolean }>(({ error, theme, canUpload }) => ({
-  backgroundColor: error ? theme.palette.colors.errorL1 : theme.palette.colors.lightL2,
-  border: `1px dotted ${error ? theme.palette.colors.error60 : theme.palette.colors.dark45}`,
-  borderRadius: 4,
-  minHeight: 150,
-  cursor: canUpload ? 'pointer' : 'default',
-  position: 'relative',
-}));
+const VariantToWrapperSize: Record<ImageUploadProps['variant'], number> = {
+  large: 150,
+  medium: 80,
+};
+
+const UploadSection = styled(Flex)<{ error?: boolean; canUpload?: boolean; variant: ImageUploadProps['variant'] }>(
+  ({ error, theme, canUpload, variant }) => ({
+    backgroundColor: error ? theme.palette.colors.errorL1 : theme.palette.colors.lightL2,
+    border: `1px dotted ${error ? theme.palette.colors.error60 : theme.palette.colors.dark45}`,
+    borderRadius: 4,
+    minHeight: VariantToWrapperSize[variant],
+    cursor: canUpload ? 'pointer' : 'default',
+    position: 'relative',
+  })
+);
 
 const Spacer = styled('div')<{ size: number }>(({ theme, size }) => ({
   height: theme.spacing(size),
   width: '100%',
 }));
 
-const VariantToWrapperSize: Record<ImageUploadProps['variant'], number> = {
-  large: 50,
-  medium: 30,
-};
-
-const LoaderIconWrapper = styled('div')<{
-  variant: ImageUploadProps['variant'];
-}>`
+const LoaderIconWrapper = styled('div')`
   height: 100%;
   width: 100%;
-  max-height: ${({ variant }) => VariantToWrapperSize[variant]}px;
+  max-height: 50px;
   display: flex;
   position: absolute;
   justify-content: center;

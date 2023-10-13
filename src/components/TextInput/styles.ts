@@ -24,7 +24,7 @@ export const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, 
   gap: theme.spacing(0.25),
 }));
 
-export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
+export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean; resize?: React.CSSProperties['resize'] }>`
   & .MuiOutlinedInput-root {
     border-color: ${({ error, disabled, theme }) =>
       error ? theme.palette.colors.error60 : disabled ? theme.palette.colors.error15 : theme.palette.colors.dark45};
@@ -47,7 +47,7 @@ export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean }>`
     }
     & .MuiInputBase-input {
       color: ${({ theme }) => theme.palette.colors.dark90};
-      resize: both;
+      resize: ${({ resize = 'both' }) => resize};
     }
   }
 
