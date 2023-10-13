@@ -22,6 +22,7 @@ export type TextInputProps = {
   endAdornment?: string | React.ReactNode;
   showStartAdornmentBorder?: boolean;
   showEndAdornmentBorder?: boolean;
+  resize?: React.CSSProperties['resize'];
 } & Omit<StandardTextFieldProps, 'required' | 'variant' | 'helperText'>;
 
 export const TextInput = (props: TextInputProps) => {

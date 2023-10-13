@@ -35,7 +35,6 @@ export const TextArea = (props: TextAreaProps) => {
         onChange={handleTextChange}
         sx={{
           '& textarea': {
-            resize: props.resize,
             minHeight: props.minHeight ?? 15,
             maxHeight: props.maxHeight,
           },
