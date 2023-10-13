@@ -14,7 +14,7 @@ export type ImageUploadProps = {
   helperText?: string;
   errorText?: string;
   error?: boolean;
-  variant: 'large';
+  variant: 'large' | 'medium';
   fullWidth?: boolean;
   src?: string;
   uploading?: boolean;
@@ -64,7 +64,7 @@ export function ImageUpload(props: ImageUploadProps) {
           {props.helperText}
         </Typography>
       )}
-      {props.variant === 'large' && (
+      {(props.variant === 'large' || props.variant === 'medium') && (
         <>
           {props.errorText && (
             <Flex gap={theme.spacing(0.5)} align="center">
@@ -83,7 +83,7 @@ export function ImageUpload(props: ImageUploadProps) {
             onClick={props.canUpload ? onUpload.bind(null, props.onSelect) : undefined}
           >
             {props.src && props.uploading && (
-              <LoaderIconWrapper>
+              <LoaderIconWrapper variant={props.variant}>
                 <Icon icon="Loader2" color="lightWhite" size="24" />
               </LoaderIconWrapper>
             )}
@@ -133,10 +133,17 @@ const Spacer = styled('div')<{ size: number }>(({ theme, size }) => ({
   width: '100%',
 }));
 
-const LoaderIconWrapper = styled('div')`
+const VariantToWrapperSize: Record<ImageUploadProps['variant'], number> = {
+  large: 50,
+  medium: 30,
+};
+
+const LoaderIconWrapper = styled('div')<{
+  variant: ImageUploadProps['variant'];
+}>`
   height: 100%;
   width: 100%;
-  max-height: 150px;
+  max-height: ${({ variant }) => VariantToWrapperSize[variant]}px;
   display: flex;
   position: absolute;
   justify-content: center;
