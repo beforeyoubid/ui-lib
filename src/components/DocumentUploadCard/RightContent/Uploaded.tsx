@@ -40,6 +40,4 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   );
 };
 
-const Uploaded = typedMemo(UploadedNoMemo);
-
-export { Uploaded };
+export const Uploaded = typedMemo(UploadedNoMemo);
