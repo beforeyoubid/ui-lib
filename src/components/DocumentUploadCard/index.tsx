@@ -8,7 +8,7 @@ import { FlexCard, StyledLinearProgress, TypographyContainer } from './styles';
 import { LeftContent } from './LeftContent';
 import { Locked, Upload, Uploading, Uploaded } from './RightContent';
 
-type DocumentUploadCardProps = {
+export type DocumentUploadCardProps = {
   label: string;
   description?: string;
   isEditing: boolean;
@@ -22,7 +22,7 @@ type DocumentUploadCardProps = {
   onFileDelete: () => void;
 };
 
-const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
+export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   label,
   description,
   isEditing,
@@ -88,5 +88,3 @@ const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
     </Flex>
   );
 };
-
-export { DocumentUploadCard };

@@ -9,10 +9,12 @@ import { Flex } from '../../Flex';
 import { Button } from '../../Button';
 import { LinkButton } from '../../LinkButton';
 import { typedMemo } from '../../../utils';
+import { useTheme } from '@mui/material';
 
 type UploadedProps = { onFileDelete: () => void };
 
 const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
+  const theme = useTheme();
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const toggleConfirmDelete = useCallback(() => setConfirmDelete(curr => !curr), []);
@@ -33,13 +35,11 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
   }
 
   return (
-    <Flex direction="row" align="center" justify="center">
+    <Flex direction="row" align="center" justify="center" gap={theme.spacing()}>
       <LinkButton type="grey" size="md" title="Cancel" onClick={toggleConfirmDelete} />
       <Button variant="primary" type="destructive" title="Delete" size="sm" onClick={handleDelete} wrap="narrow" />
     </Flex>
   );
 };
 
-const Uploaded = typedMemo(UploadedNoMemo);
-
-export { Uploaded };
+export const Uploaded = typedMemo(UploadedNoMemo);
