@@ -61,8 +61,8 @@ const StyledModal = styled(ModalMui)({
 
 const StyledModalContent = styled('div')<{ height?: number | string; width?: number | string }>(
   ({ theme, height, width }) => ({
-    minWidth: height ? formatSizeToPx(height) : 565,
-    minHeight: width ? formatSizeToPx(width) : 100,
+    minWidth: width ? formatSizeToPx(width) : 565,
+    minHeight: height ? formatSizeToPx(height) : 100,
     border: `1px solid ${theme.palette.colors.dark15}`,
     backgroundColor: theme.palette.colors.lightWhite,
     borderRadius: 8,
