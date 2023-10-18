@@ -15,13 +15,21 @@ export type ModalProps = {
 
   height?: number | string;
   width?: number | string;
+
+  maxHeight?: number | string;
+  maxWidth?: number | string;
 };
 
 export function Modal(props: ModalProps) {
   const theme = useTheme();
   return (
     <StyledModal open={props.open} onClose={props.onClose}>
-      <StyledModalContent height={props.height} width={props.width}>
+      <StyledModalContent
+        height={props.height}
+        width={props.width}
+        maxHeight={props.maxHeight}
+        maxWidth={props.maxWidth}
+      >
         {!!props.title && (
           <TitleSection>
             <Flex direction="row" gap={theme.spacing(2.25)} align="center">
@@ -59,18 +67,23 @@ const StyledModal = styled(ModalMui)({
   alignItems: 'center',
 });
 
-const StyledModalContent = styled('div')<{ height?: number | string; width?: number | string }>(
-  ({ theme, height, width }) => ({
-    minWidth: width ? formatSizeToPx(width) : 565,
-    minHeight: height ? formatSizeToPx(height) : 100,
-    border: `1px solid ${theme.palette.colors.dark15}`,
-    backgroundColor: theme.palette.colors.lightWhite,
-    borderRadius: 8,
-    ':focus-visible': {
-      outline: 'none',
-    },
-  })
-);
+const StyledModalContent = styled('div')<{
+  height?: number | string;
+  width?: number | string;
+  maxHeight?: number | string;
+  maxWidth?: number | string;
+}>(({ theme, height, width, maxWidth, maxHeight }) => ({
+  minWidth: width ? formatSizeToPx(width) : 565,
+  minHeight: height ? formatSizeToPx(height) : 100,
+  maxHeight: maxHeight ? formatSizeToPx(maxHeight) : undefined,
+  maxWidth: maxWidth ? formatSizeToPx(maxWidth) : undefined,
+  border: `1px solid ${theme.palette.colors.dark15}`,
+  backgroundColor: theme.palette.colors.lightWhite,
+  borderRadius: 8,
+  ':focus-visible': {
+    outline: 'none',
+  },
+}));
 
 const StyledIconWrapper = styled('div')({
   cursor: 'pointer',
