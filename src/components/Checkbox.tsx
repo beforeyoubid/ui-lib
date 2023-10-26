@@ -9,7 +9,7 @@ import { TextFieldErrorLabel } from './TextInput/Labels';
 type CheckboxSize = 'sm' | 'md' | 'lg';
 
 export type CheckboxProps = {
-  label: string;
+  label: string | React.ReactNode;
   size: CheckboxSize;
   errorText?: string;
   indeterminate?: boolean;
