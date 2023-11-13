@@ -1,27 +1,34 @@
 import { FormControl, RadioGroup, FormControlLabel } from '@mui/material';
+import { useCallback } from 'react';
+
 import { Typography } from './Typography';
 import { Circle } from './Circle';
 
-export type RadioProps<Value = string> = {
+export type RadioProps = {
   label: string;
   id: string;
   options: {
     label: string;
-    value: Value;
+    value: string;
     disabled?: boolean;
   }[];
-  defaultValue?: Maybe<Value>;
+  value?: Maybe<string>;
   row?: boolean;
   iconType?: 'circle' | 'tick';
+  onChange: (value: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function Radio({ id, label, options, defaultValue, row }: RadioProps) {
+export function Radio({ id, label, options, value, onChange, row }: RadioProps) {
+  const onChangeWrapper = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>, value: string) => onChange(value, event),
+    [onChange]
+  );
   return (
     <FormControl>
       <Typography id={id} color="dark90" size="base" class="medium">
         {label}
       </Typography>
-      <RadioGroup aria-labelledby={id} defaultValue={defaultValue} name="radio-buttons-group" row={row}>
+      <RadioGroup aria-labelledby={id} value={value} name="radio-buttons-group" row={row} onChange={onChangeWrapper}>
         {options.map(opt => (
           <FormControlLabel
             key={opt.value}
