@@ -4,6 +4,7 @@
 export * from './Button';
 export * from './Card';
 export { Checkbox } from './Checkbox';
+export * from './Circle';
 export * from './DocumentUploadCard';
 export * from './Dropdown';
 export * from './Flex';
@@ -19,6 +20,7 @@ export * from './NavigationButton';
 export * from './NavigationMenu';
 export * from './PasswordInput';
 export * from './ProfilePicture';
+export * from './Radio';
 export * from './Table';
 export * from './TableBody';
 export * from './TableCell';

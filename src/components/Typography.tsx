@@ -14,6 +14,7 @@ export type TypographyProps = {
   automationKey?: string;
   fullWidth?: boolean;
   strikethrough?: boolean;
+  id?: React.HTMLAttributes<HTMLDivElement>['id'];
 };
 
 export function Typography(props: TypographyProps) {
@@ -27,6 +28,7 @@ export function Typography(props: TypographyProps) {
       fullWidth={props.fullWidth ?? false}
       padding={props.padding ? props.padding : 0}
       strikethrough={props.strikethrough ?? false}
+      id={props.id}
       {...automation([props.automationKey])}
     >
       {props.children}
