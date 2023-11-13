@@ -18,6 +18,7 @@ export const Active: Story = {
       { label: 'Mail', value: 'mail', disabled: true },
     ],
     row: true,
-    defaultValue: 'mail',
+    value: 'mail',
+    onChange: console.log,
   },
 };
