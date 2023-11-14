@@ -62,7 +62,6 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
         </TypographyContainer>
       )}
       <FlexCard
-        width="100%"
         direction="row"
         align="center"
         isEditing={isEditing}
