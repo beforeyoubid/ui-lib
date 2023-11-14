@@ -36,17 +36,23 @@ const multiSelectStyles = <IsMulti extends boolean>({
       outline: `${theme.palette.colors.mint60} auto 1px`,
     },
   }),
-  option: (provided, { isFocused }: { isFocused: boolean }) => ({
-    ...provided,
-    color: 'black',
-    backgroundColor: isFocused ? theme.palette.colors.lightWhite : undefined,
-    '&:hover': {
-      backgroundColor: theme.palette.colors.lightL2,
-    },
-    paddingLeft: theme.spacing(7),
-    fontFamily: theme.typography.fontFamily,
-    minHeight: 40,
-  }),
+  option: (provided, { isFocused, isSelected }) => {
+    return {
+      ...provided,
+      color: 'black',
+      backgroundColor: isSelected
+        ? theme.palette.colors.mintL3
+        : isFocused
+        ? theme.palette.colors.lightWhite
+        : undefined,
+      '&:hover': {
+        backgroundColor: isSelected ? theme.palette.colors.mintL3 : theme.palette.colors.lightL2,
+      },
+      paddingLeft: theme.spacing(7),
+      fontFamily: theme.typography.fontFamily,
+      minHeight: 40,
+    };
+  },
   multiValueLabel: provided => ({
     ...provided,
     color: 'black',
