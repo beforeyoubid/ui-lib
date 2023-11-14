@@ -1,8 +1,11 @@
-import { FormControl, RadioGroup, FormControlLabel } from '@mui/material';
+import { FormControl, RadioGroup, FormControlLabel, useTheme } from '@mui/material';
 import { useCallback } from 'react';
 
 import { Typography } from './Typography';
 import { Circle } from './Circle';
+import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+import { Flex } from './Flex';
+import { automation } from '../utils';
 
 export type RadioProps = {
   label: string;
@@ -16,18 +19,38 @@ export type RadioProps = {
   row?: boolean;
   iconType?: 'circle' | 'tick';
   onChange: (value: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+  errorText?: string;
+  helperText?: string;
+  required?: boolean;
+  isOptional?: boolean;
+  automationKey?: string;
 };
 
-export function Radio({ id, label, options, value, onChange, row }: RadioProps) {
+export function Radio({
+  id,
+  label,
+  options,
+  value,
+  onChange,
+  row,
+  errorText,
+  helperText,
+  required = false,
+  isOptional = false,
+  automationKey,
+}: RadioProps) {
+  const theme = useTheme();
   const onChangeWrapper = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>, value: string) => onChange(value, event),
     [onChange]
   );
   return (
-    <FormControl>
-      <Typography id={id} color="dark90" size="base" class="medium">
-        {label}
-      </Typography>
+    <FormControl {...automation([automationKey], { label })}>
+      <Flex direction="column" width="100%" gap={theme.spacing(0.5)}>
+        <TextFieldLabel labelText={label} required={required} isOptional={isOptional} id={id} />
+        {helperText && <TextFieldHint hintText={helperText} />}
+        {errorText && <TextFieldErrorLabel errorText={errorText} />}
+      </Flex>
       <RadioGroup aria-labelledby={id} value={value} name="radio-buttons-group" row={row} onChange={onChangeWrapper}>
         {options.map(opt => (
           <FormControlLabel

@@ -22,3 +22,17 @@ export const Active: Story = {
     onChange: console.log,
   },
 };
+
+export const Error: Story = {
+  args: {
+    label: 'Preferred contact method',
+    options: [
+      { label: 'Email', value: 'email' },
+      { label: 'SMS', value: 'sms' },
+      { label: 'Mail', value: 'mail', disabled: true },
+    ],
+    row: true,
+    onChange: console.log,
+    errorText: 'Please select an option',
+  },
+};
