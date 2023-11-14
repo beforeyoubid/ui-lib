@@ -11,7 +11,7 @@ import { TextFieldLabel } from '../TextInput/Labels';
 
 export type DocumentUploadCardProps = {
   label: string;
-  description?: string;
+  description?: string | React.ReactNode;
   accept?: string;
   required?: boolean;
   isOptional?: boolean;
