@@ -13,12 +13,14 @@ const TextFieldLabelNoMemo = ({
   labelText,
   required,
   isOptional,
+  id,
 }: {
   labelText: string;
   required: boolean;
   isOptional: boolean;
+  id?: string;
 }) => (
-  <LabelRowContainer required={required}>
+  <LabelRowContainer required={required} id={id}>
     <Typography class="medium" size="base" color="dark90" padding={0}>
       {labelText}
     </Typography>
