@@ -22,6 +22,8 @@ export const Upload: Story = {
     isUploading: false,
     uploadProgress: 0,
     errorMessage: '',
+    required: false,
+    isOptional: false,
   },
 };
 
@@ -36,6 +38,8 @@ export const Uploaded: Story = {
     isUploading: false,
     uploadProgress: 100,
     errorMessage: '',
+    required: false,
+    isOptional: false,
   },
 };
 
@@ -50,6 +54,8 @@ export const Uploading: Story = {
     isUploading: true,
     uploadProgress: 50,
     errorMessage: '',
+    required: false,
+    isOptional: false,
   },
 };
 
@@ -64,6 +70,8 @@ export const Error: Story = {
     isUploading: false,
     uploadProgress: 0,
     errorMessage: 'The provided file exceeds the maximum file size limit',
+    required: false,
+    isOptional: false,
   },
 };
 
@@ -78,5 +86,7 @@ export const Locked: Story = {
     isUploading: false,
     uploadProgress: 0,
     errorMessage: '',
+    required: false,
+    isOptional: false,
   },
 };
