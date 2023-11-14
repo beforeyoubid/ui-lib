@@ -7,10 +7,14 @@ import { Flex } from '../../components/Flex';
 import { FlexCard, StyledLinearProgress, TypographyContainer } from './styles';
 import { LeftContent } from './LeftContent';
 import { Locked, Upload, Uploading, Uploaded } from './RightContent';
+import { TextFieldLabel } from '../TextInput/Labels';
 
 export type DocumentUploadCardProps = {
   label: string;
-  description?: string;
+  description?: string | React.ReactNode;
+  accept?: string;
+  required?: boolean;
+  isOptional?: boolean;
   isEditing: boolean;
   fileUrl?: string;
   fileName?: string;
@@ -25,7 +29,10 @@ export type DocumentUploadCardProps = {
 export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   label,
   description,
+  required = false,
+  isOptional = false,
   isEditing,
+  accept,
   fileUrl,
   fileName,
   fileSize,
@@ -38,9 +45,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   return (
     <Flex direction="column" width="100%">
       <TypographyContainer>
-        <Typography class="medium" size="base" color="dark90" padding={0}>
-          {label}
-        </Typography>
+        <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
       </TypographyContainer>
       {description && (
         <TypographyContainer>
@@ -57,7 +62,6 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
         </TypographyContainer>
       )}
       <FlexCard
-        width="100%"
         direction="row"
         align="center"
         isEditing={isEditing}
@@ -75,7 +79,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
                 {/* left content */}
                 <LeftContent fileName={fileName} fileSize={fileSize} hasError={!!errorMessage} />
                 {/* right content */}
-                {!isUploading && !fileUrl && <Upload onSelect={onFileSelect} />}
+                {!isUploading && !fileUrl && <Upload accept={accept} onSelect={onFileSelect} />}
                 {isUploading && <Uploading progress={uploadProgress} />}
                 {fileUrl && <Uploaded onFileDelete={onFileDelete} />}
               </Flex>
