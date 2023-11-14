@@ -11,6 +11,7 @@ import { Locked, Upload, Uploading, Uploaded } from './RightContent';
 export type DocumentUploadCardProps = {
   label: string;
   description?: string;
+  accept?: string;
   isEditing: boolean;
   fileUrl?: string;
   fileName?: string;
@@ -26,6 +27,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   label,
   description,
   isEditing,
+  accept,
   fileUrl,
   fileName,
   fileSize,
@@ -75,7 +77,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
                 {/* left content */}
                 <LeftContent fileName={fileName} fileSize={fileSize} hasError={!!errorMessage} />
                 {/* right content */}
-                {!isUploading && !fileUrl && <Upload onSelect={onFileSelect} />}
+                {!isUploading && !fileUrl && <Upload accept={accept} onSelect={onFileSelect} />}
                 {isUploading && <Uploading progress={uploadProgress} />}
                 {fileUrl && <Uploaded onFileDelete={onFileDelete} />}
               </Flex>
