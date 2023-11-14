@@ -6,6 +6,7 @@ const FlexCard = styled(Flex)<{
   hasFile: boolean;
   hasError: boolean;
 }>`
+  width: calc(100% - ${({ theme }) => theme.spacing(5)});
   padding: ${({ theme }) => theme.spacing(2.5)};
   border-radius: 8px;
   border-width: 1px;
