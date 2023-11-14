@@ -32,6 +32,7 @@ const multiSelectStyles = <IsMulti extends boolean>({
   }),
   container: provided => ({
     ...provided,
+    width: '100%',
     '&:focus-visible': {
       outline: `${theme.palette.colors.mint60} auto 1px`,
     },
