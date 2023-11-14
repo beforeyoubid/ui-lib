@@ -32,6 +32,7 @@ const multiSelectStyles = <IsMulti extends boolean>({
   }),
   container: provided => ({
     ...provided,
+    width: '100%',
     '&:focus-visible': {
       outline: `${theme.palette.colors.mint60} auto 1px`,
     },
@@ -178,7 +179,7 @@ export function Select<Async extends boolean = false, IsMulti extends boolean = 
   isSearchable = true,
   label,
   loadOptions,
-  maxHeight,
+  maxHeight = 300,
   noOptionsMessage,
   onBlur,
   onChange,
