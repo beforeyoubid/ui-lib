@@ -178,7 +178,7 @@ export function Select<Async extends boolean = false, IsMulti extends boolean = 
   isSearchable = true,
   label,
   loadOptions,
-  maxHeight,
+  maxHeight = 300,
   noOptionsMessage,
   onBlur,
   onChange,
