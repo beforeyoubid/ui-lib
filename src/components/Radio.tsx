@@ -5,6 +5,7 @@ import { Typography } from './Typography';
 import { Circle } from './Circle';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
 import { Flex } from './Flex';
+import { automation } from '../utils';
 
 export type RadioProps = {
   label: string;
@@ -22,6 +23,7 @@ export type RadioProps = {
   helperText?: string;
   required?: boolean;
   isOptional?: boolean;
+  automationKey?: string;
 };
 
 export function Radio({
@@ -35,6 +37,7 @@ export function Radio({
   helperText,
   required = false,
   isOptional = false,
+  automationKey,
 }: RadioProps) {
   const theme = useTheme();
   const onChangeWrapper = useCallback(
@@ -42,7 +45,7 @@ export function Radio({
     [onChange]
   );
   return (
-    <FormControl>
+    <FormControl {...automation([automationKey], { label })}>
       <Flex direction="column" width="100%" gap={theme.spacing(0.5)}>
         <TextFieldLabel labelText={label} required={required} isOptional={isOptional} id={id} />
         {helperText && <TextFieldHint hintText={helperText} />}
