@@ -66,4 +66,7 @@ export type TypographyValues = {
     }
   >;
   fontWeight: Record<TypographyFontClass, number>;
+  fonts: Record<TypographyFontClass, string>;
 };
+
+export type Breakpoint = 'desktop' | 'laptop' | 'tablet' | 'phone';

@@ -1,7 +1,7 @@
 import { createTheme, ThemeOptions } from '@mui/material';
 import { Palette } from '@mui/material/styles/createPalette';
 
-import { Colors, TypographyFontSize, TypographyFontClass, TypographyValues } from './theme.types';
+import { Colors, TypographyFontSize, TypographyFontClass, TypographyValues, Breakpoint } from './theme.types';
 
 export type { TypographyFontSize, TypographyFontClass, Colors };
 export type Color = keyof Colors;
@@ -15,6 +15,26 @@ export type Typography = {
     }
   >;
   fontWeight: Record<TypographyFontClass, number>;
+  fonts: Record<TypographyFontClass, string>;
+};
+
+const sizes: Record<Breakpoint, number> = {
+  desktop: 1440,
+  laptop: 1024,
+  tablet: 768,
+  phone: 425,
+};
+
+const fonts = {
+  regular: `Avenir-Roman, Avenir-Medium, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol'`,
+  medium: `Avenir-Medium, Avenir-Roman, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol'`,
+  heavy: `Avenir-Heavy, Avenir-Medium, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol'`,
 };
 
 const typography: Typography = {
@@ -57,28 +77,18 @@ const typography: Typography = {
     medium: 500,
     bold: 700,
   },
+  fonts: {
+    roman: fonts.regular,
+    medium: fonts.medium,
+    bold: fonts.heavy,
+  },
 };
 
 export const themeVariables = {
   toolbarHeight: 64,
   typography,
-  fonts: {
-    regular: `Avenir-Roman, system-ui, -apple-system, BlinkMacSystemFont,
-      'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-      'Segoe UI Emoji', 'Segoe UI Symbol'`,
-    medium: `Avenir-Medium, system-ui, -apple-system, BlinkMacSystemFont,
-      'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-      'Segoe UI Emoji', 'Segoe UI Symbol'`,
-    heavy: `Avenir-Heavy, system-ui, -apple-system, BlinkMacSystemFont,
-      'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-      'Segoe UI Emoji', 'Segoe UI Symbol'`,
-  },
-  sizes: {
-    desktop: 1440,
-    laptop: 1024,
-    tablet: 768,
-    phone: 425,
-  },
+  fonts,
+  sizes,
 };
 
 export const colorPalette: Colors = {
@@ -145,6 +155,8 @@ export const muiTheme: ThemeOptions = {
     fontFamily: themeVariables.fonts.regular,
     ...typography,
   },
+
+  sizes,
 };
 
 export const theme = createTheme(muiTheme);
@@ -167,5 +179,10 @@ declare module '@mui/material/styles/createTheme' {
     palette: Palette;
     typography: Typography;
   }
-  export interface ThemeOptions {}
+  export interface Theme {
+    sizes: Record<Breakpoint, number>;
+  }
+  export interface ThemeOptions {
+    sizes: Record<Breakpoint, number>;
+  }
 }

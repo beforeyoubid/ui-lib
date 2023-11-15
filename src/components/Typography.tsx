@@ -45,7 +45,7 @@ const Div = styled('div')<{
   fullWidth: boolean;
   strikethrough: boolean;
 }>(({ theme, fontClass, size, color, hoverColor, padding, fullWidth, strikethrough }) => ({
-  fontFamily: theme.typography.fontFamily,
+  fontFamily: theme.typography.fonts[fontClass],
   fontSize: theme.typography.size[size].fontSize,
   lineHeight: theme.typography.size[size].lineHeight,
   fontWeight: theme.typography.fontWeight[fontClass],
