@@ -40,7 +40,7 @@ export function Checkbox(props: CheckboxProps) {
         required={props.required ?? false}
         disabled={props.disabled ?? false}
         control={<RawCheckbox {...props} />}
-        sx={{ marginLeft: -theme.spacing(0.5), marginRight: 0 }}
+        sx={{ marginLeft: 0, marginRight: 0 }}
       />
       {!!props.errorText && (
         <ErrorWrapper>
