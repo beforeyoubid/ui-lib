@@ -83,12 +83,11 @@ jobs:
           key: node_modules-{{ checksum "yarn.lock" }}
       - run: NODE_ENV=development yarn
       - run: yarn build-and-publish-dryrun
-      - run: npm i -g verdaccio
       - run:
           name: Wait for Verdaccio to start
           command: |
             cd module_test
-            verdaccio --config verdaccio_config.yaml
+            npx verdaccio --config verdaccio_config.yaml
           background: true
       - run: yarn version --patch --no-git-tag-version
       - run: npm run build-and-publish-dryrun-ci
