@@ -7,16 +7,16 @@ import { Icon } from './types';
 const PERCENT_OF_WIDTH_RELATIVE_TO_HEIGHT = 0.61;
 
 export const GameIconsPerson: Icon = props => {
-  const height = props.size ?? 24;
+  const height = props.size ?? 18;
   const heightAsNum = typeof height === 'number' ? height : Number(height.replace(/\w+/g, ''));
   const width = useMemo(() => {
     return Math.round(heightAsNum * PERCENT_OF_WIDTH_RELATIVE_TO_HEIGHT);
   }, [heightAsNum]);
   return (
     <svg
-      height={height}
+      height={heightAsNum}
       width={width}
-      viewBox={`0 0 ${width / 1.5} ${heightAsNum / 1.5}`}
+      viewBox={`0 0 ${width} ${heightAsNum}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={props.className}
