@@ -1,11 +1,13 @@
 import { Icon } from './types';
 
 export const ExclamationCircle: Icon = props => {
+  const size = props.size ?? 24;
+  const sizeAsNum = typeof size === 'number' ? size : Number(size.replace(/\w+/g, ''));
   return (
     <svg
-      width={props.size}
-      height={props.size}
-      viewBox={`0 0 ${props.size} ${props.size}`}
+      width={sizeAsNum}
+      height={sizeAsNum}
+      viewBox={`0 0 ${sizeAsNum / 2} ${sizeAsNum / 2}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={props.className}
