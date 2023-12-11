@@ -44,8 +44,8 @@ const multiSelectStyles = <IsMulti extends boolean>({
       backgroundColor: isSelected
         ? theme.palette.colors.mintL3
         : isFocused
-        ? theme.palette.colors.lightWhite
-        : undefined,
+          ? theme.palette.colors.lightWhite
+          : undefined,
       '&:hover': {
         backgroundColor: isSelected ? theme.palette.colors.mintL3 : theme.palette.colors.lightL2,
       },

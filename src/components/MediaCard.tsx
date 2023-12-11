@@ -25,8 +25,8 @@ export type MediaCardProps<State extends MediaCardState> = {
     ? RemovableMediaProps
     : CardWithMediaProps
   : State extends 'upload'
-  ? UploadProps
-  : ErrorProps);
+    ? UploadProps
+    : ErrorProps);
 
 const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<State>) => {
   const state = props.state as MediaCardState;
