@@ -4,9 +4,9 @@ export const SquareRoundedChevronDownFilled: Icon = props => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={props.size}
-      height={props.size}
-      viewBox={`0 0 ${props.size} ${props.size}`}
+      width={props.size ?? 24}
+      height={props.size ?? 24}
+      viewBox={`0 0 ${props.size ?? 24} ${props.size ?? 24}`}
       fill="none"
       className={props.className}
     >
