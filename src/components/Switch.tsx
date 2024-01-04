@@ -32,7 +32,7 @@ export function Switch({
   const theme = useTheme();
   const onChangeWrapper = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => onChange(event, value),
-    [onChange]
+    [onChange, value]
   );
   return (
     <FormControl {...automation([automationKey])}>
