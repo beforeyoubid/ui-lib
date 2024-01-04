@@ -20,3 +20,4 @@ export * from './TextArea';
 export * from './TextInput';
 export * from './Typography';
 export * from './DocumentUploadCard';
+export * from './Switch';
