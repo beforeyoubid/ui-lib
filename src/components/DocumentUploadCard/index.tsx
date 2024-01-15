@@ -42,6 +42,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   onFileSelect,
   onFileDelete,
 }) => {
+  const fileIcon = fileUrl?.endsWith('.pdf') ? 'PDF' : 'File';
   return (
     <Flex direction="column" width="100%">
       <TypographyContainer>
@@ -72,7 +73,11 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
         {isEditing && (
           <Flex direction="row" grow={1} gap={12}>
             <Flex direction="column" align="center" alignSelf="stretch" justify="center">
-              <Icon icon={fileName ? 'File' : 'CloudUpload'} color={!!errorMessage ? 'error60' : 'dark60'} size={28} />
+              <Icon
+                icon={fileName ? fileIcon : 'CloudUpload'}
+                color={!!errorMessage ? 'error60' : 'dark60'}
+                size={28}
+              />
             </Flex>
             <Flex direction="column" width="100%">
               <Flex direction="row" align="center" width="100%">
