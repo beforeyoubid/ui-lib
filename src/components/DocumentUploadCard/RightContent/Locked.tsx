@@ -31,7 +31,7 @@ const LockedNoMemo: React.FC<LockedProps> = ({ fileUrl, fileName, fileSize = '-'
   return (
     <Flex direction="row" width="100%" justify="space-between" align="center">
       <Flex direction="row" grow={1} align="center" gap={12}>
-        <Icon icon="File" size={18} color="dark75" />
+        <Icon icon={fileUrl.endsWith('.pdf') ? 'PDF' : 'File'} size={18} color="dark75" />
         <a href={fileUrl} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
           <Typography class="medium" size="sm" color="dark75" padding={0}>
             {fileName}
