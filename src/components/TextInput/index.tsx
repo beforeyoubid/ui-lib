@@ -41,6 +41,7 @@ export const TextInput = (props: TextInputProps) => {
     endAdornment,
     showStartAdornmentBorder = true,
     showEndAdornmentBorder = true,
+    InputProps = {},
     ...rest
   } = props;
 
@@ -59,6 +60,7 @@ export const TextInput = (props: TextInputProps) => {
         fullWidth
         hasLeadingIcon={!!leadingIconName}
         InputProps={{
+          ...InputProps,
           startAdornment: (
             <Adornment
               position="start"
@@ -68,7 +70,6 @@ export const TextInput = (props: TextInputProps) => {
             />
           ),
           endAdornment: <Adornment position="end" adornment={endAdornment} showBorder={showEndAdornmentBorder} />,
-          ...(rest.InputProps ?? {}),
         }}
         inputProps={{
           ...automation([automationKey], { label }),
