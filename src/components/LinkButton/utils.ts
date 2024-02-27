@@ -1,4 +1,5 @@
 import { useTheme } from '@mui/material';
+
 import { type Colors, type TypographyFontClass, type TypographyFontSize } from '../../mui-theme';
 
 const getLinkButtonStyle = (

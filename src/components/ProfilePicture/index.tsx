@@ -1,4 +1,5 @@
 import { Avatar } from '@mui/material';
+
 import { theme } from '../../mui-theme';
 
 export type ProfilePictureProps = {

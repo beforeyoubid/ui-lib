@@ -1,10 +1,11 @@
 import type React from 'react';
+
 import { Checkbox as CheckboxMui, FormControlLabel, styled, useTheme } from '@mui/material';
 
 import { Flex } from './Flex';
 import { Icon } from './Icon';
-import { Typography } from './Typography';
 import { TextFieldErrorLabel } from './TextInput/Labels';
+import { Typography } from './Typography';
 
 type CheckboxSize = 'sm' | 'md' | 'lg';
 

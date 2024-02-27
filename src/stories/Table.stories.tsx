@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import { Table } from '../components/Table';
-import { TableHeader } from '../components/TableHeader';
 import { TableBody } from '../components/TableBody';
-import { TableRow } from '../components/TableRow';
 import { TableCell } from '../components/TableCell';
+import { TableHeader } from '../components/TableHeader';
+import { TableRow } from '../components/TableRow';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Table> = {
   component: ({ children }: { children: React.ReactNode }) => <>{children}</>,

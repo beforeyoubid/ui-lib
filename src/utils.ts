@@ -1,7 +1,7 @@
-import React from 'react';
+import { memo } from 'react';
 
 export const isEvenNum = (num: number) => num % 2 === 0;
-export const typedMemo: <T>(c: T) => T = React.memo;
+export const typedMemo: <T>(c: T) => T = memo;
 
 export const notEmpty = <TValue>(value: TValue | null | undefined): value is TValue =>
   value !== null && value !== undefined;

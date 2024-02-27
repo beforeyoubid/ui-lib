@@ -1,15 +1,13 @@
 // External Imports
 // React
+import { useCallback, useMemo } from 'react';
 import type React from 'react';
-import { useCallback } from 'react';
-// Material
 
 // Relative Imports
 // Components
-import { Flex } from '../../Flex';
-import { Button } from '../../Button';
-// Styling
 import { typedMemo } from '../../../utils';
+import { Button } from '../../Button';
+import { Flex } from '../../Flex';
 
 type UploadProps = { onSelect: (file: File) => void; accept?: string };
 
@@ -29,7 +27,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
     [accept]
   );
 
-  const onClick = onUpload.bind(null, onSelect);
+  const onClick = useMemo(() => onUpload.bind(null, onSelect), [onSelect, onUpload]);
 
   return (
     <Flex direction="row">

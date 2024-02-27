@@ -1,12 +1,14 @@
-import React, { useMemo, useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import React, { useMemo, useState, memo } from 'react';
 
-import * as Icons from 'tabler-icons-react';
-import * as CustomIcons from '../components/Icon/Custom';
-import { Icon } from '../components/Icon';
-import { Typography } from '../components/Typography';
-import { Flex, TextInput } from '../components';
 import { useTheme } from '@mui/material';
+import * as Icons from 'tabler-icons-react';
+
+import { Flex, TextInput } from '../components';
+import { Icon } from '../components/Icon';
+import * as CustomIcons from '../components/Icon/Custom';
+import { Typography } from '../components/Typography';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const iconNames = Object.keys({ ...Icons, ...CustomIcons }) as (keyof typeof Icons | keyof typeof CustomIcons)[];
 
@@ -54,7 +56,7 @@ const IconWrapperNoMemo = ({ icon }: { icon: keyof typeof Icons | keyof typeof C
     </Flex>
   );
 };
-const IconWrapper = React.memo(IconWrapperNoMemo);
+const IconWrapper = memo(IconWrapperNoMemo);
 
 const meta: Meta<typeof IconList> = {
   component: IconList,

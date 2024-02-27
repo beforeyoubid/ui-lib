@@ -8,6 +8,12 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
+      },
+    },
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -16,6 +22,8 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
   ],
   rules: {
     'react/react-in-jsx-scope': 0,
@@ -63,6 +71,31 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-unnecessary-type-constraint': 'off',
     '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
+    'import/namespace': ['error', { allowComputed: true }],
+    'import/no-unresolved': [
+      'error',
+      {
+        ignore: ['^react-select/dist/.+'],
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
+        pathGroups: [
+          { pattern: 'react', group: 'builtin' },
+          { pattern: '../**/__mocks__/*', group: 'internal' },
+          { pattern: '../../**/__mocks__/*', group: 'internal' },
+          { pattern: '../../../**/__mocks__/*', group: 'internal' },
+        ],
+        groups: ['builtin', 'external', 'object', 'index', 'parent', 'sibling', 'internal', 'type'],
+        alphabetize: {
+          order: 'asc' /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          caseInsensitive: true /* ignore case. Options: [true, false] */,
+        },
+      },
+    ],
   },
   overrides: [
     {

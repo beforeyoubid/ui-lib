@@ -1,11 +1,13 @@
-import { FormControl, RadioGroup, FormControlLabel, useTheme } from '@mui/material';
 import { useCallback } from 'react';
 
-import { Typography } from './Typography';
-import { Circle } from './Circle';
-import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
-import { Flex } from './Flex';
+import { FormControl, RadioGroup, FormControlLabel, useTheme } from '@mui/material';
+
 import { automation } from '../utils';
+
+import { Circle } from './Circle';
+import { Flex } from './Flex';
+import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+import { Typography } from './Typography';
 
 export type RadioProps = {
   label: string;

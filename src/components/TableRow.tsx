@@ -1,4 +1,5 @@
 import { TableRow as TableRowMui, styled, css } from '@mui/material';
+
 import { type Color } from '../mui-theme';
 
 export type TableRowProps = {

@@ -1,6 +1,7 @@
+import { NavigationButton } from '../components/NavigationButton';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { NavigationButton } from '../components/NavigationButton';
 // import { ThemedApp } from './styles';
 
 const meta: Meta<typeof NavigationButton> = {

@@ -1,6 +1,7 @@
+import { DocumentUploadCard } from '../components/DocumentUploadCard';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DocumentUploadCard } from '../components/DocumentUploadCard';
 // import { ThemedApp } from './styles';
 
 const meta: Meta<typeof DocumentUploadCard> = {

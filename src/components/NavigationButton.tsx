@@ -1,9 +1,11 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, memo } from 'react';
+import type React from 'react';
+
 import { styled } from '@mui/material';
 
-import { Typography } from './Typography';
-import { Icon, type IconProps } from './Icon';
 import { Flex } from './Flex';
+import { Icon, type IconProps } from './Icon';
+import { Typography } from './Typography';
 
 type NavigationButtonVariant = 'regular' | 'dark';
 export type NavigationButtonProps = {
@@ -47,7 +49,7 @@ function NavigationButtonNoMemo(props: NavigationButtonProps) {
   );
 }
 
-const NavigationButton = React.memo(NavigationButtonNoMemo);
+const NavigationButton = memo(NavigationButtonNoMemo);
 export { NavigationButton };
 
 const Button = styled('div')<{

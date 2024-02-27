@@ -1,10 +1,13 @@
+import { useCallback } from 'react';
 import { type ChangeEvent } from 'react';
 import type React from 'react';
-import { useCallback } from 'react';
+
 import { FormControl, Switch as SwitchMui, useTheme, styled } from '@mui/material';
-import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+
 import { automation } from '../utils';
+
 import { Flex } from './Flex';
+import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
 
 export interface SwitchProps {
   size: 'small' | 'medium';

@@ -1,12 +1,13 @@
 import { useCallback } from 'react';
+
 import { styled, useTheme } from '@mui/material';
 
-import { Flex } from './Flex';
-import { Typography } from './Typography';
-import { Icon } from './Icon';
-import { Button } from './Button';
-
 import { automation } from '../utils';
+
+import { Button } from './Button';
+import { Flex } from './Flex';
+import { Icon } from './Icon';
+import { Typography } from './Typography';
 
 export type ImageUploadProps = {
   label: string;

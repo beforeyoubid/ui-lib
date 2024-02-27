@@ -1,9 +1,11 @@
-import React, { useMemo } from 'react';
-import * as Icons from 'tabler-icons-react';
-import * as CustomIcons from './Custom';
+import React, { useMemo, memo } from 'react';
 
-import { type Colors } from '../../theme.types';
+import * as Icons from 'tabler-icons-react';
+
 import { colorPalette } from '../../mui-theme';
+import { type Colors } from '../../theme.types';
+
+import * as CustomIcons from './Custom';
 
 export type IconProps = {
   icon: keyof typeof Icons | keyof typeof CustomIcons;
@@ -21,5 +23,5 @@ function IconNoMemo(props: IconProps) {
   return <IconComponent color={colorPalette[props.color]} className={props.className} size={props.size} />;
 }
 
-const Icon = React.memo(IconNoMemo);
+const Icon = memo(IconNoMemo);
 export { Icon };

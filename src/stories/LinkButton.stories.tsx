@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { LinkButton } from '../components/LinkButton';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof LinkButton> = {
   component: LinkButton,

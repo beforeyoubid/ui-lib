@@ -1,16 +1,18 @@
 // External Imports
 // React
-import type React from 'react';
 import { useState, useCallback } from 'react';
+import type React from 'react';
+
+import { useTheme } from '@mui/material';
+
+import { typedMemo } from '../../../utils';
+import { Button } from '../../Button';
+import { Flex } from '../../Flex';
+import { Icon } from '../../Icon';
+import { LinkButton } from '../../LinkButton';
 
 // Relative Imports
 // Components
-import { Icon } from '../../Icon';
-import { Flex } from '../../Flex';
-import { Button } from '../../Button';
-import { LinkButton } from '../../LinkButton';
-import { typedMemo } from '../../../utils';
-import { useTheme } from '@mui/material';
 
 type UploadedProps = { onFileDelete: () => void };
 

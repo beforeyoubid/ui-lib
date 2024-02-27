@@ -1,13 +1,14 @@
 // Relative Imports
 // Components
+import { Flex } from '../../components/Flex';
 import { Icon } from '../../components/Icon';
 import { Typography } from '../../components/Typography';
-import { Flex } from '../../components/Flex';
 // Styled Components
-import { FlexCard, StyledLinearProgress, TypographyContainer } from './styles';
+import { TextFieldLabel } from '../TextInput/Labels';
+
 import { LeftContent } from './LeftContent';
 import { Locked, Upload, Uploading, Uploaded } from './RightContent';
-import { TextFieldLabel } from '../TextInput/Labels';
+import { FlexCard, StyledLinearProgress, TypographyContainer } from './styles';
 
 export type DocumentUploadCardProps = {
   label: string;

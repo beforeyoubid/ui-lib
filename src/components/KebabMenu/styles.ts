@@ -1,6 +1,5 @@
-import { styled, css } from '@mui/material';
+import { styled, css, MenuItem, IconButton as UnstyledIconButton } from '@mui/material';
 import Color from 'color';
-import { MenuItem, IconButton as UnstyledIconButton } from '@mui/material';
 
 import { Icon } from '../Icon';
 

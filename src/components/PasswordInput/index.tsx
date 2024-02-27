@@ -1,7 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { TextInput, type TextInputProps } from '../TextInput';
+
 import { IconButton, InputAdornment, type TextFieldProps } from '@mui/material';
+
 import { Icon } from '../Icon';
+import { TextInput, type TextInputProps } from '../TextInput';
 
 export type PasswordInputProps = TextInputProps & TextFieldProps;
 
