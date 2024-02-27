@@ -1,6 +1,6 @@
 // External Imports
 // React
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import type React from 'react';
 
 // Relative Imports
@@ -27,7 +27,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
     [accept]
   );
 
-  const onClick = onUpload.bind(null, onSelect);
+  const onClick = useMemo(() => onUpload.bind(null, onSelect), [onSelect, onUpload]);
 
   return (
     <Flex direction="row">
