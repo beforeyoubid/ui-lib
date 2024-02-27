@@ -68,6 +68,7 @@ export const TextInput = (props: TextInputProps) => {
             />
           ),
           endAdornment: <Adornment position="end" adornment={endAdornment} showBorder={showEndAdornmentBorder} />,
+          ...(rest.InputProps ?? {}),
         }}
         inputProps={{
           ...automation([automationKey], { label }),
