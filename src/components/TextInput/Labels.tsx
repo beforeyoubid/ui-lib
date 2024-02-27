@@ -1,7 +1,9 @@
-import React from 'react';
-import { Typography } from '../Typography';
-import { HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
+import React, { memo } from 'react';
+
 import { Icon } from '../Icon';
+import { Typography } from '../Typography';
+
+import { HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
 
 const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   <Typography class="roman" size="sm" color="dark75" padding={0}>
@@ -53,8 +55,8 @@ const TextFieldErrorLabelNoMemo = ({ errorText }: { errorText: string }) => (
   </RowContainer>
 );
 
-const TextFieldHint = React.memo(TextFieldHintNoMemo);
-const TextFieldLabel = React.memo(TextFieldLabelNoMemo);
-const TextFieldErrorLabel = React.memo(TextFieldErrorLabelNoMemo);
+const TextFieldHint = memo(TextFieldHintNoMemo);
+const TextFieldLabel = memo(TextFieldLabelNoMemo);
+const TextFieldErrorLabel = memo(TextFieldErrorLabelNoMemo);
 
 export { TextFieldHint, TextFieldLabel, TextFieldErrorLabel };

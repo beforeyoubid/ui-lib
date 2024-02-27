@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import { MediaCard } from '../components/MediaCard';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MediaCard> = {
   component: MediaCard,

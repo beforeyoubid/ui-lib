@@ -1,11 +1,14 @@
-import { css, styled } from '@mui/material';
-import type React from 'react';
 import { useCallback } from 'react';
+import type React from 'react';
+
+import { css, styled } from '@mui/material';
+
 import { type Colors } from '../theme.types';
-import { Flex } from './Flex';
-import { Typography } from './Typography';
 import { typedMemo } from '../utils';
+
+import { Flex } from './Flex';
 import { Icon } from './Icon';
+import { Typography } from './Typography';
 
 type MediaCardState = 'upload' | 'uploading' | 'uploaded' | 'error' | 'locked';
 

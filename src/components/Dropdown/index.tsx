@@ -1,10 +1,11 @@
 import React, { useCallback, useMemo } from 'react';
+
 import { Select, MenuItem, type SelectChangeEvent, styled, useTheme, ListItemIcon } from '@mui/material';
-import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
-import { Typography } from '../Typography';
-import { Icon } from '../Icon';
 
 import { automation } from '../../utils';
+import { Icon } from '../Icon';
+import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
+import { Typography } from '../Typography';
 
 type Option = {
   label: string;

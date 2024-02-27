@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
+import { Button } from '../components/Button';
+import { Flex } from '../components/Flex';
 import { Modal } from '../components/Modal';
 import { Typography } from '../components/Typography';
-import { Flex } from '../components/Flex';
-import { Button } from '../components/Button';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Modal> = {
   component: Modal,

@@ -1,12 +1,12 @@
 import { type StandardTextFieldProps, useTheme } from '@mui/material';
 
-import { CustomTextField, StyledInputAdornment } from './styles';
-import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
-import { Icon, type IconProps } from '../Icon';
-import { Flex } from '../Flex';
-
 import { automation } from '../../utils';
+import { Flex } from '../Flex';
+import { Icon, type IconProps } from '../Icon';
 import { Typography } from '../Typography';
+
+import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
+import { CustomTextField, StyledInputAdornment } from './styles';
 
 export type TextInputProps = {
   label: string;

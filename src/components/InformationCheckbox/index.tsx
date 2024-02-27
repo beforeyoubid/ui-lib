@@ -1,12 +1,13 @@
 import type React from 'react';
+
 import { styled, useTheme } from '@mui/material';
 
-import { Typography } from '../Typography';
-import { Flex } from '../Flex';
+import { automation } from '../../utils';
 import { RawCheckbox } from '../Checkbox';
+import { Flex } from '../Flex';
+import { Typography } from '../Typography';
 
 import { getInfoCheckboxBackgroundColor } from './utils';
-import { automation } from '../../utils';
 
 export type InformationCheckboxProps = {
   title: string;

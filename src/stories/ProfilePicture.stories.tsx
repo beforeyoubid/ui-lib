@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
+
 import { ProfilePicture } from '../components';
 
 const meta: Meta<typeof ProfilePicture> = {

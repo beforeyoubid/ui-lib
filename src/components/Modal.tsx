@@ -1,11 +1,12 @@
 import type React from 'react';
+
 import { Modal as ModalMui, styled, useTheme } from '@mui/material';
 
-import { Flex } from './Flex';
-import { Typography } from './Typography';
-import { Icon } from './Icon';
-
 import { formatSizeToPx } from '../utils';
+
+import { Flex } from './Flex';
+import { Icon } from './Icon';
+import { Typography } from './Typography';
 
 export type ModalProps = {
   title?: string;

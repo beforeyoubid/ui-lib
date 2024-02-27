@@ -1,9 +1,10 @@
 // External Imports
 // React
-import type React from 'react';
 
 // Relative Imports
 // Components
+import type React from 'react';
+
 import { Flex } from '../../Flex';
 import { Typography } from '../../Typography';
 

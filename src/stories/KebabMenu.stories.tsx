@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
+
 import { KebabMenu } from '../components/KebabMenu';
 
 const meta: Meta<typeof KebabMenu> = {

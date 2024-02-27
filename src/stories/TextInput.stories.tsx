@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { TextInput } from '../components/TextInput';
 import { LinkButton } from '../components/LinkButton';
+import { TextInput } from '../components/TextInput';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,

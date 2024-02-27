@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import { type Colors } from '../theme.types';
-import { colorPalette } from '../mui-theme';
 import { Tooltip } from '@mui/material';
+
 import { Typography } from '../components/Typography';
+import { colorPalette } from '../mui-theme';
+import { type Colors } from '../theme.types';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const colorNames = Object.keys(colorPalette) as (keyof Colors)[];
 const colorGroups = colorNames.reduce(

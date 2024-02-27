@@ -1,4 +1,5 @@
 import { css, LinearProgress, styled } from '@mui/material';
+
 import { Flex } from '../Flex';
 
 const FlexCard = styled(Flex)<{

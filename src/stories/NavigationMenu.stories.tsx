@@ -1,7 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { NavigationMenu } from '../components/NavigationMenu';
-import { useState } from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
 // import { ThemedApp } from './styles';
 
 const meta: Meta<typeof NavigationMenu> = {

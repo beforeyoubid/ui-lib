@@ -1,11 +1,13 @@
-import React from 'react';
+import { memo } from 'react';
+import type React from 'react';
+
 import { styled, useTheme } from '@mui/material';
 
 import { Button } from './Button';
 import { Flex } from './Flex';
 import { type IconProps } from './Icon';
-import { Typography } from './Typography';
 import { LinkButton } from './LinkButton';
+import { Typography } from './Typography';
 
 type CardButtonsProps = {
   editing: boolean;
@@ -108,7 +110,7 @@ function CardButtonsNoMemo(props: CardButtonsProps) {
   );
 }
 
-const CardButtons = React.memo(CardButtonsNoMemo);
+const CardButtons = memo(CardButtonsNoMemo);
 
 const Wrapper = styled(Flex)<{ fullWidth: boolean }>(({ theme, fullWidth }) => ({
   outline: `1px solid ${theme.palette.colors.dark15}`,

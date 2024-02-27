@@ -1,14 +1,15 @@
 // External Imports
 // React
-import type React from 'react';
 // Material
-import { typedMemo } from '../../../utils';
-
 // Relative Imports
 // Components
+import type React from 'react';
+
+import { typedMemo } from '../../../utils';
 import { Flex } from '../../Flex';
 import { Icon } from '../../Icon';
 import { Typography } from '../../Typography';
+// Utils
 
 type LockedProps = {
   fileUrl?: string;

@@ -1,7 +1,10 @@
-import { Menu, type PaperProps, type PopoverOrigin } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
+
+import { Menu, type PaperProps, type PopoverOrigin } from '@mui/material';
+
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';
+
 import { CopyContainer, Description, IconButton, KebabMenuIcon, MenuItemIcon, StyledMenuItem, Wrapper } from './styles';
 import { type IMenuOption, type KebabMenuProps } from './types';
 

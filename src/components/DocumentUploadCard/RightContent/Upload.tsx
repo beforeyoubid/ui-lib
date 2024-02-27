@@ -1,15 +1,13 @@
 // External Imports
 // React
-import type React from 'react';
 import { useCallback } from 'react';
-// Material
+import type React from 'react';
 
 // Relative Imports
 // Components
-import { Flex } from '../../Flex';
-import { Button } from '../../Button';
-// Styling
 import { typedMemo } from '../../../utils';
+import { Button } from '../../Button';
+import { Flex } from '../../Flex';
 
 type UploadProps = { onSelect: (file: File) => void; accept?: string };
 

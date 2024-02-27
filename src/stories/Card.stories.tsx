@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import { Card } from '../components/Card';
 import { Flex } from '../components/Flex';
-import { Typography } from '../components/Typography';
 import { MediaCard } from '../components/MediaCard';
+import { Typography } from '../components/Typography';
 import { theme } from '../mui-theme';
+
+import type { Meta, StoryObj } from '@storybook/react';
 // import { ThemedApp } from './styles';
 
 const meta: Meta<typeof Card> = {

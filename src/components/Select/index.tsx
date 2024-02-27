@@ -1,19 +1,17 @@
+import { styled, useTheme, type Theme, Input as InputMui } from '@mui/material';
 import ReactSelect, { type InputProps, type SelectComponentsConfig } from 'react-select';
+import AsyncSelect, { type AsyncProps } from 'react-select/async';
 import {
   type ClearIndicatorProps,
   type DropdownIndicatorProps,
   type Props,
   type StylesConfig,
 } from 'react-select/dist/declarations/src';
-import AsyncSelect, { type AsyncProps } from 'react-select/async';
 import { type StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 
 import { Flex } from '../Flex';
-
-import { styled, useTheme, type Theme, Input as InputMui } from '@mui/material';
-
-import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from '../TextInput/Labels';
 import { Icon } from '../Icon';
+import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from '../TextInput/Labels';
 
 type Option<ValueType = string> = { label: string; value: ValueType };
 

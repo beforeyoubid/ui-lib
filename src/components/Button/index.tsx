@@ -1,9 +1,13 @@
-import React from 'react';
-import { ButtonWrapper } from './styles';
-import { Icon, type IconProps } from '../Icon';
+import { memo } from 'react';
+import type React from 'react';
+
 import { type ButtonProps as MuiButtonProps } from '@mui/material';
-import { useButtonStyles, useButtonFontStyle } from './utils';
+
+import { Icon, type IconProps } from '../Icon';
 import { Typography } from '../Typography';
+
+import { ButtonWrapper } from './styles';
+import { useButtonStyles, useButtonFontStyle } from './utils';
 
 export type ButtonProps = Omit<MuiButtonProps, 'variant' | 'type' | 'size' | 'children'> & {
   variant: 'primary' | 'secondary' | 'tertiary';
@@ -50,4 +54,4 @@ const ButtonNoMemo: React.FC<ButtonProps> = ({
   );
 };
 
-export const Button = React.memo(ButtonNoMemo);
+export const Button = memo(ButtonNoMemo);
