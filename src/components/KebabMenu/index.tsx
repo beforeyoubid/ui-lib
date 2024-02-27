@@ -1,9 +1,9 @@
-import { Menu, PaperProps, PopoverOrigin } from '@mui/material';
+import { Menu, type PaperProps, type PopoverOrigin } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';
 import { CopyContainer, Description, IconButton, KebabMenuIcon, MenuItemIcon, StyledMenuItem, Wrapper } from './styles';
-import { IMenuOption, KebabMenuProps } from './types';
+import { type IMenuOption, type KebabMenuProps } from './types';
 
 export const KebabMenu = ({
   options,

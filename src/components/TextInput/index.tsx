@@ -1,8 +1,8 @@
-import { StandardTextFieldProps, useTheme } from '@mui/material';
+import { type StandardTextFieldProps, useTheme } from '@mui/material';
 
 import { CustomTextField, StyledInputAdornment } from './styles';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
-import { Icon, IconProps } from '../Icon';
+import { Icon, type IconProps } from '../Icon';
 import { Flex } from '../Flex';
 
 import { automation } from '../../utils';

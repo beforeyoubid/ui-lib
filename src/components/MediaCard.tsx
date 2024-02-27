@@ -1,6 +1,7 @@
 import { css, styled } from '@mui/material';
-import React, { useCallback } from 'react';
-import { Colors } from '../theme.types';
+import type React from 'react';
+import { useCallback } from 'react';
+import { type Colors } from '../theme.types';
 import { Flex } from './Flex';
 import { Typography } from './Typography';
 import { typedMemo } from '../utils';

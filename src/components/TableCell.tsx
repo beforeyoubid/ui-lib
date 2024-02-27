@@ -1,4 +1,8 @@
-import { TableCell as TableCellMui, TableCellProps as TableCellPropsMuiProps, TableSortLabel } from '@mui/material';
+import {
+  TableCell as TableCellMui,
+  type TableCellProps as TableCellPropsMuiProps,
+  TableSortLabel,
+} from '@mui/material';
 import { useCallback } from 'react';
 
 export type TableCellProps = {

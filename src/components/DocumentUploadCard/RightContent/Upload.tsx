@@ -1,6 +1,7 @@
 // External Imports
 // React
-import React, { useCallback } from 'react';
+import type React from 'react';
+import { useCallback } from 'react';
 // Material
 
 // Relative Imports

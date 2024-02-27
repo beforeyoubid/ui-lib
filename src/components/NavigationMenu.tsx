@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { NavigationButton, NavigationButtonProps } from './NavigationButton';
+import { NavigationButton, type NavigationButtonProps } from './NavigationButton';
 import { Typography } from './Typography';
 
 type Option = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonWrapper } from './styles';
-import { Icon, IconProps } from '../Icon';
-import { ButtonProps as MuiButtonProps } from '@mui/material';
+import { Icon, type IconProps } from '../Icon';
+import { type ButtonProps as MuiButtonProps } from '@mui/material';
 import { useButtonStyles, useButtonFontStyle } from './utils';
 import { Typography } from '../Typography';
 

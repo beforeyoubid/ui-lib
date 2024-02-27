@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material';
-import { Colors, TypographyFontClass, TypographyFontSize } from '../../mui-theme';
+import { type Colors, type TypographyFontClass, type TypographyFontSize } from '../../mui-theme';
 
 const getLinkButtonStyle = (
   type: 'mint' | 'white' | 'grey' | 'red'

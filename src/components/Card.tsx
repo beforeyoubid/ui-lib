@@ -3,7 +3,7 @@ import { styled, useTheme } from '@mui/material';
 
 import { Button } from './Button';
 import { Flex } from './Flex';
-import { IconProps } from './Icon';
+import { type IconProps } from './Icon';
 import { Typography } from './Typography';
 import { LinkButton } from './LinkButton';
 

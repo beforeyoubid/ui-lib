@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import * as Icons from 'tabler-icons-react';
 import * as CustomIcons from './Custom';
 
-import { Colors } from '../../theme.types';
+import { type Colors } from '../../theme.types';
 import { colorPalette } from '../../mui-theme';
 
 export type IconProps = {

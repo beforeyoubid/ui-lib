@@ -1,6 +1,6 @@
 // External Imports
 // React
-import React from 'react';
+import type React from 'react';
 // Material
 import { typedMemo } from '../../../utils';
 
