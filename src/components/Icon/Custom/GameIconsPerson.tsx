@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Icon } from './types';
+import { type Icon } from './types';
 
 /**
  * The basic image dimensions of the original SVG were width=11, height=18; so to calculate height we take 61% of the height

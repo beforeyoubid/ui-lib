@@ -6,8 +6,8 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -62,6 +62,7 @@ module.exports = {
     'prefer-const': 0,
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-unnecessary-type-constraint': 'off',
+    '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
   },
   overrides: [
     {

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { styled } from '@mui/material';
 
 import { Typography } from './Typography';
-import { Icon, IconProps } from './Icon';
+import { Icon, type IconProps } from './Icon';
 import { Flex } from './Flex';
 
 type NavigationButtonVariant = 'regular' | 'dark';

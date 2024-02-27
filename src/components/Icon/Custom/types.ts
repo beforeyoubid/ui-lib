@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react';
+import { type FC, type SVGAttributes } from 'react';
 
 interface IconProps extends SVGAttributes<SVGElement> {
   color?: string;

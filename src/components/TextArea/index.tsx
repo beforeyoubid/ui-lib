@@ -1,7 +1,7 @@
 import { Flex } from '../Flex';
-import { TextInput, TextInputProps } from '../TextInput';
+import { TextInput, type TextInputProps } from '../TextInput';
 import { Typography } from '../Typography';
-import { OutlinedTextFieldProps } from '@mui/material';
+import { type OutlinedTextFieldProps } from '@mui/material';
 import { useCallback } from 'react';
 
 export type TextAreaProps = Omit<TextInputProps, 'multiline'> &

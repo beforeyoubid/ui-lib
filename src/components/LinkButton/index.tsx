@@ -1,11 +1,11 @@
-import React from 'react';
+import type React from 'react';
 import { styled, Button, useTheme } from '@mui/material';
-import { ButtonProps as MuiButtonProps } from '@mui/material';
+import { type ButtonProps as MuiButtonProps } from '@mui/material';
 import { Typography } from '../Typography';
 import { useLinkButtonFontStyle, getLinkButtonStyle } from './utils';
-import { Colors } from '../../mui-theme';
+import { type Colors } from '../../mui-theme';
 import { Flex } from '../Flex';
-import { Icon, IconProps } from '../Icon';
+import { Icon, type IconProps } from '../Icon';
 
 export type LinkButtonProps = {
   type: 'mint' | 'white' | 'grey' | 'red';

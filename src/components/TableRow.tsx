@@ -1,5 +1,5 @@
 import { TableRow as TableRowMui, styled, css } from '@mui/material';
-import { Color } from '../mui-theme';
+import { type Color } from '../mui-theme';
 
 export type TableRowProps = {
   children: React.ReactNode;

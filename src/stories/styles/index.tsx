@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { ThemeProvider as MuiNewProvider } from '@mui/material';
 
 import { theme } from '../../mui-theme';

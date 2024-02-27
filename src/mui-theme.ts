@@ -1,7 +1,13 @@
-import { createTheme, ThemeOptions } from '@mui/material';
-import { Palette } from '@mui/material/styles/createPalette';
+import { createTheme, type ThemeOptions } from '@mui/material/styles';
+import { type Palette } from '@mui/material/styles/createPalette';
 
-import { Colors, TypographyFontSize, TypographyFontClass, TypographyValues, Breakpoint } from './theme.types';
+import {
+  type Colors,
+  type TypographyFontSize,
+  type TypographyFontClass,
+  type TypographyValues,
+  type Breakpoint,
+} from './theme.types';
 
 export type { TypographyFontSize, TypographyFontClass, Colors };
 export type Color = keyof Colors;
