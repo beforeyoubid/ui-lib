@@ -1,7 +1,8 @@
 import React from 'react';
 
 import TextField from '@mui/material/TextField';
-import moment from 'moment-timezone';
+import moment from 'moment';
+import 'moment-timezone';
 
 export const DatePicker = ({
   label,
