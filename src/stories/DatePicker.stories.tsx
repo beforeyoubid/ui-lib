@@ -12,9 +12,20 @@ const meta: Meta<typeof DatePicker> = {
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
-export const Active: Story = {
+export const InspectionLabel: Story = {
   args: {
-    label: 'Inspection ETA',
-    dateValue: moment('09-02-2023', 'DD-MM-YYYY').format('YYYY-MM-DD'),
+    label: 'Inspection Date',
+    dateValue: moment('09-02-2023').format('YYYY-MM-DD'),
+    lableSize: 'normal',
+    textFieldSize: 'medium',
+  },
+};
+
+export const ExpirationLabel: Story = {
+  args: {
+    label: 'Expiration Date',
+    dateValue: moment('09-02-2023').format('YYYY-MM-DD'),
+    lableSize: 'normal',
+    textFieldSize: 'medium',
   },
 };
