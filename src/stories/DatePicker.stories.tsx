@@ -1,6 +1,3 @@
-import moment from 'moment';
-import 'moment-timezone';
-
 import { DatePicker } from '../components/DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -15,18 +12,22 @@ type Story = StoryObj<typeof DatePicker>;
 
 export const InspectionLabel: Story = {
   args: {
+    id: 'date-picker-with-inspection-date-label',
     label: 'Inspection Date',
-    dateValue: moment('09-02-2023').format('YYYY-MM-DD'),
-    lableSize: 'normal',
-    textFieldSize: 'medium',
+    value: '02-06-2024',
+    onChange: value => {
+      console.log('Selected value:', value);
+    },
   },
 };
 
 export const ExpirationLabel: Story = {
   args: {
+    id: 'date-picker-with-expiration-date-label',
     label: 'Expiration Date',
-    dateValue: moment('09-02-2023').format('YYYY-MM-DD'),
-    lableSize: 'normal',
-    textFieldSize: 'medium',
+    value: '02-06-2023',
+    onChange: value => {
+      console.log('Selected value:', value);
+    },
   },
 };
