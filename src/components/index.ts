@@ -5,6 +5,7 @@ export * from './Button';
 export * from './Card';
 export { Checkbox } from './Checkbox';
 export * from './Circle';
+export * from './DatePicker';
 export * from './DocumentUploadCard';
 export * from './Dropdown';
 export * from './Flex';
