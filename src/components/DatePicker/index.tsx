@@ -14,7 +14,7 @@ export const DatePicker = ({
   onChange: (value: string) => void;
 }) => {
   const onDateChange = useCallback(
-    (value: any) => {
+    (value: string) => {
       onChange(value);
     },
     [onChange]
