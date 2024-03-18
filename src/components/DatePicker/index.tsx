@@ -22,16 +22,16 @@ import {
 
 type DatePickerProps = {
   label: string;
+  initialDate?: string;
   onChange: (date: string) => void;
 };
 
-export const DatePicker: React.FC<DatePickerProps> = ({ label, onChange }) => {
+export const DatePicker: React.FC<DatePickerProps> = ({ label, initialDate, onChange }) => {
   const theme = useTheme();
 
+  const [isOpen, setIsOpen] = useState(false);
   const [currentView, setCurrentView] = useState<DateView>('day');
-  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
-
-  const renderOpenPickerIcon = () => <Icon icon="CalendarEvent" color="dark75" size={24} />;
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs(initialDate));
 
   const goToPreviousMonth = useCallback(() => setSelectedDate(curr => curr.subtract(1, 'month').set('date', 1)), []);
 
@@ -48,6 +48,16 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, onChange }) => {
   const toggleYearView = useCallback(() => {
     setCurrentView(currView => (currView === 'year' ? 'day' : 'year'));
   }, []);
+
+  const toggleOpen = useCallback(() => {
+    setIsOpen(curr => !curr);
+  }, []);
+
+  const renderOpenPickerIcon = () => (
+    <Flex onClick={toggleOpen}>
+      <Icon icon="CalendarEvent" color="dark75" size={24} />
+    </Flex>
+  );
 
   const renderCalendarHeader = (props: any) => {
     return (
@@ -90,6 +100,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, onChange }) => {
         <StyledDatePicker
           value={selectedDate}
           openTo={currentView}
+          open={isOpen}
           format="MMMM D, YYYY"
           views={['year', 'month', 'day']}
           onClose={() => setCurrentView('day')}
@@ -106,7 +117,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, onChange }) => {
             layout: props => (
               <StyledPaper elevation={0}>
                 {props?.children}
-                <FlexCalendarFooter>
+                <FlexCalendarFooter onClick={toggleOpen}>
                   <Typography underline class="bold" size="sm" color="mint75">
                     Cancel
                   </Typography>

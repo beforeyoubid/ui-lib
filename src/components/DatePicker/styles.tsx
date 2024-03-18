@@ -99,6 +99,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 const FlexCalendarFooter = styled(Flex)(({ theme }) => ({
+  cursor: 'pointer',
   flexDirection: 'row',
   justifyContent: 'flex-end',
   paddingBottom: theme.spacing(2),
