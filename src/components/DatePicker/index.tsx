@@ -1,43 +1,47 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
+
+import { useTheme, Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { DatePicker as DP, LocalizationProvider, type DateView } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 
 import { Flex } from '../Flex';
-import { Typography } from '../Typography';
 import { Icon } from '../Icon';
+import { Typography } from '../Typography';
 
-import dayjs from 'dayjs';
-
-import { styled } from '@mui/material/styles';
-import { useTheme, Paper } from '@mui/material';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker as DP, LocalizationProvider } from '@mui/x-date-pickers';
-
-export const DatePicker = ({
-  id,
-  label,
-  value,
-  onChange,
-}: {
-  id?: string;
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-}) => {
+export const DatePicker = ({ label }: { label: string }) => {
   const theme = useTheme();
-  // const onDateChange = useCallback(
-  //   (value: string) => {
-  //     onChange(value);
-  //   },
-  //   [onChange]
-  // );
+
+  const [currentView, setCurrentView] = useState<DateView>('day');
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
 
   const renderOpenPickerIcon = () => <Icon icon="CalendarEvent" color="dark75" size={24} />;
+
+  const goToPreviousMonth = useCallback(() => setSelectedDate(curr => curr.subtract(1, 'month').set('date', 1)), []);
+
+  const goToNextMonth = useCallback(() => setSelectedDate(curr => curr.add(1, 'month').set('date', 1)), []);
+
+  const goToPreviousYear = useCallback(() => setSelectedDate(curr => curr.subtract(1, 'year').set('date', 1)), []);
+
+  const goToNextYear = useCallback(() => setSelectedDate(curr => curr.add(1, 'year').set('date', 1)), []);
+
+  const toggleMonthView = useCallback(() => {
+    setCurrentView(currView => (currView === 'month' ? 'day' : 'month'));
+  }, []);
+
+  const toggleYearView = useCallback(() => {
+    setCurrentView(currView => (currView === 'year' ? 'day' : 'year'));
+  }, []);
 
   const renderCalendarHeader = (props: any) => {
     console.log('props:', props);
     return (
       <Flex direction="row" justify="space-between" align="center" style={{ padding: theme.spacing(2.5) }}>
         <Flex direction="row">
-          <Icon icon="ChevronLeft" color="dark90" size={16} />
+          <Flex onClick={goToPreviousMonth} style={{ cursor: 'pointer' }}>
+            <Icon icon="ChevronLeft" color="dark90" size={16} />
+          </Flex>
 
           <Flex
             direction="row"
@@ -48,14 +52,20 @@ export const DatePicker = ({
             <Typography class="bold" size="base" color="dark90">
               {dayjs(props?.currentMonth?.['$d']).format('MMM')}
             </Typography>
-            <Icon icon="ChevronDown" color="dark90" size={16} />
+            <Flex style={{ cursor: 'pointer' }} onClick={toggleMonthView}>
+              <Icon icon="ChevronDown" color="dark90" size={16} />
+            </Flex>
           </Flex>
 
-          <Icon icon="ChevronRight" color="dark90" size={16} />
+          <Flex onClick={goToNextMonth} style={{ cursor: 'pointer' }}>
+            <Icon icon="ChevronRight" color="dark90" size={16} />
+          </Flex>
         </Flex>
 
         <Flex direction="row">
-          <Icon icon="ChevronLeft" color="dark90" size={16} />
+          <Flex onClick={goToPreviousYear} style={{ cursor: 'pointer' }}>
+            <Icon icon="ChevronLeft" color="dark90" size={16} />
+          </Flex>
 
           <Flex
             direction="row"
@@ -66,10 +76,14 @@ export const DatePicker = ({
             <Typography class="bold" size="base" color="dark90">
               {dayjs(props?.currentMonth?.['$d']).format('YYYY')}
             </Typography>
-            <Icon icon="ChevronDown" color="dark90" size={16} />
+            <Flex style={{ cursor: 'pointer' }} onClick={toggleYearView}>
+              <Icon icon="ChevronDown" color="dark90" size={16} />
+            </Flex>
           </Flex>
 
-          <Icon icon="ChevronRight" color="dark90" size={16} />
+          <Flex onClick={goToNextYear} style={{ cursor: 'pointer' }}>
+            <Icon icon="ChevronRight" color="dark90" size={16} />
+          </Flex>
         </Flex>
       </Flex>
     );
@@ -103,15 +117,10 @@ export const DatePicker = ({
               </StyledPaper>
             ),
           }}
-          value={dayjs()}
-          openTo="day"
+          value={selectedDate}
+          openTo={currentView}
           views={['year', 'month', 'day']}
-          // label={label}
-          // type="date"
-          // onChange={event => onDateChange(event.target.value)}
-          // value={new Date()}
-          // resize="none"
-          // style={{ backgroundColor: theme.palette.colors.lightWhite }}
+          onClose={() => setCurrentView('day')}
         />
       </Flex>
     </LocalizationProvider>
@@ -123,6 +132,7 @@ const StyledDatePicker = styled(DP)(({ theme }) => ({
     borderColor: theme.palette.colors.dark45,
     borderWidth: '1px',
     borderStyle: 'solid',
+    backgroundColor: theme.palette.colors.lightWhite,
   },
   '&.MuiFormControl-root .MuiInputBase-input::placeholder': {
     color: 'transparent',
@@ -131,6 +141,11 @@ const StyledDatePicker = styled(DP)(({ theme }) => ({
     fontFamily: theme.typography.fonts['roman'],
     fontSize: theme.typography.size.base.fontSize,
     color: theme.palette.colors.dark90,
+  },
+  '&.MuiFormControl-root fieldset.MuiOutlinedInput-notchedOutline': {
+    borderColor: theme.palette.colors.dark45,
+    borderWidth: '1px',
+    borderStyle: 'solid',
   },
 }));
 
@@ -146,7 +161,10 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     fontSize: theme.typography.size.sm.fontSize,
     color: theme.palette.colors.dark90,
   },
-  ' .MuiPickersDay-root.Mui-selected': {
+  ' .MuiDayCalendar-weekContainer .MuiPickersDay-today': {
+    border: `1px solid ${theme.palette.colors.mint60}`,
+  },
+  ' .MuiDayCalendar-weekContainer .Mui-selected': {
     fontFamily: theme.typography.fonts['roman'],
     fontSize: theme.typography.size.sm.fontSize,
     color: theme.palette.colors.lightWhite,
