@@ -6,11 +6,11 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 
-type ChevronLeftProps = {
+type ChevronProps = {
   onClick: () => void;
 };
 
-const ChevronLeft: React.FC<ChevronLeftProps> = ({ onClick }) => {
+const ChevronLeft: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
       <Icon icon="ChevronLeft" color="dark90" size={16} />
@@ -18,11 +18,7 @@ const ChevronLeft: React.FC<ChevronLeftProps> = ({ onClick }) => {
   );
 };
 
-type ChevronRightProps = {
-  onClick: () => void;
-};
-
-const ChevronRight: React.FC<ChevronRightProps> = ({ onClick }) => {
+const ChevronRight: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
       <Icon icon="ChevronRight" color="dark90" size={16} />
@@ -30,11 +26,7 @@ const ChevronRight: React.FC<ChevronRightProps> = ({ onClick }) => {
   );
 };
 
-type ChevronDownProps = {
-  onClick: () => void;
-};
-
-const ChevronDown: React.FC<ChevronDownProps> = ({ onClick }) => {
+const ChevronDown: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
       <Icon icon="ChevronDown" color="dark90" size={16} />
