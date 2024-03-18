@@ -93,7 +93,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     color: theme.palette.colors.lightWhite,
     backgroundColor: theme.palette.colors.mint60,
   },
-  ' .Mui-selected': {
+  ' button.Mui-selected': {
     backgroundColor: theme.palette.colors.mint60,
   },
 }));
