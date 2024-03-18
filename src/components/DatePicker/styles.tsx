@@ -5,7 +5,6 @@ import { DatePicker } from '@mui/x-date-pickers';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
-import { Typography, type TypographyProps } from '../Typography';
 
 type ChevronLeftProps = {
   onClick: () => void;
@@ -92,6 +91,9 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     fontFamily: theme.typography.fonts['roman'],
     fontSize: theme.typography.size.sm.fontSize,
     color: theme.palette.colors.lightWhite,
+    backgroundColor: theme.palette.colors.mint60,
+  },
+  ' .Mui-selected': {
     backgroundColor: theme.palette.colors.mint60,
   },
 }));

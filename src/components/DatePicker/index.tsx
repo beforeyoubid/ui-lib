@@ -1,3 +1,4 @@
+import type React from 'react';
 import { useCallback, useState } from 'react';
 
 import { useTheme } from '@mui/material';
@@ -19,7 +20,12 @@ import {
   FlexCalendarFooter,
 } from './styles';
 
-export const DatePicker = ({ label }: { label: string }) => {
+type DatePickerProps = {
+  label: string;
+  onChange: (date: string) => void;
+};
+
+export const DatePicker: React.FC<DatePickerProps> = ({ label, onChange }) => {
   const theme = useTheme();
 
   const [currentView, setCurrentView] = useState<DateView>('day');
@@ -44,7 +50,6 @@ export const DatePicker = ({ label }: { label: string }) => {
   }, []);
 
   const renderCalendarHeader = (props: any) => {
-    console.log('props:', props);
     return (
       <Flex direction="row" justify="space-between" align="center" style={{ padding: theme.spacing(2.5) }}>
         <Flex direction="row">
@@ -83,6 +88,18 @@ export const DatePicker = ({ label }: { label: string }) => {
           {label}
         </Typography>
         <StyledDatePicker
+          value={selectedDate}
+          openTo={currentView}
+          format="MMMM D, YYYY"
+          views={['year', 'month', 'day']}
+          onClose={() => setCurrentView('day')}
+          onChange={(value: unknown) => {
+            if (!(value as any)?.['$isDayjsObject']) return;
+
+            const date = value as Dayjs;
+            setSelectedDate(date);
+            onChange(date.format('DD-MM-YYYY'));
+          }}
           slots={{
             openPickerIcon: renderOpenPickerIcon,
             calendarHeader: renderCalendarHeader,
@@ -97,10 +114,6 @@ export const DatePicker = ({ label }: { label: string }) => {
               </StyledPaper>
             ),
           }}
-          value={selectedDate}
-          openTo={currentView}
-          views={['year', 'month', 'day']}
-          onClose={() => setCurrentView('day')}
         />
       </Flex>
     </LocalizationProvider>
