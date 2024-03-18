@@ -135,6 +135,7 @@ const StyledDatePicker = styled(DP)(({ theme }) => ({
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
+  marginTop: theme.spacing(1),
   ' .MuiDayCalendar-weekDayLabel': {
     fontFamily: theme.typography.fonts['bold'],
     fontSize: theme.typography.size.sm.fontSize,
