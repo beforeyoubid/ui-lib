@@ -1,36 +1,88 @@
-import React, { useCallback } from 'react';
+import type React from 'react';
+import { useCallback, useState } from 'react';
 
-import { useTheme } from '@mui/material';
+import { type DateView } from '@mui/x-date-pickers';
 
-import { TextInput } from '../TextInput';
+import { Flex } from '../Flex';
+import { Icon } from '../Icon';
+import { Typography } from '../Typography';
 
-export const DatePicker = ({
-  id,
-  label,
-  value,
-  onChange,
-}: {
-  id?: string;
+import CalendarFooter from './CalendarFooter';
+import CalendarHeader from './CalendarHeader';
+import { StyledDatePicker } from './styles';
+
+type DatePickerProps = {
   label: string;
-  value: string;
-  onChange: (value: string) => void;
+  date: unknown;
+  dateMonth: string;
+  dateYear: string;
+  incrementMonth: () => void;
+  decrementMonth: () => void;
+  incrementYear: () => void;
+  decrementYear: () => void;
+  onChange: (value: unknown) => void;
+};
+
+export const DatePicker: React.FC<DatePickerProps> = ({
+  label,
+  date,
+  dateMonth,
+  dateYear,
+  incrementMonth,
+  decrementMonth,
+  incrementYear,
+  decrementYear,
+  onChange,
 }) => {
-  const theme = useTheme();
-  const onDateChange = useCallback(
-    (value: string) => {
-      onChange(value);
-    },
-    [onChange]
-  );
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<DateView>('day');
+
+  const toggleMonthView = useCallback(() => {
+    setCurrentView(currView => (currView === 'month' ? 'day' : 'month'));
+  }, []);
+
+  const toggleYearView = useCallback(() => {
+    setCurrentView(currView => (currView === 'year' ? 'day' : 'year'));
+  }, []);
+
+  const toggleOpen = useCallback(() => {
+    setIsOpen(curr => !curr);
+  }, []);
+
   return (
-    <TextInput
-      id={id}
-      label={label}
-      type="date"
-      onChange={event => onDateChange(event.target.value)}
-      value={value}
-      resize="none"
-      style={{ backgroundColor: theme.palette.colors.lightWhite }}
-    />
+    <Flex direction="column" gap={5}>
+      <Typography class="medium" size="base" color="dark90">
+        {label}
+      </Typography>
+      <StyledDatePicker
+        value={date}
+        openTo={currentView}
+        open={isOpen}
+        format="MMMM D, YYYY"
+        views={['year', 'month', 'day']}
+        onClose={() => setCurrentView('day')}
+        onChange={onChange}
+        slots={{
+          layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
+          openPickerIcon: () => (
+            <Flex onClick={toggleOpen}>
+              <Icon icon="CalendarEvent" color="dark75" size={24} />
+            </Flex>
+          ),
+          calendarHeader: () => (
+            <CalendarHeader
+              selectedMonth={dateMonth}
+              selectedYear={dateYear}
+              goToPreviousMonth={decrementMonth}
+              goToNextMonth={incrementMonth}
+              goToPreviousYear={decrementYear}
+              goToNextYear={incrementYear}
+              toggleMonthView={toggleMonthView}
+              toggleYearView={toggleYearView}
+            />
+          ),
+        }}
+      />
+    </Flex>
   );
 };

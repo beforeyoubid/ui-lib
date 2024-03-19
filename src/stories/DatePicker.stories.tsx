@@ -1,9 +1,56 @@
+import { useCallback, useState } from 'react';
+
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import moment, { type Moment } from 'moment';
+
 import { DatePicker } from '../components/DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+const DatePickerStory = () => {
+  const [date, setDate] = useState(moment());
+
+  const handleChange = (value: unknown) => {
+    if (!value) return;
+    setDate(value as Moment);
+  };
+
+  const incrementMonth = useCallback(() => {
+    setDate(curr => moment(curr).add(1, 'month').set('day', 1));
+  }, []);
+
+  const decrementMonth = useCallback(() => {
+    setDate(curr => moment(curr).subtract(1, 'month').set('day', 1));
+  }, []);
+
+  const incrementYear = useCallback(() => {
+    setDate(curr => moment(curr).add(1, 'year').set('day', 1));
+  }, []);
+
+  const decrementYear = useCallback(() => {
+    setDate(curr => moment(curr).subtract(1, 'year').set('day', 1));
+  }, []);
+
+  return (
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+      <DatePicker
+        date={date}
+        label="Inspection Date"
+        dateMonth={moment(date).format('MMM')}
+        dateYear={moment(date).format('YYYY')}
+        incrementMonth={incrementMonth}
+        decrementMonth={decrementMonth}
+        incrementYear={incrementYear}
+        decrementYear={decrementYear}
+        onChange={handleChange}
+      />
+    </LocalizationProvider>
+  );
+};
+
 const meta: Meta<typeof DatePicker> = {
-  component: DatePicker,
+  component: DatePickerStory,
   title: 'Input/DatePicker',
 };
 
@@ -12,9 +59,7 @@ type Story = StoryObj<typeof DatePicker>;
 
 export const InspectionLabel: Story = {
   args: {
-    id: 'date-picker-with-inspection-date-label',
     label: 'Inspection Date',
-    value: '02-06-2024',
     onChange: value => {
       console.log('Selected value:', value);
     },
@@ -23,9 +68,7 @@ export const InspectionLabel: Story = {
 
 export const ExpirationLabel: Story = {
   args: {
-    id: 'date-picker-with-expiration-date-label',
     label: 'Expiration Date',
-    value: '02-06-2023',
     onChange: value => {
       console.log('Selected value:', value);
     },
