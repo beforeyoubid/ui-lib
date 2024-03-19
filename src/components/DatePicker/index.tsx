@@ -23,7 +23,7 @@ type DatePickerProps = {
   onChange: (value: unknown) => void;
 };
 
-const DatePicker: React.FC<DatePickerProps> = ({
+export const DatePicker: React.FC<DatePickerProps> = ({
   label,
   date,
   dateMonth,
@@ -86,5 +86,3 @@ const DatePicker: React.FC<DatePickerProps> = ({
     </Flex>
   );
 };
-
-export default DatePicker;
