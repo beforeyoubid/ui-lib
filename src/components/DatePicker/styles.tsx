@@ -94,6 +94,7 @@ const FlexCalendarFooter = styled(Flex)(({ theme }) => ({
   cursor: 'pointer',
   flexDirection: 'row',
   justifyContent: 'flex-end',
+  gap: theme.spacing(3),
   paddingBottom: theme.spacing(2),
   paddingRight: theme.spacing(2.75),
 }));

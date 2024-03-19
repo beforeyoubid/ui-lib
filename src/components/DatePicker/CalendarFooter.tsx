@@ -1,3 +1,4 @@
+import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 
 import { StyledPaper, FlexCalendarFooter } from './styles';
@@ -11,10 +12,17 @@ const CalendarFooter: React.FC<CalendarFooterProps> = ({ children, toggleCalenda
   return (
     <StyledPaper elevation={0}>
       {children}
-      <FlexCalendarFooter onClick={toggleCalendar}>
-        <Typography underline class="bold" size="sm" color="mint75">
-          Cancel
-        </Typography>
+      <FlexCalendarFooter>
+        <Flex onClick={toggleCalendar}>
+          <Typography underline class="bold" size="sm" color="mint75">
+            Cancel
+          </Typography>
+        </Flex>
+        <Flex onClick={toggleCalendar}>
+          <Typography underline class="bold" size="sm" color="mint75">
+            OK
+          </Typography>
+        </Flex>
       </FlexCalendarFooter>
     </StyledPaper>
   );
