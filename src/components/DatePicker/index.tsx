@@ -1,8 +1,7 @@
 import type React from 'react';
 import { useCallback, useState } from 'react';
 
-import { LocalizationProvider, type DateView } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { type DateView } from '@mui/x-date-pickers';
 import dayjs, { type Dayjs } from 'dayjs';
 
 import { Flex } from '../Flex';
@@ -45,47 +44,45 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, initialDate, onCh
   }, []);
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Flex direction="column" gap={5}>
-        <Typography class="medium" size="base" color="dark90">
-          {label}
-        </Typography>
-        <StyledDatePicker
-          value={selectedDate}
-          openTo={currentView}
-          open={isOpen}
-          format="MMMM D, YYYY"
-          views={['year', 'month', 'day']}
-          onClose={() => setCurrentView('day')}
-          onChange={(value: unknown) => {
-            if (!(value as any)?.['$isDayjsObject']) return;
+    <Flex direction="column" gap={5}>
+      <Typography class="medium" size="base" color="dark90">
+        {label}
+      </Typography>
+      <StyledDatePicker
+        value={selectedDate}
+        openTo={currentView}
+        open={isOpen}
+        format="MMMM D, YYYY"
+        views={['year', 'month', 'day']}
+        onClose={() => setCurrentView('day')}
+        onChange={(value: unknown) => {
+          if (!(value as any)?.['$isDayjsObject']) return;
 
-            const date = value as Dayjs;
-            setSelectedDate(date);
-            onChange(date.format('DD-MM-YYYY'));
-          }}
-          slots={{
-            layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
-            openPickerIcon: () => (
-              <Flex onClick={toggleOpen}>
-                <Icon icon="CalendarEvent" color="dark75" size={24} />
-              </Flex>
-            ),
-            calendarHeader: () => (
-              <CalendarHeader
-                selectedMonth={selectedDate.format('MMM')}
-                selectedYear={selectedDate.format('YYYY')}
-                goToPreviousMonth={goToPreviousMonth}
-                goToNextMonth={goToNextMonth}
-                goToPreviousYear={goToPreviousYear}
-                goToNextYear={goToNextYear}
-                toggleMonthView={toggleMonthView}
-                toggleYearView={toggleYearView}
-              />
-            ),
-          }}
-        />
-      </Flex>
-    </LocalizationProvider>
+          const date = value as Dayjs;
+          setSelectedDate(date);
+          onChange(date.format('DD-MM-YYYY'));
+        }}
+        slots={{
+          layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
+          openPickerIcon: () => (
+            <Flex onClick={toggleOpen}>
+              <Icon icon="CalendarEvent" color="dark75" size={24} />
+            </Flex>
+          ),
+          calendarHeader: () => (
+            <CalendarHeader
+              selectedMonth={selectedDate.format('MMM')}
+              selectedYear={selectedDate.format('YYYY')}
+              goToPreviousMonth={goToPreviousMonth}
+              goToNextMonth={goToNextMonth}
+              goToPreviousYear={goToPreviousYear}
+              goToNextYear={goToNextYear}
+              toggleMonthView={toggleMonthView}
+              toggleYearView={toggleYearView}
+            />
+          ),
+        }}
+      />
+    </Flex>
   );
 };

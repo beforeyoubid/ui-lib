@@ -1,9 +1,16 @@
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
 import { DatePicker } from '../components/DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof DatePicker> = {
-  component: DatePicker,
+  component: () => (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DatePicker label="Inspection Date" onChange={console.log} />
+    </LocalizationProvider>
+  ),
   title: 'Input/DatePicker',
 };
 
