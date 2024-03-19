@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import moment, { isMoment } from 'moment';
+import moment, { type Moment } from 'moment';
 
 import { DatePicker } from '../components/DatePicker';
 
@@ -12,8 +12,8 @@ const DatePickerStory = () => {
   const [date, setDate] = useState(moment());
 
   const handleChange = (value: unknown) => {
-    if (!isMoment(value)) return;
-    setDate(value);
+    if (!value) return;
+    setDate(value as Moment);
   };
 
   const incrementMonth = useCallback(() => {
