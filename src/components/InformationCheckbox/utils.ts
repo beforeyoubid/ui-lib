@@ -3,7 +3,7 @@ import { type Theme } from '@mui/material';
 export const getInfoCheckboxBackgroundColor = (theme: Theme, variant: string) => {
   switch (variant) {
     case 'info':
-      return theme.palette.colors.lightL2;
+      return theme.palette.colors.lightL1;
     case 'warning':
       return theme.palette.colors.warning15;
     case 'error':
