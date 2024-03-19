@@ -1,16 +1,56 @@
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useCallback, useState } from 'react';
 
-import { DatePicker } from '../components/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import moment from 'moment';
+
+import DatePicker from '../components/DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof DatePicker> = {
-  component: () => (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker label="Inspection Date" onChange={console.log} />
+const DatePickerStory = () => {
+  const [date, setDate] = useState(moment());
+
+  const handleChange = (value: unknown) => {
+    if (!moment.isMoment(value)) return;
+    setDate(value);
+  };
+
+  const incrementMonth = useCallback(() => {
+    setDate(curr => moment(curr).add(1, 'month').set('day', 1));
+  }, []);
+
+  const decrementMonth = useCallback(() => {
+    setDate(curr => moment(curr).subtract(1, 'month').set('day', 1));
+  }, []);
+
+  const incrementYear = useCallback(() => {
+    setDate(curr => moment(curr).add(1, 'year').set('day', 1));
+  }, []);
+
+  const decrementYear = useCallback(() => {
+    setDate(curr => moment(curr).subtract(1, 'year').set('day', 1));
+  }, []);
+
+  return (
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+      <DatePicker
+        date={date}
+        label="Inspection Date"
+        dateMonth={moment(date).format('MMM')}
+        dateYear={moment(date).format('YYYY')}
+        incrementMonth={incrementMonth}
+        decrementMonth={decrementMonth}
+        incrementYear={incrementYear}
+        decrementYear={decrementYear}
+        onChange={handleChange}
+      />
     </LocalizationProvider>
-  ),
+  );
+};
+
+const meta: Meta<typeof DatePicker> = {
+  component: DatePickerStory,
   title: 'Input/DatePicker',
 };
 
