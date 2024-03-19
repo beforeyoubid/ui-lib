@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import moment from 'moment';
+import moment, { isMoment } from 'moment';
 
 import { DatePicker } from '../components/DatePicker';
 
@@ -12,7 +12,7 @@ const DatePickerStory = () => {
   const [date, setDate] = useState(moment());
 
   const handleChange = (value: unknown) => {
-    if (!moment.isMoment(value)) return;
+    if (!isMoment(value)) return;
     setDate(value);
   };
 
