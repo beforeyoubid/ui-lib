@@ -1,5 +1,4 @@
-import { Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Paper, styled } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 // import dayjs, { type Dayjs } from 'dayjs';
 
