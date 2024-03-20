@@ -17,7 +17,7 @@ export type DatePickerProps = {
   label: string;
   format?: string;
   views?: DateView[];
-  isRequired?: boolean;
+  required?: boolean;
   date: Moment;
   dateMonth: string;
   dateYear: string;
@@ -33,7 +33,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   date,
   dateMonth,
   dateYear,
-  isRequired = false,
+  required = false,
   format = 'MMMM D, YYYY',
   views = ['year', 'month', 'day'],
   incrementMonth,
@@ -68,7 +68,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         <Typography class="medium" size="base" color="dark90">
           {label}
         </Typography>
-        {isRequired && (
+        {required && (
           <Typography class="bold" size="xs" color="mint60">
             *
           </Typography>
