@@ -2,6 +2,7 @@ import type React from 'react';
 import { useCallback, useState } from 'react';
 
 import { type DateView } from '@mui/x-date-pickers';
+import moment, { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -9,18 +10,20 @@ import { Typography } from '../Typography';
 
 import CalendarFooter from './CalendarFooter';
 import CalendarHeader from './CalendarHeader';
-import { StyledDatePicker } from './styles';
+import { FlexDatePickerInput, StyledDatePicker } from './styles';
 
 type DatePickerProps = {
   label: string;
-  date: unknown;
+  format?: string;
+  views?: DateView[];
+  date: Moment;
   dateMonth: string;
   dateYear: string;
   incrementMonth: () => void;
   decrementMonth: () => void;
   incrementYear: () => void;
   decrementYear: () => void;
-  onChange: (value: unknown) => void;
+  onChange: (value: Moment) => void;
 };
 
 export const DatePicker: React.FC<DatePickerProps> = ({
@@ -28,6 +31,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   date,
   dateMonth,
   dateYear,
+  format = 'MMMM D, YYYY',
+  views = ['year', 'month', 'day'],
   incrementMonth,
   decrementMonth,
   incrementYear,
@@ -49,6 +54,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     setIsOpen(curr => !curr);
   }, []);
 
+  const onClose = useCallback(() => {
+    const nextView = views.length === 1 ? views[0] : 'day';
+    setCurrentView(nextView);
+  }, [views]);
+
   return (
     <Flex direction="column" gap={5}>
       <Typography class="medium" size="base" color="dark90">
@@ -58,10 +68,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         value={date}
         openTo={currentView}
         open={isOpen}
-        format="MMMM D, YYYY"
-        views={['year', 'month', 'day']}
-        onClose={() => setCurrentView('day')}
-        onChange={onChange}
+        format={format}
+        views={views}
+        onClose={onClose}
+        onChange={(value: unknown) => onChange(moment(value as Moment))}
         slots={{
           layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
           openPickerIcon: () => (
@@ -80,6 +90,16 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               toggleMonthView={toggleMonthView}
               toggleYearView={toggleYearView}
             />
+          ),
+          field: () => (
+            <FlexDatePickerInput>
+              <Typography class="medium" size="base" color="dark90">
+                {moment(date).format(format ?? 'MMMM D, YYYY')}
+              </Typography>
+              <Flex style={{ cursor: 'pointer' }} onClick={toggleOpen}>
+                <Icon icon="CalendarEvent" color="dark75" size={24} />
+              </Flex>
+            </FlexDatePickerInput>
           ),
         }}
       />
