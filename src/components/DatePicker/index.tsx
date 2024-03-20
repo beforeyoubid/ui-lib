@@ -81,7 +81,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         format={format}
         views={views}
         onClose={onClose}
-        onChange={(value: unknown) => onChange(moment(value as Moment))}
+        onChange={(value: Moment | null) => onChange(moment(value))}
         slots={{
           layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
           openPickerIcon: () => (

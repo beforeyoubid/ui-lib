@@ -1,6 +1,7 @@
 import { Paper, styled } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 // import dayjs, { type Dayjs } from 'dayjs';
+import { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -41,7 +42,7 @@ const FlexToggle = styled(Flex)(({ theme }) => ({
   marginRight: theme.spacing(1.5),
 }));
 
-const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
+const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
   position: 'relative',
   '&.MuiFormControl-root .MuiInputBase-root': {
     borderColor: theme.palette.colors.dark45,
