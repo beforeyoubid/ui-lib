@@ -2,7 +2,7 @@ import type React from 'react';
 import { useCallback, useState } from 'react';
 
 import { type DateView } from '@mui/x-date-pickers';
-import moment, { type Moment } from 'moment';
+import { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -13,7 +13,7 @@ import CalendarHeader from './CalendarHeader';
 import DatePickerInput from './DatePickerInput';
 import { StyledDatePicker } from './styles';
 
-type DatePickerProps = {
+export type DatePickerProps = {
   label: string;
   format?: string;
   views?: DateView[];
@@ -25,7 +25,7 @@ type DatePickerProps = {
   decrementMonth: () => void;
   incrementYear: () => void;
   decrementYear: () => void;
-  onChange: (value: Moment) => void;
+  onChange: (value: Maybe<Moment>) => void;
 };
 
 export const DatePicker: React.FC<DatePickerProps> = ({
@@ -81,7 +81,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         format={format}
         views={views}
         onClose={onClose}
-        onChange={(value: Moment | null) => onChange(moment(value))}
+        onChange={onChange}
         slots={{
           layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
           openPickerIcon: () => (
