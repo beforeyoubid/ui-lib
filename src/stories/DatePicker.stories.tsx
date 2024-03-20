@@ -39,7 +39,7 @@ const DatePickerStory = () => {
         label="Inspection Date"
         format="MMMM D, YYYY"
         views={['year', 'month', 'day']}
-        isRequired
+        required
         dateMonth={moment(date).format('MMM')}
         dateYear={moment(date).format('YYYY')}
         incrementMonth={incrementMonth}
