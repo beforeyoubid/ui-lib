@@ -20,6 +20,7 @@ export const Active: Story = {
     disabled: false,
     fullWidth: true,
     required: true,
+    backgroundColor: 'lightWhite',
     onChange: value => {
       console.log('Selected value:', value);
     },

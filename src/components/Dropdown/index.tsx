@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { Select, MenuItem, type SelectChangeEvent, styled, useTheme, ListItemIcon } from '@mui/material';
 
+import { type Colors } from '../../theme.types';
 import { automation } from '../../utils';
 import { Icon } from '../Icon';
 import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
@@ -24,6 +25,7 @@ export type DropdownProps = {
   isOptional?: boolean;
   onChange: (event: Option) => void;
   automationKey?: string;
+  backgroundColor?: keyof Colors;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -37,6 +39,7 @@ export const Dropdown = (props: DropdownProps) => {
     disabled,
     required = false,
     isOptional = false,
+    backgroundColor,
     onChange,
     automationKey,
   } = props;
@@ -79,6 +82,7 @@ export const Dropdown = (props: DropdownProps) => {
         placeholder={placeholder}
         variant="outlined"
         MenuProps={menuProps}
+        backgroundColor={backgroundColor}
         renderValue={opt => (
           <Typography class="roman" size="base" color={opt?.label ? 'dark90' : 'dark60'} padding={0}>
             {opt?.label ?? placeholder}
@@ -105,7 +109,7 @@ export const Dropdown = (props: DropdownProps) => {
   );
 };
 
-const StyledSelect = styled(Select<Option>)(({ theme }) => ({
+const StyledSelect = styled(Select<Option>)<{ backgroundColor?: keyof Colors }>(({ theme, backgroundColor }) => ({
   marginTop: theme.spacing(0.5),
   '.MuiOutlinedInput-notchedOutline': {
     borderColor: theme.palette.colors.dark45,
@@ -121,4 +125,5 @@ const StyledSelect = styled(Select<Option>)(({ theme }) => ({
     margin: 0,
     padding: 0,
   },
+  background: backgroundColor ? theme.palette.colors[backgroundColor] : 'transparent',
 }));
