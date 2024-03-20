@@ -10,7 +10,6 @@ import { Typography } from '../Typography';
 
 import CalendarFooter from './CalendarFooter';
 import CalendarHeader from './CalendarHeader';
-import DatePickerInput from './DatePickerInput';
 import { StyledDatePicker } from './styles';
 
 export type DatePickerProps = {
@@ -63,7 +62,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   }, [views]);
 
   return (
-    <Flex direction="column" gap={5}>
+    <Flex direction="column" width="100%" gap={5} style={{ position: 'relative' }}>
       <Flex direction="row" align="flex-start" gap={2}>
         <Typography class="medium" size="base" color="dark90">
           {label}
@@ -101,7 +100,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               toggleYearView={toggleYearView}
             />
           ),
-          field: () => <DatePickerInput date={date} format={format} handleClick={toggleOpen} />,
         }}
       />
     </Flex>

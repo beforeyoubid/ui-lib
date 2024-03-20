@@ -1,6 +1,5 @@
 import { Paper, styled } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-// import dayjs, { type Dayjs } from 'dayjs';
 import { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
@@ -44,10 +43,9 @@ const FlexToggle = styled(Flex)(({ theme }) => ({
 
 const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
   position: 'relative',
+  width: '100%',
   '&.MuiFormControl-root .MuiInputBase-root': {
-    borderColor: theme.palette.colors.dark45,
-    borderWidth: '1px',
-    borderStyle: 'solid',
+    borderRadius: '4px',
     backgroundColor: theme.palette.colors.lightWhite,
   },
   '&.MuiFormControl-root .MuiInputBase-input::placeholder': {
@@ -58,19 +56,11 @@ const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
     fontSize: theme.typography.size.base.fontSize,
     color: theme.palette.colors.dark90,
   },
-  '&.MuiFormControl-root fieldset.MuiOutlinedInput-notchedOutline': {
-    borderColor: theme.palette.colors.dark45,
-    borderWidth: '1px',
-    borderStyle: 'solid',
-  },
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-  position: 'absolute',
-  top: 90,
-  left: 16,
   borderWidth: 1,
-  borderColor: theme.palette.colors.dark15,
+  borderColor: theme.palette.colors.dark45,
   borderStyle: 'solid',
   borderRadius: theme.spacing(1),
   marginTop: theme.spacing(1),
@@ -107,28 +97,4 @@ const FlexCalendarFooter = styled(Flex)(({ theme }) => ({
   paddingRight: theme.spacing(2.75),
 }));
 
-const FlexDatePickerInput = styled(Flex)(({ theme }) => ({
-  flexDirection: 'row',
-  gap: theme.spacing(0.5),
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  width: '100%',
-  backgroundColor: theme.palette.colors.lightWhite,
-  padding: theme.spacing(1.25, 1.75),
-  borderWidth: 1,
-  borderColor: theme.palette.colors.dark45,
-  borderStyle: 'solid',
-  borderRadius: theme.spacing(0.5),
-  position: 'relative',
-}));
-
-export {
-  ChevronLeft,
-  ChevronRight,
-  ChevronDown,
-  FlexToggle,
-  StyledDatePicker,
-  StyledPaper,
-  FlexCalendarFooter,
-  FlexDatePickerInput,
-};
+export { ChevronLeft, ChevronRight, ChevronDown, FlexToggle, StyledDatePicker, StyledPaper, FlexCalendarFooter };
