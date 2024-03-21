@@ -23,6 +23,8 @@ export type TextInputProps = {
   showStartAdornmentBorder?: boolean;
   showEndAdornmentBorder?: boolean;
   resize?: React.CSSProperties['resize'];
+  /** A react component that will show beneath the text field, good for checkboxes */
+  componentBelowTextField?: React.ReactNode;
 } & Omit<StandardTextFieldProps, 'required' | 'variant' | 'helperText'>;
 
 export const TextInput = (props: TextInputProps) => {
@@ -42,6 +44,7 @@ export const TextInput = (props: TextInputProps) => {
     showStartAdornmentBorder = true,
     showEndAdornmentBorder = true,
     InputProps = {},
+    componentBelowTextField,
     ...rest
   } = props;
 
@@ -71,6 +74,7 @@ export const TextInput = (props: TextInputProps) => {
           ),
           endAdornment: <Adornment position="end" adornment={endAdornment} showBorder={showEndAdornmentBorder} />,
         }}
+        helperText={componentBelowTextField}
         inputProps={{
           ...automation([automationKey], { label }),
         }}

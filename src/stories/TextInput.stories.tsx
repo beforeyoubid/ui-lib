@@ -1,3 +1,4 @@
+import { Checkbox } from '../components';
 import { LinkButton } from '../components/LinkButton';
 import { TextInput } from '../components/TextInput';
 
@@ -6,6 +7,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
   title: 'Input/TextInput',
+  argTypes: {
+    componentBelowTextField: { table: { disable: true } },
+    ref: { table: { disable: true } },
+  },
 };
 
 export default meta;
@@ -42,5 +47,16 @@ export const Email: Story = {
 
     isOptional: false,
     leadingIconName: 'Mail',
+  },
+};
+
+export const TextFieldWithCheckbox: Story = {
+  args: {
+    label: 'Something here',
+    required: true,
+
+    isOptional: false,
+    leadingIconName: 'ChartPie',
+    componentBelowTextField: <Checkbox label="I'm not really sure" size="sm" checked={false} onChange={console.log} />,
   },
 };
