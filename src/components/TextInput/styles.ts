@@ -26,11 +26,14 @@ export const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, 
 }));
 
 export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean; resize?: React.CSSProperties['resize'] }>`
+  & .MuiFormControl-root {
+    background: transparent;
+  }
   & .MuiOutlinedInput-root {
     border-color: ${({ error, disabled, theme }) =>
       error ? theme.palette.colors.error60 : disabled ? theme.palette.colors.error15 : theme.palette.colors.dark45};
     background-color: ${({ error, disabled, theme }) =>
-      error ? theme.palette.colors.errorL1 : disabled ? theme.palette.colors.lightL3 : null};
+      error ? theme.palette.colors.errorL1 : disabled ? theme.palette.colors.lightL3 : theme.palette.colors.lightWhite};
 
     & fieldset {
       border-color: ${({ theme }) => theme.palette.colors.dark45};
