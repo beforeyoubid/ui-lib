@@ -74,6 +74,11 @@ export const TextInput = (props: TextInputProps) => {
           ),
           endAdornment: <Adornment position="end" adornment={endAdornment} showBorder={showEndAdornmentBorder} />,
         }}
+        sx={{
+          ' .MuiFormHelperText-root': {
+            backgroundColor: 'transparent',
+          },
+        }}
         helperText={componentBelowTextField}
         inputProps={{
           ...automation([automationKey], { label }),
