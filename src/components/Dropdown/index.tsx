@@ -111,6 +111,9 @@ export const Dropdown = (props: DropdownProps) => {
 
 const StyledSelect = styled(Select<Option>)<{ backgroundColor?: keyof Colors }>(({ theme, backgroundColor }) => ({
   marginTop: theme.spacing(0.5),
+  '.MuiSelect-select': {
+    padding: theme.spacing(1.5, 1.75, 1.5, 1.25),
+  },
   '.MuiOutlinedInput-notchedOutline': {
     borderColor: theme.palette.colors.dark45,
   },
