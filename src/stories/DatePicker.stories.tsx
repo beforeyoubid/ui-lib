@@ -37,8 +37,8 @@ const DatePickerStory = () => {
       <DatePicker
         date={date}
         label="Inspection Date"
-        format="MMMM D, YYYY"
-        views={['year', 'month', 'day']}
+        format="D MMMM, YYYY"
+        views={['day', 'month']}
         required
         dateMonth={moment(date).format('MMM')}
         dateYear={moment(date).format('YYYY')}
