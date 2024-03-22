@@ -1,4 +1,3 @@
-import './styles.css';
 import type React from 'react';
 import { useCallback, useState } from 'react';
 
