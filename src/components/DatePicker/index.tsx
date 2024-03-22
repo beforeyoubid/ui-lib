@@ -33,8 +33,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   dateMonth,
   dateYear,
   required = false,
-  format = 'MMMM D, YYYY',
-  views = ['year', 'month', 'day'],
+  format = 'MMM D, YYYY',
+  views = ['day'],
   incrementMonth,
   decrementMonth,
   incrementYear,
@@ -104,6 +104,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             <CalendarHeader
               selectedMonth={dateMonth}
               selectedYear={dateYear}
+              views={views}
               goToPreviousMonth={decrementMonth}
               goToNextMonth={incrementMonth}
               goToPreviousYear={decrementYear}
