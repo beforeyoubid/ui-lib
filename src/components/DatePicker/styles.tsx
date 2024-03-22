@@ -71,7 +71,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   borderWidth: 1,
   borderColor: theme.palette.colors.dark15,
   borderStyle: 'solid',
-  borderRadius: theme.spacing(1),
+  borderRadius: theme.spacing(2),
   marginTop: theme.spacing(1),
   ' .MuiDayCalendar-weekDayLabel': {
     fontFamily: theme.typography.fonts['bold'],
