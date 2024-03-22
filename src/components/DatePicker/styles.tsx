@@ -44,8 +44,17 @@ const FlexToggle = styled(Flex)(({ theme }) => ({
 const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
   position: 'relative',
   width: '100%',
+  ' .MuiInputBase-input': {
+    padding: theme.spacing(1.5, 1.75, 1.5, 1.25),
+  },
+  '&.MuiFormControl-root *': {
+    border: 'none',
+  },
   '&.MuiFormControl-root .MuiInputBase-root': {
     borderRadius: '4px',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: theme.palette.colors.dark45,
     backgroundColor: theme.palette.colors.lightWhite,
   },
   '&.MuiFormControl-root .MuiInputBase-input::placeholder': {
@@ -60,9 +69,9 @@ const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   borderWidth: 1,
-  borderColor: theme.palette.colors.dark45,
+  borderColor: theme.palette.colors.dark15,
   borderStyle: 'solid',
-  borderRadius: theme.spacing(1),
+  borderRadius: theme.spacing(2),
   marginTop: theme.spacing(1),
   ' .MuiDayCalendar-weekDayLabel': {
     fontFamily: theme.typography.fonts['bold'],

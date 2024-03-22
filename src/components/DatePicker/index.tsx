@@ -81,6 +81,18 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         views={views}
         onClose={onClose}
         onChange={onChange}
+        slotProps={{
+          popper: {
+            sx: {
+              background: 'none',
+              '& > .MuiPaper-root': {
+                opacity: 'none',
+                background: 'none',
+                boxShadow: 'none',
+              },
+            },
+          },
+        }}
         slots={{
           layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
           openPickerIcon: () => (
