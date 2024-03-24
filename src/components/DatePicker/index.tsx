@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { type DateView } from '@mui/x-date-pickers';
 import { type Moment } from 'moment';
@@ -17,9 +17,7 @@ export type DatePickerProps = {
   format?: string;
   views?: DateView[];
   required?: boolean;
-  date: Moment;
-  dateMonth: string;
-  dateYear: string;
+  date: Maybe<Moment>;
   incrementMonth: () => void;
   decrementMonth: () => void;
   incrementYear: () => void;
@@ -30,8 +28,6 @@ export type DatePickerProps = {
 export const DatePicker: React.FC<DatePickerProps> = ({
   label,
   date,
-  dateMonth,
-  dateYear,
   required = false,
   format = 'MMM D, YYYY',
   views = ['day'],
@@ -43,6 +39,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentView, setCurrentView] = useState<DateView>('day');
+
+  const dateMonth = useMemo(() => date?.format('MMM') ?? '', [date]);
+  const dateYear = useMemo(() => date?.format('YYYY') ?? '', [date]);
 
   const toggleMonthView = useCallback(() => {
     setCurrentView(currView => (currView === 'month' ? 'day' : 'month'));
