@@ -40,8 +40,6 @@ const DatePickerStory = () => {
         format="D MMMM, YYYY"
         views={['day', 'month']}
         required
-        dateMonth={moment(date).format('MMM')}
-        dateYear={moment(date).format('YYYY')}
         incrementMonth={incrementMonth}
         decrementMonth={decrementMonth}
         incrementYear={incrementYear}
