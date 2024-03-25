@@ -75,6 +75,9 @@ export const TextInput = (props: TextInputProps) => {
           endAdornment: <Adornment position="end" adornment={endAdornment} showBorder={showEndAdornmentBorder} />,
         }}
         sx={{
+          '&.MuiFormControl-root': {
+            backgroundColor: 'transparent',
+          },
           ' .MuiFormHelperText-root': {
             backgroundColor: 'transparent',
           },
