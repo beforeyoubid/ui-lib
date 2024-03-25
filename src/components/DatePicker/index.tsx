@@ -1,8 +1,9 @@
 import type React from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
+import { useTheme } from '@mui/material';
 import { type DateView } from '@mui/x-date-pickers';
-import { type Moment } from 'moment';
+import moment, { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -17,9 +18,7 @@ export type DatePickerProps = {
   format?: string;
   views?: DateView[];
   required?: boolean;
-  date: Moment;
-  dateMonth: string;
-  dateYear: string;
+  date: Maybe<Moment>;
   incrementMonth: () => void;
   decrementMonth: () => void;
   incrementYear: () => void;
@@ -30,8 +29,6 @@ export type DatePickerProps = {
 export const DatePicker: React.FC<DatePickerProps> = ({
   label,
   date,
-  dateMonth,
-  dateYear,
   required = false,
   format = 'MMM D, YYYY',
   views = ['day'],
@@ -41,8 +38,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   decrementYear,
   onChange,
 }) => {
+  const theme = useTheme();
+
   const [isOpen, setIsOpen] = useState(false);
   const [currentView, setCurrentView] = useState<DateView>('day');
+
+  const dateMonth = useMemo(() => date?.format('MMM') ?? moment().format('MMM'), [date]);
+  const dateYear = useMemo(() => date?.format('YYYY') ?? moment().format('YYYY'), [date]);
 
   const toggleMonthView = useCallback(() => {
     setCurrentView(currView => (currView === 'month' ? 'day' : 'month'));
@@ -89,6 +91,15 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 opacity: 'none',
                 background: 'none',
                 boxShadow: 'none',
+              },
+              ' .MuiPickersDay-root': {
+                fontFamily: theme.typography.size.sm,
+                fontWeight: theme.typography.fontWeight.medium,
+                color: theme.palette.colors.dark90,
+              },
+              ' .MuiPickersDay-root.Mui-selected': {
+                color: theme.palette.colors.lightWhite,
+                background: theme.palette.colors.mint60,
               },
             },
           },
