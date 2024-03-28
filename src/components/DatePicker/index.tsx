@@ -94,16 +94,16 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               },
               ' .MuiDateCalendar-root': {
                 maxHeight: 400,
-                height: 385,
+                height: currentView === 'month' ? 385 : 345,
               },
               ' .MuiMonthCalendar-root': {
                 height: 320,
                 paddingBottom: 30,
+                padding: 0,
                 display: 'flex',
                 flexWrap: 'nowrap',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                padding: 0,
                 overflowY: 'scroll',
               },
               ' .MuiPickersMonth-root': {

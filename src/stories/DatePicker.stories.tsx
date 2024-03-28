@@ -38,7 +38,7 @@ const DatePickerStory = () => {
         date={date}
         label="Inspection Date"
         format="D MMM, YYYY"
-        views={['day', 'month']}
+        views={['day', 'month', 'year']}
         required
         incrementMonth={incrementMonth}
         decrementMonth={decrementMonth}
