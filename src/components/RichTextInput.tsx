@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { type OutlinedTextFieldProps } from '@mui/material';
-import DefaultEditor, { type ContentEditableEvent, EditorProvider } from 'react-simple-wysiwyg';
+import { DefaultEditor, type ContentEditableEvent, EditorProvider } from 'react-simple-wysiwyg';
 
 import { Flex } from './Flex';
 import { type TextInputProps } from './TextInput';
