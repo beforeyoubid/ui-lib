@@ -102,7 +102,9 @@
     "wrap-ansi": "^7.0.0"
   },
   "types": "dist/index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "react-simple-wysiwyg": "^3.0.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beforeyoubid/ui-lib.git"
