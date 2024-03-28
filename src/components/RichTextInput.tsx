@@ -1,22 +1,12 @@
-import { ChangeEvent, useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { type OutlinedTextFieldProps } from '@mui/material';
+import DefaultEditor, { type ContentEditableEvent, EditorProvider } from 'react-simple-wysiwyg';
 
 import { Flex } from './Flex';
-import { TextInput, type TextInputProps } from './TextInput';
-import { Typography } from './Typography';
-import DefaultEditor, {
-  BtnBold,
-  BtnBulletList,
-  BtnItalic,
-  BtnNumberedList,
-  BtnStyles,
-  ContentEditableEvent,
-  Editor,
-  EditorProvider,
-  Toolbar,
-} from 'react-simple-wysiwyg';
+import { type TextInputProps } from './TextInput';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+import { Typography } from './Typography';
 
 export type RichTextInputProps = Omit<TextInputProps, 'multiline'> &
   Omit<OutlinedTextFieldProps, 'variant'> &
@@ -62,7 +52,7 @@ export const RichTextInput = (props: RichTextInputProps) => {
               maxWidth: '780px',
             },
           }}
-        ></DefaultEditor>
+        />
       </EditorProvider>
       {(!props.hideTextCount || !props.maxCharacter) && (
         <Typography class="medium" size="base" color={props.errorText ? 'error75' : 'dark90'}>

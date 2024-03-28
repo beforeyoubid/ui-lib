@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { RichTextInput } from '../components';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof RichTextInput> = {
   component: RichTextInput,
