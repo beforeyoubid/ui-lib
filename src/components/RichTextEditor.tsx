@@ -1,7 +1,9 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback } from 'react';
+
+import { styled, type Theme, useTheme } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { styled, Theme, useTheme } from '@mui/material';
+
 import { Flex } from './Flex';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
 
@@ -44,7 +46,7 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
     (value: string) => {
       onChange(value);
     },
-    [props]
+    [onChange]
   );
   const theme = useTheme();
   return (
