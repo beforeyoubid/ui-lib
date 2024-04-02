@@ -12729,11 +12729,6 @@ react-select@^5.8.0:
     react-transition-group "^4.3.0"
     use-isomorphic-layout-effect "^1.1.2"
 
-react-simple-wysiwyg@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-simple-wysiwyg/-/react-simple-wysiwyg-3.0.2.tgz#14a0a59dd181f6f483e209984c2a3992568da23a"
-  integrity sha512-qBPP/b8CfLJgGooqQE2guFxiNxm2uBfMNtZUilCWPcjAWw9XMO6218JZw9kwK81iNO2J0PCWzHf73e6T6EGAvw==
-
 react-style-singleton@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.2.1.tgz#f99e420492b2d8f34d38308ff660b60d0b1205b4"
