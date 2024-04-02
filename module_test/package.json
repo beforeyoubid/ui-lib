@@ -9,6 +9,7 @@
     "moment": "2.29.4",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
+    "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
     "tabler-icons-react": "^1.56.0"
   },

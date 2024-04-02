@@ -29,7 +29,7 @@ const modules = {
 };
 const formats = ['header', 'bold', 'italic', 'underline', 'list', 'bullet', 'link', 'image', 'align'];
 
-export const RichTextEditor = (props: RichTextEditorProps) => {
+export function RichTextEditor(props: RichTextEditorProps) {
   const {
     value,
     label,
@@ -65,7 +65,7 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
       />
     </Flex>
   );
-};
+}
 
 const RichTextEditorComponent = styled(ReactQuill)<{ themeData: Theme; height?: number; errorText?: string }>`
   width: 100%;

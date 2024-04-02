@@ -1,6 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
+
+import css from 'rollup-plugin-import-css';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import json from '@rollup/plugin-json';
@@ -43,6 +45,7 @@ const configCjs: RollupOptions = {
       noEmit: true,
     }),
     terser(),
+    css(),
   ],
   external: [...Object.keys(packageJson.peerDependencies), 'react-is', 'react/jsx-runtime'],
 };
@@ -86,6 +89,7 @@ const config: RollupOptions = {
       emitDeclarationOnly: true,
     }),
     terser(),
+    css(),
   ],
 };
 
