@@ -74,7 +74,6 @@ const RichTextEditorComponent = styled(ReactQuill)<{ themeData: Theme; height?: 
   border-radius: 4px;
   background-color: ${({ errorText, themeData }) =>
     errorText ? themeData.palette.colors.errorL1 : themeData.palette.colors.lightWhite};
-  theme: snow;
 
   .ql-editor {
     min-height: 200px;
