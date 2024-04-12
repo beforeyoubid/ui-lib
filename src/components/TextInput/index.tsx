@@ -77,9 +77,11 @@ export const TextInput = (props: TextInputProps) => {
         sx={{
           '&.MuiFormControl-root': {
             backgroundColor: 'transparent',
+            marginLeft: 0,
           },
           ' .MuiFormHelperText-root': {
             backgroundColor: 'transparent',
+            marginLeft: 0,
           },
         }}
         helperText={componentBelowTextField}
