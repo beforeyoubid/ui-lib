@@ -1,4 +1,4 @@
-import { RichTextEditor } from '../components';
+import { RichTextEditor } from '../components/RichTextEditor';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

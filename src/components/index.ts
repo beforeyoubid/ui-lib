@@ -22,7 +22,7 @@ export * from './NavigationMenu';
 export * from './PasswordInput';
 export * from './ProfilePicture';
 export * from './Radio';
-export * from './RichTextEditor';
+// export * from './RichTextEditor';
 export * from './Select';
 export * from './Table';
 export * from './TableBody';
