@@ -127,6 +127,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 background: theme.palette.colors.lightL2,
                 color: theme.palette.colors.dark90,
               },
+              '.MuiPickersMonth-monthButton.Mui-selected:hover': {
+                background: `${theme.palette.colors.lightL2} !important`,
+                color: theme.palette.colors.dark90,
+              },
               ' .MuiYearCalendar-root': {
                 display: 'flex',
                 alignSelf: 'stretch',
@@ -155,6 +159,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               ' .MuiPickersYear-yearButton.Mui-selected': {
                 background: theme.palette.colors.lightL2,
                 color: theme.palette.colors.dark90,
+                '&:hover': {
+                  background: `${theme.palette.colors.lightL2} !important`,
+                  color: `${theme.palette.colors.dark90} !important`,
+                },
               },
               ' .MuiPickersDay-root': {
                 fontFamily: theme.typography.size.sm,
@@ -163,7 +171,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               },
               ' .MuiPickersDay-root.Mui-selected': {
                 color: theme.palette.colors.lightWhite,
-                background: theme.palette.colors.mint60,
+                background: `${theme.palette.colors.mint60} !important`,
               },
             },
           },
