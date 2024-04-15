@@ -1,6 +1,6 @@
 {
   "name": "@beforeyoubid/ui-lib",
-  "version": "2.1.25",
+  "version": "2.1.26",
   "engines": {
     "node": ">=18.0.0"
   },
