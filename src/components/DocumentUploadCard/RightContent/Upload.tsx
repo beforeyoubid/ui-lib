@@ -32,6 +32,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
   return (
     <Flex direction="row">
       <Button
+        data-component-key="upload-file-btn"
         title="Upload file"
         leadingIcon="Upload"
         variant="secondary"
