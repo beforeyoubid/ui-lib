@@ -3,11 +3,11 @@ import { type StandardTextFieldProps, useTheme } from '@mui/material';
 import { automation } from '../../utils';
 import { Flex } from '../Flex';
 import { Icon, type IconProps } from '../Icon';
+import { type TooltipProps } from '../ToolTip';
 import { Typography } from '../Typography';
 
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { CustomTextField, StyledInputAdornment } from './styles';
-import { TooltipProps } from '../ToolTip';
 
 export type TextInputProps = {
   label: string;

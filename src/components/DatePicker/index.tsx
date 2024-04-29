@@ -7,12 +7,12 @@ import moment, { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
+import { TextFieldLabel } from '../TextInput/Labels';
+import { type TooltipProps } from '../ToolTip';
 
 import CalendarFooter from './CalendarFooter';
 import CalendarHeader from './CalendarHeader';
 import { StyledDatePicker } from './styles';
-import { TooltipProps } from '../ToolTip';
-import { TextFieldLabel } from '../TextInput/Labels';
 
 export type DatePickerProps = {
   label: string;

@@ -7,9 +7,9 @@ import { automation } from '../utils';
 import { Button } from './Button';
 import { Flex } from './Flex';
 import { Icon } from './Icon';
-import { Typography } from './Typography';
-import { TooltipProps } from './ToolTip';
 import { TextFieldLabel } from './TextInput/Labels';
+import { type TooltipProps } from './ToolTip';
+import { Typography } from './Typography';
 
 export type ImageUploadProps = {
   label: string;

@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 
 import { Icon } from '../Icon';
+import { Tooltip, type TooltipProps } from '../ToolTip';
 import { Typography } from '../Typography';
 
 import { HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
-import { Tooltip, type TooltipProps } from '../ToolTip';
 
 const TextFieldHintNoMemo = ({ hintText }: { hintText: string }) => (
   <Typography class="roman" size="sm" color="dark75" padding={0}>

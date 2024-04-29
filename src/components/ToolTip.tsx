@@ -1,7 +1,9 @@
 import { Tooltip as MuiToolTip, Fade } from '@mui/material';
-import { Icon, IconProps } from './Icon';
-import { Colors } from '../theme.types';
+
+import { type Colors } from '../theme.types';
 import { typedMemo } from '../utils';
+
+import { Icon, type IconProps } from './Icon';
 
 export type TooltipProps = {
   title?: string;

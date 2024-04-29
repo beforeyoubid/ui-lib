@@ -8,7 +8,7 @@ import { automation } from '../utils';
 
 import { Flex } from './Flex';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
-import { TooltipProps } from './ToolTip';
+import { type TooltipProps } from './ToolTip';
 
 export interface SwitchProps {
   size: 'small' | 'medium';

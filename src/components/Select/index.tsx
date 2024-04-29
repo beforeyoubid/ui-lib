@@ -12,7 +12,7 @@ import { type StateManagerProps } from 'react-select/dist/declarations/src/useSt
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from '../TextInput/Labels';
-import { TooltipProps } from '../ToolTip';
+import { type TooltipProps } from '../ToolTip';
 
 type Option<ValueType = string> = { label: string; value: ValueType };
 

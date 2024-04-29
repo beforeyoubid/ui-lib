@@ -7,8 +7,8 @@ import { automation } from '../utils';
 import { Circle } from './Circle';
 import { Flex } from './Flex';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+import { type TooltipProps } from './ToolTip';
 import { Typography } from './Typography';
-import { TooltipProps } from './ToolTip';
 
 export type RadioProps = {
   label: string;

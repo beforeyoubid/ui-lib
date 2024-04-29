@@ -6,8 +6,8 @@ import { type Colors } from '../../theme.types';
 import { automation } from '../../utils';
 import { Icon } from '../Icon';
 import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
+import { type TooltipProps } from '../ToolTip';
 import { Typography } from '../Typography';
-import { TooltipProps } from '../ToolTip';
 
 type Option = {
   label: string;
