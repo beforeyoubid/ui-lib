@@ -7,8 +7,6 @@ import { automation } from '../utils';
 import { Button } from './Button';
 import { Flex } from './Flex';
 import { Icon } from './Icon';
-import { TextFieldLabel } from './TextInput/Labels';
-import { type TooltipProps } from './ToolTip';
 import { Typography } from './Typography';
 
 export type ImageUploadProps = {
@@ -22,8 +20,6 @@ export type ImageUploadProps = {
   src?: string;
   uploading?: boolean;
   automationKey?: string;
-  tooltip?: string;
-  tooltipProps?: TooltipProps;
 } & (
   | { canUpload: false }
   | {
@@ -54,13 +50,16 @@ export function ImageUpload(props: ImageUploadProps) {
       gap={theme.spacing(0.5)}
       {...automation([props.automationKey], { label: props.label })}
     >
-      <TextFieldLabel
-        labelText={props.label}
-        required={props.labelRequired ?? false}
-        isOptional={false}
-        tooltip={props.tooltip}
-        tooltipProps={props.tooltipProps}
-      />
+      <Flex gap={theme.spacing(0.5)}>
+        <Typography class="medium" size="base" color="dark90" padding={0}>
+          {props.label}
+        </Typography>
+        {props.labelRequired && (
+          <Typography class="bold" size="xs" color="mint60" padding={0}>
+            *
+          </Typography>
+        )}
+      </Flex>
       {props.helperText && (
         <Typography class="roman" size="sm" color="dark75" padding={0}>
           {props.helperText}
