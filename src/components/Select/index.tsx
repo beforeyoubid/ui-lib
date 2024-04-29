@@ -12,6 +12,7 @@ import { type StateManagerProps } from 'react-select/dist/declarations/src/useSt
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from '../TextInput/Labels';
+import { type TooltipProps } from '../ToolTip';
 
 type Option<ValueType = string> = { label: string; value: ValueType };
 
@@ -144,6 +145,8 @@ export type SelectProps<Async extends boolean = false, IsMulti extends boolean =
   helperText?: string;
   disabled?: boolean;
   maxHeight?: number;
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
 } & Pick<
     AsyncProps<Option, IsMulti, never>,
     'loadOptions' | 'cacheOptions' | 'defaultOptions' | 'onMenuScrollToBottom'
@@ -193,6 +196,8 @@ export function Select<Async extends boolean = false, IsMulti extends boolean = 
   placeholder,
   required = false,
   value,
+  tooltip,
+  tooltipProps,
 }: SelectProps<Async, IsMulti>) {
   type Components = SelectComponentsConfig<Option, IsMulti, never>;
   const theme = useTheme();
@@ -213,7 +218,15 @@ export function Select<Async extends boolean = false, IsMulti extends boolean = 
   }
   return (
     <Flex direction="column" width="100%" gap={theme.spacing(0.5)}>
-      {label && <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />}
+      {label && (
+        <TextFieldLabel
+          labelText={label}
+          required={required}
+          isOptional={isOptional}
+          tooltip={tooltip}
+          tooltipProps={tooltipProps}
+        />
+      )}
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <Component<Option, IsMulti, never>

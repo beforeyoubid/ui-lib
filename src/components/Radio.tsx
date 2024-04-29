@@ -7,6 +7,7 @@ import { automation } from '../utils';
 import { Circle } from './Circle';
 import { Flex } from './Flex';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+import { type TooltipProps } from './ToolTip';
 import { Typography } from './Typography';
 
 export type RadioProps = {
@@ -25,6 +26,8 @@ export type RadioProps = {
   helperText?: string;
   required?: boolean;
   isOptional?: boolean;
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
   automationKey?: string;
 };
 
@@ -39,6 +42,8 @@ export function Radio({
   helperText,
   required = false,
   isOptional = false,
+  tooltip,
+  tooltipProps,
   automationKey,
 }: RadioProps) {
   const theme = useTheme();
@@ -49,7 +54,14 @@ export function Radio({
   return (
     <FormControl {...automation([automationKey], { label })}>
       <Flex direction="column" width="100%" gap={theme.spacing(0.5)}>
-        <TextFieldLabel labelText={label} required={required} isOptional={isOptional} id={id} />
+        <TextFieldLabel
+          labelText={label}
+          required={required}
+          isOptional={isOptional}
+          id={id}
+          tooltip={tooltip}
+          tooltipProps={tooltipProps}
+        />
         {helperText && <TextFieldHint hintText={helperText} />}
         {errorText && <TextFieldErrorLabel errorText={errorText} />}
       </Flex>

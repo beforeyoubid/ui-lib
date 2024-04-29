@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { Icon } from '../Icon';
+import { Tooltip, type TooltipProps } from '../ToolTip';
 import { Typography } from '../Typography';
 
 import { HelperTextErrorWrapper, LabelRowContainer, RowContainer } from './styles';
@@ -16,11 +17,15 @@ const TextFieldLabelNoMemo = ({
   required,
   isOptional,
   id,
+  tooltip,
+  tooltipProps,
 }: {
   labelText: string;
   required: boolean;
   isOptional: boolean;
   id?: string;
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
 }) => (
   <LabelRowContainer required={required} id={id}>
     <Typography class="medium" size="base" color="dark90" padding={0}>
@@ -40,6 +45,14 @@ const TextFieldLabelNoMemo = ({
           (optional)
         </Typography>
       </span>
+    )}
+    {tooltip && (
+      <Tooltip
+        title={tooltip}
+        iconName={tooltipProps?.iconName}
+        iconColor={tooltipProps?.iconColor}
+        iconSize={tooltipProps?.iconSize}
+      />
     )}
   </LabelRowContainer>
 );

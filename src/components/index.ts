@@ -31,4 +31,5 @@ export * from './TableHeader';
 export * from './TableRow';
 export * from './TextArea';
 export * from './TextInput';
+export * from './ToolTip';
 export * from './Typography';

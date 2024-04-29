@@ -8,6 +8,7 @@ import { automation } from '../utils';
 
 import { Flex } from './Flex';
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './TextInput/Labels';
+import { type TooltipProps } from './ToolTip';
 
 export interface SwitchProps {
   size: 'small' | 'medium';
@@ -19,6 +20,8 @@ export interface SwitchProps {
   errorText?: string;
   helperText?: string;
   required?: boolean;
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
   automationKey?: string;
 }
 
@@ -32,6 +35,8 @@ export function Switch({
   helperText,
   errorText,
   required = false,
+  tooltip,
+  tooltipProps,
   onChange,
 }: SwitchProps) {
   const theme = useTheme();
@@ -42,7 +47,13 @@ export function Switch({
   return (
     <FormControl {...automation([automationKey])}>
       <Flex direction="column" width="100%" gap={theme.spacing(0.5)}>
-        <TextFieldLabel labelText={label ?? ''} required={required} isOptional={false} />
+        <TextFieldLabel
+          labelText={label ?? ''}
+          required={required}
+          isOptional={false}
+          tooltip={tooltip}
+          tooltipProps={tooltipProps}
+        />
         {helperText && <TextFieldHint hintText={helperText} />}
         {errorText && <TextFieldErrorLabel errorText={errorText} />}
       </Flex>

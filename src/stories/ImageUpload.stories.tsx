@@ -31,6 +31,7 @@ export const LargeMain: Story = {
     errorText: 'Error text',
     error: false,
     canUpload: true,
+    tooltip: 'Image Upload tooltip',
   },
 };
 

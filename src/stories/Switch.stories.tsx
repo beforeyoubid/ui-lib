@@ -21,5 +21,6 @@ export const Active: Story = {
     helperText: 'Switch helper text',
     required: true,
     automationKey: 'This is automation key',
+    tooltip: 'Select tooltip',
   },
 };

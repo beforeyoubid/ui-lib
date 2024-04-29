@@ -7,7 +7,8 @@ import moment, { type Moment } from 'moment';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
-import { Typography } from '../Typography';
+import { TextFieldLabel } from '../TextInput/Labels';
+import { type TooltipProps } from '../ToolTip';
 
 import CalendarFooter from './CalendarFooter';
 import CalendarHeader from './CalendarHeader';
@@ -24,6 +25,9 @@ export type DatePickerProps = {
   incrementYear: () => void;
   decrementYear: () => void;
   onChange: (value: Maybe<Moment>) => void;
+  isOptional?: boolean;
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
 };
 
 export const DatePicker: React.FC<DatePickerProps> = ({
@@ -37,6 +41,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   incrementYear,
   decrementYear,
   onChange,
+  isOptional = false,
+  tooltip,
+  tooltipProps,
 }) => {
   const theme = useTheme();
 
@@ -65,16 +72,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
   return (
     <Flex direction="column" width="100%" gap={5} style={{ position: 'relative' }}>
-      <Flex direction="row" align="flex-start" gap={2}>
-        <Typography class="medium" size="base" color="dark90">
-          {label}
-        </Typography>
-        {required && (
-          <Typography class="bold" size="xs" color="mint60">
-            *
-          </Typography>
-        )}
-      </Flex>
+      <TextFieldLabel
+        labelText={label}
+        required={required}
+        tooltip={tooltip}
+        tooltipProps={tooltipProps}
+        isOptional={isOptional}
+      />
+
       <StyledDatePicker
         value={date}
         openTo={currentView}
