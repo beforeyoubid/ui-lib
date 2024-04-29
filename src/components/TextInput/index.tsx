@@ -7,6 +7,7 @@ import { Typography } from '../Typography';
 
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
 import { CustomTextField, StyledInputAdornment } from './styles';
+import { TooltipProps } from '../ToolTip';
 
 export type TextInputProps = {
   label: string;
@@ -23,6 +24,8 @@ export type TextInputProps = {
   showStartAdornmentBorder?: boolean;
   showEndAdornmentBorder?: boolean;
   resize?: React.CSSProperties['resize'];
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
   /** A react component that will show beneath the text field, good for checkboxes */
   componentBelowTextField?: React.ReactNode;
 } & Omit<StandardTextFieldProps, 'required' | 'variant' | 'helperText'>;
@@ -45,12 +48,20 @@ export const TextInput = (props: TextInputProps) => {
     showEndAdornmentBorder = true,
     InputProps = {},
     componentBelowTextField,
+    tooltip,
+    tooltipProps,
     ...rest
   } = props;
 
   return (
     <Flex direction="column" width="100%" gap={theme.spacing(0.5)}>
-      <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
+      <TextFieldLabel
+        labelText={label}
+        required={required}
+        isOptional={isOptional}
+        tooltip={tooltip}
+        tooltipProps={tooltipProps}
+      />
       {helperText && <TextFieldHint hintText={helperText} />}
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <CustomTextField

@@ -45,6 +45,7 @@ const DatePickerStory = () => {
         incrementYear={incrementYear}
         decrementYear={decrementYear}
         onChange={handleChange}
+        tooltip="The date the inspection was performed."
       />
     </LocalizationProvider>
   );
@@ -61,6 +62,12 @@ type Story = StoryObj<typeof DatePicker>;
 export const InspectionLabel: Story = {
   args: {
     label: 'Inspection Date',
+    isOptional: true,
+    tooltip: 'The date the inspection was performed.',
+    tooltipProps: {
+      iconColor: 'dark75',
+    },
+
     onChange: value => {
       console.log('Selected value:', value);
     },

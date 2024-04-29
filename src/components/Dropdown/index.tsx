@@ -7,6 +7,7 @@ import { automation } from '../../utils';
 import { Icon } from '../Icon';
 import { TextFieldErrorLabel, TextFieldLabel } from '../TextInput/Labels';
 import { Typography } from '../Typography';
+import { TooltipProps } from '../ToolTip';
 
 type Option = {
   label: string;
@@ -26,6 +27,8 @@ export type DropdownProps = {
   onChange: (event: Option) => void;
   automationKey?: string;
   backgroundColor?: keyof Colors;
+  tooltip?: string;
+  tooltipProps?: TooltipProps;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -42,6 +45,8 @@ export const Dropdown = (props: DropdownProps) => {
     backgroundColor,
     onChange,
     automationKey,
+    tooltip,
+    tooltipProps,
   } = props;
 
   const theme = useTheme();
@@ -70,7 +75,13 @@ export const Dropdown = (props: DropdownProps) => {
   );
   return (
     <>
-      <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
+      <TextFieldLabel
+        labelText={label}
+        required={required}
+        isOptional={isOptional}
+        tooltip={tooltip}
+        tooltipProps={tooltipProps}
+      />
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <StyledSelect
         displayEmpty

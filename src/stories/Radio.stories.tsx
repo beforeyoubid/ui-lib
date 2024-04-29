@@ -21,6 +21,7 @@ export const Active: Story = {
     row: true,
     value: 'mail',
     onChange: console.log,
+    tooltip: 'Select tooltip',
   },
 };
 

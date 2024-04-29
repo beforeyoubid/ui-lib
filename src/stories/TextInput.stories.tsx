@@ -22,9 +22,14 @@ export const Active: Story = {
     required: true,
     helperText: 'This is hint text to help the user.',
     errorText: 'Error text',
-
+    tooltip: 'This is a tooltip',
     isOptional: false,
     placeholder: 'Placeholder text',
+    tooltipProps: {
+      iconName: 'InfoCircle',
+      iconColor: 'dark75',
+      iconSize: 12,
+    },
   },
 };
 

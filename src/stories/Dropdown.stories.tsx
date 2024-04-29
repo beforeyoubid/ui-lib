@@ -24,5 +24,6 @@ export const Active: Story = {
     onChange: value => {
       console.log('Selected value:', value);
     },
+    tooltip: 'Dropdown tooltip',
   },
 };
