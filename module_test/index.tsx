@@ -1,14 +1,17 @@
 import React from 'react';
+
+import { Button, Select } from '@beforeyoubid/ui-lib';
 import ReactDOM from 'react-dom/client';
 
-import { Button, Theme, Select } from '@beforeyoubid/ui-lib';
-import { ThemeProvider } from '@mui/material';
+import { Editor } from './RichTextEditor';
+import { Theme } from './theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 const element = (
-  <ThemeProvider theme={Theme}>
+  <Theme>
     <Button primaryVariant="primary" secondaryVariant="mint" title="abfv" />
     <Select />
-  </ThemeProvider>
+    <Editor />
+  </Theme>
 );
 root.render(element);
