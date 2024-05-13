@@ -104,5 +104,11 @@ module.exports = {
         'import/no-anonymous-default-export': 'off',
       },
     },
+    {
+      files: ['module_test/**/*'],
+      rules: {
+        '@typescript-eslint/consistent-type-imports': 'off',
+      },
+    },
   ],
 };
