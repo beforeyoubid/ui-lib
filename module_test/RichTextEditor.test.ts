@@ -1,4 +1,4 @@
-import { RichTextEditor } from '@beforeyoubid/ui-lib/dist/components/RichTextEditor';
+import { RichTextEditor } from '@beforeyoubid/ui-lib/dist/components/RichTextEditor.cjs';
 
 describe('RichTextEditor', () => {
   it('can be imported', () => {
