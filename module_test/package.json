@@ -17,7 +17,7 @@
     "registry": "http://localhost:4873"
   },
   "scripts": {
-    "test": "yarn jest index.test.ts"
+    "test": "yarn jest"
   },
   "devDependencies": {
     "@types/jest": "^29.2.2",
