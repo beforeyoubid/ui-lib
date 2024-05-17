@@ -19,7 +19,9 @@ export function TableRow(props: TableRowProps) {
   );
 }
 
-const StyledTableRow = styled(TableRowMui)<{ strikethrough: boolean; strikethroughColor: Color }>`
+const StyledTableRow = styled(TableRowMui, {
+  shouldForwardProp: prop => prop !== 'strikethroughColor' && prop !== 'strikethrough',
+})<{ strikethrough: boolean; strikethroughColor: Color }>`
   position: relative;
 
   & .MuiTableCell-root {

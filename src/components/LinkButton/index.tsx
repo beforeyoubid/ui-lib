@@ -1,5 +1,6 @@
 import type React from 'react';
 
+import isPropValid from '@emotion/is-prop-valid';
 import { styled, Button, useTheme } from '@mui/material';
 import { type ButtonProps as MuiButtonProps } from '@mui/material';
 
