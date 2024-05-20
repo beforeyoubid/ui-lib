@@ -33,21 +33,21 @@ const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-b
   return (
     <Flex direction="row">
       <HiddenInput
+        type="file"
         id={dataComponentKey}
         data-component-key={dataComponentKey}
-        type="file"
         accept={accept}
         onChange={handleFileSelect}
       />
       <Label htmlFor={dataComponentKey}>
         <Button
+          disabled
           data-component-key="upload-file-btn"
           title="Upload file"
           leadingIcon="Upload"
           variant="secondary"
           wrap="narrow"
           type="mint"
-          disabled
           size="md"
         />
       </Label>
