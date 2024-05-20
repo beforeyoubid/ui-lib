@@ -2,6 +2,7 @@
   Try to keep exports in alphabetical order
 */
 export * from './Button';
+export * from './Button/IconButton';
 export * from './Card';
 export { Checkbox } from './Checkbox';
 export * from './Circle';
