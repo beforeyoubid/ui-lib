@@ -19,7 +19,11 @@ type UploadProps = {
   onSelect: (file: File) => void;
 };
 
-const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-btn', accept = '.pdf', onSelect }) => {
+const UploadNoMemo: React.FC<UploadProps> = ({
+  dataComponentKey = 'upload-file-button',
+  accept = '.pdf',
+  onSelect,
+}) => {
   const handleFileSelect = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0] || null;
@@ -42,7 +46,6 @@ const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-b
       <Label htmlFor={dataComponentKey}>
         <Button
           disabled
-          data-component-key="upload-file-btn"
           title="Upload file"
           leadingIcon="Upload"
           variant="secondary"
