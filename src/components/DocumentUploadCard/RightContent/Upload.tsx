@@ -3,11 +3,16 @@
 import { type ChangeEvent, useCallback } from 'react';
 import type React from 'react';
 
+// Styled
+import { styled } from '@mui/material';
+
 // Relative Imports
-// Components
+// Utils
 import { typedMemo } from '../../../utils';
-import { Button } from '../../Button';
+// Components
 import { Flex } from '../../Flex';
+import { Icon } from '../../Icon';
+import { Typography } from '../../Typography';
 
 type UploadProps = {
   dataComponentKey?: string;
@@ -27,27 +32,50 @@ const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-b
   );
 
   return (
-    <Flex direction="row">
-      <input
-        id="upload-file-btn"
-        data-component-key="upload-file-btn"
+    <FlexUpload>
+      <HiddenInput
+        id={dataComponentKey}
+        data-component-key={dataComponentKey}
         type="file"
         accept={accept}
         onChange={handleFileSelect}
       />
-      <Button
-        data-component-key={dataComponentKey}
-        title="Upload file"
-        leadingIcon="Upload"
-        variant="secondary"
-        wrap="narrow"
-        type="mint"
-        size="md"
-      />
-    </Flex>
+      <LabelContent htmlFor={dataComponentKey}>
+        <Icon icon="Upload" size="14" color="mint75" />
+        <Typography class="bold" size="sm" color="mint75">
+          Upload
+        </Typography>
+      </LabelContent>
+    </FlexUpload>
   );
 };
 
 const Upload = typedMemo(UploadNoMemo);
 
 export { Upload };
+
+const HiddenInput = styled('input')`
+  opacity: 0;
+  height: 1px;
+  width: 1px;
+`;
+
+const LabelContent = styled('label')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  cursor: 'pointer',
+}));
+
+const FlexUpload = styled(Flex)(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: theme.spacing(1, 2.5),
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderColor: theme.palette.colors.mint45,
+  borderRadius: 4,
+  background: theme.palette.colors.lightWhite,
+}));
