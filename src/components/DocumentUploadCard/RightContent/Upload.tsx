@@ -1,6 +1,6 @@
 // External Imports
 // React
-import { useCallback, useMemo } from 'react';
+import { type ChangeEvent, useCallback } from 'react';
 import type React from 'react';
 
 // Relative Imports
@@ -16,25 +16,25 @@ type UploadProps = {
 };
 
 const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-btn', accept = '.pdf', onSelect }) => {
-  const onUpload = useCallback(
-    (onSelect: (file: File) => void) => {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = accept;
-      input.onchange = function () {
-        if (input.files) {
-          onSelect(input.files?.[0]);
-        }
-      };
-      input.click();
+  const handleFileSelect = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0] || null;
+      if (file) {
+        onSelect(file);
+      }
     },
-    [accept]
+    [onSelect]
   );
-
-  const onClick = useMemo(() => onUpload.bind(null, onSelect), [onSelect, onUpload]);
 
   return (
     <Flex direction="row">
+      <input
+        id="upload-file-btn"
+        data-component-key="upload-file-btn"
+        type="file"
+        accept={accept}
+        onChange={handleFileSelect}
+      />
       <Button
         data-component-key={dataComponentKey}
         title="Upload file"
@@ -43,7 +43,6 @@ const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-b
         wrap="narrow"
         type="mint"
         size="md"
-        onClick={onClick}
       />
     </Flex>
   );
