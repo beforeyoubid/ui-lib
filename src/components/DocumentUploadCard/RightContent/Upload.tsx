@@ -10,9 +10,8 @@ import { styled } from '@mui/material';
 // Utils
 import { typedMemo } from '../../../utils';
 // Components
+import { Button } from '../../Button';
 import { Flex } from '../../Flex';
-import { Icon } from '../../Icon';
-import { Typography } from '../../Typography';
 
 type UploadProps = {
   dataComponentKey?: string;
@@ -32,7 +31,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-b
   );
 
   return (
-    <FlexUpload>
+    <Flex direction="row">
       <HiddenInput
         id={dataComponentKey}
         data-component-key={dataComponentKey}
@@ -40,13 +39,19 @@ const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-b
         accept={accept}
         onChange={handleFileSelect}
       />
-      <LabelContent htmlFor={dataComponentKey}>
-        <Icon icon="Upload" size="14" color="mint75" />
-        <Typography class="bold" size="sm" color="mint75">
-          Upload
-        </Typography>
-      </LabelContent>
-    </FlexUpload>
+      <Label htmlFor={dataComponentKey}>
+        <Button
+          data-component-key="upload-file-btn"
+          title="Upload file"
+          leadingIcon="Upload"
+          variant="secondary"
+          wrap="narrow"
+          type="mint"
+          disabled
+          size="md"
+        />
+      </Label>
+    </Flex>
   );
 };
 
@@ -60,22 +65,6 @@ const HiddenInput = styled('input')`
   width: 1px;
 `;
 
-const LabelContent = styled('label')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: theme.spacing(1),
+const Label = styled('label')({
   cursor: 'pointer',
-}));
-
-const FlexUpload = styled(Flex)(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: theme.spacing(1, 2.5),
-  borderWidth: 1,
-  borderStyle: 'solid',
-  borderColor: theme.palette.colors.mint45,
-  borderRadius: 4,
-  background: theme.palette.colors.lightWhite,
-}));
+});
