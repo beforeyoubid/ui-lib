@@ -9,9 +9,13 @@ import { typedMemo } from '../../../utils';
 import { Button } from '../../Button';
 import { Flex } from '../../Flex';
 
-type UploadProps = { onSelect: (file: File) => void; accept?: string };
+type UploadProps = {
+  dataComponentKey?: string;
+  accept?: string;
+  onSelect: (file: File) => void;
+};
 
-const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
+const UploadNoMemo: React.FC<UploadProps> = ({ dataComponentKey = 'upload-file-btn', accept = '.pdf', onSelect }) => {
   const onUpload = useCallback(
     (onSelect: (file: File) => void) => {
       const input = document.createElement('input');
@@ -32,7 +36,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
   return (
     <Flex direction="row">
       <Button
-        data-component-key="upload-file-btn"
+        data-component-key={dataComponentKey}
         title="Upload file"
         leadingIcon="Upload"
         variant="secondary"
