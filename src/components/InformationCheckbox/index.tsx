@@ -58,7 +58,8 @@ const Wrapper = styled(Flex)<{ variant: string }>(({ theme, variant }) => ({
   paddingLeft: theme.spacing(1.5),
   paddingRight: theme.spacing(1.5),
   gap: theme.spacing(1.25),
-  borderRadius: 4,
+  borderRadius: 8,
+  border: `1px solid ${theme.palette.colors.dark15}`,
 }));
 
 const Description = styled(Typography)(({ theme }) => ({
