@@ -18,6 +18,5 @@ export const Active: Story = {
     title: 'Login',
     wrap: 'narrow',
     disabled: false,
-    // leadingIcon: 'Mail',
   },
 };

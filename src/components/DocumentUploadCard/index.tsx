@@ -23,6 +23,7 @@ export type DocumentUploadCardProps = {
   isUploading: boolean;
   uploadProgress?: number;
   errorMessage?: string; // indicates an error occurred
+  uploadButtonDataComponentKey?: string;
   onFileSelect: (file: File) => void;
   onFileDelete: () => void;
 };
@@ -39,6 +40,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   fileSize,
   errorMessage,
   isUploading,
+  uploadButtonDataComponentKey,
   uploadProgress = 0,
   onFileSelect,
   onFileDelete,
@@ -85,7 +87,9 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
                 {/* left content */}
                 <LeftContent fileName={fileName} fileSize={fileSize} hasError={!!errorMessage} />
                 {/* right content */}
-                {!isUploading && !fileUrl && <Upload accept={accept} onSelect={onFileSelect} />}
+                {!isUploading && !fileUrl && (
+                  <Upload dataComponentKey={uploadButtonDataComponentKey} accept={accept} onSelect={onFileSelect} />
+                )}
                 {isUploading && <Uploading progress={uploadProgress} />}
                 {fileUrl && <Uploaded onFileDelete={onFileDelete} />}
               </Flex>

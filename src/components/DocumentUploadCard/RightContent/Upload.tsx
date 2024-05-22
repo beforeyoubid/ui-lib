@@ -1,46 +1,59 @@
 // External Imports
 // React
-import { useCallback, useMemo } from 'react';
+import { type ChangeEvent, useCallback } from 'react';
 import type React from 'react';
 
+// Styled
+import { styled } from '@mui/material';
+
 // Relative Imports
-// Components
+// Utils
 import { typedMemo } from '../../../utils';
+// Components
 import { Button } from '../../Button';
 import { Flex } from '../../Flex';
 
-type UploadProps = { onSelect: (file: File) => void; accept?: string };
+type UploadProps = {
+  dataComponentKey?: string;
+  accept?: string;
+  onSelect: (file: File) => void;
+};
 
-const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
-  const onUpload = useCallback(
-    (onSelect: (file: File) => void) => {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = accept;
-      input.onchange = function () {
-        if (input.files) {
-          onSelect(input.files?.[0]);
-        }
-      };
-      input.click();
+const UploadNoMemo: React.FC<UploadProps> = ({
+  dataComponentKey = 'upload-file-button',
+  accept = '.pdf',
+  onSelect,
+}) => {
+  const handleFileSelect = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0] || null;
+      if (file) {
+        onSelect(file);
+      }
     },
-    [accept]
+    [onSelect]
   );
-
-  const onClick = useMemo(() => onUpload.bind(null, onSelect), [onSelect, onUpload]);
 
   return (
     <Flex direction="row">
-      <Button
-        data-component-key="upload-file-btn"
-        title="Upload file"
-        leadingIcon="Upload"
-        variant="secondary"
-        wrap="narrow"
-        type="mint"
-        size="md"
-        onClick={onClick}
+      <HiddenInput
+        type="file"
+        id={dataComponentKey}
+        data-component-key={dataComponentKey}
+        accept={accept}
+        onChange={handleFileSelect}
       />
+      <Label htmlFor={dataComponentKey}>
+        <Button
+          disabled
+          title="Upload file"
+          leadingIcon="Upload"
+          variant="secondary"
+          wrap="narrow"
+          type="mint"
+          size="md"
+        />
+      </Label>
     </Flex>
   );
 };
@@ -48,3 +61,13 @@ const UploadNoMemo: React.FC<UploadProps> = ({ onSelect, accept = '.pdf' }) => {
 const Upload = typedMemo(UploadNoMemo);
 
 export { Upload };
+
+const HiddenInput = styled('input')`
+  opacity: 0;
+  height: 1px;
+  width: 1px;
+`;
+
+const Label = styled('label')({
+  cursor: 'pointer',
+});
