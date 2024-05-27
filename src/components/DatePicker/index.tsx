@@ -20,7 +20,7 @@ export type DatePickerProps = {
   format?: string;
   views?: DateView[];
   required?: boolean;
-  date: Maybe<Moment>;
+  date: Maybe<moment.MomentInput>;
   incrementMonth: () => void;
   decrementMonth: () => void;
   incrementYear: () => void;
@@ -33,7 +33,7 @@ export type DatePickerProps = {
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   label,
-  date,
+  date: dateParameter,
   required = false,
   format = 'MMM D, YYYY',
   views = ['day'],
@@ -46,6 +46,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   tooltip,
   tooltipProps,
 }) => {
+  const date = useMemo(() => moment(dateParameter), [dateParameter]);
   const theme = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
