@@ -1,3 +1,5 @@
+import { InfoCircle } from 'tabler-icons-react';
+
 import { Tooltip } from '../components';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -14,7 +16,7 @@ type Story = StoryObj<typeof Tooltip>;
 export const Active: Story = {
   args: {
     title: 'Lorem ipsum',
-    iconName: 'InfoCircle',
+    icon: InfoCircle,
     iconColor: 'dark75',
     iconSize: 12,
   },

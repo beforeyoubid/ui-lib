@@ -1,6 +1,7 @@
 import type React from 'react';
 
 import { Checkbox as CheckboxMui, FormControlLabel, styled, useTheme } from '@mui/material';
+import { Check, Minus } from 'tabler-icons-react';
 
 import { Flex } from './Flex';
 import { Icon } from './Icon';
@@ -63,12 +64,12 @@ export const RawCheckbox = (
     indeterminate={props.indeterminate ?? false}
     checkedIcon={
       <IconWrapper size={props.size} disabled={props.disabled ?? false}>
-        <Icon icon="Check" size={SIZE_TO_ICON_SIZE[props.size] - 2} color={props.disabled ? 'dark30' : 'lightWhite'} />
+        <Icon icon={Check} size={SIZE_TO_ICON_SIZE[props.size] - 2} color={props.disabled ? 'dark30' : 'lightWhite'} />
       </IconWrapper>
     }
     indeterminateIcon={
       <IconWrapper size={props.size} disabled={props.disabled ?? false}>
-        <Icon icon="Minus" size={SIZE_TO_ICON_SIZE[props.size] - 2} color={props.disabled ? 'dark30' : 'lightWhite'} />
+        <Icon icon={Minus} size={SIZE_TO_ICON_SIZE[props.size] - 2} color={props.disabled ? 'dark30' : 'lightWhite'} />
       </IconWrapper>
     }
     icon={<EmptyIcon className="BYB-Checkbox-Empty" size={props.size} />}

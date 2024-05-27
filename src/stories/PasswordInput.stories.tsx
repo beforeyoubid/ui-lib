@@ -1,3 +1,5 @@
+import { EyeCheck } from 'tabler-icons-react';
+
 import { PasswordInput } from '../components/PasswordInput';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -13,7 +15,7 @@ export const Active: Story = {
   args: {
     label: 'I am text input',
     placeholder: 'Placeholder',
-    leadingIconName: 'EyeCheck',
+    leadingIcon: EyeCheck,
     helperText: 'Please enter your password.',
     value: 'Ben1234',
     errorText: 'Password didnt match',

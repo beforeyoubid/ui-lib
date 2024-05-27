@@ -1,6 +1,11 @@
 import { Paper, styled } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import { type Moment } from 'moment';
+import {
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+  ChevronDown as ChevronDownIcon,
+} from 'tabler-icons-react';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -12,7 +17,7 @@ type ChevronProps = {
 const ChevronLeft: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
-      <Icon icon="ChevronLeft" color="dark90" size={16} />
+      <Icon icon={ChevronLeftIcon} color="dark90" size={16} />
     </Flex>
   );
 };
@@ -20,7 +25,7 @@ const ChevronLeft: React.FC<ChevronProps> = ({ onClick }) => {
 const ChevronRight: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
-      <Icon icon="ChevronRight" color="dark90" size={16} />
+      <Icon icon={ChevronRightIcon} color="dark90" size={16} />
     </Flex>
   );
 };
@@ -28,7 +33,7 @@ const ChevronRight: React.FC<ChevronProps> = ({ onClick }) => {
 const ChevronDown: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
-      <Icon icon="ChevronDown" color="dark90" size={16} />
+      <Icon icon={ChevronDownIcon} color="dark90" size={16} />
     </Flex>
   );
 };

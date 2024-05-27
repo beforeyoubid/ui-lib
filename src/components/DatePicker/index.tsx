@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useTheme } from '@mui/material';
 import { type DateView } from '@mui/x-date-pickers';
 import moment, { type Moment } from 'moment';
+import { CalendarEvent } from 'tabler-icons-react';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -185,7 +186,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
           openPickerIcon: () => (
             <Flex onClick={toggleOpen}>
-              <Icon icon="CalendarEvent" color="dark75" size={24} />
+              <Icon icon={CalendarEvent} color="dark75" size={24} />
             </Flex>
           ),
           calendarHeader: () => (
