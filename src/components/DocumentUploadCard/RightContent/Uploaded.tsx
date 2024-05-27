@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import type React from 'react';
 
 import { useTheme } from '@mui/material';
+import { Trash } from 'tabler-icons-react';
 
 import { typedMemo } from '../../../utils';
 import { Button } from '../../Button';
@@ -31,7 +32,7 @@ const UploadedNoMemo: React.FC<UploadedProps> = ({ onFileDelete }) => {
     return (
       <Flex direction="column" justify="center" alignSelf="stretch">
         <span onClick={toggleConfirmDelete}>
-          <Icon icon="Trash" size={18} color="dark90" />
+          <Icon icon={Trash} size={18} color="dark90" />
         </span>
       </Flex>
     );

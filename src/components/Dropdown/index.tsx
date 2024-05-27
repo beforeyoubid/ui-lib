@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { Select, MenuItem, type SelectChangeEvent, styled, useTheme, ListItemIcon } from '@mui/material';
+import { Check } from 'tabler-icons-react';
 
 import { type Colors } from '../../theme.types';
 import { automation } from '../../utils';
@@ -109,7 +110,7 @@ export const Dropdown = (props: DropdownProps) => {
             value={option.value}
             style={option.value === value ? { backgroundColor: theme.palette.colors.mintL3 } : {}}
           >
-            <ListItemIcon>{option.value === value && <Icon icon="Check" color="mint90" />}</ListItemIcon>
+            <ListItemIcon>{option.value === value && <Icon icon={Check} color="mint90" />}</ListItemIcon>
             <Typography class="medium" size="base" color="dark90">
               {option.label}
             </Typography>

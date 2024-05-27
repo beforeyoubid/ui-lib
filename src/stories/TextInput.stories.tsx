@@ -1,3 +1,5 @@
+import { ChartPie, InfoCircle, Mail, Search } from 'tabler-icons-react';
+
 import { Checkbox } from '../components';
 import { LinkButton } from '../components/LinkButton';
 import { TextInput } from '../components/TextInput';
@@ -26,7 +28,7 @@ export const Active: Story = {
     isOptional: false,
     placeholder: 'Placeholder text',
     tooltipProps: {
-      iconName: 'InfoCircle',
+      icon: InfoCircle,
       iconColor: 'dark75',
       iconSize: 12,
     },
@@ -38,7 +40,7 @@ export const TextAdornment: Story = {
     label: 'Label',
     startAdornment: 'byb.au/',
     endAdornment: (
-      <LinkButton type="grey" size="md" title="Search" leadingIcon="Search" underline={false} onClick={console.log} />
+      <LinkButton type="grey" size="md" title="Search" leadingIcon={Search} underline={false} onClick={console.log} />
     ),
     showStartAdornmentBorder: true,
     showEndAdornmentBorder: true,
@@ -51,7 +53,7 @@ export const Email: Story = {
     required: true,
 
     isOptional: false,
-    leadingIconName: 'Mail',
+    leadingIconName: Mail,
   },
 };
 
@@ -61,7 +63,7 @@ export const TextFieldWithCheckbox: Story = {
     required: true,
 
     isOptional: false,
-    leadingIconName: 'ChartPie',
+    leadingIconName: ChartPie,
     componentBelowTextField: <Checkbox label="I'm not really sure" size="sm" checked={false} onChange={console.log} />,
   },
 };

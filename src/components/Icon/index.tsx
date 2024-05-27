@@ -1,24 +1,25 @@
-import React, { useMemo, memo } from 'react';
-
-import * as Icons from 'tabler-icons-react';
+import type React from 'react';
+import { type SVGAttributes } from 'react';
+import { memo } from 'react';
 
 import { colorPalette } from '../../mui-theme';
 import { type Colors } from '../../theme.types';
 
-import * as CustomIcons from './Custom';
+export interface TablerIconProps extends SVGAttributes<SVGElement> {
+  color?: string;
+  size?: string | number;
+}
+export type IconComponent = React.FC<TablerIconProps>;
 
 export type IconProps = {
-  icon: keyof typeof Icons | keyof typeof CustomIcons;
   size?: string | number;
   color: keyof Colors;
+  icon: IconComponent;
   className?: string;
 };
 
-const isIcon = (icon: IconProps['icon']): icon is keyof typeof Icons =>
-  Object.prototype.hasOwnProperty.call(Icons, icon);
-
 function IconNoMemo(props: IconProps) {
-  const IconComponent = useMemo(() => (isIcon(props.icon) ? Icons[props.icon] : CustomIcons[props.icon]), [props.icon]);
+  const { icon: IconComponent } = props;
 
   return <IconComponent color={colorPalette[props.color]} className={props.className} size={props.size} />;
 }

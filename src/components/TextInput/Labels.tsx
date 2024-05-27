@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
 
+import { AlertCircle } from 'tabler-icons-react';
+
 import { Icon } from '../Icon';
 import { Tooltip, type TooltipProps } from '../ToolTip';
 import { Typography } from '../Typography';
@@ -49,7 +51,7 @@ const TextFieldLabelNoMemo = ({
     {tooltip && (
       <Tooltip
         title={tooltip}
-        iconName={tooltipProps?.iconName}
+        icon={tooltipProps?.icon}
         iconColor={tooltipProps?.iconColor}
         iconSize={tooltipProps?.iconSize}
       />
@@ -60,7 +62,7 @@ const TextFieldLabelNoMemo = ({
 const TextFieldErrorLabelNoMemo = ({ errorText }: { errorText: string }) => (
   <RowContainer>
     <HelperTextErrorWrapper align="center" justify="center">
-      <Icon icon="AlertCircle" color="error75" />
+      <Icon icon={AlertCircle} color="error75" />
     </HelperTextErrorWrapper>
     <Typography class="roman" size="sm" color="error75" padding={0}>
       {errorText}

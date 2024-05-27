@@ -2,17 +2,18 @@ import { memo } from 'react';
 import type React from 'react';
 
 import { styled, useTheme } from '@mui/material';
+import { Pencil } from 'tabler-icons-react';
 
 import { Button } from './Button';
 import { Flex } from './Flex';
-import { type IconProps } from './Icon';
+import { type IconComponent } from './Icon';
 import { LinkButton } from './LinkButton';
 import { Typography } from './Typography';
 
 type CardButtonsProps = {
   editing: boolean;
 
-  editButtonIcon?: IconProps['icon'];
+  editButtonIcon?: IconComponent;
   editButtonTitle?: string;
   saveButtonTitle?: string;
   cancelButtonTitle?: string;
@@ -74,7 +75,7 @@ export function Card(props: CardProps) {
 function CardButtonsNoMemo(props: CardButtonsProps) {
   const theme = useTheme();
   const {
-    editButtonIcon = 'Pencil',
+    editButtonIcon = Pencil,
     editButtonTitle = 'Update',
     cancelButtonTitle = 'Cancel',
     saveButtonTitle = 'Save changes',

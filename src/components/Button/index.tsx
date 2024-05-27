@@ -3,7 +3,7 @@ import type React from 'react';
 
 import { type ButtonProps as MuiButtonProps } from '@mui/material';
 
-import { Icon, type IconProps } from '../Icon';
+import { Icon, type IconComponent } from '../Icon';
 import { Typography } from '../Typography';
 
 import { ButtonWrapper } from './styles';
@@ -14,8 +14,8 @@ export type ButtonProps = Omit<MuiButtonProps, 'variant' | 'type' | 'size' | 'ch
   type: 'mint' | 'destructive' | 'disabled';
   size: 'lg' | 'md' | 'sm';
   wrap: 'wide' | 'narrow';
-  leadingIcon?: IconProps['icon'];
-  trailingIcon?: IconProps['icon'];
+  leadingIcon?: IconComponent;
+  trailingIcon?: IconComponent;
 };
 
 const ButtonNoMemo: React.FC<ButtonProps> = ({

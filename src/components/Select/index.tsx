@@ -8,6 +8,7 @@ import {
   type StylesConfig,
 } from 'react-select/dist/declarations/src';
 import { type StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
+import { ChevronDown, X } from 'tabler-icons-react';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -114,13 +115,13 @@ const StyledDropdownIcon = <IsMulti extends boolean>({
   innerProps,
 }: DropdownIndicatorProps<Option, IsMulti, never>) => (
   <IconStyle {...innerProps}>
-    <Icon icon="ChevronDown" color="dark100" />
+    <Icon icon={ChevronDown} color="dark100" />
   </IconStyle>
 );
 
 const StyledClearIndicator = <IsMulti extends boolean>({ innerProps }: ClearIndicatorProps<Option, IsMulti, never>) => (
   <IconStyle {...innerProps}>
-    <Icon icon="X" color="dark100" />
+    <Icon icon={X} color="dark100" />
   </IconStyle>
 );
 

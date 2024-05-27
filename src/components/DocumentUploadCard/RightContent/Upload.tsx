@@ -5,9 +5,11 @@ import type React from 'react';
 
 // Styled
 import { styled } from '@mui/material';
+import { Upload as UploadIcon } from 'tabler-icons-react';
 
 // Relative Imports
 // Utils
+
 import { typedMemo } from '../../../utils';
 // Components
 import { Button } from '../../Button';
@@ -47,7 +49,7 @@ const UploadNoMemo: React.FC<UploadProps> = ({
         <Button
           disabled
           title="Upload file"
-          leadingIcon="Upload"
+          leadingIcon={UploadIcon}
           variant="secondary"
           wrap="narrow"
           type="mint"
