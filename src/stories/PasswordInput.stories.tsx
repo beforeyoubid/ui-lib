@@ -15,7 +15,7 @@ export const Active: Story = {
   args: {
     label: 'I am text input',
     placeholder: 'Placeholder',
-    leadingIconName: EyeCheck,
+    leadingIcon: EyeCheck,
     helperText: 'Please enter your password.',
     value: 'Ben1234',
     errorText: 'Password didnt match',

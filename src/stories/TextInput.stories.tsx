@@ -53,7 +53,7 @@ export const Email: Story = {
     required: true,
 
     isOptional: false,
-    leadingIconName: Mail,
+    leadingIcon: Mail,
   },
 };
 
@@ -63,7 +63,7 @@ export const TextFieldWithCheckbox: Story = {
     required: true,
 
     isOptional: false,
-    leadingIconName: ChartPie,
+    leadingIcon: ChartPie,
     componentBelowTextField: <Checkbox label="I'm not really sure" size="sm" checked={false} onChange={console.log} />,
   },
 };

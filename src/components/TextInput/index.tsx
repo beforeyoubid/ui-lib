@@ -13,7 +13,7 @@ export type TextInputProps = {
   label: string;
   placeholder?: string;
   value: string;
-  leadingIconName?: IconProps['icon'];
+  leadingIcon?: IconProps['icon'];
   helperText?: string;
   errorText?: string;
   required?: boolean;
@@ -36,7 +36,7 @@ export const TextInput = (props: TextInputProps) => {
     label,
     placeholder,
     value,
-    leadingIconName,
+    leadingIcon,
     helperText = '',
     errorText = '',
     required = false,
@@ -72,14 +72,14 @@ export const TextInput = (props: TextInputProps) => {
         color="primary"
         value={value}
         fullWidth
-        hasLeadingIcon={!!leadingIconName}
+        hasLeadingIcon={!!leadingIcon}
         InputProps={{
           ...InputProps,
           startAdornment: (
             <Adornment
               position="start"
               adornment={startAdornment}
-              icon={leadingIconName}
+              icon={leadingIcon}
               showBorder={showStartAdornmentBorder}
             />
           ),
@@ -113,11 +113,11 @@ const Adornment = ({
 }: {
   adornment?: string | React.ReactNode;
   position: 'start' | 'end';
-  icon?: TextInputProps['leadingIconName'];
+  icon?: TextInputProps['leadingIcon'];
   showBorder?: boolean;
 }) => {
   if (adornment && icon) {
-    throw new Error('cannot have both adornment and leadingIconName');
+    throw new Error('cannot have both adornment and leadingIcon');
   }
   if (icon) {
     return (
