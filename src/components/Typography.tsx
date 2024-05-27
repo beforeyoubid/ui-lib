@@ -45,7 +45,7 @@ const Div = styled('div', {
   shouldForwardProp: prop =>
     !['underline', 'strikethrough', 'fullWidth', 'padding', 'color', 'hoverColor', 'fontClass', 'size'].includes(
       prop.toString()
-    ) && isPropValid(prop.toString()),
+    ) && isPropValid(prop as string),
 })<{
   fontClass: TypographyFontClass;
   size: TypographyFontSize;
