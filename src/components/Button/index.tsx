@@ -11,7 +11,7 @@ import { useButtonStyles, useButtonFontStyle } from './utils';
 
 export type ButtonProps = Omit<MuiButtonProps, 'variant' | 'type' | 'size' | 'children'> & {
   variant: 'primary' | 'secondary' | 'tertiary';
-  type: 'mint' | 'destructive' | 'disabled';
+  type: 'mint' | 'destructive' | 'disabled' | 'navy';
   size: 'lg' | 'md' | 'sm';
   wrap: 'wide' | 'narrow';
   leadingIcon?: IconComponent;
