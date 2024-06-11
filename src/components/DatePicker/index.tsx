@@ -46,7 +46,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   tooltip,
   tooltipProps,
 }) => {
-  const date = useMemo(() => moment(dateParameter), [dateParameter]);
+  const date = useMemo(() => (dateParameter ? moment(dateParameter) : null), [dateParameter]);
   const theme = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +72,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     setCurrentView(nextView);
   }, [views]);
 
+  console.log({
+    dateMonth,
+    dateYear,
+  });
+
   return (
     <Flex direction="column" width="100%" gap={5} style={{ position: 'relative' }}>
       <TextFieldLabel
@@ -91,6 +96,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onClose={onClose}
         onChange={onChange}
         slotProps={{
+          textField: {
+            placeholder: format,
+          },
           popper: {
             sx: {
               background: 'none',
