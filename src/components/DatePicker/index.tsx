@@ -72,11 +72,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     setCurrentView(nextView);
   }, [views]);
 
-  console.log({
-    dateMonth,
-    dateYear,
-  });
-
   return (
     <Flex direction="column" width="100%" gap={5} style={{ position: 'relative' }}>
       <TextFieldLabel
