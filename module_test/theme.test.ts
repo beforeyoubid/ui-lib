@@ -1,4 +1,4 @@
-import { theme } from '@beforeyoubid/ui-lib/dist/mui-theme.cjs';
+import { theme } from '@beforeyoubid/ui-lib/mui-theme';
 
 describe('theme', () => {
   it('can be imported', () => {
