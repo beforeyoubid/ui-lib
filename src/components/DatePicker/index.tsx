@@ -46,7 +46,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   tooltip,
   tooltipProps,
 }) => {
-  const date = useMemo(() => moment(dateParameter), [dateParameter]);
+  const date = useMemo(() => (dateParameter ? moment(dateParameter) : null), [dateParameter]);
   const theme = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -91,6 +91,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onClose={onClose}
         onChange={onChange}
         slotProps={{
+          textField: {
+            placeholder: format,
+          },
           popper: {
             sx: {
               background: 'none',

@@ -9,7 +9,7 @@ import { DatePicker } from '../components/DatePicker';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const DatePickerStory = () => {
-  const [date, setDate] = useState(moment());
+  const [date, setDate] = useState<Maybe<moment.MomentInput>>(null);
 
   const handleChange = (value: unknown) => {
     if (!value) return;
