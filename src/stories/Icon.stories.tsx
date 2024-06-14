@@ -37,6 +37,9 @@ const IconList = () => {
   );
 };
 
+const isIcon = (icon: keyof typeof Icons | keyof typeof CustomIcons): icon is keyof typeof Icons =>
+  Object.prototype.hasOwnProperty.call(Icons, icon);
+
 const IconWrapperNoMemo = ({ icon }: { icon: keyof typeof Icons | keyof typeof CustomIcons }) => {
   const theme = useTheme();
   return (
@@ -48,7 +51,7 @@ const IconWrapperNoMemo = ({ icon }: { icon: keyof typeof Icons | keyof typeof C
       style={{ padding: theme.spacing(0.5), borderRadius: 4, backgroundColor: theme.palette.colors.dark15 }}
     >
       <div style={{ display: 'flex', flexDirection: 'row', gap: 8 }}>
-        <Icon icon={icon} color="dark90" />
+        <Icon icon={isIcon(icon) ? Icons[icon] : CustomIcons[icon]} color="dark90" />
       </div>
       <Typography color="dark100" class="roman" size="base">
         {icon}

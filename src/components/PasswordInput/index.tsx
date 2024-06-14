@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { IconButton, InputAdornment, type TextFieldProps } from '@mui/material';
+import { Eye, EyeOff } from 'tabler-icons-react';
 
 import { Icon } from '../Icon';
 import { TextInput, type TextInputProps } from '../TextInput';
@@ -22,7 +23,7 @@ const PasswordInput = (props: PasswordInputProps) => {
         endAdornment: (
           <InputAdornment position="end">
             <IconButton onClick={toggleShowPassword} edge="end">
-              <Icon icon={showPassword ? 'Eye' : 'EyeOff'} color="dark90" />
+              <Icon icon={showPassword ? Eye : EyeOff} color="dark90" />
             </IconButton>
           </InputAdornment>
         ),

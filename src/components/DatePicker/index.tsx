@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useTheme } from '@mui/material';
 import { type DateView } from '@mui/x-date-pickers';
 import moment, { type Moment } from 'moment';
+import { CalendarEvent } from 'tabler-icons-react';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
@@ -19,7 +20,7 @@ export type DatePickerProps = {
   format?: string;
   views?: DateView[];
   required?: boolean;
-  date: Maybe<Moment>;
+  date: Maybe<moment.MomentInput>;
   incrementMonth: () => void;
   decrementMonth: () => void;
   incrementYear: () => void;
@@ -32,7 +33,7 @@ export type DatePickerProps = {
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   label,
-  date,
+  date: dateParameter,
   required = false,
   format = 'MMM D, YYYY',
   views = ['day'],
@@ -45,6 +46,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   tooltip,
   tooltipProps,
 }) => {
+  const date = useMemo(() => (dateParameter ? moment(dateParameter) : null), [dateParameter]);
   const theme = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -89,6 +91,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onClose={onClose}
         onChange={onChange}
         slotProps={{
+          textField: {
+            placeholder: format,
+          },
           popper: {
             sx: {
               background: 'none',
@@ -185,7 +190,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           layout: props => <CalendarFooter toggleCalendar={toggleOpen}>{props.children}</CalendarFooter>,
           openPickerIcon: () => (
             <Flex onClick={toggleOpen}>
-              <Icon icon="CalendarEvent" color="dark75" size={24} />
+              <Icon icon={CalendarEvent} color="dark75" size={24} />
             </Flex>
           ),
           calendarHeader: () => (

@@ -1,6 +1,7 @@
 import type React from 'react';
 
 import { Modal as ModalMui, styled, useTheme } from '@mui/material';
+import { X } from 'tabler-icons-react';
 
 import { formatSizeToPx } from '../utils';
 
@@ -38,7 +39,7 @@ export function Modal(props: ModalProps) {
                 {props.title}
               </Typography>
               <StyledIconWrapper onClick={props.onClose}>
-                <Icon icon="X" size="24px" color="dark90" />
+                <Icon icon={X} size="24px" color="dark90" />
               </StyledIconWrapper>
             </Flex>
           </TitleSection>

@@ -17,6 +17,7 @@ import type { Plugin, RollupOptions } from 'rollup';
 // for any paths needing to be manually imported by path location
 const singleFileImports: { input: string; output: string }[] = [
   { input: 'src/index.ts', output: packageJson.main },
+  { input: 'src/icons.ts', output: 'dist/icons.cjs' },
   { input: 'src/mui-theme.ts', output: 'dist/mui-theme.cjs' },
   { input: 'src/components/RichTextEditor.tsx', output: 'dist/components/RichTextEditor.cjs' },
 ];

@@ -1,12 +1,14 @@
 import { useCallback } from 'react';
 
 import { styled, useTheme } from '@mui/material';
+import { Loader2, Photo } from 'tabler-icons-react';
 
 import { automation } from '../utils';
 
 import { Button } from './Button';
 import { Flex } from './Flex';
 import { Icon } from './Icon';
+import { ExclamationCircle } from './Icon/Custom';
 import { Typography } from './Typography';
 
 export type ImageUploadProps = {
@@ -69,7 +71,7 @@ export function ImageUpload(props: ImageUploadProps) {
         <>
           {props.errorText && (
             <Flex gap={theme.spacing(0.5)} align="center">
-              <Icon icon="ExclamationCircle" color="error60" size="12px" />
+              <Icon icon={ExclamationCircle} color="error60" size="12px" />
               <Typography class="roman" size="sm" color="error75" padding={0}>
                 {props.errorText}
               </Typography>
@@ -86,13 +88,13 @@ export function ImageUpload(props: ImageUploadProps) {
           >
             {props.src && props.uploading && (
               <LoaderIconWrapper>
-                <Icon icon="Loader2" color="lightWhite" size="24" />
+                <Icon icon={Loader2} color="lightWhite" size="24" />
               </LoaderIconWrapper>
             )}
             {props.src ? (
               <Image src={props.src} />
             ) : (
-              <Icon icon="Photo" size="24px" color={props.error ? 'error60' : 'dark45'} />
+              <Icon icon={Photo} size="24px" color={props.error ? 'error60' : 'dark45'} />
             )}
           </UploadSection>
           {props.canUpload && (

@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { Menu, type PaperProps, type PopoverOrigin } from '@mui/material';
+import { Menu2 } from 'tabler-icons-react';
 
 import { Keys } from '../../my-constants';
 import { automation } from '../../utils';
@@ -68,7 +69,7 @@ export const KebabMenu = ({
         })}
         highlight={highlight}
       >
-        <KebabMenuIcon icon="Menu2" color="mint75" />
+        <KebabMenuIcon icon={Menu2} color="mint75" />
       </IconButton>
       <Menu
         id="long-menu"

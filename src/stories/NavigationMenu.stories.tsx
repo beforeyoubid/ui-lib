@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { BuildingCommunity, User } from 'tabler-icons-react';
+
 import { NavigationMenu } from '../components/NavigationMenu';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -22,11 +24,11 @@ const MenuWrapper = () => {
       onClick={setSelected}
       value={selected}
       items={[
-        { label: 'My Account', value: 'my-account', icon: 'User' },
+        { label: 'My Account', value: 'my-account', icon: User },
         {
           label: 'My Company',
           value: 'my-company',
-          icon: 'BuildingCommunity',
+          icon: BuildingCommunity,
           items: [
             { label: 'Company Profile', value: 'profile' },
             { label: 'Company Documents', value: 'documents' },
@@ -40,7 +42,7 @@ const MenuWrapper = () => {
         },
         {
           label: 'My Team',
-          icon: 'User',
+          icon: User,
           value: 'my-team',
           items: [],
         },

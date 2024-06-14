@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import type React from 'react';
 
 import { css, styled } from '@mui/material';
+import { Loader2, PhotoPlus, Reload, X } from 'tabler-icons-react';
 
 import { type Colors } from '../theme.types';
 import { typedMemo } from '../utils';
@@ -54,7 +55,7 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     return (
       <Wrapper border="mint60" onClick={onClick}>
         <Flex direction="column" justify="center" align="center" height="100%">
-          <Icon icon="PhotoPlus" color="mint75" />
+          <Icon icon={PhotoPlus} color="mint75" />
           <Typography class="medium" size="sm" color="mint75" padding={0.5}>
             Add media
           </Typography>
@@ -68,10 +69,10 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     return (
       <Wrapper border="error60" onClick={onClick}>
         <RemoveIconWrapper onClick={onRemove}>
-          <Icon icon="X" color="lightL1" size="12px" />
+          <Icon icon={X} color="lightL1" size="12px" />
         </RemoveIconWrapper>
         <Flex direction="column" justify="center" align="center" height="100%" textAlign="center">
-          <Icon icon="Reload" color="error75" />
+          <Icon icon={Reload} color="error75" />
           <Typography class="medium" size="2xs" color="error75" padding={0.5}>
             Unable to upload.
             <br />
@@ -86,13 +87,13 @@ const MediaCardNoMemo = <State extends MediaCardState>(props: MediaCardProps<Sta
     <Wrapper border="dark60" background="dark60">
       {state !== 'locked' && (
         <RemoveIconWrapper onClick={onRemoveWrapper.bind(null, (props as MediaCardProps<typeof state>).onRemove)}>
-          <Icon icon="X" color="lightL1" size="12px" />
+          <Icon icon={X} color="lightL1" size="12px" />
         </RemoveIconWrapper>
       )}
       <ImageWrapper>
         {state === 'uploading' && (
           <LoaderIconWrapper>
-            <Icon icon="Loader2" color="lightWhite" size="24" />
+            <Icon icon={Loader2} color="lightWhite" size="24" />
           </LoaderIconWrapper>
         )}
 
