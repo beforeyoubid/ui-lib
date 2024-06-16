@@ -16,6 +16,7 @@ export type TypographyProps = {
   fullWidth?: boolean;
   strikethrough?: boolean;
   underline?: boolean;
+  inline?: boolean;
   id?: React.HTMLAttributes<HTMLDivElement>['id'];
 };
 
@@ -31,6 +32,7 @@ export function Typography(props: TypographyProps) {
       padding={props.padding ? props.padding : 0}
       strikethrough={props.strikethrough ?? false}
       underline={props.underline ?? false}
+      inline={props.inline ?? false}
       id={props.id}
       hoverCursor={props.hoverCursor}
       {...automation([props.automationKey])}
@@ -49,18 +51,42 @@ const Div = styled('div')<{
   fullWidth: boolean;
   strikethrough: boolean;
   underline: boolean;
+  inline: boolean;
   hoverCursor?: React.CSSProperties['cursor'];
-}>(({ theme, fontClass, size, color, hoverColor, padding, fullWidth, strikethrough, underline, hoverCursor }) => ({
-  fontFamily: theme.typography.fonts[fontClass],
-  fontSize: theme.typography.size[size].fontSize,
-  lineHeight: theme.typography.size[size].lineHeight,
-  fontWeight: theme.typography.fontWeight[fontClass],
-  color: theme.palette.colors[color],
-  padding: theme.spacing(padding),
-  width: fullWidth ? '100%' : undefined,
-  textDecoration: strikethrough ? 'line-through' : underline ? 'underline' : undefined,
-  '&:hover': {
-    color: hoverColor ? theme.palette.colors[hoverColor] : undefined,
-    cursor: hoverCursor,
-  },
-}));
+}>(
+  ({
+    theme,
+    fontClass,
+    size,
+    color,
+    hoverColor,
+    padding,
+    fullWidth,
+    strikethrough,
+    underline,
+    inline,
+    hoverCursor,
+  }) => ({
+    fontFamily: theme.typography.fonts[fontClass],
+    fontSize: theme.typography.size[size].fontSize,
+    lineHeight: theme.typography.size[size].lineHeight,
+    fontWeight: theme.typography.fontWeight[fontClass],
+    color: theme.palette.colors[color],
+    padding: theme.spacing(padding),
+    width: fullWidth ? '100%' : undefined,
+    textDecoration: strikethrough ? 'line-through' : underline ? 'underline' : undefined,
+    '&:hover': {
+      color: hoverColor ? theme.palette.colors[hoverColor] : undefined,
+      cursor: hoverCursor,
+    },
+    ...(inline && {
+      display: inline ? 'inline' : 'block',
+      '&::before': {
+        content: '" "',
+      },
+      '&::after': {
+        content: '" "',
+      },
+    }),
+  })
+);
