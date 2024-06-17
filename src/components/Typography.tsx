@@ -80,7 +80,7 @@ const Div = styled('div')<{
       cursor: hoverCursor,
     },
     ...(inline && {
-      display: inline ? 'inline' : 'block',
+      display: 'inline',
       '&::before': {
         content: '" "',
       },
