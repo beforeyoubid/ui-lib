@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useMemo, useState } from 'react';
+import { createContext, type ReactNode, useContext, useMemo } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { styled } from '@mui/material';
