@@ -50,19 +50,12 @@ const notify = (props: ToastNotificationProps) => {
 };
 
 export const NotificationProvider = ({ children }: { children: ReactNode }) => {
-  const [notification, setNotification] = useState<ToastNotificationProps | null>(null);
-
   const showNotification = useMemo(
     () => (props: ToastNotificationProps) => {
-      setNotification(props);
+      notify(props);
     },
-    [setNotification]
+    []
   );
-
-  if (notification) {
-    notify(notification);
-    setNotification(null);
-  }
 
   return (
     <NotificationContext.Provider value={{ showNotification }}>

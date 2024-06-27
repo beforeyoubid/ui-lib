@@ -68,6 +68,7 @@
     "react-dom": "18.2.0",
     "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
+    "react-toastify": "^10.0.5",
     "rimraf": "5.0.5",
     "rollup": "4.7.0",
     "rollup-plugin-dts": "6.1.0",
