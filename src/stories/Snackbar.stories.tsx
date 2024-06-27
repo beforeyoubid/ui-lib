@@ -1,9 +1,9 @@
+import { useTheme } from '@mui/material';
 import { HomeCheck } from 'tabler-icons-react';
 
 import { Button, Flex } from '../components';
 import { NotificationProvider, useNotification } from '../components/Snackbar';
 
-import { useTheme } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const SnackbarStory = () => {
