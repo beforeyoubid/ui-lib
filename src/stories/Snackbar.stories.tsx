@@ -1,13 +1,16 @@
-import { useContext } from 'react';
-import { NotificationProvider, useNotification, NotificationContext } from '../components/Snackbar';
-import type { Meta, StoryObj } from '@storybook/react';
 import { HomeCheck } from 'tabler-icons-react';
+
 import { Button, Flex } from '../components';
+import { NotificationProvider, useNotification } from '../components/Snackbar';
+
+import { useTheme } from '@mui/material';
+import type { Meta, StoryObj } from '@storybook/react';
 
 const SnackbarStory = () => {
   const { showNotification } = useNotification();
+  const theme = useTheme();
   return (
-    <Flex width="100%" direction="column" gap={20}>
+    <Flex width="100%" direction="column" gap={theme.spacing(2.5)}>
       <Button
         variant="primary"
         type="mint"
@@ -68,7 +71,7 @@ const SnackbarStory = () => {
   );
 };
 
-const WrapperComponent = ({ children }: { children: React.ReactNode }) => {
+const WrapperComponent = () => {
   return (
     <NotificationProvider>
       <SnackbarStory />

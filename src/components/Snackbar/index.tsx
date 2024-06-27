@@ -1,10 +1,8 @@
-import React, { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
+import { createContext, type ReactNode, useContext, useMemo, useState } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastIcon } from 'react-toastify/dist/types';
-
 import { styled } from '@mui/material';
-import { toast, ToastContainer, ToastOptions } from 'react-toastify';
+import { toast, ToastContainer, type ToastOptions, type IconProps } from 'react-toastify';
 
 type NotificationType = 'success' | 'error' | 'info' | 'warning';
 
@@ -13,7 +11,7 @@ interface ToastNotificationProps {
   type: NotificationType;
   options?: ToastOptions;
   autoClose?: number | false;
-  icon?: ToastIcon | undefined;
+  icon?: false | ((props: IconProps) => React.ReactNode) | React.ReactElement<IconProps>;
 }
 
 interface NotificationContextProps {
@@ -24,46 +22,47 @@ export const NotificationContext = createContext<NotificationContextProps>({
   showNotification: () => {},
 });
 
+const notify = (props: ToastNotificationProps) => {
+  const { type, message, options, icon, autoClose } = props;
+  const toastOptions: ToastOptions = {
+    ...options,
+    hideProgressBar: true,
+    icon: icon ?? false,
+    autoClose: autoClose,
+  };
+  switch (type) {
+    case 'success':
+      toast.success(message, toastOptions);
+      break;
+    case 'error':
+      toast.error(message, toastOptions);
+      break;
+    case 'info':
+      toast.info(message, toastOptions);
+      break;
+    case 'warning':
+      toast.warn(message, toastOptions);
+      break;
+    default:
+      toast(message, toastOptions);
+      break;
+  }
+};
+
 export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const [notification, setNotification] = useState<ToastNotificationProps | null>(null);
 
-  const showNotification = useCallback((props: ToastNotificationProps) => {
-    setNotification(props);
-  }, []);
+  const showNotification = useMemo(
+    () => (props: ToastNotificationProps) => {
+      setNotification(props);
+    },
+    [setNotification]
+  );
 
-  const notify = useCallback((props: ToastNotificationProps) => {
-    const { type, message, options, icon, autoClose } = props;
-    const toastOptions: ToastOptions = {
-      ...options,
-      hideProgressBar: true,
-      icon: icon ?? false,
-      autoClose: false,
-    };
-    switch (type) {
-      case 'success':
-        toast.success(message, toastOptions);
-        break;
-      case 'error':
-        toast.error(message, toastOptions);
-        break;
-      case 'info':
-        toast.info(message, toastOptions);
-        break;
-      case 'warning':
-        toast.warn(message, toastOptions);
-        break;
-      default:
-        toast(message, toastOptions);
-        break;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (notification) {
-      notify(notification);
-      setNotification(null);
-    }
-  }, [notification, notify]);
+  if (notification) {
+    notify(notification);
+    setNotification(null);
+  }
 
   return (
     <NotificationContext.Provider value={{ showNotification }}>
@@ -134,8 +133,8 @@ const StyledToastContainer = styled(ToastContainer)(({ theme }) => ({
     height: 18,
     width: 18,
     borderRadius: 17,
-    padding: 4,
-    gap: 10,
+    padding: theme.spacing(0.5),
+    gap: theme.spacing(1.25),
     '& svg': {
       height: 18,
       width: 18,

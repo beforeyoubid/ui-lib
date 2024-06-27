@@ -92,8 +92,8 @@
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
-    "tabler-icons-react": "^1.56.0",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "tabler-icons-react": "^1.56.0"
   },
   "module": "dist/index.js",
   "main": "dist/index.cjs",
