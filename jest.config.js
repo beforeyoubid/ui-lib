@@ -19,6 +19,9 @@ const config = {
       },
     ],
   },
+  moduleNameMapper: {
+    "\\.(css)$": "identity-obj-proxy"
+  }
 };
 
 module.exports = config;
