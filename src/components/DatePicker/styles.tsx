@@ -97,8 +97,12 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     color: theme.palette.colors.lightWhite,
     backgroundColor: theme.palette.colors.mint60,
   },
+  '.MuiPickersYear-yearButton:not(.Mui-selected):hover': {
+    backgroundColor: `${theme.palette.colors.mintL1} !important`,
+  },
   ' button.Mui-selected': {
-    backgroundColor: theme.palette.colors.mint60,
+    backgroundColor: `${theme.palette.colors.mint60} !important`,
+    color: `${theme.palette.colors.lightWhite} !important`,
   },
 }));
 
