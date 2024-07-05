@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
+import type React from 'react';
+import { forwardRef, useCallback, useMemo } from 'react';
 
 import { Select, MenuItem, type SelectChangeEvent, styled, useTheme, ListItemIcon } from '@mui/material';
 import { Check } from 'tabler-icons-react';
@@ -32,7 +33,7 @@ export type DropdownProps = {
   tooltipProps?: TooltipProps;
 };
 
-export const Dropdown = (props: DropdownProps) => {
+const DropdownNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DropdownProps> = (props, ref) => {
   const {
     label,
     value,
@@ -103,6 +104,7 @@ export const Dropdown = (props: DropdownProps) => {
         inputProps={{
           ...automation([automationKey], { label }),
         }}
+        inputRef={ref}
       >
         {options.map(option => (
           <MenuItem
@@ -120,6 +122,10 @@ export const Dropdown = (props: DropdownProps) => {
     </>
   );
 };
+
+const Dropdown = forwardRef(DropdownNoRef);
+
+export { Dropdown };
 
 const StyledSelect = styled(Select<Option>)<{ backgroundColor?: keyof Colors }>(({ theme, backgroundColor }) => ({
   marginTop: theme.spacing(0.5),

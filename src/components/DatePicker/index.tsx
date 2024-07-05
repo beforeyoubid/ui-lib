@@ -1,8 +1,8 @@
 import type React from 'react';
-import { useCallback, useMemo, useState } from 'react';
+import { forwardRef, useCallback, useMemo, useState } from 'react';
 
 import { useTheme } from '@mui/material';
-import { type DateView } from '@mui/x-date-pickers';
+import { type DateView, type DatePickerProps as MuiDatePickerProps } from '@mui/x-date-pickers';
 import moment, { type Moment } from 'moment';
 import { CalendarEvent } from 'tabler-icons-react';
 
@@ -29,23 +29,26 @@ export type DatePickerProps = {
   isOptional?: boolean;
   tooltip?: string;
   tooltipProps?: TooltipProps;
-};
+} & Pick<MuiDatePickerProps<moment.Moment>, 'inputRef'>;
 
-export const DatePicker: React.FC<DatePickerProps> = ({
-  label,
-  date: dateParameter,
-  required = false,
-  format = 'MMM D, YYYY',
-  views = ['day'],
-  incrementMonth,
-  decrementMonth,
-  incrementYear,
-  decrementYear,
-  onChange,
-  isOptional = false,
-  tooltip,
-  tooltipProps,
-}) => {
+const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePickerProps> = (
+  {
+    label,
+    date: dateParameter,
+    required = false,
+    format = 'MMM D, YYYY',
+    views = ['day'],
+    incrementMonth,
+    decrementMonth,
+    incrementYear,
+    decrementYear,
+    onChange,
+    isOptional = false,
+    tooltip,
+    tooltipProps,
+  },
+  ref
+) => {
   const date = useMemo(() => (dateParameter ? moment(dateParameter) : null), [dateParameter]);
   const theme = useTheme();
 
@@ -90,6 +93,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         views={views}
         onClose={onClose}
         onChange={onChange}
+        inputRef={ref}
         slotProps={{
           textField: {
             placeholder: format,
@@ -211,3 +215,5 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     </Flex>
   );
 };
+
+export const DatePicker = forwardRef(DatePickerNoRef);
