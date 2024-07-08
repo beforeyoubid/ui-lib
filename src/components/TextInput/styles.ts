@@ -25,7 +25,9 @@ export const LabelRowContainer = styled('div')<{ required: boolean }>(({ theme, 
   gap: theme.spacing(0.25),
 }));
 
-export const CustomTextField = styled(TextField)<{ hasLeadingIcon: boolean; resize?: React.CSSProperties['resize'] }>`
+export const CustomTextField = styled(TextField, {
+  shouldForwardProp: prop => prop !== 'hasLeadingIcon',
+})<{ hasLeadingIcon: boolean; resize?: React.CSSProperties['resize'] }>`
   & .MuiFormControl-root {
     background: transparent;
   }
