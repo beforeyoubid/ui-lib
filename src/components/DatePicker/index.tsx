@@ -6,6 +6,7 @@ import { type DateView, type DatePickerProps as MuiDatePickerProps } from '@mui/
 import moment, { type Moment } from 'moment';
 import { CalendarEvent } from 'tabler-icons-react';
 
+import { automation } from '../../utils';
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 import { TextFieldLabel, TextFieldHint, TextFieldErrorLabel } from '../TextInput/Labels';
@@ -33,6 +34,9 @@ export type DatePickerProps = {
   helperText?: string;
   /** error text to show above the date picker */
   errorText?: string;
+
+  /** an optional automation key used for providing data attributes to the instances of the component */
+  automationKey?: string;
 } & Pick<MuiDatePickerProps<moment.Moment>, 'inputRef'>;
 
 const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePickerProps> = (
@@ -105,6 +109,9 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
         slotProps={{
           textField: {
             placeholder: format,
+            inputProps: {
+              ...automation([automationKey], { label }),
+            },
           },
           popper: {
             sx: {
