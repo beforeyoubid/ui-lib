@@ -8,7 +8,7 @@ import { CalendarEvent } from 'tabler-icons-react';
 
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
-import { TextFieldLabel } from '../TextInput/Labels';
+import { TextFieldLabel, TextFieldHint, TextFieldErrorLabel } from '../TextInput/Labels';
 import { type TooltipProps } from '../ToolTip';
 
 import CalendarFooter from './CalendarFooter';
@@ -29,6 +29,10 @@ export type DatePickerProps = {
   isOptional?: boolean;
   tooltip?: string;
   tooltipProps?: TooltipProps;
+  /** helper text to show above the date picker */
+  helperText?: string;
+  /** error text to show above the date picker */
+  errorText?: string;
 } & Pick<MuiDatePickerProps<moment.Moment>, 'inputRef'>;
 
 const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePickerProps> = (
@@ -46,6 +50,8 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
     isOptional = false,
     tooltip,
     tooltipProps,
+    helperText,
+    errorText,
   },
   ref
 ) => {
@@ -84,6 +90,8 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
         tooltipProps={tooltipProps}
         isOptional={isOptional}
       />
+      {helperText && <TextFieldHint hintText={helperText} />}
+      {errorText && <TextFieldErrorLabel errorText={errorText} />}
 
       <StyledDatePicker
         value={date}
