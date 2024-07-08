@@ -3,12 +3,14 @@ import { useCallback, useState } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import moment, { type Moment } from 'moment';
+import { HomeQuestion } from 'tabler-icons-react';
 
+import { Checkbox, Flex } from '../components';
 import { DatePicker } from '../components/DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const DatePickerStory = () => {
+const DatePickerStory = (props: object) => {
   const [date, setDate] = useState<Maybe<moment.MomentInput>>(null);
 
   const handleChange = (value: unknown) => {
@@ -45,7 +47,7 @@ const DatePickerStory = () => {
         incrementYear={incrementYear}
         decrementYear={decrementYear}
         onChange={handleChange}
-        tooltip="The date the inspection was performed."
+        {...props}
       />
     </LocalizationProvider>
   );
@@ -54,6 +56,11 @@ const DatePickerStory = () => {
 const meta: Meta<typeof DatePicker> = {
   component: DatePickerStory,
   title: 'Input/DatePicker',
+  argTypes: {
+    componentBelowTextField: {
+      table: { disable: true },
+    },
+  },
 };
 
 export default meta;
@@ -80,5 +87,37 @@ export const ExpirationLabel: Story = {
     onChange: value => {
       console.log('Selected value:', value);
     },
+  },
+};
+
+export const HelperText: Story = {
+  args: {
+    label: 'Due Date',
+    helperText: 'The date the project is due by',
+  },
+};
+
+export const ErrorText: Story = {
+  args: {
+    label: 'Due Date',
+    helperText: 'The date the project is due by',
+    errorText: 'This project due date is in the past. Please pick a date in the future',
+    date: moment('2000-01-01'),
+    leadingIcon: HomeQuestion,
+  },
+};
+
+export const CheckboxBelowTextField: Story = {
+  args: {
+    label: 'Due Date',
+    helperText: 'The date the project is due by',
+    errorText: 'This project due date is in the past. Please pick a date in the future',
+    date: moment('2000-01-01'),
+    leadingIcon: HomeQuestion,
+    componentBelowTextField: (
+      <Flex direction="row" align="center" gap={8}>
+        <Checkbox size="sm" label="Not applicable" checked={false} onChange={console.log} />
+      </Flex>
+    ),
   },
 };
