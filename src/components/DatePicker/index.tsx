@@ -56,6 +56,7 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
     tooltipProps,
     helperText,
     errorText,
+    automationKey,
   },
   ref
 ) => {
