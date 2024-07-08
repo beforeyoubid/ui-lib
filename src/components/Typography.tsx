@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from '@mui/material';
 
 import { type Color, type TypographyFontSize, type TypographyFontClass } from '../mui-theme';
@@ -42,7 +43,12 @@ export function Typography(props: TypographyProps) {
   );
 }
 
-const Div = styled('div')<{
+const Div = styled('div', {
+  shouldForwardProp: prop =>
+    !['underline', 'strikethrough', 'fullWidth', 'padding', 'color', 'hoverColor', 'fontClass', 'size'].includes(
+      prop.toString()
+    ) && isPropValid(prop as string),
+})<{
   fontClass: TypographyFontClass;
   size: TypographyFontSize;
   color: Color;

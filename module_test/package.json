@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@beforeyoubid/ui-lib": "*",
+    "@emotion/is-prop-valid": "^1.2.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.6",
