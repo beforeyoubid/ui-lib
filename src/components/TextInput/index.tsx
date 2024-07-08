@@ -1,13 +1,13 @@
 import { type StandardTextFieldProps, useTheme } from '@mui/material';
 
 import { automation } from '../../utils';
+import { Adornment } from '../Adornment';
 import { Flex } from '../Flex';
-import { Icon, type IconProps } from '../Icon';
+import { type IconProps } from '../Icon';
 import { type TooltipProps } from '../ToolTip';
-import { Typography } from '../Typography';
 
 import { TextFieldErrorLabel, TextFieldHint, TextFieldLabel } from './Labels';
-import { CustomTextField, StyledInputAdornment } from './styles';
+import { CustomTextField } from './styles';
 
 export type TextInputProps = {
   label: string;
@@ -102,49 +102,5 @@ export const TextInput = (props: TextInputProps) => {
         {...rest}
       />
     </Flex>
-  );
-};
-
-const Adornment = ({
-  adornment,
-  position,
-  icon,
-  showBorder = true,
-}: {
-  adornment?: string | React.ReactNode;
-  position: 'start' | 'end';
-  icon?: TextInputProps['leadingIcon'];
-  showBorder?: boolean;
-}) => {
-  if (adornment && icon) {
-    throw new Error('cannot have both adornment and leadingIcon');
-  }
-  if (icon) {
-    return (
-      <StyledInputAdornment
-        position={position}
-        icon
-        className="icon-adornment"
-        disablePointerEvents
-        showBorder={showBorder}
-      >
-        <Icon icon={icon} color="dark75" size="18" />
-      </StyledInputAdornment>
-    );
-  }
-  if (!adornment) return null;
-  if (!(typeof adornment === 'string')) {
-    return (
-      <StyledInputAdornment position={position} disablePointerEvents showBorder={showBorder}>
-        {adornment}
-      </StyledInputAdornment>
-    );
-  }
-  return (
-    <StyledInputAdornment position={position} showBorder={showBorder}>
-      <Typography color="dark60" class="medium" size="base">
-        {adornment}
-      </Typography>
-    </StyledInputAdornment>
   );
 };

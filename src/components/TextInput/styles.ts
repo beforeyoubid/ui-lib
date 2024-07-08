@@ -1,4 +1,4 @@
-import { InputAdornment, TextField, styled } from '@mui/material';
+import { TextField, styled } from '@mui/material';
 
 import { Flex } from '../Flex';
 
@@ -94,21 +94,5 @@ export const CustomTextField = styled(TextField, {
       background-color: ${({ error, disabled, theme }) =>
         disabled ? theme.palette.colors.dark45 : error ? theme.palette.colors.error60 : theme.palette.colors.mint60};
     }
-  }
-`;
-
-export const StyledInputAdornment = styled(InputAdornment)<{ icon?: boolean; showBorder?: boolean }>`
-  position: relative;
-  padding: ${({ theme }) => theme.spacing(0, 1, 0, 1.75)};
-
-  ${({ position }) => (position === 'start' ? ':after' : ':before')} {
-    position: absolute;
-    content: ${({ icon }) => (icon ? 'unset' : `''`)};
-    height: 45px;
-    background-color: ${({ theme }) => theme.palette.colors.dark45};
-    width: 1px;
-    display: ${({ showBorder = true }) => (showBorder ? 'block' : 'none')};
-    ${({ position }) => (position === 'start' ? 'right' : 'left')}: 0;
-    top: -${({ theme }) => theme.spacing(2.75)};
   }
 `;
