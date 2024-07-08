@@ -54,6 +54,11 @@ const DatePickerStory = () => {
 const meta: Meta<typeof DatePicker> = {
   component: DatePickerStory,
   title: 'Input/DatePicker',
+  argTypes: {
+    componentBelowTextField: {
+      table: { disable: true },
+    },
+  },
 };
 
 export default meta;
