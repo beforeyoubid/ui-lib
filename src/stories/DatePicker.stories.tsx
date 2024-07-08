@@ -8,7 +8,7 @@ import { DatePicker } from '../components/DatePicker';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const DatePickerStory = () => {
+const DatePickerStory = (props: object) => {
   const [date, setDate] = useState<Maybe<moment.MomentInput>>(null);
 
   const handleChange = (value: unknown) => {
@@ -45,7 +45,7 @@ const DatePickerStory = () => {
         incrementYear={incrementYear}
         decrementYear={decrementYear}
         onChange={handleChange}
-        tooltip="The date the inspection was performed."
+        {...props}
       />
     </LocalizationProvider>
   );
