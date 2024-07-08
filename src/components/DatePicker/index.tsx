@@ -7,8 +7,9 @@ import moment, { type Moment } from 'moment';
 import { CalendarEvent } from 'tabler-icons-react';
 
 import { automation } from '../../utils';
+import { Adornment } from '../Adornment';
 import { Flex } from '../Flex';
-import { Icon } from '../Icon';
+import { Icon, type IconProps } from '../Icon';
 import { TextFieldLabel, TextFieldHint, TextFieldErrorLabel } from '../TextInput/Labels';
 import { CustomTextField } from '../TextInput/styles';
 import { type TooltipProps } from '../ToolTip';
@@ -38,6 +39,13 @@ export type DatePickerProps = {
 
   /** an optional automation key used for providing data attributes to the instances of the component */
   automationKey?: string;
+  /** icon at start of input field */
+  leadingIcon?: IconProps['icon'];
+
+  /** the adornment at the start of the input field */
+  startAdornment?: string | React.ReactNode;
+  /** whether to add a border around the start adornment */
+  showStartAdornmentBorder?: boolean;
   /** A react component that will show beneath the text field, good for checkboxes */
   componentBelowTextField?: React.ReactNode;
 } & Pick<MuiDatePickerProps<moment.Moment>, 'inputRef'>;
@@ -59,7 +67,10 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
     tooltipProps,
     helperText,
     errorText,
+    startAdornment,
+    showStartAdornmentBorder = true,
     automationKey,
+    leadingIcon,
     componentBelowTextField,
   },
   ref
@@ -118,6 +129,16 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
               ...automation([automationKey], { label }),
             },
             helperText: componentBelowTextField,
+            InputProps: {
+              startAdornment: (
+                <Adornment
+                  position="start"
+                  adornment={startAdornment}
+                  icon={leadingIcon}
+                  showBorder={showStartAdornmentBorder}
+                />
+              ),
+            },
           },
           popper: {
             sx: {
