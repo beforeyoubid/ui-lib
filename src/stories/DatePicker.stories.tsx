@@ -81,6 +81,14 @@ export const InspectionLabel: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    label: 'Due Date',
+    date: moment('04/25/2000'),
+    disabled: true,
+  },
+};
+
 export const ExpirationLabel: Story = {
   args: {
     label: 'Expiration Date',
