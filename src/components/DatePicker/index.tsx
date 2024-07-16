@@ -48,7 +48,7 @@ export type DatePickerProps = {
   showStartAdornmentBorder?: boolean;
   /** A react component that will show beneath the text field, good for checkboxes */
   componentBelowTextField?: React.ReactNode;
-} & Pick<MuiDatePickerProps<moment.Moment>, 'inputRef'>;
+} & Pick<MuiDatePickerProps<moment.Moment>, 'inputRef' | 'disabled'>;
 
 const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePickerProps> = (
   {
@@ -63,6 +63,7 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
     decrementYear,
     onChange,
     isOptional = false,
+    disabled = false,
     tooltip,
     tooltipProps,
     helperText,
@@ -122,6 +123,7 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
         onClose={onClose}
         onChange={onChange}
         inputRef={ref}
+        disabled={disabled}
         slotProps={{
           textField: {
             placeholder: format,
