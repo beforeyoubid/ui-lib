@@ -17,6 +17,7 @@ import { type TooltipProps } from '../ToolTip';
 import CalendarFooter from './CalendarFooter';
 import CalendarHeader from './CalendarHeader';
 import { StyledDatePicker } from './styles';
+import { isInvalidDate } from './utils';
 
 export type DatePickerProps = {
   label: string;
@@ -82,8 +83,16 @@ const DatePickerNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DatePick
   const [isOpen, setIsOpen] = useState(false);
   const [currentView, setCurrentView] = useState<DateView>('day');
 
-  const dateMonth = useMemo(() => date?.format('MMM') ?? moment().format('MMM'), [date]);
-  const dateYear = useMemo(() => date?.format('YYYY') ?? moment().format('YYYY'), [date]);
+  const dateMonth = useMemo(
+    // eslint-disable-next-line import/no-named-as-default-member
+    () => (isInvalidDate(date) && moment.isMoment(date) ? date.format('MMM') : moment().format('MMM')),
+    [date]
+  );
+  const dateYear = useMemo(
+    // eslint-disable-next-line import/no-named-as-default-member
+    () => (isInvalidDate(date) && moment.isMoment(date) ? date.format('YYYY') : moment().format('YYYY')),
+    [date]
+  );
 
   const toggleMonthView = useCallback(() => {
     setCurrentView(currView => (currView === 'month' ? 'day' : 'month'));
