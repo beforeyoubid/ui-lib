@@ -3,6 +3,8 @@ import { memo } from 'react';
 export const isEvenNum = (num: number) => num % 2 === 0;
 export const typedMemo: <T>(c: T) => T = memo;
 
+export const empty = <TValue>(value: TValue | null | undefined): value is null | undefined =>
+  value === null || value === undefined;
 export const notEmpty = <TValue>(value: TValue | null | undefined): value is TValue =>
   value !== null && value !== undefined;
 
