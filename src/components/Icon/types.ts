@@ -1,16 +1,13 @@
-import { type SVGAttributes } from 'react';
-
-import { type Colors } from '../../theme.types';
+import { type SVGAttributes, type FC } from 'react';
 
 export interface TablerIconProps extends SVGAttributes<SVGElement> {
   color?: string;
   size?: string | number;
 }
 export type IconComponent = React.FC<TablerIconProps>;
-
-export type IconProps = {
+export interface CustomIconProps extends SVGAttributes<SVGElement> {
+  color?: string;
   size?: string | number;
-  color: keyof Colors;
-  icon: IconComponent;
-  className?: string;
-};
+}
+
+export type Icon = FC<CustomIconProps>;

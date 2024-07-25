@@ -1,6 +1,6 @@
 import { File } from 'tabler-icons-react';
 
-import { type IconProps } from '../../types';
+import { type CustomIconProps } from '../types';
 
 import { CSV } from './CSV';
 import { DOC } from './DOC';
@@ -14,7 +14,7 @@ import { XLSX } from './XLSX';
 
 const extensionRegex = /\.(\w+)$/;
 
-export const FileIcon: React.FC<Omit<IconProps, 'icon'> & { url: string }> = ({ url, ...iconProps }) => {
+export const FileIcon: React.FC<Omit<CustomIconProps, 'icon'> & { url: string }> = ({ url, ...iconProps }) => {
   const extensionMatches = url.match(extensionRegex);
 
   const extension = extensionMatches?.[1];

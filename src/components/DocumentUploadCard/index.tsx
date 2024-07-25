@@ -3,7 +3,7 @@ import { CloudUpload, type File } from 'tabler-icons-react';
 import { Flex } from '../../components/Flex';
 import { Icon } from '../../components/Icon';
 import { Typography } from '../../components/Typography';
-import { FileIcon } from '../Icon/Custom';
+import { FileIcon } from '../Icon/FileIcon';
 import { TextFieldLabel } from '../TextInput/Labels';
 
 import { LeftContent } from './LeftContent';

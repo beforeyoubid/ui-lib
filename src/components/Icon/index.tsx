@@ -2,8 +2,16 @@ import type React from 'react';
 import { memo } from 'react';
 
 import { colorPalette } from '../../mui-theme';
+import { type Colors } from '../../theme.types';
 
-import { type IconProps } from './types';
+import { type IconComponent } from './types';
+
+export type IconProps = {
+  size?: string | number;
+  color: keyof Colors;
+  icon: IconComponent;
+  className?: string;
+};
 
 function IconNoMemo(props: IconProps) {
   const { icon: IconComponent } = props;
@@ -12,3 +20,5 @@ function IconNoMemo(props: IconProps) {
 }
 
 export const Icon = memo(IconNoMemo);
+
+export type { IconComponent };

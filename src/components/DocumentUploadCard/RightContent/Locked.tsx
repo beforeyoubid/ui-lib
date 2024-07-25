@@ -5,12 +5,12 @@
 // Components
 import type React from 'react';
 
-import { File, FileOff } from 'tabler-icons-react';
+import { FileOff } from 'tabler-icons-react';
 
 import { typedMemo } from '../../../utils';
 import { Flex } from '../../Flex';
 import { Icon } from '../../Icon';
-import { FileIcon } from '../../Icon/Custom';
+import { FileIcon } from '../../Icon/FileIcon';
 import { Typography } from '../../Typography';
 // Utils
 
