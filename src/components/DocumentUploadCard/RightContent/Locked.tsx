@@ -5,12 +5,12 @@
 // Components
 import type React from 'react';
 
-import { File, FileOff } from 'tabler-icons-react';
+import { FileOff } from 'tabler-icons-react';
 
 import { typedMemo } from '../../../utils';
 import { Flex } from '../../Flex';
 import { Icon } from '../../Icon';
-import { PDF } from '../../Icon/Custom';
+import { FileIcon } from '../../Icon/FileIcon';
 import { Typography } from '../../Typography';
 // Utils
 
@@ -35,7 +35,7 @@ const LockedNoMemo: React.FC<LockedProps> = ({ fileUrl, fileName, fileSize = '-'
   return (
     <Flex direction="row" width="100%" justify="space-between" align="center">
       <Flex direction="row" grow={1} align="center" gap={12}>
-        <Icon icon={fileUrl.endsWith('.pdf') ? PDF : File} size={18} color="dark75" />
+        <FileIcon url={fileUrl} color="dark75" size={18} />
         <a href={fileUrl} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
           <Typography class="medium" size="sm" color="dark75" padding={0}>
             {fileName}

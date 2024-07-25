@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react';
 
 import { Icon } from '../../components/Icon';
-import { GameIconsPerson, PDF, ExclamationCircle, SquareRoundedChevronDownFilled } from '../../components/Icon/Custom';
+import { GameIconsPerson, ExclamationCircle, SquareRoundedChevronDownFilled } from '../../components/Icon/Custom';
+import { PDF } from '../../components/Icon/FileIcon/PDF';
 import { ThemedApp } from '../../stories/styles';
 
 describe('Icon', () => {

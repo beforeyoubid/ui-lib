@@ -12,6 +12,7 @@ export * from './DocumentUploadCard';
 export * from './Dropdown';
 export * from './Flex';
 export * from './Icon';
+export * from './Icon/FileIcon';
 export * from './ImageUpload';
 export * from './InformationCheckbox';
 export * from './KebabMenu';

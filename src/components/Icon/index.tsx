@@ -1,15 +1,10 @@
 import type React from 'react';
-import { type SVGAttributes } from 'react';
 import { memo } from 'react';
 
 import { colorPalette } from '../../mui-theme';
 import { type Colors } from '../../theme.types';
 
-export interface TablerIconProps extends SVGAttributes<SVGElement> {
-  color?: string;
-  size?: string | number;
-}
-export type IconComponent = React.FC<TablerIconProps>;
+import { type IconComponent } from './types';
 
 export type IconProps = {
   size?: string | number;
@@ -24,5 +19,6 @@ function IconNoMemo(props: IconProps) {
   return <IconComponent color={colorPalette[props.color]} className={props.className} size={props.size} />;
 }
 
-const Icon = memo(IconNoMemo);
-export { Icon };
+export const Icon = memo(IconNoMemo);
+
+export type { IconComponent };
