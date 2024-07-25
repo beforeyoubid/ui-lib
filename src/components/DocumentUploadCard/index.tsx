@@ -1,9 +1,9 @@
-import { CloudUpload, File } from 'tabler-icons-react';
+import { CloudUpload, type File } from 'tabler-icons-react';
 
 import { Flex } from '../../components/Flex';
 import { Icon } from '../../components/Icon';
 import { Typography } from '../../components/Typography';
-import { PDF } from '../Icon/Custom';
+import { FileIcon } from '../Icon/Custom';
 import { TextFieldLabel } from '../TextInput/Labels';
 
 import { LeftContent } from './LeftContent';
@@ -45,7 +45,6 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   onFileSelect,
   onFileDelete,
 }) => {
-  const fileIcon = fileUrl?.endsWith('.pdf') ? PDF : File;
   return (
     <Flex direction="column" width="100%">
       <TypographyContainer>
@@ -76,7 +75,11 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
         {isEditing && (
           <Flex direction="row" grow={1} gap={12}>
             <Flex direction="column" align="center" alignSelf="stretch" justify="center">
-              <Icon icon={fileName ? fileIcon : CloudUpload} color={!!errorMessage ? 'error60' : 'dark60'} size={28} />
+              {fileName && fileUrl ? (
+                <FileIcon url={fileUrl} color={!!errorMessage ? 'error60' : 'dark60'} size={28} />
+              ) : (
+                <Icon icon={CloudUpload} color={!!errorMessage ? 'error60' : 'dark60'} size={28} />
+              )}
             </Flex>
             <Flex direction="column" width="100%">
               <Flex direction="row" align="center" width="100%">
