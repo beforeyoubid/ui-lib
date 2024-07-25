@@ -1,5 +1,5 @@
 import { Paper, styled } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DateField, DatePicker } from '@mui/x-date-pickers';
 import { type Moment } from 'moment';
 import {
   ChevronLeft as ChevronLeftIcon,
@@ -14,7 +14,7 @@ type ChevronProps = {
   onClick: () => void;
 };
 
-const ChevronLeft: React.FC<ChevronProps> = ({ onClick }) => {
+export const ChevronLeft: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
       <Icon icon={ChevronLeftIcon} color="dark90" size={16} />
@@ -22,7 +22,7 @@ const ChevronLeft: React.FC<ChevronProps> = ({ onClick }) => {
   );
 };
 
-const ChevronRight: React.FC<ChevronProps> = ({ onClick }) => {
+export const ChevronRight: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
       <Icon icon={ChevronRightIcon} color="dark90" size={16} />
@@ -30,7 +30,7 @@ const ChevronRight: React.FC<ChevronProps> = ({ onClick }) => {
   );
 };
 
-const ChevronDown: React.FC<ChevronProps> = ({ onClick }) => {
+export const ChevronDown: React.FC<ChevronProps> = ({ onClick }) => {
   return (
     <Flex onClick={onClick} style={{ cursor: 'pointer' }}>
       <Icon icon={ChevronDownIcon} color="dark90" size={16} />
@@ -38,7 +38,7 @@ const ChevronDown: React.FC<ChevronProps> = ({ onClick }) => {
   );
 };
 
-const FlexToggle = styled(Flex)(({ theme }) => ({
+export const FlexToggle = styled(Flex)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   gap: theme.spacing(0.5),
@@ -46,7 +46,7 @@ const FlexToggle = styled(Flex)(({ theme }) => ({
   marginRight: theme.spacing(1.5),
 }));
 
-const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
+export const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
   position: 'relative',
   width: '100%',
   ' .MuiInputBase-input': {
@@ -72,7 +72,33 @@ const StyledDatePicker = styled(DatePicker<Moment>)(({ theme }) => ({
   },
 }));
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
+export const StyledDateField = styled(DateField<Moment>)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  ' .MuiInputBase-input': {
+    padding: theme.spacing(1.5, 1.75, 1.5, 1.25),
+  },
+  '&.MuiFormControl-root *': {
+    border: 'none',
+  },
+  '&.MuiFormControl-root .MuiInputBase-root': {
+    borderRadius: '4px',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: theme.palette.colors.dark45,
+    backgroundColor: theme.palette.colors.lightWhite,
+  },
+  '&.MuiFormControl-root .MuiInputBase-input::placeholder': {
+    color: 'transparent',
+  },
+  '&.MuiFormControl-root .MuiInputBase-input': {
+    fontFamily: theme.typography.fonts['roman'],
+    fontSize: theme.typography.size.base.fontSize,
+    color: theme.palette.colors.dark90,
+  },
+}));
+
+export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderWidth: 1,
   borderColor: theme.palette.colors.dark15,
   borderStyle: 'solid',
@@ -106,7 +132,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-const FlexCalendarFooter = styled(Flex)(({ theme }) => ({
+export const FlexCalendarFooter = styled(Flex)(({ theme }) => ({
   cursor: 'pointer',
   flexDirection: 'row',
   justifyContent: 'flex-end',
@@ -115,5 +141,3 @@ const FlexCalendarFooter = styled(Flex)(({ theme }) => ({
   paddingBottom: theme.spacing(2),
   paddingRight: theme.spacing(2.75),
 }));
-
-export { ChevronLeft, ChevronRight, ChevronDown, FlexToggle, StyledDatePicker, StyledPaper, FlexCalendarFooter };
