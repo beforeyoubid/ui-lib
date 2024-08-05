@@ -2,6 +2,7 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 import { ThemedApp } from '../src/stories/styles';
 import { colorPalette } from '../src/mui-theme';
+import { CssBaseline } from '@mui/material';
 
 const preview: Preview = {
   parameters: {
@@ -25,8 +26,10 @@ const preview: Preview = {
   decorators: [
     Story => (
       <ThemedApp>
-        <link rel="stylesheet" href="./fonts.css" />
-        <Story />
+        <CssBaseline>
+          <link rel="stylesheet" href="./fonts.css" />
+          <Story />
+        </CssBaseline>
       </ThemedApp>
     ),
   ],

@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material';
-import { HomeCheck } from 'tabler-icons-react';
+import { HomeCheck, WifiOff } from 'tabler-icons-react';
 
 import { Button, Flex } from '../components';
 import { NotificationProvider, useNotification } from '../components/Snackbar';
@@ -22,6 +22,7 @@ const SnackbarStory = () => {
             message: 'This is a success message',
             type: 'success',
             icon: HomeCheck,
+            autoClose: false,
           })
         }
       />
@@ -33,9 +34,10 @@ const SnackbarStory = () => {
         title="Error"
         onClick={() =>
           showNotification({
-            message: 'This is a error message',
+            message: 'Your internet has gone offline. We will not be able to save your data until it is back online',
             type: 'error',
-            icon: HomeCheck,
+            icon: WifiOff,
+            autoClose: false,
           })
         }
       />
