@@ -1,7 +1,7 @@
 import { createContext, type ReactNode, useContext, useMemo } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { CssBaseline, styled } from '@mui/material';
+import { styled } from '@mui/material';
 import { toast, ToastContainer, type ToastOptions, type IconProps } from 'react-toastify';
 
 type NotificationType = 'success' | 'error' | 'info' | 'warning';
@@ -60,7 +60,6 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <NotificationContext.Provider value={{ showNotification }}>
-      <CssBaseline />
       {children}
       <StyledToastContainer />
     </NotificationContext.Provider>
