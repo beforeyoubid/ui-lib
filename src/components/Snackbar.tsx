@@ -147,21 +147,4 @@ const StyledToastContainer = styled(ToastContainer)(({ theme }) => ({
   },
 
   '--toastify-font-family': theme.typography.fontFamily,
-
-  // Global styles for html and box-sizing
-  html: {
-    '-webkit-font-smoothing': 'antialiased',
-    '-moz-osx-font-smoothing': 'grayscale',
-    'box-sizing': 'border-box',
-    '-webkit-text-size-adjust': '100%',
-  },
-  '*': {
-    boxSizing: 'inherit',
-  },
-  '*::before': {
-    boxSizing: 'inherit',
-  },
-  '*::after': {
-    boxSizing: 'inherit',
-  },
 }));
