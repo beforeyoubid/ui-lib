@@ -24,6 +24,8 @@ export type DocumentUploadCardProps = {
   uploadProgress?: number;
   errorMessage?: string; // indicates an error occurred
   uploadButtonDataComponentKey?: string;
+  /** an ID to put on the input component -- this is needed to join the input upload to the form controller */
+  id: string;
   onFileSelect: (file: File) => void;
   onFileDelete: () => void;
 };
@@ -40,6 +42,7 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
   fileSize,
   errorMessage,
   isUploading,
+  id,
   uploadButtonDataComponentKey,
   uploadProgress = 0,
   onFileSelect,
@@ -87,7 +90,12 @@ export const DocumentUploadCard: React.FC<DocumentUploadCardProps> = ({
                 <LeftContent fileName={fileName} fileSize={fileSize} hasError={!!errorMessage} />
                 {/* right content */}
                 {!isUploading && !fileUrl && (
-                  <Upload dataComponentKey={uploadButtonDataComponentKey} accept={accept} onSelect={onFileSelect} />
+                  <Upload
+                    dataComponentKey={uploadButtonDataComponentKey}
+                    id={id}
+                    accept={accept}
+                    onSelect={onFileSelect}
+                  />
                 )}
                 {isUploading && <Uploading progress={uploadProgress} />}
                 {fileUrl && <Uploaded onFileDelete={onFileDelete} />}
