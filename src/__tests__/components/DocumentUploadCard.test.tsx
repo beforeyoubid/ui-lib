@@ -11,6 +11,7 @@ describe('DocumentUploadCard', () => {
           label="Label"
           description="Provide a description for your file upload"
           isEditing
+          id="test1"
           fileUrl=""
           fileName=""
           fileSize=""
@@ -32,6 +33,7 @@ describe('DocumentUploadCard', () => {
           label="Label"
           description="Provide a description for your file upload"
           isEditing
+          id="test1"
           fileUrl="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
           fileName="dummy.pdf"
           fileSize="200 KB"
@@ -53,6 +55,7 @@ describe('DocumentUploadCard', () => {
           label="Label"
           description="Provide a description for your file upload"
           isEditing
+          id="test1"
           fileUrl="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
           fileName="dummy.pdf"
           fileSize="200 KB"
@@ -74,6 +77,7 @@ describe('DocumentUploadCard', () => {
           label="Label"
           description="Provide a description for your file upload"
           isEditing
+          id="test1"
           fileUrl="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
           fileName="dummy.pdf"
           fileSize="200 KB"
@@ -95,6 +99,7 @@ describe('DocumentUploadCard', () => {
           label="Label"
           description="Provide a description for your file upload"
           isEditing={false}
+          id="test1"
           fileUrl="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
           fileName="dummy.pdf"
           fileSize="200 KB"

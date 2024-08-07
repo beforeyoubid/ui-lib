@@ -17,12 +17,14 @@ import { Flex } from '../../Flex';
 
 type UploadProps = {
   dataComponentKey?: string;
+  id: string;
   accept?: string;
   onSelect: (file: File) => void;
 };
 
 const UploadNoMemo: React.FC<UploadProps> = ({
   dataComponentKey = 'upload-file-button',
+  id,
   accept = '.pdf',
   onSelect,
 }) => {
@@ -40,12 +42,12 @@ const UploadNoMemo: React.FC<UploadProps> = ({
     <Flex direction="row">
       <HiddenInput
         type="file"
-        id={dataComponentKey}
+        id={id}
         data-component-key={dataComponentKey}
         accept={accept}
         onChange={handleFileSelect}
       />
-      <Label htmlFor={dataComponentKey}>
+      <Label htmlFor={id}>
         <Button
           disabled
           title="Upload file"
