@@ -1,3 +1,5 @@
+import { ArrowRight } from 'tabler-icons-react';
+
 import { LinkButton } from '../components/LinkButton';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -16,5 +18,14 @@ export const Active: Story = {
     title: 'Login',
     size: 'lg',
     disableRipple: true,
+  },
+};
+
+export const WithTrailingIcon: Story = {
+  args: {
+    type: 'mint',
+    title: 'Login',
+    size: 'lg',
+    trailingIcon: ArrowRight,
   },
 };

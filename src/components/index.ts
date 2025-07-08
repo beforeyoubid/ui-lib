@@ -27,6 +27,7 @@ export * from './ProfilePicture';
 export * from './Radio';
 // export * from './RichTextEditor';
 export * from './Select';
+export * from './Stepper';
 export * from './Snackbar';
 export * from './Table';
 export * from './TableBody';
