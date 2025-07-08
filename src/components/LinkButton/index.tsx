@@ -16,6 +16,7 @@ export type LinkButtonProps = {
   size: 'lg' | 'md' | 'sm';
   underline?: boolean;
   leadingIcon?: IconProps['icon'];
+  trailingIcon?: IconProps['icon'];
 } & Omit<MuiButtonProps, 'variant' | 'children' | 'color' | 'type' | 'size'>;
 
 export const LinkButton: React.FC<LinkButtonProps> = ({
@@ -25,6 +26,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
   disabled,
   underline,
   leadingIcon,
+  trailingIcon,
   ...rest
 }) => {
   const theme = useTheme();
@@ -51,6 +53,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
         >
           {title}
         </Typography>
+        {trailingIcon && <Icon icon={trailingIcon} color={linkButtonStyle.BgColor} size="18" />}
       </Flex>
     </ButtonWrapper>
   );
