@@ -77,6 +77,7 @@ const config: RollupOptions = {
       dir: 'dist',
       format: 'esm',
       sourcemap: true,
+      esModule: 'if-default-prop',
     },
   ],
   plugins: [
