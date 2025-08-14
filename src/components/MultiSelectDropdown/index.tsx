@@ -38,8 +38,8 @@ export type MultiSelectDropdownProps = {
   isOptional?: boolean;
   /** Called when selection changes; receives selected values. */
   onChange: (values: string[]) => void;
-  /** Automation/test key. */
-  automationKey?: string;
+  /** Automation/test key. Mandatory. */
+  automationKey: string;
   /** Theme background color for the input area (optional). */
   backgroundColor?: keyof Colors;
   /** Enable/disable search input. Default: true. */

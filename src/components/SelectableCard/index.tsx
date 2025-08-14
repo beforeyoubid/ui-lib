@@ -35,7 +35,10 @@ export function SelectableCard(props: SelectableCardProps) {
   };
 
   const renderIndicator = () => {
-    if (props.variant === 'radio') return <Circle checked={selected} onChange={() => {}} />;
+    if (props.variant === 'radio') {
+      const circleProps: any = { checked: selected, onChange: () => {}, disabled: props.disabled };
+      return <Circle {...circleProps} />;
+    }
     if (props.variant === 'checkbox') return <RawCheckbox size="md" checked={selected} onChange={() => {}} />;
     return (
       <OptionIndicator selected={selected}>

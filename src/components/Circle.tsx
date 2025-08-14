@@ -1,6 +1,6 @@
-import { Radio, useTheme, type RadioProps as MuiRadioProps } from '@mui/material';
+import { Radio, useTheme } from '@mui/material';
 
-export function Circle({ disabled = false, ...props }: { disabled?: boolean } & MuiRadioProps) {
+export function Circle({ disabled = false, ...props }: { disabled?: boolean }) {
   return (
     <Radio
       disabled={disabled}
