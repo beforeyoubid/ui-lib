@@ -82,11 +82,13 @@ const typography: Typography = {
     roman: 400,
     medium: 500,
     bold: 700,
+    heavy: 800,
   },
   fonts: {
     roman: fonts.regular,
     medium: fonts.medium,
     bold: fonts.heavy,
+    heavy: fonts.heavy,
   },
 };
 

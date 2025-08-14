@@ -55,7 +55,7 @@ export type Colors = {
 };
 
 export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'base' | 'sm' | 'xs' | '2xs';
-export type TypographyFontClass = 'roman' | 'medium' | 'bold';
+export type TypographyFontClass = 'roman' | 'medium' | 'bold' | 'heavy';
 
 export type TypographyValues = {
   size: Record<
