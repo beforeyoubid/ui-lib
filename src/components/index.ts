@@ -16,6 +16,7 @@ export * from './MultiSelectDropdown';
 export * from './Icon';
 export * from './Icon/FileIcon';
 export * from './ImageUpload';
+export * from './InfoBox';
 export * from './InformationCheckbox';
 export * from './KebabMenu';
 export * from './KebabMenu/types';
