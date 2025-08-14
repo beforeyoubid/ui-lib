@@ -47,7 +47,7 @@ export function SelectableCard(props: SelectableCardProps) {
   const renderOptionContent = () => (
     <>
       <Row>
-        <IndicatorBox>{renderIndicator()}</IndicatorBox>
+        <IndicatorBox aria-hidden>{renderIndicator()}</IndicatorBox>
         <Typography class="heavy" size="base" color="dark100">
           {title}
         </Typography>
@@ -63,7 +63,7 @@ export function SelectableCard(props: SelectableCardProps) {
 
   const renderRowContent = () => (
     <>
-      <IndicatorBox>{renderIndicator()}</IndicatorBox>
+      <IndicatorBox aria-hidden>{renderIndicator()}</IndicatorBox>
       {leftIcon && <LeftIconBox>{leftIcon}</LeftIconBox>}
       <Typography class="heavy" size="base" color="dark100">
         {title}

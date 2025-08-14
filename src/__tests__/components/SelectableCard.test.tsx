@@ -8,7 +8,13 @@ describe('SelectableCard', () => {
     const onSelect = jest.fn();
     render(
       <ThemedApp>
-        <SelectableCard variant="radio" selected={false} onSelect={onSelect} title="Strata Report" />
+        <SelectableCard
+          automationKey="selectable-card"
+          variant="radio"
+          selected={false}
+          onSelect={onSelect}
+          title="Strata Report"
+        />
       </ThemedApp>
     );
     const button = screen.getByRole('radio');
@@ -24,7 +30,14 @@ describe('SelectableCard', () => {
     const onSelect = jest.fn();
     render(
       <ThemedApp>
-        <SelectableCard variant="checkbox" selected={false} onSelect={onSelect} title="Pool Report" disabled />
+        <SelectableCard
+          automationKey="selectable-card"
+          variant="checkbox"
+          selected={false}
+          onSelect={onSelect}
+          title="Pool Report"
+          disabled
+        />
       </ThemedApp>
     );
     const button = screen.getByRole('checkbox');
