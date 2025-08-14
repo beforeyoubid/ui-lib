@@ -14,7 +14,14 @@ describe('MultiSelectDropdown', () => {
     const onChange = jest.fn();
     render(
       <ThemedApp>
-        <MultiSelectDropdown label="Cities" values={[]} onChange={onChange} options={OPTIONS} clearable />
+        <MultiSelectDropdown
+          automationKey="cities"
+          label="Cities"
+          values={[]}
+          onChange={onChange}
+          options={OPTIONS}
+          clearable
+        />
       </ThemedApp>
     );
 
@@ -31,7 +38,14 @@ describe('MultiSelectDropdown', () => {
     const onChange = jest.fn();
     render(
       <ThemedApp>
-        <MultiSelectDropdown label="Cities" values={['syd', 'mel']} onChange={onChange} options={OPTIONS} clearable />
+        <MultiSelectDropdown
+          automationKey="cities"
+          label="Cities"
+          values={['syd', 'mel']}
+          onChange={onChange}
+          options={OPTIONS}
+          clearable
+        />
       </ThemedApp>
     );
     const clear = screen.getByLabelText('Clear');
