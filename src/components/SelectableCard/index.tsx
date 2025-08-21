@@ -3,6 +3,7 @@ import type React from 'react';
 import { Check } from 'tabler-icons-react';
 
 import { automation } from '../../utils';
+import { Button } from '../Button';
 import { RawCheckbox } from '../Checkbox';
 import { Circle } from '../Circle';
 import { Icon } from '../Icon';
@@ -18,7 +19,23 @@ import { type SelectableCardProps } from './types';
  * @returns A SelectableCard component.
  */
 export function SelectableCard(props: SelectableCardProps) {
-  const { title, description, footer, leftIcon, rightAdornment, fullWidth = true, selected } = props;
+  const {
+    title,
+    description,
+    footer,
+    body,
+    actionText,
+    onAction,
+    leftIcon,
+    rightAdornment,
+    fullWidth = true,
+    selected,
+    padding,
+    unselectedBackgroundColor,
+    selectedBackgroundColor,
+    unselectedBorderColor,
+    selectedBorderColor,
+  } = props;
   const isOption = props.variant === 'option';
   const Layout = isOption ? Column : Row;
 
@@ -51,7 +68,7 @@ export function SelectableCard(props: SelectableCardProps) {
     <>
       <Row>
         <IndicatorBox aria-hidden>{renderIndicator()}</IndicatorBox>
-        <Typography class="heavy" size="base" color="dark100">
+        <Typography class="semibold" size="base" color="dark100">
           {title}
         </Typography>
       </Row>
@@ -60,7 +77,13 @@ export function SelectableCard(props: SelectableCardProps) {
           {description}
         </Typography>
       )}
+      {body && <div>{body}</div>}
       {footer && <div>{footer}</div>}
+      {actionText && onAction && (
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
+          <Button variant="primary" type="mint" size="md" wrap="narrow" title={actionText} onClick={onAction} />
+        </div>
+      )}
     </>
   );
 
@@ -68,7 +91,7 @@ export function SelectableCard(props: SelectableCardProps) {
     <>
       <IndicatorBox aria-hidden>{renderIndicator()}</IndicatorBox>
       {leftIcon && <LeftIconBox>{leftIcon}</LeftIconBox>}
-      <Typography class="heavy" size="base" color="dark100">
+      <Typography class="semibold" size="base" color="dark100">
         {title}
       </Typography>
       <Spacer />
@@ -86,6 +109,11 @@ export function SelectableCard(props: SelectableCardProps) {
       fullWidth={fullWidth}
       selected={selected}
       variant={props.variant}
+      padding={padding}
+      unselectedBackgroundColor={unselectedBackgroundColor}
+      selectedBackgroundColor={selectedBackgroundColor}
+      unselectedBorderColor={unselectedBorderColor}
+      selectedBorderColor={selectedBorderColor}
       role={isOption ? undefined : props.variant}
       aria-checked={isOption ? undefined : selected}
       aria-disabled={props.disabled}

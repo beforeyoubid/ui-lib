@@ -54,8 +54,8 @@ export type Colors = {
   transparentButtonB: string;
 };
 
-export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'base' | 'sm' | 'xs' | '2xs';
-export type TypographyFontClass = 'roman' | 'medium' | 'bold' | 'heavy';
+export type TypographyFontSize = '4xl' | '3xl' | '2xl' | 'xl' | 'lg' | 'base' | 'sm' | 'xs' | '2xs';
+export type TypographyFontClass = 'roman' | 'medium' | 'bold' | 'semibold' | 'heavy';
 
 export type TypographyValues = {
   size: Record<

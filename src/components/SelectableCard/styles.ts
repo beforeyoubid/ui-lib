@@ -7,34 +7,57 @@ export const Wrapper = styled('button')<{
   fullWidth: boolean;
   selected: boolean;
   variant: 'radio' | 'checkbox' | 'option';
-}>(({ theme, fullWidth, selected, variant }) => ({
-  appearance: 'none',
-  border: 'none',
-  background: variant === 'option' && selected ? theme.palette.colors.mintL3 : theme.palette.colors.lightWhite,
-  outline:
-    variant === 'option' && selected
-      ? `1px solid ${theme.palette.colors.mint60}`
-      : `1px solid ${theme.palette.colors.dark15}`,
-  borderRadius: 12,
-  padding: theme.spacing(5),
-  width: fullWidth ? '100%' : undefined,
-  textAlign: 'left',
-  cursor: 'pointer',
-  transition: 'background-color 120ms ease, outline-color 120ms ease, box-shadow 120ms ease',
-  ':hover': {
-    backgroundColor: variant === 'option' && selected ? theme.palette.colors.mintL3 : theme.palette.colors.lightL3,
-  },
-  ':disabled': {
-    cursor: 'not-allowed',
-    backgroundColor: theme.palette.colors.lightL3,
-    opacity: 0.6,
-  },
-  ':focus-visible': {
-    outline: `2px solid ${theme.palette.colors.mint60}`,
-    outlineOffset: 2,
-    boxShadow: `0 0 0 2px ${theme.palette.colors.mintL3}`,
-  },
-}));
+  padding?: number;
+  unselectedBackgroundColor?: string;
+  selectedBackgroundColor?: string;
+  unselectedBorderColor?: string;
+  selectedBorderColor?: string;
+}>(
+  ({
+    theme,
+    fullWidth,
+    selected,
+    variant,
+    padding,
+    unselectedBackgroundColor,
+    selectedBackgroundColor,
+    unselectedBorderColor,
+    selectedBorderColor,
+  }) => ({
+    appearance: 'none',
+    border: 'none',
+    background: selected
+      ? selectedBackgroundColor ||
+        (variant === 'option' ? theme.palette.colors.mintL3 : theme.palette.colors.lightWhite)
+      : unselectedBackgroundColor || theme.palette.colors.lightWhite,
+    outline: selected
+      ? `1px solid ${
+          selectedBorderColor || (variant === 'option' ? theme.palette.colors.mint60 : theme.palette.colors.dark15)
+        }`
+      : `1px solid ${unselectedBorderColor || theme.palette.colors.dark15}`,
+    borderRadius: 12,
+    padding: padding ? theme.spacing(padding) : theme.spacing(5),
+    width: fullWidth ? '100%' : 'fit-content',
+    textAlign: 'left',
+    cursor: 'pointer',
+    transition: 'background-color 120ms ease, outline-color 120ms ease, box-shadow 120ms ease',
+    ':hover': {
+      backgroundColor: selected
+        ? selectedBackgroundColor || theme.palette.colors.mintL3
+        : unselectedBackgroundColor || theme.palette.colors.lightL3,
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      backgroundColor: theme.palette.colors.lightL3,
+      opacity: 0.6,
+    },
+    ':focus-visible': {
+      outline: `2px solid ${theme.palette.colors.mint60}`,
+      outlineOffset: 2,
+      boxShadow: `0 0 0 2px ${theme.palette.colors.mintL3}`,
+    },
+  })
+);
 
 /** Generic row layout used across variants. */
 export const Row = styled(Flex)(({ theme }) => ({

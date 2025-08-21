@@ -30,10 +30,26 @@ export type SelectableCardProps = {
   rightAdornment?: React.ReactNode;
   /** Footer area (option) for prices or meta. */
   footer?: React.ReactNode;
+  /** Body content area with additional details (inspector info, action buttons, etc.). */
+  body?: React.ReactNode;
+  /** Action button text. */
+  actionText?: string;
+  /** Action button click handler. */
+  onAction?: (event: React.MouseEvent) => void;
   /** Root element id. */
   id?: string;
   /** Accessible label. */
   ariaLabel?: string;
   /** Stretch to container width. Default: true. */
   fullWidth?: boolean;
+  /** Custom padding for the card content. */
+  padding?: number;
+  /** Custom background color for unselected state. */
+  unselectedBackgroundColor?: string;
+  /** Custom background color for selected state. */
+  selectedBackgroundColor?: string;
+  /** Custom border color for unselected state. */
+  unselectedBorderColor?: string;
+  /** Custom border color for selected state. */
+  selectedBorderColor?: string;
 };

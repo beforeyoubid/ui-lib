@@ -79,7 +79,7 @@ export function MultiSelectDropdown({
   );
 
   return (
-    <div {...automation([automationKey], { label })}>
+    <div {...automation([automationKey], { label })} style={{ width: fullWidth ? '100%' : 'auto' }}>
       <TextFieldLabel labelText={label} required={required} isOptional={isOptional} />
       {errorText && <TextFieldErrorLabel errorText={errorText} />}
       <StyledAutocomplete
@@ -141,9 +141,11 @@ export function MultiSelectDropdown({
         )}
         sx={{
           marginTop: theme.spacing(0.5),
+          width: fullWidth ? '100%' : 'fit-content',
           '.MuiOutlinedInput-root': {
             background: backgroundColor ? theme.palette.colors[backgroundColor] : undefined,
             padding: theme.spacing(0.5, 1),
+            width: fullWidth ? '100%' : 'fit-content',
           },
           '.MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.colors.dark45,
@@ -162,7 +164,17 @@ export function MultiSelectDropdown({
 
 // Generics: <T, Multiple, DisableClearable, FreeSolo>
 // Multiple=true, DisableClearable=boolean (allow toggling), FreeSolo=false
-const StyledAutocomplete = styled(Autocomplete<MultiSelectOption, true, boolean, false>)({});
+const StyledAutocomplete = styled(Autocomplete<MultiSelectOption, true, boolean, false>)<{ fullWidth?: boolean }>(
+  ({ fullWidth }) => ({
+    width: fullWidth ? '100%' : 'fit-content',
+    '& .MuiFormControl-root': {
+      width: fullWidth ? '100%' : 'fit-content',
+    },
+    '& .MuiInputBase-root': {
+      width: fullWidth ? '100%' : 'fit-content',
+    },
+  })
+);
 
 const StyledTag = styled(Chip)(({ theme }) => ({
   borderRadius: 4,
