@@ -41,6 +41,9 @@ const fonts = {
   heavy: `Avenir-Heavy, Avenir-Medium, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol'`,
+  semibold: `Avenir-Heavy, Avenir-Medium, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol'`,
 };
 
 const typography: Typography = {
@@ -59,6 +62,10 @@ const typography: Typography = {
     },
     xl: {
       fontSize: '1.250rem',
+      lineHeight: '130%',
+    },
+    lg: {
+      fontSize: '1.125rem',
       lineHeight: '130%',
     },
     base: {
@@ -82,12 +89,14 @@ const typography: Typography = {
     roman: 400,
     medium: 500,
     bold: 700,
+    semibold: 600,
     heavy: 800,
   },
   fonts: {
     roman: fonts.regular,
     medium: fonts.medium,
     bold: fonts.heavy,
+    semibold: fonts.semibold,
     heavy: fonts.heavy,
   },
 };
