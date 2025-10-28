@@ -40,5 +40,6 @@ export * from './TableHeader';
 export * from './TableRow';
 export * from './TextArea';
 export * from './TextInput';
+export * from './TooltipButton';
 export * from './ToolTip';
 export * from './Typography';
