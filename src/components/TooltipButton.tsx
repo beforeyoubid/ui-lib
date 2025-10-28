@@ -17,13 +17,12 @@ export type TooltipButtonProps = ButtonProps & {
  * @param rest - Additional props to pass to the button
  * @returns
  */
-export function TooltipButton({ tooltip, disabled, sx, ...rest }: TooltipButtonProps) {
-  const mergedSx = tooltip ? { cursor: 'help', ...sx } : sx;
-
+export function TooltipButton(props: TooltipButtonProps) {
+  const { tooltip, sx, ...rest } = props;
   return (
     <MuiTooltip title={tooltip} arrow TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
       <span style={{ display: 'inline-flex' }}>
-        <Button disabled={disabled} sx={mergedSx} {...rest} />
+        <Button sx={{ cursor: 'help', ...sx }} {...rest} />
       </span>
     </MuiTooltip>
   );
