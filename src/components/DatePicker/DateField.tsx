@@ -4,6 +4,7 @@ import { forwardRef, useMemo } from 'react';
 import { type TextFieldProps } from '@mui/material';
 import { type DateFieldProps as MuiDateFieldProps } from '@mui/x-date-pickers';
 import moment, { type Moment } from 'moment';
+import { CalendarEvent } from 'tabler-icons-react';
 
 import { automation } from '../../utils';
 import { Adornment } from '../Adornment';
@@ -38,6 +39,8 @@ export type DateFieldProps = {
   startAdornment?: string | React.ReactNode;
   /** whether to add a border around the start adornment */
   showStartAdornmentBorder?: boolean;
+  /** whether to show default calendar icon on the right */
+  showCalendarIcon?: boolean;
   /** A react component that will show beneath the text field, good for checkboxes */
   componentBelowTextField?: React.ReactNode;
 } & Pick<MuiDateFieldProps<moment.Moment>, 'inputRef' | 'disabled'>;
@@ -57,6 +60,7 @@ const DateFieldNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DateField
     errorText,
     startAdornment,
     showStartAdornmentBorder = true,
+    showCalendarIcon = false,
     automationKey,
     leadingIcon,
     componentBelowTextField,
@@ -99,6 +103,9 @@ const DateFieldNoRef: React.ForwardRefRenderFunction<HTMLInputElement, DateField
                   showBorder={showStartAdornmentBorder}
                 />
               ),
+              endAdornment: showCalendarIcon ? (
+                <Adornment position="end" icon={CalendarEvent} showBorder={false} />
+              ) : null,
             },
           },
         }}
