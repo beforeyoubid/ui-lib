@@ -76,7 +76,7 @@ export const StyledDateField = styled(DateField<Moment>)(({ theme }) => ({
   position: 'relative',
   width: '100%',
   ' .MuiInputBase-input': {
-    padding: theme.spacing(1.5, 1.75, 1.5, 1.25),
+    padding: theme.spacing(1.5, 0.5, 1.5, 1.25),
   },
   '&.MuiFormControl-root *': {
     border: 'none',
@@ -95,6 +95,9 @@ export const StyledDateField = styled(DateField<Moment>)(({ theme }) => ({
     fontFamily: theme.typography.fonts['roman'],
     fontSize: theme.typography.size.base.fontSize,
     color: theme.palette.colors.dark90,
+  },
+  '&.MuiFormControl-root .MuiInputBase-root .MuiInputAdornment-root': {
+    marginRight: theme.spacing(1.5),
   },
 }));
 
