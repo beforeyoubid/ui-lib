@@ -102,6 +102,32 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./icons": {
+      "import": "./dist/icons.js",
+      "require": "./dist/icons.cjs",
+      "types": "./dist/icons.d.ts",
+      "default": "./dist/icons.js"
+    },
+    "./mui-theme": {
+      "import": "./dist/mui-theme.js",
+      "require": "./dist/mui-theme.cjs",
+      "types": "./dist/mui-theme.d.ts",
+      "default": "./dist/mui-theme.js"
+    },
+    "./RichTextEditor": {
+      "import": "./dist/components/RichTextEditor.js",
+      "require": "./dist/components/RichTextEditor.cjs",
+      "types": "./dist/components/RichTextEditor.d.ts",
+      "default": "./dist/components/RichTextEditor.js"
+    }
+  },
   "resolutions": {
     "strip-ansi": "^6.0.1",
     "string-width": "^4.2.2",
